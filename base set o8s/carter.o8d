@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<deck game="11ec1f21-7d4c-4bf0-9d72-df01c6c78911">
+  <section name="Main">
+    <card qty="2" id="4e172aed-da95-4717-a2a3-55bdf3835dca">Top Minds</card>
+    <card qty="3" id="414ef0db-fe27-48c0-9e7a-9e13b346482b">Seasoned Travelers</card>
+    <card qty="3" id="7861d9aa-aafb-448c-8c4d-98e691d3f53a">Receiving a Go</card>
+    <card qty="2" id="3c381256-8ecd-4a17-ae67-dbe4a7b5305a">Osbourne</card>
+    <card qty="3" id="5f48ec23-8316-45e9-b6b9-a90ca1ad3f59">Nyan</card>
+    <card qty="2" id="f0c981ea-5b6f-4a98-a043-0ee5e6f0fb2e">Malek</card>
+    <card qty="2" id="4e5d26f3-522e-43b4-b560-012b81b27a01">Galaran Memory Device</card>
+    <card qty="3" id="75708da0-602d-40f0-9381-b6cc3940ce23">Drey'auc</card>
+    <card qty="2" id="578658c0-5c09-4d63-a46f-5d7b7e5e8c64">Apophis</card>
+    <card qty="3" id="ec8f6292-17e1-4ab8-8af3-6e60e6ab4de7">Cloaked Ashrak</card>
+    <card qty="2" id="bbf126d3-587e-4be7-bd1d-121b79917281">Language Barrier</card>
+    <card qty="3" id="6783ab0b-9da4-4375-9580-14ffb6661cf5">Parasitic Insects</card>
+    <card qty="3" id="c2675662-cb79-4dc3-9507-64b1ebad8939">Red Sky</card>
+    <card qty="2" id="13b58f59-4156-4d15-9c27-3212d8448b65">Robert Kinsey</card>
+    <card qty="2" id="799a40e0-a9a9-4d4b-a548-b4a00bb004db">Salish Spirits</card>
+    <card qty="2" id="7b84361c-da40-4a9a-8c2e-c4a327109f71">Serpent Guards</card>
+    <card qty="3" id="b5e4ff90-7a72-4696-a937-6542aef7af54">Telekinetic Mutants</card>
+    <card qty="2" id="cde9da8d-f010-4ff4-858e-c0777b931ecc">Water-Based Life Forms</card>
+  </section>
+  <section name="Team">
+    <card qty="1" id="ebb511ee-abe9-4b91-9cea-e0cb3794bc21">Samantha Carter</card>
+    <card qty="1" id="7dc161c5-2a99-4fb7-b3ee-0c421f48ad41">Martouf</card>
+    <card qty="1" id="4901fb59-e7cc-47d4-8f3a-4f1f2e93f78d">Jack O'Neill</card>
+    <card qty="1" id="0f8362dc-132b-4eb3-96ec-453afddd5638">Balinsky</card>
+  </section>
+  <section name="Mission Pile">
+    <card qty="1" id="aa340201-0599-4884-99aa-ecdf8b2abc53">Antarctic Rescue</card>
+    <card qty="1" id="99856f4c-c9d8-44de-8044-b995d84ce141">Cure the Vorlix</card>
+    <card qty="1" id="db9e6362-9cc3-4e4c-ba0c-0058379d12be">Evacuate Village</card>
+    <card qty="1" id="00e1be97-291d-4e37-aea1-2c386a707f20">Fall of Earth</card>
+    <card qty="1" id="43f27324-da6d-4009-802f-c670e76e4e70">Investigate Disappearance</card>
+    <card qty="1" id="46b646c3-d60a-4030-8364-dab849d0f5ca">Locate Renegades</card>
+    <card qty="1" id="dadf8a7e-525c-4440-9339-b9fe908ca265">Loop of Kon Garat</card>
+    <card qty="1" id="9db0d9a1-edcd-45b4-947b-b4b979becac4">Prison Break</card>
+    <card qty="1" id="b457732b-04e3-4d0e-afb7-68d3dc6b848c">Research Advanced Races</card>
+    <card qty="1" id="e72c8088-c0f6-4692-a060-4e989ccc5c26">Retrieve Artifact</card>
+    <card qty="1" id="4edbb9ee-d752-4d0d-9a21-96463be4a125">Training Exercises</card>
+    <card qty="1" id="f4d43cdf-496a-40a6-9b5e-995a7db693fd">What Fate Omaroca?</card>
+  </section>
+</deck>

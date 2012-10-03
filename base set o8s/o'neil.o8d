@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<deck game="11ec1f21-7d4c-4bf0-9d72-df01c6c78911">
+  <section name="Main">
+    <card qty="2" id="39b6a212-7c89-4327-ae56-ae9d49e9935e">Dialing Computer</card>
+    <card qty="2" id="4e5d26f3-522e-43b4-b560-012b81b27a01">Galaran Memory Device</card>
+    <card qty="2" id="f8a88854-b6b8-4ccc-aa15-268d5539776c">Ill-Gotten Gains</card>
+    <card qty="3" id="cec32155-7eb9-4001-a923-1bf3b4ca0150">Merrin</card>
+    <card qty="2" id="5abf19d6-b076-4cfb-bcaf-dc90c573d687">Naquadah Reactor</card>
+    <card qty="3" id="db2e0e15-0970-4302-a434-d37c410d10f9">Nicholas Ballard</card>
+    <card qty="3" id="745bea32-98ed-49ac-9120-52965ab2716c">Sense of Adventure</card>
+    <card qty="3" id="33adafa3-d70e-46c9-9bd0-54ed1a1d77d7">Special Training</card>
+    <card qty="2" id="dd59e9ee-9cf8-4d61-b891-5477c550b2b1">Yu</card>
+    <card qty="3" id="a2076dc6-9eea-420d-8db2-d7b2fa94e3ab">Troop Landing</card>
+    <card qty="3" id="7bc7ab47-5fb6-40c5-b46b-91caf0ee6db0">Tight Rein</card>
+    <card qty="3" id="cbdd5fa9-138e-4e3e-ab51-552d1e3e675b">Team Compromised</card>
+    <card qty="2" id="b95f875a-0f2a-416a-bdc9-6b7aac41ffa8">Out of Your Depth</card>
+    <card qty="2" id="558106d3-ce22-43e1-92e8-8289723abc3a">Loss of Funding</card>
+    <card qty="2" id="b52fa628-3c10-44ce-829b-4f9241bf6949">Harsh Conditions</card>
+    <card qty="3" id="8a097812-9963-4da7-ae55-0ff0196bfcff">Fire Rain</card>
+    <card qty="2" id="2aebfd9e-d838-4542-846b-6861f2d6d369">Brainwashing</card>
+    <card qty="2" id="2ecceca6-cd9d-4323-9aa4-6408626785b3">Anubis</card>
+  </section>
+  <section name="Team">
+    <card qty="1" id="4901fb59-e7cc-47d4-8f3a-4f1f2e93f78d">Jack O'Neill</card>
+    <card qty="1" id="c5358e72-16ac-450e-a2b8-923d4964f52c">Harold Maybourne</card>
+    <card qty="1" id="da9a7837-a593-4269-acb6-d88449a0d07a">Cameron Mitchell</card>
+    <card qty="1" id="5943d410-e654-46a4-9bc7-44124d8ee891">Teal'c</card>
+  </section>
+  <section name="Mission Pile">
+    <card qty="1" id="7cd9c3b2-a979-460a-ae6d-0fa1dbe1431b">Attend Triad</card>
+    <card qty="1" id="9f4d63c9-3b86-4f63-9d69-1232f3ca6122">Beneath the Surface</card>
+    <card qty="1" id="7ee0dd5e-05ab-4a8c-848f-52792b362509">Convert Jaffa</card>
+    <card qty="1" id="7b22ba1c-5432-4ec9-bfdb-66e49180dcae">Destroy Minor Goa'uld</card>
+    <card qty="1" id="edee7ab2-f431-4c28-b808-d6fa1ed59cc2">Establish Communication</card>
+    <card qty="1" id="c0f58ccb-3278-4769-9040-31fec6b363ca">Infiltrate Summit</card>
+    <card qty="1" id="db9b3230-07e2-400a-92b3-679ae3a7254d">Pandemic Containment</card>
+    <card qty="1" id="c81249ce-abc2-489c-a32c-28ca0e18293b">Salvage Technology</card>
+    <card qty="1" id="7f109410-f062-44b2-9a84-bf51d698d4e3">Seek and Capture</card>
+    <card qty="1" id="5fbb2f8b-9b01-41f2-ad7d-d5aba336bcef">Supply Raid</card>
+    <card qty="1" id="c4bf0315-ee48-4fd9-b02c-322f1b41e779">Survey Goa'uld Pleasure Palace</card>
+    <card qty="1" id="9f7363f0-0281-46d1-906c-da6ebcb61d3d">Time Loop</card>
+  </section>
+</deck>
