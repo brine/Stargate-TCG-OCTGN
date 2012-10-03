@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<game name="Stargate TCG" id="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" octgnVersion="3.0.1.14" version="0.1.0" markersize="10" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Game.xsd">
+  <scripts>
+    <script src="r01" />
+  </scripts>
+  <globalvariables> 
+    <globalvariable name="turnplayer" value="None"/>
+    <globalvariable name="phase" value="pregame"/>
+    <globalvariable name="subphase" value="firstregister"/>
+    <globalvariable name="activemission" value="None"/>
+    <globalvariable name="cards" value="{}"/>
+    <globalvariable name="priority" value="0"/>
+    <globalvariable name="pass" value="False"/>
+  </globalvariables>
+  <card back="r02" front="r03" width="63" height="88" cornerRadius="0">
+    <property name="Title" type="String" />
+    <property name="Cost" type="Integer" />
+    <property name="Type" type="String" textKind="Tokens" />
+    <property name="Traits" type="String" textKind="Tokens" />
+    <property name="Culture" type="String" textKind="Enum" />
+    <property name="Science" type="String" textKind="Enum" />
+    <property name="Combat" type="String" textKind="Enum" />
+    <property name="Ingenuity" type="String" textKind="Enum" />
+    <property name="Experience" type="String" textKind="Enum" />
+    <property name="Revive" type="String" textKind="Enum" />
+    <property name="Glyph" type="String" textKind="Enum" />
+    <property name="Text" type="String" />
+    <property name="Rarity" type="String" textKind="Enum" />
+    <property name="Number" type="Integer"/>
+    <property name="Script" type="String"/>
+  </card>
+  <table name="Table" visibility="undefined" ordered="true" width="866" height="708" background="r98" backgroundStyle="UniformToFill" board="r97" boardPosition="-205,-325,682,651" >
+    <groupaction menu="Register your Team (set up game)" execute="registerTeam" />
+    <groupaction menu="Confirm Action" shortcut="enter" execute="confirmaction" />
+    <groupaction menu="Pass turn" default="true" shortcut="tab" execute="passturn" />
+    <groupaction menu="End Quest" shortcut="ctrl+q" execute="endquest" />
+    <groupaction menu="End Turn" shortcut="ctrl+e" execute="endturn" />
+    <groupaction menu="Clear Targets" shortcut="esc" execute="clearAll" />
+    <groupaction menu="Roll a Die (20)" shortcut="ctrl+g" execute="roll20" />
+    <groupaction menu="Flip a Coin" shortcut="ctrl+f" execute="flipCoin" />
+    <cardaction menu="Use Card Action" default="true" execute="action" />
+    <cardaction menu="Assign" shortcut="ctrl+a" execute="assign" />
+    <cardaction menu="Ready" shortcut="ctrl+r" execute="ready" />
+    <cardaction menu="Block" shortcut="ctrl+b" execute="block" />
+    <cardaction menu="Stop" shortcut="ctrl+s" execute="stop" />
+    <cardaction menu="Incapacitate" shortcut="ctrl+k" execute="incapacitate" />
+    <cardaction menu="Destroy" shortcut="del" execute="destroy" />
+    <cardaction menu="Flip Up/Down" execute="flip" />
+    <cardaction menu="Add Counter" execute="addMarker" />
+    <cardaction menu="Remove Counter" execute="removeMarker" />
+  </table>
+  <player summary="PWR:{#Power} / EXP:{#Experience Win} / ENEMY:{#Enemy Win}">
+    <globalvariable name="victory" value="None"/>
+    <counter name="Power" icon="r04" />
+    <counter name="Experience Win" icon="r07" />
+    <counter name="Enemy Win" icon="r08" />
+    <hand name="Hand" visibility="me" ordered="false" width="63" height="88" icon="r15">
+      <cardaction menu="Play card" default="true" execute="playcard" />
+      <cardaction menu="Discard Card" shortcut="del" execute="destroy" />
+      <groupaction menu="Random Discard" execute="randomDiscard" />
+    </hand>
+    <group name="Deck" visibility="none" width="63" height="88" icon="r11">
+      <groupaction menu="Draw" shortcut="ctrl+d" default="true" execute="draw" />
+      <groupaction menu="Refill Hand" shortcut="ctrl+shift+d" execute="refill" />
+      <groupaction menu="Shuffle" shortcut="ctrl+s" execute="shuffle" />
+      <cardaction menu="Discard Card" shortcut="del" execute="destroy" />
+    </group>
+    <group name="Discard" visibility="all" width="63" height="88" icon="r12"></group>
+    <group name="Team" visibility="me" width="63" height="88" icon="r13" collapsed="false">
+      <groupaction menu="Register your Team (set up game)" execute="registerTeam" />
+    </group>
+    <group name="Mission Pile" visibility="none" width="63" height="88" icon="r14" collapsed="false">
+      <groupaction menu="Shuffle" shortcut="ctrl+s" execute="shuffle" />
+      <groupaction menu="Play Top Mission" default="true" execute="playcard" />
+    </group>
+  </player>
+  <deck>
+    <section name="Main" group="Deck" />
+    <section name="Team" group="Team" />
+    <section name="Mission Pile" group="Mission Pile" />
+  </deck>
+</game>
