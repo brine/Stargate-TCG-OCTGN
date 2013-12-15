@@ -24,29 +24,182 @@ markerTypes = {
 heroTypes = ["Support Character", "Team Character", "Gear", "Event"]
 enemyTypes = ["Obstacle", "Adversary"]
 
-def isActive(card):
-    if myTurn():
-      if card.Type in heroTypes:
-        if card.controller == me:
-          return True
+def registerTeam(player, groups):
+    mute()
+    if player != me:  #only execute this event if its your own deck
+        return
+    phase = getGlobalVariable("phase")
+    #### The game only works with 2 players, so anyone else loading a deck will have their cards deleted
+    if phase not in ['pre.1reg', 'pre.2reg']:
+        whisper("cannot load deck -- there are already 2 players registered.")
+        for group in [me.Deck, me.piles['Mission Pile'], me.Team]:
+            for c in group:
+                c.delete()
+        return
+    #### Verify deck contents
+    if len(me.Team) != 4:
+        notify("{}'s team does not have 4 members! Please restart game and load a legal deck.".format(me))
+        return
+    #### Store victory points
+    victory = 0
+    teamlist = eval(getGlobalVariable("cards"))
+    for card in me.Team:
+        teamlist[card._id] = {"mission": { }, "turn": { }, "status": "ready"}
+        card.moveToTable(0,0)
+        victory += int(card.Cost)  #add the card's cost to the victory total
+    setGlobalVariable("cards", str(teamlist))
+    me.setGlobalVariable("victory", str(victory)) #Stores your victory total
+    notify("{} registers their Team ({} points).".format(me, victory))
+    me.Deck.shuffle()
+    me.piles['Mission Pile'].shuffle()
+    #### Determine who goes first
+    if phase == "pre.1reg":
+        setGlobalVariable("phase", "pre.2reg")
+    #### After the second player registers their deck, the starting player can be determined
+    elif phase == "pre.2reg":
+        oppVictory = int(me.getGlobalVariable("victory"))
+        meVictory = int(players[1].getGlobalVariable("victory"))
+        if meVictory > oppVictory:
+            setGlobalVariable("turnplayer", str(me._id))
+            notify("{} will play first.".format(me))
+        elif meVictory < oppVictory:
+            setGlobalVariable("turnplayer", str(players[1]._id))
+            notify("{} will play first.".format(players[1]))
+        elif meVictory == oppVictory:  ##randomly determine in the event of a tie
+            rng = rnd(1,2)
+            if rng == 1:
+                startingPlayer = me
+                notify("{} will play first, chosen randomly.".format(me))
+            else:
+                startingPlayer = players[1]
+                notify("{} will play first, chosen randomly.".format(players[1]))
+        if startingPlayer == me:
+             stopPlayer = players[1]
         else:
-          return False
-      else:
-        if card.controller == me:
-          return False
-        else:
-          return True
+             stopPlayer = me
+        notify("{} will choose a team character to Stop.".format(stopPlayer))
+        cleanup()
+        remoteCall(players[1], "cleanup", [])
+        setGlobalVariable("turnplayer", str(startingPlayer._id))
+        setGlobalVariable("phase", "pre.stopchar")
     else:
-      if card.Type in heroTypes:
-        if card.controller == me:
-          return False
-        else:
-          return True
-      else:
-        if card.controller == me:
-          return True
-        else:
-          return False
+        notify("An error has occured: phase variable should be pre.1reg or pre.2reg")
+        return
+
+def doubleClick(card, mouseButton, keysDown):
+    mute()
+    phase = getGlobalVariable("phase")
+    if phase == "pre.stopchar":
+        #### Enemy player must stop a character at the start of the game
+        if not myTurn():
+            notify("6")
+            cardsDict = eval(getGlobalVariable("cards"))
+            if card._id not in cardsDict:
+                notify("ERROR: {} doesn't exist in the cardsDict!".format(card))
+                return
+            cardsDict[card._id]["status"] = "stop"
+            setGlobalVariable("cards", str(cardsDict))
+            notify("{} Stops {}.".format(me, card))
+            setGlobalVariable("phase", "pre.1mul")
+            return
+
+def globalVarChanged(varName, oldValue, newValue):
+    mute()
+    #### Phase Changes
+    if varName == "phase":
+        #### First Mulligan
+        if newValue == "pre.1mul":
+            fillHand(me)
+            if myTurn():
+                if confirm("Do you want to draw a new hand?"):
+                    for c in me.hand:
+                        c.moveTo(me.Deck)
+                    rnd(1,10)
+                    me.Deck.shuffle()
+                    rnd(1,10)
+                    fillHand(me)
+                    notify("{} draws a new hand.".format(me))
+                else:
+                    notify("{} does not draw a new hand.".format(me))
+                setGlobalVariable("phase", "pre.2mul")
+            return
+        #### Second Mulligan
+        if newValue == "pre.2mul":
+            if not myTurn():
+                if confirm("Do you want to draw a new hand?"):
+                    for c in me.hand:
+                        c.moveTo(me.Deck)
+                    rnd(1,10)
+                    me.Deck.shuffle()
+                    rnd(1,10)
+                    fillHand(me)
+                    notify("{} draws a new hand.".format(me))
+                else:
+                    notify("{} does not draw a new hand.".format(me))
+                cleanup()
+                remoteCall(players[1], "cleanup", [])
+                setGlobalVariable("phase", "pow.main")
+            return
+        #### Resolving the current mission
+        if newValue == "mis.res":
+            activemission = getGlobalVariable("activemission")
+            if activemission == "None":
+                notify("ERROR: There is no registered active mission!")
+                return
+            mission, type, value = eval(activemission)
+            mission = Card(mission)
+            if mission not in table:
+                mission.moveToTable(0,0)
+            cleanup()
+            remoteCall(players[1], "cleanup", [])
+            if mission.markers[markerTypes['skill']] >= mission.markers[markerTypes['diff']]:
+                notify("{} was a success!".format(mission))
+                ###MISSION SUCCESS
+                return
+            else:
+                notify("{} was a failure!".format(mission))
+                ###MISSION FAIL
+                return
+            return
+        #### Entering Power Phase
+        if newValue == "pow.main":
+            power = 3
+            me.Power = power
+            notify("{} gained {} power.".format(me, power))
+            if myTurn():
+                setGlobalVariable("phase", "mis.start")
+            return
+        #### Setting up a new Mission
+        if newValue == "mis.start":
+            if myTurn():
+                if getGlobalVariable("activemission") != "None":
+                    notify("ERROR: There shouldn't be an active mission!")
+                    return
+                mission = me.piles['Mission Pile'].top()
+                mission.moveToTable(0,0)
+                mission.orientation = Rot90
+                if mission.Culture != "":
+                    skilltype = "Culture"
+                    skillvalue = int(mission.Culture)
+                elif mission.Science != "":
+                    skilltype = "Science"
+                    skillvalue = int(mission.Science)
+                elif mission.Combat != "":
+                    skilltype = "Combat"
+                    skillvalue = int(mission.combat)
+                elif mission.Ingenuity != "":
+                    skilltype = "Ingenuity"
+                    skillvalue = int(mission.Ingenuity)
+                else:
+                    notify("ERROR: Mission has no skill types")
+                    return
+                tuple = (mission._id, skilltype, skillvalue)
+                setGlobalVariable("activemission", str(tuple))
+                cleanup()
+                remoteCall(players[1], "cleanup", [])
+                setGlobalVariable("priority", str(me._id))
+                setGlobalVariable("phase", "mis.main")
+            return
 
 def myTurn():
     player = int(getGlobalVariable("turnplayer"))
@@ -55,370 +208,237 @@ def myTurn():
     else:
         return False
 
-def registerTeam(group = Table, x = 0, y = 0):
-    mute()
-    if getGlobalVariable("phase") != "pregame" and getGlobalVariable("subphase") not in ["firstregister", "secondregister"]:
-        whisper("Cannot register Team -- Game has already started")
-        return
-    if len(me.Team) != 4:
-        notify("{}'s team does not have 4 members! Please restart game and load a legal deck.".format(me))
-        return
-    victory = 0
-    teamlist = eval(getGlobalVariable("cards"))
-    for card in me.Team:
-        teamlist[card._id] = {"mission": { }, "turn": { }, "status": "ready"}
-        card.moveToTable(0,0)
-        victory = victory + card.Cost
-    setGlobalVariable("cards", str(teamlist))
-    me.setGlobalVariable("victory", str(victory))
-    notify("{} registered his Team.".format(me))
-    me.Deck.shuffle()
-    me.piles['Mission Pile'].shuffle()
-    if getGlobalVariable("subphase") == "firstregister":
-        setGlobalVariable("subphase", "secondregister")
-    elif getGlobalVariable("subphase") == "secondregister":
-        himVictory = int(me.getGlobalVariable("victory"))
-        meVictory = int(players[1].getGlobalVariable("victory"))
-        if meVictory > himVictory:
-            setGlobalVariable("turnplayer", str(me._id))
-            notify("{} will play first.".format(me))
-        elif meVictory < himVictory:
-            setGlobalVariable("turnplayer", str(players[1]._id))
-            notify("{} will play first.".format(players[1]))
-        elif meVictory == himVictory:
-            rng = rnd(1,2)
-            if rng == 1:
-                setGlobalVariable("turnplayer", str(me._id))
-                notify("{} will play first, chosen randomly.".format(me))
+def isActive(card):
+    if myTurn():
+        if card.Type in heroTypes:
+            if card.controller == me:
+                return True
             else:
-                setGlobalVariable("turnplayer", str(players[1]._id))
-                notify("{} will play first, chosen randomly.".format(players[1]))
+                return False
         else:
-            notify("Error: victory points not determined.")
-            return
-        setGlobalVariable("subphase", "stopcharacter")
-        if myTurn():
-             plyr = players[1]
-        else:
-             plyr = me
-        notify("{} will target a team character to Stop.".format(plyr))
-        cleanup()
+            if card.controller == me:
+                return False
+            else:
+                return True
     else:
-        notify("An error has occured: subphase variable should be firstregister or secondregister")
-        return
-
-def confirmaction(group, x = 0, y = 0):
-    mute()
-    if getGlobalVariable("phase") == "pregame":
-        subphase = getGlobalVariable("subphase")
-        if subphase in ["firstregister", "secondregister"]:
-            whisper("Nothing to confirm: Still waiting for players to register a team")
-        elif subphase == "stopcharacter":
-            if myTurn():
-                whisper("Please wait while your opponent selects a target.")
-                return
+        if card.Type in heroTypes:
+            if card.controller == me:
+                return False
             else:
-                target = [cards for cards in table if cards.targetedBy]
-                if len(target) == 1:
-                    for targetcard in target:
-                        cards = eval(getGlobalVariable("cards"))
-                        cards[targetcard._id]["status"] = "stop"
-                        setGlobalVariable("cards", str(cards))
-                        targetcard.target(False)
-                        notify("{} Stops {}.".format(me, targetcard))
-                    for p in players:
-                        count = 0
-                        while len(p.hand) < 8:
-                            if len(p.Deck) == 0: break
-                            p.Deck[0].moveTo(p.hand)
-                            count = count + 1
-                    notify("{} will decide to draw a new hand.".format(players[1]))
-                    setGlobalVariable("subphase", "firstmulligan")
-                else:
-                    whisper("Please select a single target to Stop.")
-        elif subphase == "firstmulligan":
-            if myTurn():
-              if confirm("Do you want to draw a new hand?"):
-                for c in me.hand:
-                  c.moveTo(me.Deck)
-                rnd(1,10)
-                me.Deck.shuffle()
-                rnd(1,10)
-                fillHand(me)
-              else:
-                notify("{} does not draw a new hand.".format(me))
-              setGlobalVariable("subphase", "secondmulligan")
+                return True
+        else:
+            if card.controller == me:
+                return True
             else:
-                whisper("Please wait until your opponent decides to draw a new hand.")
-        elif subphase == "secondmulligan":
-            if myTurn():
-                whisper("You've already decided to draw a new hand.")
-            else:
-              if confirm("Do you want to draw a new hand?"):
-                for c in me.hand:
-                  c.moveTo(me.Deck)
-                rnd(1,10)
-                me.Deck.shuffle()
-                rnd(1,10)
-                fillHand(me)
-              else:
-                notify("{} does not draw a new hand.".format(me))
-              cleanup()
-              setGlobalVariable("phase", "power")
-              setGlobalVariable("subphase", "none")
-              powerPhase()
-    elif getGlobalVariable("phase") == "mission":
-        if getGlobalVariable("subphase") == "main":
-            if int(getGlobalVariable("priority")) != me._id:
-                whisper("Cannot pass: You don't have priority.")
-            else:
-                passcheck = getGlobalVariable("pass")
-                if passcheck == "False":
-                    setGlobalVariable("pass", "True")
-                    setGlobalVariable("priority", str(players[1]._id))
-                    notify('{} passes.'.format(me))
-                    cleanup()
-                else:
-                    setGlobalVariable("pass", "False")
-                    setGlobalVariable("subphase", "resolve")
-                    setGlobalVariable("priority", str(turnPlayer()._id))
-                    notify('{} passes, enters Mission Resolution.'.format(me))
-                    resolveMission()
- 
+                return False
 
 def turnPlayer():
-  return Player(int(getGlobalVariable("turnplayer")))
+    return Player(int(getGlobalVariable("turnplayer")))
 
 def fillHand(p):
-  mute()
-  count = 0
-  handsize = len(p.hand)
-  while len(p.hand) < 8:
-    if len(p.Deck) == 0: break
-    p.Deck[0].moveTo(p.hand)
-    count = count + 1
-  notify("{} refilled hand to {}, drawing {} cards.".format(me, count, handsize))
+    mute()
+    count = 0
+    handsize = len(p.hand)
+    while len(p.hand) < 8:
+        if len(p.Deck) == 0: break
+        p.Deck[0].moveTo(p.hand)
+        count = count + 1
+    return count, handsize
+    #notify("{} refilled hand to {}, drawing {} cards.".format(me, count, handsize))
 
-
-def powerPhase():
-  mute()
-  power = 3
-  for p in players:
-    p.Power = power
-    notify("{} gained {} power.".format(p, power))
-  cleanup()
-  setGlobalVariable("phase", "mission")
-  setGlobalVariable("subphase", "start")
-  missionPhase()
-
-def missionPhase():
-  if getGlobalVariable("activemission") == "None":
-    turnplayer = turnPlayer()
-    mission = turnplayer.piles['Mission Pile'][0]
-    mission.moveToTable(0,0)
-    mission.orientation = Rot90
-    while mission.Culture == "?":
-      rnd(1,10)
-    if mission.Culture != "":
-      skilltype = "Culture"
-      skillvalue = int(mission.Culture)
-    elif mission.Science != "":
-      skilltype = "Science"
-      skillvalue = int(mission.Science)
-    elif mission.Combat != "":
-      skilltype = "Combat"
-      skillvalue = int(mission.combat)
-    elif mission.Ingenuity != "":
-      skilltype = "Ingenuity"
-      skillvalue = int(mission.Ingenuity)
-    else:
-      notify("ERROR: Mission has no skill types")
-    tuple = (mission._id, skilltype, skillvalue)
-    setGlobalVariable("activemission", str(tuple))
-    setGlobalVariable("priority", str(turnplayer._id))
-    setGlobalVariable("subphase", "main")
-    cleanup()
-  else:
-    notify("Error: Active Mission variable not properly reset")
-
-def resolveMission():
-  mute()
-  if getGlobalVariable("phase") != "mission":
-    notify("ERROR: Cannot resolve mission -- not in mission phase")
-    return
-  if getGlobalVariable("subphase") != "resolve":
-    notify("ERROR: Cannot resolve mission -- not in resolving step")
-    return()
-  activemission = getGlobalVariable("activemission")
-  if activemission == "None":
-    notify("ERROR: There is no registered active mission!")
-    return
-  mission, type, value = eval(activemission)
-  mission = Card(mission)
-  if mission not in table:
-    mission.moveToTable(0,0)
-  cleanup()
-  if mission.markers[markerTypes['skill']] >= mission.markers[markerTypes['diff']]:
-    return
-    ###SUCCESS
-  else:
-    return
-    ###FAIL
+def passturn(group, x = 0, y = 0):
+    mute()
+    phase = getGlobalVariable('phase')
+    if phase == "mis.main":
+        priority = Player(int(getGlobalVariable("priority")))
+        if priority != me:
+            whisper("Cannot pass: You don't have priority.")
+            return
+        passcheck = getGlobalVariable("pass")
+        if passcheck == "False":
+            notify("{} passes.".format(me))
+            cleanup()
+            remoteCall(players[1], "cleanup", [])
+            setGlobalVariable("pass", "True")
+            setGlobalVariable("priority", str(players[1]._id))
+        else:
+            notify("{} passes, enters Mission Resolution.".format(me))
+            setGlobalVariable("pass", "False")
+            setGlobalVariable("phase", "mis.res")
+            setGlobalVariable("priority", str(turnPlayer()._id))
 
 def cleanup():
-  mute()
-  if turnPlayer().hasInvertedTable():
-    invert = True
-  else:
-    invert = False
-  assigncount, readycount, stopcount, assigncounte, readycounte, stopcounte = (0, 0, 0, 0, 0, 0)
-  skill = 0
-  diff = 0
-  carddict = eval(getGlobalVariable("cards"))
-  activemission = getGlobalVariable("activemission")
-  if activemission != "None":
-    mission, type, value = eval(activemission)
-  for card in table:
-    if card._id not in carddict:
-      notify("ERROr: {}'s {} did not enter play through the proper means.".format(card.controller, card))
-  for c in carddict:
-    card = Card(c)
-    if card not in table:
-      card.moveToTable(0,0)
-    if card.Type != "Mission":
-      if isActive(card):
-        if card.Type in heroTypes:
-          if carddict[card._id]["status"] == "assign":
-            xpos = assigncount
-            ypos = -98 if invert else 10
-            assigncount = assigncount + 1
-            if activemission != "None":
-              if card.Type in heroTypes and card.properties[type] != "":
-                skill = skill + int(card.properties[type])
-              elif card.Type in enemyTypes and card.properties[type] != "":
-                diff = diff + int(card.properties[type])
-          elif carddict[card._id]["status"] == "ready":
-            xpos = readycount
-            ypos = -207 if invert else 119
-            readycount = readycount + 1
-          else:
-            xpos = stopcount
-            ypos = -316 if invert else 228
-            stopcount = stopcount + 1
-        else:
-          if carddict[card._id]["status"] == "assign":
-            xpos = assigncounte
-            ypos = 10 if invert else -98
-            assigncounte = assigncounte + 1
-            if activemission != "None":
-              if card.Type in heroTypes and card.properties[type] != "":
-                skill = skill + int(card.properties[type])
-              elif card.Type in enemyTypes and card.properties[type] != "":
-                diff = diff + int(card.properties[type])
-          elif carddict[card._id]["status"] == "ready":
-            xpos = readycounte
-            ypos = 119 if invert else -207
-            readycounte = readycounte + 1
-          else:
-            xpos = stopcounte
-            ypos = 228 if invert else -316
-            stopcounte = stopcounte + 1
-        card.moveToTable(70*xpos, ypos)
-      else:
-        card.moveToTable(-197, -44)
-      if card.Culture != "":
-        card.markers[markerTypes['Culture']] = int(card.Culture)
-      if card.Science != "":
-        card.markers[markerTypes['Science']] = int(card.Science)
-      if card.Combat != "":
-        card.markers[markerTypes['Combat']] = int(card.Combat)
-      if card.Ingenuity != "":
-        card.markers[markerTypes['Ingenuity']] = int(card.Ingenuity)
-  if activemission != "None":
-    mission = Card(mission)
-    mission.moveToTable(-81 if invert else -105, -45 if invert else -44)
-    diff = diff + value
-    mission.markers[markerTypes['skill']] = skill
-    mission.markers[markerTypes['diff']] = diff
-  for card in me.hand:
-    if card.Cost <= me.Power and isActive(card):
-      card.highlight = PlayColor
+    mute()
+    if turnPlayer().hasInvertedTable():
+        invert = True
     else:
-      card.highlight = None
+        invert = False
+    skill, diff, assigncount, readycount, stopcount, vassigncount, vreadycount, vstopcount = (0, 0, 0, 0, 0, 0, 0, 0)
+    cardDict = eval(getGlobalVariable("cards"))
+    activeMission = getGlobalVariable("activemission")
+    if activeMission != "None":
+        mission, type, value = eval(activeMission)
+    #### Scan the table for cards that shouldn't belong there
+    for card in table:
+        if card._id not in cardDict:
+            notify("ERROR: {}'s {} did not enter play properly.".format(card.controller, card))
+    #### Start aligning the cards on the table
+    for c in cardDict:
+        card = Card(c)
+        if card not in table: ## If for some reason the card is no longer on the table, move it back
+            card.moveToTable(0,0)
+        if card.Type != "Mission":
+            if isActive(card):
+                if card.Type in heroTypes:
+                    if cardDict[card._id]["status"] == "assign":
+                        xpos = assigncount
+                        ypos = -98 if invert else 10
+                        assigncount = assigncount + 1
+                        if activeMission != "None":
+                            if card.Type in heroTypes and card.properties[type] != "":
+                                skill = skill + int(card.properties[type])
+                            elif card.Type in enemyTypes and card.properties[type] != "":
+                                diff = diff + int(card.properties[type])
+                    elif cardDict[card._id]["status"] == "ready":
+                        xpos = readycount
+                        ypos = -207 if invert else 119
+                        readycount = readycount + 1
+                    else:
+                        xpos = stopcount
+                        ypos = -316 if invert else 228
+                        stopcount = stopcount + 1
+                else:
+                    if cardDict[card._id]["status"] == "assign":
+                        xpos = vassigncount
+                        ypos = 10 if invert else -98
+                        vassigncount = vassigncount + 1
+                        if activeMission != "None":
+                            if card.Type in heroTypes and card.properties[type] != "":
+                                skill = skill + int(card.properties[type])
+                            elif card.Type in enemyTypes and card.properties[type] != "":
+                                diff = diff + int(card.properties[type])
+                    elif cardDict[card._id]["status"] == "ready":
+                        xpos = vreadycount
+                        ypos = 119 if invert else -207
+                        vreadycount = vreadycount + 1
+                    else:
+                        xpos = vstopcount
+                        ypos = 228 if invert else -316
+                        vstopcount = vstopcount + 1
+                if card.controller == me:
+                    card.moveToTable(70*xpos, ypos)
+            else:
+                if card.controller == me:
+                    card.moveToTable(-197, -44)
+            #### Add skill markers on the card to show its current values
+            if card.Culture != "":
+                card.markers[markerTypes['Culture']] = int(card.Culture)
+            if card.Science != "":
+                card.markers[markerTypes['Science']] = int(card.Science)
+            if card.Combat != "":
+                card.markers[markerTypes['Combat']] = int(card.Combat)
+            if card.Ingenuity != "":
+                card.markers[markerTypes['Ingenuity']] = int(card.Ingenuity)
+    #### Align the active mission
+    if activeMission != "None":
+        if myTurn():
+            mission = Card(mission)
+            mission.moveToTable(-81 if invert else -105, -45 if invert else -44)
+            diff = diff + value
+            mission.markers[markerTypes['skill']] = skill
+            mission.markers[markerTypes['diff']] = diff
+    #### Highlight cards in your hand that you can play
+    for card in me.hand:
+        if card.Cost <= me.Power and isActive(card):
+            card.highlight = PlayColor
+        else:
+            card.highlight = None
 
 def playcard(card, x = 0, y = 0):
     mute()
-    if getGlobalVariable("phase") != "mission":
-      whisper("Cannot play {}: It's not the mission phase.".format(card))
-      return
-    if getGlobalVariable("subphase") != "main":
-      whisper("Cannot play {} during this part of the mission phase.".format(card))
-      return
-    if int(getGlobalVariable("priority")) != me._id:
-      whisper("Cannot play {}: You don't have priority.".format(card))
-      return
-    if card.Type == "Mission":
-      notify("{} has Mission cards in his deck, play cannot continue.".format(me))
-      return
+    phase = getGlobalVariable("phase")
+    if phase != "mis.main":
+        whisper("Cannot play {}: It's not the main mission phase.".format(card))
+        return
+    priority = Player(int(getGlobalVariable("priority")))
+    if priority != me:
+        whisper("Cannot play {}: You don't have priority.".format(card))
+        return
     if not isActive(card):
-      whisper("You cannot play {} during your {}turn.".format(card, "" if myTurn() else "opponent's "))
-      return
+        whisper("You cannot play {} during your {}turn.".format(card, "" if myTurn() else "opponent's "))
+        return
     if me.Power < card.Cost:
-      whisper("You do not have enough Power to play that.")
-      return
+        whisper("You do not have enough Power to play that.")
+        return
     if card.Type == "Obstacle":
-      activemission = getGlobalVariable("activemission")
-      if activemission != "None":
+        activemission = getGlobalVariable("activemission")
+        if activemission == "None":
+            whisper("Cannot play {} as there is no active mission.".format(card))
+            return
         mission, type, value = eval(activemission)
-      else:
-        whisper("Cannot play {} as there is no active mission.".format(card))
-        return
-      if card.properties[type] == "":
-        whisper("Cannot play {}: Does not match the active mission's {} skill.".format(card, type))
-        return
-      status = "assign"
+        if card.properties[type] == None or card.properties[type] == "":
+            whisper("Cannot play {}: Does not match the active mission's {} skill.".format(card, type))
+            return
+        status = "assign"
     else:
-      status = "ready"
-    cards = eval(getGlobalVariable("cards"))
-    cards[card._id] = {"mission": { }, "turn": { }, "status": status}
-    setGlobalVariable("cards", str(cards))
+        status = "ready"
+    carddict = eval(getGlobalVariable("cards"))
+    carddict[card._id] = {"mission": { }, "turn": { }, "status": status}
     me.Power -= card.Cost
     card.moveToTable(0,0)
-    cleanup()
-    setGlobalVariable("priority", str(players[1]._id))
     notify("{} plays {}.".format(me, card))
-    
+    setGlobalVariable("cards", str(carddict))
+    ## Check for any card-specific scripts
+    result = checkScripts(card, 'play')
+    cleanup()
+    remoteCall(players[1], "cleanup", [])
+    setGlobalVariable("priority", str(players[1]._id))
+
+def checkScripts(card, actionType):
+    mute()
+    if card.name in scriptDict:
+        cardScripts = scriptDict[card.name]
+        if actionType in cardScripts:
+            script = cardScripts[actionType]
+            
+    return None
+
 def assign(card, x = 0, y = 0):
     mute()
-    if getGlobalVariable("phase") != "mission":
-      whisper("Cannot assign {}: It's not the mission phase.".format(card))
-      return
-    if getGlobalVariable("subphase") != "main":
-      whisper("Cannot assign {} during this part of the mission phase.".format(card))
-      return
-    if int(getGlobalVariable("priority")) != me._id:
-      whisper("Cannot assign {}: You don't have priority.".format(card))
-      return
+    phase = getGlobalVariable("phase")
+    if phase != "mis.main":
+        whisper("Cannot assign {}: It's not the main mission phase.".format(card))
+        return
+    priority = Player(int(getGlobalVariable("priority")))
+    if priority != me:
+        whisper("Cannot assign {}: You don't have priority.".format(card))
+        return
     activemission = getGlobalVariable("activemission")
-    if activemission != "None":
-      mission, type, value = eval(activemission)
-    else:
-      whisper("Cannot play {} as there is no active mission.".format(card))
-      return
-    if card.properties[type] == "":
-      whisper("Cannot assign {}: Does not match the active mission's {} skill.".format(card, type))
-      return
+    if activemission == "None":
+        whisper("Cannot assign {} as there is no active mission.".format(card))
+        return
+    mission, type, value = eval(activemission)
+    if card.properties[type] == None or card.properties[type] == "":
+        whisper("Cannot assign {}: Does not match the active mission's {} skill.".format(card, type))
+        return
     carddict = eval(getGlobalVariable("cards"))
     if card._id in carddict:
-      carddict[card._id]["status"] = "assign"
-      setGlobalVariable("cards", str(carddict))
-      cleanup()
-      setGlobalVariable("priority", str(players[1]._id))
-      notify("{} assigns {}.".format(me, card))
+        carddict[card._id]["status"] = "assign"
+        setGlobalVariable("cards", str(carddict))
+        cleanup()
+        remoteCall(players[1], "cleanup", [])
+        setGlobalVariable("priority", str(players[1]._id))
+        notify("{} assigns {}.".format(me, card))
     else:
-      notify("ERROR: {} not in cards global dictionary.".format(card))
+        notify("ERROR: {} not in cards global dictionary.".format(card))
 
+#---------------------------------------------------------------------------
+# Scripting Functions
+#---------------------------------------------------------------------------
 
+def scriptDestroy(card):
+    mute()
+    
 
 #---------------------------------------------------------------------------
 # Table group actions

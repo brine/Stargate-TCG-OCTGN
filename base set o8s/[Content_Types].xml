@@ -1,8 +1,0 @@
-<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
-  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml" />
-  <Default Extension="jpg" ContentType="image/jpeg" />
-  <Default Extension="wdp" ContentType="image/vnd.ms-photo" />
-  <Default Extension="png" ContentType="image/png" />
-  <Default Extension="xml" ContentType="text/xml" />
-  <Default Extension="o8d" ContentType="octgn/deck" />
-</Types>

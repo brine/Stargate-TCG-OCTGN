@@ -1,7 +1,0 @@
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-  <Relationship Target="/markers.xml" Id="def" Type="http://schemas.octgn.org/set/definition" />
-  <Relationship Target="/jackson.o8d" Id="deck1" Type="http://schemas.octgn.org/set/deck" />
-  <Relationship Target="/o'neil.o8d" Id="deck2" Type="http://schemas.octgn.org/set/deck" />
-  <Relationship Target="/carter.o8d" Id="deck3" Type="http://schemas.octgn.org/set/deck" />
-  <Relationship Target="/teal'c.o8d" Id="deck4" Type="http://schemas.octgn.org/set/deck" />
-</Relationships>

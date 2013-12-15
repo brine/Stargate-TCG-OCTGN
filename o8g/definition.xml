@@ -1,18 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<game name="Stargate TCG" id="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" octgnVersion="3.0.1.14" version="0.1.0" markersize="10" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Game.xsd">
+<game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  name="Stargate TCG" id="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" markersize="10"
+  tags="stargate, sg, tcg" authors="brine"
+  description="In the Stargate TCG, you'll guide a team of characters on journeys to other worlds, overcoming obstacles, defeating adversaries, and completing missions along the way. All the fun and adventure of the hit television series is here to enjoy!"
+  version="0.9.0.1" octgnVersion="3.1.0.0"
+  gameurl="http://www.octgngames.com" setsurl="http://www.octgngames.com"
+  iconurl="https://raw.github.com/brine/Stargate-TCG-OCTGN/master/o8g/cards/back.jpg" >
   <scripts>
-    <script src="r01" />
+    <script src="scripts/actions.py" />
   </scripts>
+  <events>
+    <event name="OnLoadDeck" action="registerTeam" />
+    <event name="OnCardDoubleClick" action="doubleClick" />
+	<event name="OnGlobalVariableChanged" action="globalVarChanged" />
+  </events>
+  <proxygen definitionsrc="proxy/CardGenData.xml">
+  </proxygen>
   <globalvariables> 
     <globalvariable name="turnplayer" value="None"/>
-    <globalvariable name="phase" value="pregame"/>
-    <globalvariable name="subphase" value="firstregister"/>
+    <globalvariable name="phase" value="pre.1reg"/>
     <globalvariable name="activemission" value="None"/>
     <globalvariable name="cards" value="{}"/>
     <globalvariable name="priority" value="0"/>
     <globalvariable name="pass" value="False"/>
+    <globalvariable name="script" value="None"/>
   </globalvariables>
-  <card back="r02" front="r03" width="63" height="88" cornerRadius="0">
+  <card back="cards/back.jpg" front="cards/front.jpg" width="63" height="88" cornerRadius="3">
     <property name="Title" type="String" />
     <property name="Cost" type="Integer" />
     <property name="Type" type="String" textKind="Tokens" />
@@ -29,16 +42,16 @@
     <property name="Number" type="Integer"/>
     <property name="Script" type="String"/>
   </card>
-  <table name="Table" visibility="undefined" ordered="true" width="866" height="708" background="r98" backgroundStyle="UniformToFill" board="r97" boardPosition="-205,-325,682,651" >
+  <table name="Table" visibility="undefined" ordered="True" width="866" height="708" background="board/wallpaper.jpg" backgroundStyle="uniformToFill" board="board/playmat.png" boardPosition="-205,-325,682,651" >
     <groupaction menu="Register your Team (set up game)" execute="registerTeam" />
     <groupaction menu="Confirm Action" shortcut="enter" execute="confirmaction" />
-    <groupaction menu="Pass turn" default="true" shortcut="tab" execute="passturn" />
+    <groupaction menu="Pass" shortcut="tab" execute="passturn" />
     <groupaction menu="End Quest" shortcut="ctrl+q" execute="endquest" />
     <groupaction menu="End Turn" shortcut="ctrl+e" execute="endturn" />
     <groupaction menu="Clear Targets" shortcut="esc" execute="clearAll" />
     <groupaction menu="Roll a Die (20)" shortcut="ctrl+g" execute="roll20" />
     <groupaction menu="Flip a Coin" shortcut="ctrl+f" execute="flipCoin" />
-    <cardaction menu="Use Card Action" default="true" execute="action" />
+    <cardaction menu="Use Card Action" default="True" execute="defaultaction" />
     <cardaction menu="Assign" shortcut="ctrl+a" execute="assign" />
     <cardaction menu="Ready" shortcut="ctrl+r" execute="ready" />
     <cardaction menu="Block" shortcut="ctrl+b" execute="block" />
@@ -51,27 +64,27 @@
   </table>
   <player summary="PWR:{#Power} / EXP:{#Experience Win} / ENEMY:{#Enemy Win}">
     <globalvariable name="victory" value="None"/>
-    <counter name="Power" icon="r04" />
-    <counter name="Experience Win" icon="r07" />
-    <counter name="Enemy Win" icon="r08" />
-    <hand name="Hand" visibility="me" ordered="false" width="63" height="88" icon="r15">
-      <cardaction menu="Play card" default="true" execute="playcard" />
+    <counter name="Power" icon="counters/mp.png" />
+    <counter name="Experience Win" icon="counters/exp.png" />
+    <counter name="Enemy Win" icon="counters/ewin.png" />
+    <hand name="Hand" visibility="me" ordered="False" width="63" height="88" icon="groups/hand.png">
+      <cardaction menu="Play card" default="True" execute="playcard" />
       <cardaction menu="Discard Card" shortcut="del" execute="destroy" />
       <groupaction menu="Random Discard" execute="randomDiscard" />
     </hand>
-    <group name="Deck" visibility="none" width="63" height="88" icon="r11">
-      <groupaction menu="Draw" shortcut="ctrl+d" default="true" execute="draw" />
+    <group name="Deck" visibility="none" width="63" height="88" icon="groups/library.png">
+      <groupaction menu="Draw" shortcut="ctrl+d" default="True" execute="draw" />
       <groupaction menu="Refill Hand" shortcut="ctrl+shift+d" execute="refill" />
       <groupaction menu="Shuffle" shortcut="ctrl+s" execute="shuffle" />
       <cardaction menu="Discard Card" shortcut="del" execute="destroy" />
     </group>
-    <group name="Discard" visibility="all" width="63" height="88" icon="r12"></group>
-    <group name="Team" visibility="me" width="63" height="88" icon="r13" collapsed="false">
+    <group name="Discard" visibility="all" width="63" height="88" icon="groups/graveyard.png"></group>
+    <group name="Team" visibility="me" width="63" height="88" icon="groups/removed.png" collapsed="False">
       <groupaction menu="Register your Team (set up game)" execute="registerTeam" />
     </group>
-    <group name="Mission Pile" visibility="none" width="63" height="88" icon="r14" collapsed="false">
+    <group name="Mission Pile" visibility="none" width="63" height="88" icon="groups/mission.png" collapsed="False">
       <groupaction menu="Shuffle" shortcut="ctrl+s" execute="shuffle" />
-      <groupaction menu="Play Top Mission" default="true" execute="playcard" />
+      <groupaction menu="Play Top Mission" default="True" execute="playcard" />
     </group>
   </player>
   <deck>
