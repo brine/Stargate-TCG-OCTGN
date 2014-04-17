@@ -1,28 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  name="Stargate TCG" id="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" markersize="10"
+  name="Stargate TCG" id="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" markersize="14"
   tags="stargate, sg, tcg" authors="brine"
   description="In the Stargate TCG, you'll guide a team of characters on journeys to other worlds, overcoming obstacles, defeating adversaries, and completing missions along the way. All the fun and adventure of the hit television series is here to enjoy!"
-  version="0.9.0.1" octgnVersion="3.1.0.0"
+  version="0.9.1.0" octgnVersion="3.1.0.0" scriptVersion="3.1.0.0"
   gameurl="http://www.octgngames.com" setsurl="http://www.octgngames.com"
   iconurl="https://raw.github.com/brine/Stargate-TCG-OCTGN/master/o8g/cards/back.jpg" >
   <scripts>
     <script src="scripts/actions.py" />
+    <script src="scripts/scripts.py" />
   </scripts>
   <events>
+    <event name="OnGameStart" action="createDecks" />
     <event name="OnLoadDeck" action="registerTeam" />
     <event name="OnCardDoubleClick" action="doubleClick" />
 	<event name="OnGlobalVariableChanged" action="globalVarChanged" />
+	<event name="OnPlayerGlobalVariableChanged" action="playerGlobalVarChanged" />
+	<event name="OnMoveCard" action="moveCardEvent" />
   </events>
   <proxygen definitionsrc="proxy/CardGenData.xml">
   </proxygen>
   <globalvariables> 
     <globalvariable name="turnplayer" value="None"/>
     <globalvariable name="phase" value="pre.1reg"/>
-    <globalvariable name="activemission" value="None"/>
-    <globalvariable name="cards" value="{}"/>
+    <globalvariable name="activemission" value="None"/> <!-- [mission type value status] -->
+    <globalvariable name="cards" value="{}"/> <!-- {m={mission}, t={turn}, s="status", g=[glyph] p=/prev assigned/ -->
+	<globalvariable name="cardqueue" value="[]"/>
     <globalvariable name="priority" value="0"/>
-    <globalvariable name="pass" value="False"/>
     <globalvariable name="script" value="None"/>
   </globalvariables>
   <card back="cards/back.jpg" front="cards/front.jpg" width="63" height="88" cornerRadius="3">
@@ -62,13 +66,15 @@
     <cardaction menu="Add Counter" execute="addMarker" />
     <cardaction menu="Remove Counter" execute="removeMarker" />
   </table>
-  <player summary="PWR:{#Power} / EXP:{#Experience Win} / ENEMY:{#Enemy Win}">
-    <globalvariable name="victory" value="None"/>
+  <player summary="/ PWR:{#Power} / GLY:{#Glyph Win} / EXP:{#Experience Win} / VIL:{#Villain Win}">
+    <globalvariable name="victory" value="0"/>
     <counter name="Power" icon="counters/mp.png" />
+    <counter name="Glyph Win" icon="groups/mission.png" />
     <counter name="Experience Win" icon="counters/exp.png" />
-    <counter name="Enemy Win" icon="counters/ewin.png" />
+    <counter name="Villain Win" icon="counters/ewin.png" />
     <hand name="Hand" visibility="me" ordered="False" width="63" height="88" icon="groups/hand.png">
       <cardaction menu="Play card" default="True" execute="playcard" />
+      <cardaction menu="Play as Complication" shortcut="ctrl+C" execute="playComplication" />
       <cardaction menu="Discard Card" shortcut="del" execute="destroy" />
       <groupaction menu="Random Discard" execute="randomDiscard" />
     </hand>
@@ -78,14 +84,17 @@
       <groupaction menu="Shuffle" shortcut="ctrl+s" execute="shuffle" />
       <cardaction menu="Discard Card" shortcut="del" execute="destroy" />
     </group>
-    <group name="Discard" visibility="all" width="63" height="88" icon="groups/graveyard.png"></group>
-    <group name="Team" visibility="me" width="63" height="88" icon="groups/removed.png" collapsed="False">
-      <groupaction menu="Register your Team (set up game)" execute="registerTeam" />
-    </group>
+    <group name="Discard" visibility="all" width="63" height="88" icon="groups/graveyard.png">
+	</group>
     <group name="Mission Pile" visibility="none" width="63" height="88" icon="groups/mission.png" collapsed="False">
       <groupaction menu="Shuffle" shortcut="ctrl+s" execute="shuffle" />
       <groupaction menu="Play Top Mission" default="True" execute="playcard" />
     </group>
+    <group name="Team" visibility="me" width="63" height="88" icon="groups/removed.png" collapsed="True">
+      <groupaction menu="Register your Team (set up game)" execute="registerTeam" />
+    </group>
+    <group name="Villain Score Pile" collapsed="True" visibility="all" width="63" height="88" icon="counters/ewin.png">
+	</group>
   </player>
   <deck>
     <section name="Main" group="Deck" />
