@@ -1,8 +1,8 @@
 
-ActionColor = "#ff0000" #red
+EnemyActionColor = "#ff0000" #red
+HeroActionColor = "#0000ff" #blue
 BlockColor = "#ffff00" #yellow
 KOColor = "#ffffff" #black
-PlayColor = "#0000ff" #green
 
 markerTypes = {
     'block': ("Block", "fc100fdc-aa4b-4429-97f5-02a7ccca2697"),
@@ -17,9 +17,14 @@ markerTypes = {
 
     }
 
+def test(card, markerName, oldValue, newValue, isScriptChange):
+    mute()
+
 heroTypes = ["Support Character", "Team Character", "Gear", "Event", "Mission"]
 enemyTypes = ["Obstacle", "Adversary"]
-startingCard = { 'm':{ }, 't':{ }, 's':'r', 'g':[ ] }
+startingCard = { 'm':{}, 't':{}, 's':'r', 'g':[] }
+#this is the full structure of cardDict = { 'm':{mission skill boosts}, 't':{turn skill boosts}, 's':'r', 'g':[earned glyphs], 'b':[blocked cards] }
+#queue = ( card, trigger, action, targets, count, priority )
 
 storedTurnPlayer = None
 storedPhase = None
@@ -28,7 +33,230 @@ storedVictory = 0
 storedOppVictory = 0
 
 scriptsDict = {
+    ## Brainwashing
+    '2aebfd9e-d838-4542-846b-6861f2d6d369': {
+        'onPlay': [
+            ('statusChange', {
+                'action': 'block',
+                'target': 'Support Character',
+                'choice': 'enemy',
+                'count': "1"
+                }),
+            ('statusChange', {
+                'action': 'store',
+                'target': 'Support Character',
+                'choice': 'enemy',
+                'count': "1"
+                })
+            ],
+        'onFailure': [
+            ('statusChange', {
+                'action': 'destroy',
+                'target': 'stored',
+                'choice': 'all',
+                })
+            ]
+        },
+    ## Team Compromised
+    'cbdd5fa9-138e-4e3e-ab51-552d1e3e675b': {
+        'onPlay': [
+            ('statusChange', {
+                'action': 'block',
+                'target': 'Team Character',
+                'choice': 'hero',
+                'status': ['r'],
+                'count': "1"
+                })
+            ]
+        },
+    ## Parasitic Insects
+    '6783ab0b-9da4-4375-9580-14ffb6661cf5': {
+        'onFailure': [
+            ('statusChange', {
+                'action': 'stop',
+                'target': 'Team Character',
+                'choice': 'enemy',
+                'count': "1"
+                })
+            ]
+        },
+    ## Telekinetic Mutants
+    'b5e4ff90-7a72-4696-a937-6542aef7af54': {
+        'onPlay': [
+            ('statusChange', {
+                'action': 'stop',
+                'target': 'Character',
+                'choice': 'hero',
+                'count': "1"
+                })
+            ]
+        },
+    ## Anubis, Banished Lord
+    '2ecceca6-cd9d-4323-9aa4-6408626785b3': {
+        'onPlay': [
+            ('statusChange', {
+                'action': 'destroy',
+                'target': 'Support Character',
+                'choice': 'enemy',
+                'count': "1"
+                })
+            ],
+        'onRevive': [
+            ('statusChange', {
+                'action': 'destroy',
+                'target': 'Support Character',
+                'choice': 'hero',
+                'count': "1"
+                })
+            ]
+        },
+    ## Loss of Funding
+    '558106d3-ce22-43e1-92e8-8289723abc3a': {
+        'onFailure': [
+            ('statusChange', {
+                'action': 'stop',
+                'target': 'Character',
+                'choice': 'all'
+                })
+            ]
+        },
+    ## Troop Landing
+    'a2076dc6-9eea-420d-8db2-d7b2fa94e3ab': {
+        'onFailure': [
+            ('statusChange', {
+                'action': 'destroy',
+                'target': 'Support Character',
+                'status': ['a', 's'],
+                'choice': 'enemy',
+                'count': "1"
+                })
+            ]
+        },
+    ## Salish Spirits
+    '799a40e0-a9a9-4d4b-a548-b4a00bb004db': {
+        'onFailure': [
+            ('statusChange', {
+                'action': 'destroy',
+                'target': 'Support Character',
+                'choice': 'enemy',
+                'count': "1"
+                })
+            ]
+        },
+    ## Beneath the Surface
+    '9f4d63c9-3b86-4f63-9d69-1232f3ca6122': {
+        'onPlay': [
+            ('statusChange', {
+                'action': 'stop',
+                'target': 'Team Character',
+                'choice': 'enemy',
+                'count': "1"
+                })
+            ]
+        },
+    ## Seek and Capture
+    '7f109410-f062-44b2-9a84-bf51d698d4e3': {
+        'onPlay': [
+            ('statusChange', {
+                'action': 'stop',
+                'target': 'Adversary',
+                'status': ['r'],
+                'choice': 'enemy',
+                'count': "1"
+                })
+            ]
+        },
+    ## Fire Rain
+    '8a097812-9963-4da7-ae55-0ff0196bfcff': {
+        'onPlay': [
+            ('statusChange', {
+                'action': 'block',
+                'target': 'Character',
+                'choice': 'enemy',
+                'count': "len([c for c in cardDict if 'Obstacle' in Card(c).Type and Card(c).name != card.name and cardDict[c]['s'] == 'a'])"
+                })
+            ]
+        },
+    ## Serpent Guards
+    '7b84361c-da40-4a9a-8c2e-c4a327109f71': {
+        'costChange': [{
+            'value': -1,
+            'condition': "len([c for c in cardDict if 'Team Character' in Card(c).Type and cardDict[c]['s'] == 'a' and len(cardDict[c].get('g',[])) == 0]) > 0"
+            }]
+        },
+    ## Artok
+    '87b224b8-8ae0-4081-aef3-5863b67bad26': {
+        'costChange': [{
+            'value': -1,
+            'condition': "storedMission[1] == 'Combat'"
+            },{
+            'value': -1,
+            'condition': "len([c for c in cardDict if Card(c).isFaceUp == False and cardDict[c]['s'] == 'c']) >= 1"
+            }]
+        },
+    ## Supply Raid
+    '5fbb2f8b-9b01-41f2-ad7d-d5aba336bcef': {
+        'onSuccess': [
+            ('powerChange', {
+                'player': 'enemy',
+                'value': '-2'
+                })
+            ]
+        },
+    ## Destroy Battleship
+    'ec130081-a970-4640-90d6-23f86970f654': {
+        'onFailure': [
+            ('powerChange', {
+                'player': 'enemy',
+                'value': '2'
+                })
+            ]
+        },
+    ## Rescue Operative
+    '3062cb52-5800-409d-b4a4-eb7f28f7dc27': {
+        'onPlay': [
+            ('statusChange', {
+                'action': 'store',
+                'target': 'Support Character',
+                'choice': 'enemy',
+                'count': "1"
+                })
+            ],
+        'onFailure': [
+            ('statusChange', {
+                'action': 'destroy',
+                'target': 'stored',
+                'choice': 'all',
+                })
+            ]
+        },
+    ## Avert Disaster
+    '7a3fddf6-79b3-4fbb-9974-f77169128116': {
+        'onFailure': [
+            ('statusChange', {
+                'action': 'destroy',
+                'target': 'Support Character',
+                'choice': 'all'
+                })
+            ]
+        },
+    ## Robert Kinsey
+    '13b58f59-4156-4d15-9c27-3212d8448b65': {
+        'skillChange': [{
+            'skill': 'all',
+            'value': "len([c for c in cardDict if cardDict[c]['s'] == 'a' and 'Obstacle' in Card(c).Type and 'Political' in Card(c).Traits]) + len([c for c in cardDict if cardDict[c]['s'] == 'f'])"
+            }]
+        },
+    ## TEMPLATE CARD
+    'guid': {
+        'scriptHook': [
+            ('scriptType', {
+                'att1': 'val1',
+                'att2': 'val2'
+                })
+            ]
         }
+    }
 
 def createDecks():
     mute()

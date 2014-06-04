@@ -65,6 +65,7 @@
     <cardaction menu="Flip Up/Down" execute="flip" />
     <cardaction menu="Add Counter" execute="addMarker" />
     <cardaction menu="Remove Counter" execute="removeMarker" />
+    <cardaction menu="Print GUID" shortcut="F1" execute="printGUID" />
   </table>
   <player summary="/ PWR:{#Power} / GLY:{#Glyph Win} / EXP:{#Experience Win} / VIL:{#Villain Win}">
     <globalvariable name="victory" value="0"/>
@@ -77,18 +78,22 @@
       <cardaction menu="Play as Complication" shortcut="ctrl+C" execute="playComplication" />
       <cardaction menu="Discard Card" shortcut="del" execute="destroy" />
       <groupaction menu="Random Discard" execute="randomDiscard" />
+      <cardaction menu="Print GUID" shortcut="F1" execute="printGUID" />
     </hand>
     <group name="Deck" visibility="none" width="63" height="88" icon="groups/library.png">
       <groupaction menu="Draw" shortcut="ctrl+d" default="True" execute="draw" />
       <groupaction menu="Refill Hand" shortcut="ctrl+shift+d" execute="refill" />
       <groupaction menu="Shuffle" shortcut="ctrl+s" execute="shuffle" />
       <cardaction menu="Discard Card" shortcut="del" execute="destroy" />
+      <cardaction menu="Print GUID" shortcut="F1" execute="printGUID" />
     </group>
     <group name="Discard" visibility="all" width="63" height="88" icon="groups/graveyard.png">
+      <cardaction menu="Print GUID" shortcut="F1" execute="printGUID" />
 	</group>
     <group name="Mission Pile" visibility="none" width="63" height="88" icon="groups/mission.png" collapsed="False">
       <groupaction menu="Shuffle" shortcut="ctrl+s" execute="shuffle" />
       <groupaction menu="Play Top Mission" default="True" execute="playcard" />
+      <cardaction menu="Print GUID" shortcut="F1" execute="printGUID" />
     </group>
     <group name="Team" visibility="me" width="63" height="88" icon="groups/removed.png" collapsed="True">
       <groupaction menu="Register your Team (set up game)" execute="registerTeam" />
