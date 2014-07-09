@@ -1,5 +1,5 @@
 
-EnemyActionColor = "#ff0000" #red
+VillainActionColor = "#ff0000" #red
 HeroActionColor = "#0000ff" #blue
 BlockColor = "#ffff00" #yellow
 KOColor = "#ffffff" #black
@@ -17,35 +17,67 @@ markerTypes = {
 
     }
 
-def test(card, markerName, oldValue, newValue, isScriptChange):
-    mute()
-
+skillDict = {1: "Culture", 2: "Science", 3: "Combat", 4: "Ingenuity", 5: "all", "Culture": 1, "Science": 2, "Combat": 3, "Ingenuity": 4, "all": 5}
 heroTypes = ["Support Character", "Team Character", "Gear", "Event", "Mission"]
-enemyTypes = ["Obstacle", "Adversary"]
-startingCard = { 'm':{}, 't':{}, 's':'r', 'g':[] }
-#this is the full structure of cardDict = { 'm':{mission skill boosts}, 't':{turn skill boosts}, 's':'r', 'g':[earned glyphs], 'b':[blocked cards] }
-#queue = ( card, trigger, action, targets, count, priority )
+villainTypes = ["Obstacle", "Adversary"]
+
+#globalvar cards = {
+#                "#": indexInt,
+#                'm':{mission skill boosts},
+#                't':{turn skill boosts},
+#                's':'status',
+#                'g':[earned glyphs],
+#                'b':[blocked cards],
+#                'p':/True if it was previously assigned/,
+#                'rf':/True to remove failure text/
+#                '!':/True to enable activation of ! triggers/
+#                }
+
+#queue = ( card, trigger, action, targets, count, priority, skippable )
+#gameStats = { 'fm':[failed missions], 'sm':[successful missions] }
+#globalvar activemission = [mission type status]
 
 storedTurnPlayer = None
-storedPhase = None
+storedPhase = "pre.1reg"
 storedMission = None
 storedVictory = 0
 storedOppVictory = 0
+storedCards = {}
+storedGameStats = {}
+storedQueue = []
 
 scriptsDict = {
+    ## TODO
+    ## Merrin, Orbanian Urrone
+    'xxx': {
+        'onAssign': [
+            ('tagSet', {
+                'tag': '!',
+                'value': True,
+                'target': 'this',
+                'ignoreSource': True
+                })
+            ],
+        'onMissionEnd!': [
+            ('statusChange', {
+                'action': 'destroy',
+                'target': 'this',
+                })
+            ]
+        },
     ## Brainwashing
     '2aebfd9e-d838-4542-846b-6861f2d6d369': {
         'onPlay': [
             ('statusChange', {
                 'action': 'block',
                 'target': 'Support Character',
-                'choice': 'enemy',
+                'choice': 'villain',
                 'count': "1"
                 }),
             ('statusChange', {
                 'action': 'store',
                 'target': 'Support Character',
-                'choice': 'enemy',
+                'choice': 'villain',
                 'count': "1"
                 })
             ],
@@ -69,14 +101,291 @@ scriptsDict = {
                 })
             ]
         },
+    ## Sense of Adventure
+    '745bea32-98ed-49ac-9120-52965ab2716c': {
+        'onPlay': [
+            ('statusChange', {
+                'action': 'ready',
+                'status': ['s','a','r'],
+                'target': 'Character',
+                'choice': 'hero',
+                'count': "1"
+                })
+            ]
+        },
+    ## Harold Maybourne, Ally of Opportunity
+    'c5358e72-16ac-450e-a2b8-923d4964f52c': {
+        'onAbility1Cost': [
+            ('statusChange', {
+                'glyph': [['S']],
+                'action': 'stop',
+                'target': 'this',
+                'status': ['a','r']
+                })
+            ],
+        'onAbility1': [
+            ('skillChange', {
+                'skill': ['all'],
+                'value': '1',
+                'target': 'Team Character',
+                'ignoreSelf': True,
+                'choice': 'all',
+                'duration': "m",
+                'ignoreSource': True
+                })
+            ]
+        },
+    ## Transport Rings
+    '57e5bbd8-c2f4-4333-8aad-9934807ba6bd': {
+        'onAbility1Cost': [
+            ('statusChange', {
+                'action': 'stop',
+                'target': 'this',
+                'status': ['r']
+                }),
+            ('powerChange', {
+                'player': 'hero',
+                'value': '-3'
+                })
+            ],
+        'onAbility1': [
+            ('statusChange', {
+                'action': 'ready',
+                'status': ['s','a','r'],
+                'target': 'Character',
+                'choice': 'hero',
+                'count': "1"
+                })
+            ]
+        },
+    ## Zat Gun
+    'a853c2fe-bd32-44fb-9794-5213d00dfe22': {
+        'onAbility1Cost': [
+            ('statusChange', {
+                'action': 'stop',
+                'target': 'this',
+                'status': ['r']
+                }),
+            ('powerChange', {
+                'player': 'hero',
+                'value': '-1'
+                })
+            ],
+        'onAbility1': [
+            ('skillChange', {
+                'skill': ['all'],
+                'value': '-1',
+                'target': 'Obstacle',
+                'hasSkill': 'Combat',
+                'choice': 'hero',
+                'count': "1",
+                'duration': "m",
+                'ignoreSource': True
+                })
+            ],
+        'onAbility2Cost': [
+            ('statusChange', {
+                'action': 'stop',
+                'target': 'this',
+                'status': ['r']
+                }),
+            ('powerChange', {
+                'player': 'hero',
+                'value': '-2'
+                })
+            ],
+        'onAbility2': [
+            ('tagSet', {
+                'status': ['a'],
+                'target': 'Obstacle',
+                'hasSkill': 'Combat',
+                'choice': 'hero',
+                'count': "1",
+                'tag': 'rf',
+                'value': True,
+                'ignoreSource': True
+                })
+            ],
+        'onAbility3Cost': [
+            ('statusChange', {
+                'action': 'stop',
+                'target': 'this',
+                'status': ['r']
+                }),
+            ('powerChange', {
+                'player': 'hero',
+                'value': '-1'
+                })
+            ],
+        'onAbility3': [
+            ('statusChange', {
+                'action': 'destroy',
+                'status': ['a'],
+                'target': 'Obstacle',
+                'hasSkill': 'Combat',
+                'choice': 'hero',
+                'count': "1"
+                })
+            ]
+        },
+    ## Naquadah Reactor
+    '5abf19d6-b076-4cfb-bcaf-dc90c573d687': {
+        'onPowerEnd': [
+            ('powerChange', {
+                'player': 'hero',
+                'value': '1'
+                })
+            ],
+        'onAbility1Cost': [
+            ('statusChange', {
+                'action': 'destroy',
+                'target': 'this',
+                'status': ['r']
+                }),
+            ('powerChange', {
+                'player': 'hero',
+                'value': '-6'
+                })
+            ],
+        'onAbility1': [
+            ('statusChange', {
+                'action': 'destroy',
+                'status': ['a'],
+                'target': 'Obstacle',
+                'choice': 'hero',
+                'count': "1"
+                })
+            ]
+        },
+    ## Cameron Mitchell, Eager Adventurer
+    'da9a7837-a593-4269-acb6-d88449a0d07a': {
+        'skillChange': [{
+            'glyph': [['O']],
+            'skill': 'all',
+            'value': "1 if storedCards[card._id]['s'] == 'a' and len(storedGameStats['sm']) == 0 and len(storedGameStats['fm']) == 0 else 0"
+            }]
+        },
+    ## Vala Mal Doran, Probationary Member of the SG
+    '67af6d35-4256-40e4-9b75-bff404d6a234': {
+        'skillChange': [{
+            'skill': 'all',
+            'value': "1 if storedCards[card._id]['s'] == 'a' and Card(storedMission[0]).Glyph in [Card(g).Glyph for g in storedCards[card._id].get('g', [])] else 0"
+            }]
+        },
+    ## Balinsky, Insightful Archaeologist
+    '0f8362dc-132b-4eb3-96ec-453afddd5638': {
+        'skillChange': [{
+            'skill': 'all',
+            'value': "1 if len(storedCards[card._id].get('g', [])) > len([c for c in storedCards if 'Obstacle' in Card(c).Type and storedCards[c]['s'] == 'a']) else 0"
+            }]
+        },
+    ## Daniel Jackson, Trained Fighter
+    '77d8c4e5-1911-40f1-a0e8-08f01cc8d082': {
+        'skillChange': [{
+            'glyph': [['G']],
+            'skill': ['Combat'],
+            'value': "2"
+            },{
+            'glyph': [['T']],
+            'skill': ['Combat'],
+            'value': "1"
+            }]
+        },
     ## Parasitic Insects
     '6783ab0b-9da4-4375-9580-14ffb6661cf5': {
         'onFailure': [
             ('statusChange', {
                 'action': 'stop',
+                'status': ['s','a','r'],
                 'target': 'Team Character',
-                'choice': 'enemy',
+                'choice': 'villain',
                 'count': "1"
+                })
+            ]
+        },
+    ## Conduct Repairs
+    'b443d736-2f46-4176-94b4-6c18f57cdf84': {
+        'onSuccess': [
+            ('moveCard', {
+                'target': 'Gear',
+                'from': 'Discard',
+                'to': 'Hand',
+                'choice': 'hero',
+                'skippable': True,
+                'count': "1"
+                })
+            ]
+        },
+    ## Prevent Invasion
+    'a4e3f614-51f0-4976-8ee5-ca96f3e0cf63': {
+        'onPlay': [
+            ('moveCard', {
+                'target': 'Obstacle',
+                'from': 'Discard',
+                'to': 'Hand',
+                'choice': 'villain',
+                'skippable': True,
+                'count': "1"
+                })
+            ]
+        },
+    ## Destroy Minor Goa'uld
+    '7b22ba1c-5432-4ec9-bfdb-66e49180dcae': {
+        'onFailure': [
+            ('statusChange', {
+                'action': 'destroy',
+                'target': 'Adversary',
+                'choice': 'hero',
+                'count': "1"
+                })
+            ]
+        },
+    ## Acquire Specimen
+    'b73da326-be80-41c8-b201-a0e6d7bf2ec6': {
+        'skillChange': [{
+            'skill': 'all',
+            'value': "len([c for c in storedCards if storedCards[c]['s'] == 'a' and 'Obstacle' in Card(c).Type])"
+            }]
+        },
+    ## Infiltrate Summit
+    'c0f58ccb-3278-4769-9040-31fec6b363ca': {
+        'skillChange': [{
+            'skill': 'all',
+            'value': "0 if len([c for c in storedCards if storedCards[c]['s'] == 'a' and 'Adversary' in Card(c).Type]) == 0 else 1"
+            }]
+        },
+    ## Survey Goa'uld Pleasure Palace
+    'c4bf0315-ee48-4fd9-b02c-322f1b41e779': {
+        'skillChange': [{
+            'skill': 'all',
+            'value': "1 if len([c for c in storedCards if storedCards[c]['s'] == 'c']) > 0 else 0"
+            }]
+        },
+    ## Seasoned Travelers
+    '414ef0db-fe27-48c0-9e7a-9e13b346482b': {
+        'onPlay': [
+            ('skillChange', {
+                'skill': ['all'],
+                'value': 'len(storedCards[card._id].get("g", []))',
+                'target': 'Team Character',
+                'choice': 'hero',
+                'count': '1',
+                'duration': 'm',
+                'ignoreSource': True
+                })
+            ]
+        },
+    ## Special Training
+    '33adafa3-d70e-46c9-9bd0-54ed1a1d77d7': {
+        'onPlay': [
+            ('skillChange', {
+                'skill': ['Science'],
+                'value': '2 if "NID" in card.Traits else 1',
+                'target': 'Team Character',
+                'choice': 'hero',
+                'count': '1',
+                'duration': 'm',
+                'ignoreSource': True
                 })
             ]
         },
@@ -85,6 +394,7 @@ scriptsDict = {
         'onPlay': [
             ('statusChange', {
                 'action': 'stop',
+                'status': ['a','r'],
                 'target': 'Character',
                 'choice': 'hero',
                 'count': "1"
@@ -97,7 +407,7 @@ scriptsDict = {
             ('statusChange', {
                 'action': 'destroy',
                 'target': 'Support Character',
-                'choice': 'enemy',
+                'choice': 'villain',
                 'count': "1"
                 })
             ],
@@ -115,6 +425,7 @@ scriptsDict = {
         'onFailure': [
             ('statusChange', {
                 'action': 'stop',
+                'status': ['s','a','r'],
                 'target': 'Character',
                 'choice': 'all'
                 })
@@ -127,7 +438,7 @@ scriptsDict = {
                 'action': 'destroy',
                 'target': 'Support Character',
                 'status': ['a', 's'],
-                'choice': 'enemy',
+                'choice': 'villain',
                 'count': "1"
                 })
             ]
@@ -138,7 +449,7 @@ scriptsDict = {
             ('statusChange', {
                 'action': 'destroy',
                 'target': 'Support Character',
-                'choice': 'enemy',
+                'choice': 'villain',
                 'count': "1"
                 })
             ]
@@ -148,8 +459,9 @@ scriptsDict = {
         'onPlay': [
             ('statusChange', {
                 'action': 'stop',
+                'status': ['s','a','r'],
                 'target': 'Team Character',
-                'choice': 'enemy',
+                'choice': 'villain',
                 'count': "1"
                 })
             ]
@@ -160,8 +472,8 @@ scriptsDict = {
             ('statusChange', {
                 'action': 'stop',
                 'target': 'Adversary',
-                'status': ['r'],
-                'choice': 'enemy',
+                'status': ['a','r'],
+                'choice': 'villain',
                 'count': "1"
                 })
             ]
@@ -172,8 +484,8 @@ scriptsDict = {
             ('statusChange', {
                 'action': 'block',
                 'target': 'Character',
-                'choice': 'enemy',
-                'count': "len([c for c in cardDict if 'Obstacle' in Card(c).Type and Card(c).name != card.name and cardDict[c]['s'] == 'a'])"
+                'choice': 'villain',
+                'count': "len([c for c in storedCards if 'Obstacle' in Card(c).Type and Card(c).name != card.name and storedCards[c]['s'] == 'a'])"
                 })
             ]
         },
@@ -181,7 +493,7 @@ scriptsDict = {
     '7b84361c-da40-4a9a-8c2e-c4a327109f71': {
         'costChange': [{
             'value': -1,
-            'condition': "len([c for c in cardDict if 'Team Character' in Card(c).Type and cardDict[c]['s'] == 'a' and len(cardDict[c].get('g',[])) == 0]) > 0"
+            'condition': "len([c for c in storedCards if 'Team Character' in Card(c).Type and storedCards[c]['s'] == 'a' and len(storedCards[c].get('g',[])) == 0]) > 0"
             }]
         },
     ## Artok
@@ -191,14 +503,23 @@ scriptsDict = {
             'condition': "storedMission[1] == 'Combat'"
             },{
             'value': -1,
-            'condition': "len([c for c in cardDict if Card(c).isFaceUp == False and cardDict[c]['s'] == 'c']) >= 1"
+            'condition': "len([c for c in storedCards if Card(c).isFaceUp == False and storedCards[c]['s'] == 'c']) >= 1"
             }]
+        },
+    ## Contact the Asgard
+    '55047674-bacb-42d3-b9b7-ad515f27830c': {
+        'onSuccess': [
+            ('ruleSet', {
+                'rule': 'noRevive',
+                'value': 'True'
+                })
+            ]
         },
     ## Supply Raid
     '5fbb2f8b-9b01-41f2-ad7d-d5aba336bcef': {
         'onSuccess': [
             ('powerChange', {
-                'player': 'enemy',
+                'player': 'villain',
                 'value': '-2'
                 })
             ]
@@ -207,7 +528,7 @@ scriptsDict = {
     'ec130081-a970-4640-90d6-23f86970f654': {
         'onFailure': [
             ('powerChange', {
-                'player': 'enemy',
+                'player': 'villain',
                 'value': '2'
                 })
             ]
@@ -218,7 +539,7 @@ scriptsDict = {
             ('statusChange', {
                 'action': 'store',
                 'target': 'Support Character',
-                'choice': 'enemy',
+                'choice': 'villain',
                 'count': "1"
                 })
             ],
@@ -240,11 +561,32 @@ scriptsDict = {
                 })
             ]
         },
+    ## Bill Lee
+    '2ecaf65d-1fe8-4cd7-8824-3160aef1d99b': {
+        'skillChange': [{
+            'skill': 'all',
+            'value': "len(storedGameStats['sm'])"
+            }]
+        },
+    ## Convert Jaffa
+    '7ee0dd5e-05ab-4a8c-848f-52792b362509': {
+        'skillChange': [{
+            'skill': 'all',
+            'value': "1 if len(storedGameStats['sm']) == 0 else 0"
+            }]
+        },
+    ## Yu, the Great
+    'dd59e9ee-9cf8-4d61-b891-5477c550b2b1': {
+        'skillChange': [{
+            'skill': 'all',
+            'value': "len(storedGameStats['sm'])"
+            }]
+        },
     ## Robert Kinsey
     '13b58f59-4156-4d15-9c27-3212d8448b65': {
         'skillChange': [{
             'skill': 'all',
-            'value': "len([c for c in cardDict if cardDict[c]['s'] == 'a' and 'Obstacle' in Card(c).Type and 'Political' in Card(c).Traits]) + len([c for c in cardDict if cardDict[c]['s'] == 'f'])"
+            'value': "len([c for c in storedCards if storedCards[c]['s'] == 'a' and 'Obstacle' in Card(c).Type and 'Political' in Card(c).Traits]) + len(storedGameStats['fm'])"
             }]
         },
     ## TEMPLATE CARD
@@ -327,7 +669,7 @@ oneil = {
     (2, "4e5d26f3-522e-43b4-b560-012b81b27a01", "Galaran Memory Device"),
     (2, "f8a88854-b6b8-4ccc-aa15-268d5539776c", "Ill-Gotten Gains"),
     (3, "cec32155-7eb9-4001-a923-1bf3b4ca0150", "Merrin"),
-    (2, "5abf19d6-b076-4cfb-bcaf-dc90c573d687", "Naquadah Reactor"),
+    (22, "5abf19d6-b076-4cfb-bcaf-dc90c573d687", "Naquadah Reactor"),
     (3, "db2e0e15-0970-4302-a434-d37c410d10f9", "Nicholas Ballard"),
     (3, "745bea32-98ed-49ac-9120-52965ab2716c", "Sense of Adventure"),
     (3, "33adafa3-d70e-46c9-9bd0-54ed1a1d77d7", "Special Training"),

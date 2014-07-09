@@ -17,17 +17,19 @@
 	<event name="OnGlobalVariableChanged" action="globalVarChanged" />
 	<event name="OnPlayerGlobalVariableChanged" action="playerGlobalVarChanged" />
 	<event name="OnMoveCard" action="moveCardEvent" />
+	<event name="OnPlayerConnect" action="reloadLocalVars" />
   </events>
   <proxygen definitionsrc="proxy/CardGenData.xml">
   </proxygen>
   <globalvariables> 
     <globalvariable name="turnplayer" value="None"/>
     <globalvariable name="phase" value="pre.1reg"/>
-    <globalvariable name="activemission" value="None"/> <!-- [mission type value status] -->
-    <globalvariable name="cards" value="{}"/> <!-- {m={mission}, t={turn}, s="status", g=[glyph] p=/prev assigned/ -->
+    <globalvariable name="activemission" value="None"/>
+    <globalvariable name="cards" value="{}"/>
 	<globalvariable name="cardqueue" value="[]"/>
     <globalvariable name="priority" value="0"/>
     <globalvariable name="script" value="None"/>
+    <globalvariable name="gameStats" value="{}"/>
   </globalvariables>
   <card back="cards/back.jpg" front="cards/front.jpg" width="63" height="88" cornerRadius="3">
     <property name="Title" type="String" />
@@ -48,14 +50,14 @@
   </card>
   <table name="Table" visibility="undefined" ordered="True" width="866" height="708" background="board/wallpaper.jpg" backgroundStyle="uniformToFill" board="board/playmat.png" boardPosition="-205,-325,682,651" >
     <groupaction menu="Register your Team (set up game)" execute="registerTeam" />
-    <groupaction menu="Confirm Action" shortcut="enter" execute="confirmaction" />
     <groupaction menu="Pass" shortcut="tab" execute="passturn" />
-    <groupaction menu="End Quest" shortcut="ctrl+q" execute="endquest" />
+    <groupaction menu="End Quest" execute="endquest" />
     <groupaction menu="End Turn" shortcut="ctrl+e" execute="endturn" />
     <groupaction menu="Clear Targets" shortcut="esc" execute="clearAll" />
     <groupaction menu="Roll a Die (20)" shortcut="ctrl+g" execute="roll20" />
     <groupaction menu="Flip a Coin" shortcut="ctrl+f" execute="flipCoin" />
-    <cardaction menu="Use Card Action" default="True" execute="defaultaction" />
+    <groupaction menu="Refresh Vars" shortcut="F2" execute="resetVars" />
+    <cardaction menu="Use Card Ability" shortcut="ctrl+Q" execute="activateAbility" />
     <cardaction menu="Assign" shortcut="ctrl+a" execute="assign" />
     <cardaction menu="Ready" shortcut="ctrl+r" execute="ready" />
     <cardaction menu="Block" shortcut="ctrl+b" execute="block" />
