@@ -57,6 +57,7 @@
     <groupaction menu="Roll a Die (20)" shortcut="ctrl+g" execute="roll20" />
     <groupaction menu="Flip a Coin" shortcut="ctrl+f" execute="flipCoin" />
     <groupaction menu="Refresh Vars" shortcut="F2" execute="resetVars" />
+    <groupaction menu="cleanup" shortcut="F3" execute="cleanTable" />
     <cardaction menu="Use Card Ability" shortcut="ctrl+Q" execute="activateAbility" />
     <cardaction menu="Assign" shortcut="ctrl+a" execute="assign" />
     <cardaction menu="Ready" shortcut="ctrl+r" execute="ready" />
