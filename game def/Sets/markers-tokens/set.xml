@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<set name="Markers / Tokens" id="be838446-2b6c-4260-87c5-b59755389765" gameId="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" gameVersion="0.9.0.0" version="1.0.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CardSet.xsd">
+	<markers>
+		<marker name="block" id="fc100fdc-aa4b-4429-97f5-02a7ccca2697" />
+		<marker name="stop" id="077ba8c6-840c-451f-9c3e-fe6856ccd0e9" />
+		<marker name="counter" id="b36d99e1-c1a0-4be6-b663-9cf3537b240a" />
+		<marker name="culture" id="8426eeb9-478f-411c-98a4-48f24acd0602" />
+		<marker name="science" id="4dddc0c6-0c6b-4d21-8e53-d8af7cd789d5" />
+		<marker name="ingenuity" id="e9f07ca9-51c6-4c36-a3af-d06e3684d278" />
+		<marker name="combat" id="74aa2881-b871-4452-ba25-c3c34dd10d7a" />
+		<marker name="skill" id="05660912-e56c-4eb3-8aa8-c06af722b3b3" />
+		<marker name="difficulty" id="8f61a0d9-615d-4382-b884-7fc27d5b615e" />
+	</markers>
+	<cards>
+	</cards>
+</set>
