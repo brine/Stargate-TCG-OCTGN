@@ -86,9 +86,8 @@ scriptsDict = {
             ('playCard', {
                 'target': {
                     'special': "queue",
-                    'group': 'me.hand'
+                    'group': 'me.Team'
                     }
-                    
                 })
             ],
         'revive': [
@@ -129,10 +128,11 @@ scriptsDict = {
                 })
             ],
         'discardTo8': [
-            ('discard', {
+            ('moveCard', {
                 'target': {
                     'group': "me.hand"
                     },
+                'to': ('me.Discard', 0),
                 'count': "0"
                 }),
             ],
@@ -170,7 +170,11 @@ scriptsDict = {
     ## Nicholas Ballard, Outcast Scholar
     'db2e0e15-0970-4302-a434-d37c410d10f9': {
         'onAbility1Cost': [
-            ('discard', {
+            ('moveCard', {
+                'target': {
+                    'group': "me.hand"
+                    },
+                'to': ('me.Discard', 0),
                 'condition': {
                     'custom': "storedCards[card._id].get('!', (False, None))[0] == False"
                     },
@@ -181,7 +185,7 @@ scriptsDict = {
         'onAbility1': [
             ('skillChange', {
                 'target': {
-                    'special': "self" 
+                    'special': "self"
                     },
                 'skill': ['Culture'],
                 'value': '2',
@@ -190,7 +194,7 @@ scriptsDict = {
                 }),
             ('tagSet', {
                 'target': {
-                    'special': "self" 
+                    'special': "self"
                     },
                 'tag': '!',
                 'value': 'True',
@@ -200,7 +204,7 @@ scriptsDict = {
         'onMissionEnd': [
             ('statusChange', {
                 'target': {
-                    'special': "self" 
+                    'special': "self"
                     },
                 'condition': {
                     'custom': "storedCards[card._id].get('!', [False])[0]"
@@ -252,6 +256,20 @@ scriptsDict = {
                 })
             ]
         },
+    ## Antarctic Rescue
+    'aa340201-0599-4884-99aa-ecdf8b2abc53': {
+        'onPlayMission': [
+            ('statusChange', {
+                'target': {
+                    'type': ['Team Character'],
+                    'status': ['s','a','r']
+                    },
+                'action': 'block',
+                'player': 'villain',
+                'count': "1"
+                })
+            ]
+        },
     ## Sense of Adventure
     '745bea32-98ed-49ac-9120-52965ab2716c': {
         'onPlay': [
@@ -271,7 +289,7 @@ scriptsDict = {
         'onPlayMission': [
             ('powerChange', {
                 'trigger': {
-                    'glyph': [['G','L']]
+                    'glyph': "[['G','L']]"
                     },
                 'player': 'hero',
                 'value': '1'
@@ -283,11 +301,11 @@ scriptsDict = {
         'onAbility1Cost': [
             ('statusChange', {
                 'target': {
-                    'special': "self" 
+                    'special': "self"
                     },
                 'condition': {
                     'status': ['a','r'],
-                    'glyph': [['S']]
+                    'glyph': "[['S']]"
                     },
                 'action': 'stop'
                 })
@@ -314,20 +332,39 @@ scriptsDict = {
                 })
             ]
         },
+    ## Retrieve Artifact
+    'e72c8088-c0f6-4692-a060-4e989ccc5c26': {
+        'onGetComplicationCost': [
+            ('costChange', {
+                'value': "1"
+                })
+            ]
+        },
+    ## Wormhole X-Treme! #TODO
+    'be5853cf-047c-4392-9ef4-7e2c1d3fd267': {
+        'onGetPlayCost': [
+            ('costChange', {
+                'trigger': {
+                    'type': ["Obstacle"]
+                    },
+                'value': "1"
+                })
+            ]
+        },
     ## Teal'c, Enemy of the Goa'uld
     '5943d410-e654-46a4-9bc7-44124d8ee891': {
         'onGetComplicationCost': [
             ('costChange', {
                 'condition': {
-                    'glyph': [['O']],
-                    'status': "a"
+                    'glyph': "[['O']]",
+                    'status': ["a"]
                     },
                 'value': "1"
                 }),
             ('costChange', {
                 'condition': {
-                    'glyph': [['P']],
-                    'status': "a"
+                    'glyph': "[['P']]",
+                    'status': ["a"]
                     },
                 'value': "1"
                 })
@@ -338,7 +375,7 @@ scriptsDict = {
         'onAbility1Cost': [
             ('statusChange', {
                 'target': {
-                    'special': "self" 
+                    'special': "self"
                     },
                 'condition': {
                     'status': ['r']
@@ -367,14 +404,18 @@ scriptsDict = {
         'onAbility1Cost': [
             ('statusChange', {
                 'target': {
-                    'special': "self" 
+                    'special': "self"
                     },
                 'condition': {
                     'status': ['r']
                     },
                 'action': 'stop'
                 }),
-            ('discard', {
+            ('moveCard', {
+                'target': {
+                    'group': "me.hand"
+                    },
+                'to': ('me.Discard', 0),
                 'player': 'hero',
                 'count': '1'
                 })
@@ -398,6 +439,21 @@ scriptsDict = {
             ('moveCard', {
                 'target': {
                     'type': ['Gear'],
+                    'group': 'me.Deck'
+                    },
+                'to': ('me.hand', -1),
+                'player': 'hero',
+                'skippable': True,
+                'count': "1"
+                })
+            ]
+        },
+    ## Cure the Vorlix
+    '99856f4c-c9d8-44de-8044-b995d84ce141': {
+        'onSuccess': [
+            ('moveCard', {
+                'target': {
+                    'type': ['Support Character', 'Team Character'],
                     'group': 'me.Deck'
                     },
                 'to': ('me.hand', -1),
@@ -432,12 +488,22 @@ scriptsDict = {
                 })
             ]
         },
+    ## Fall of Earth
+    '00e1be97-291d-4e37-aea1-2c386a707f20': {
+        'onPlayMission': [
+            ('ruleSet', {
+                'rule': 'cp',
+                'value': '"Support Character"',
+                'list': True
+                })
+            ]
+        },
     ## Zat Gun
     'a853c2fe-bd32-44fb-9794-5213d00dfe22': {
         'onAbility1Cost': [
             ('statusChange', {
                 'target': {
-                    'special': "self" 
+                    'special': "self"
                     },
                 'condition': {
                     'status': ['r']
@@ -466,7 +532,7 @@ scriptsDict = {
         'onAbility2Cost': [
             ('statusChange', {
                 'target': {
-                    'special': "self" 
+                    'special': "self"
                     },
                 'condition': {
                     'status': ['r']
@@ -495,7 +561,7 @@ scriptsDict = {
         'onAbility3Cost': [
             ('statusChange', {
                 'target': {
-                    'special': "self" 
+                    'special': "self"
                     },
                 'condition': {
                     'status': ['r']
@@ -531,7 +597,7 @@ scriptsDict = {
         'onAbility1Cost': [
             ('statusChange', {
                 'target': {
-                    'special': "self" 
+                    'special': "self"
                     },
                 'condition': {
                     'status': ['r']
@@ -555,18 +621,120 @@ scriptsDict = {
                 })
             ]
         },
+    ## Osbourne, Antarctic Researcher
+    '3c381256-8ecd-4a17-ae67-dbe4a7b5305a': {
+        'onAbility1Cost': [
+            ('statusChange', {
+                'target': {
+                    'special': "self"
+                    },
+                'condition': {
+                    'status': ['a','r']
+                    },
+                'action': 'stop',
+                'count': "1"
+                })
+            ],
+        'onAbility1': [
+            ('fillHand', {
+                'player': 'hero',
+                'value': 'len(me.hand) + 1'
+                })
+            ]
+        },
+    ## Top Minds   TODO Top Minds passes cost check with just 1 character
+    '4e172aed-da95-4717-a2a3-55bdf3835dca': {
+        'onPlayCost': [
+            ('statusChange', {
+                'target': {
+                    'status': ["a","r"],
+                    'type': ["Team Character", "Support Character"]
+                    },
+                'action': 'stop',
+                'player': "hero",
+                'count': "2"
+                })
+            ],
+        'onPlay': [
+            ('statusChange', {
+                'target': {
+                    'status': ["a"],
+                    'type': ["Obstacle"]
+                    },
+                'action': 'destroy',
+                'player': "hero",
+                'count': "1"
+                })
+            ]
+        },
+    ## Samantha Carter, Problem Solver
+    'ebb511ee-abe9-4b91-9cea-e0cb3794bc21': {
+        'onAbility1Cost': [
+            ('statusChange', {
+                'target': {
+                    'special': "self"
+                    },
+                'condition': {
+                    'status': ['a','r'],
+                    'glyph': "[['T']]"
+                    },
+                'action': 'stop',
+                'count': "1"
+                })
+            ],
+        'onAbility1': [
+            ('statusChange', {
+                'target': {
+                    'status': ['a'],
+                    'type': ['Obstacle']
+                    },
+                'action': 'complication',
+                'player': 'hero',
+                'count': "1"
+                })
+            ]
+        },
     ## Cameron Mitchell, Eager Adventurer
     'da9a7837-a593-4269-acb6-d88449a0d07a': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': "self",
                 'condition': {
-                    'glyph': [['O']]
+                    'glyph': "[['O']]",
+                    'custom': "storedCards[card._id]['s'] == 'a' and len(storedGameStats['sm']) == 0 and len(storedGameStats['fm']) == 0"
                     },
                 'skill': 'all',
-                'value': "1 if storedCards[card._id]['s'] == 'a' and len(storedGameStats['sm']) == 0 and len(storedGameStats['fm']) == 0 else 0"
+#                'value': "1 if storedCards[card._id]['s'] == 'a' and len(storedGameStats['sm']) == 0 and len(storedGameStats['fm']) == 0 else 0"
+                'value': "1"
+                })
+            ]
+        },
+    ## Bra'tac, Jaffa Master
+    'dc4e26e7-2860-4851-9a5f-e53da0edf853': {
+        'onGetStats': [
+            ('skillChange', {
+                'trigger': {
+                    'type': ["Support Character"],
+                    'trait': "Jaffa"
+                    },
+                'condition': {
+                    'glyph': "[['L'],['S']]",
+                    'status': ["r"]
+                    },
+                'skill': 'all',
+                'value': "1"
+                }),
+            ('skillChange', {
+                'trigger': {
+                    'type': ["Support Character"],
+                    'trait': "Jaffa"
+                    },
+                'condition': {
+                    'glyph': "[['G','P']]",
+                    'status': ["r"]
+                    },
+                'skill': 'all',
+                'value': "1"
                 })
             ]
         },
@@ -574,9 +742,7 @@ scriptsDict = {
     '67af6d35-4256-40e4-9b75-bff404d6a234': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': "self",
                 'skill': 'all',
                 'value': "1 if storedCards[card._id]['s'] == 'a' and Card(storedMission[0]).Glyph in [Card(g).Glyph for g in storedCards[card._id].get('g', [])] else 0"
                 })
@@ -586,9 +752,7 @@ scriptsDict = {
     '0f8362dc-132b-4eb3-96ec-453afddd5638': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': "self",
                 'skill': 'all',
                 'value': "1 if len(storedCards[card._id].get('g', [])) > len([c for c in storedCards if 'Obstacle' in Card(c).Type and storedCards[c]['s'] == 'a']) else 0"
                 })
@@ -598,24 +762,33 @@ scriptsDict = {
     '77d8c4e5-1911-40f1-a0e8-08f01cc8d082': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': "self",
                 'condition': {
-                    'glyph': [['G']],
+                    'glyph': "[['G']]"
                     },
                 'skill': ['Combat'],
                 'value': "2"
                 }),
             ('skillChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': "self",
                 'condition': {
-                    'glyph': [['T']],
+                    'glyph': "[['T']]"
                     },
                 'skill': ['Combat'],
                 'value': "1"
+                })
+            ]
+        },
+    ## Cloaked Ashrak
+    'ec8f6292-17e1-4ab8-8af3-6e60e6ab4de7': {
+        'onFailure': [
+            ('statusChange', {
+                'target': {
+                    'type': ['Support Character']
+                    },
+                'action': 'destroy',
+                'player': 'enemy',
+                'count': "1"
                 })
             ]
         },
@@ -633,6 +806,31 @@ scriptsDict = {
                 })
             ]
         },
+    ## Uncover the Stargate
+    '786035e2-fd01-44d3-8442-4e015f62fa9a': {
+        'onAssignCost': [
+            ('powerChange', {
+                'trigger': {
+                    'type': ['Support Character'],
+                    'status': ['r']
+                    },
+                'player': 'hero',
+                'value': "-2"
+                })
+            ]
+        },
+    ## Stall Enemy
+    '90c99fe3-8c27-4b90-8c91-46508712d0c6': {
+        'onAssignCost': [
+            ('powerChange', {
+                'trigger': {
+                    'type': ['Adversary']
+                    },
+                'player': 'villain',
+                'value': "-len([c for c in storedCards if storedCards[c]['s'] == 'a' and Card(c).Type in ['Team Character', 'Support Character']])"
+                })
+            ]
+        },
     ## Tight Rein
     '7bc7ab47-5fb6-40c5-b46b-91caf0ee6db0': {
         'onAssignCost': [
@@ -643,8 +841,7 @@ scriptsDict = {
                     'ignoreSelf': True
                     },
                 'trigger': {
-                    'type': ['Team Character', 'Support Character'],
-                    'status': ['r']
+                    'type': ['Team Character', 'Support Character']
                     },
                 'action': 'stop',
                 'player': 'hero',
@@ -658,9 +855,21 @@ scriptsDict = {
         'onAssign': [
             ('powerChange', {
                 'trigger': {
+                    'type': ['Team Character', 'Support Character'],
+                    'glyph': "[['O'],['G'],['L'],['P'],['T'],['S']]"
                     },
-                'condition': {
-                    'custom': 'len(storedCards[sourceId].get("g", [])) > 0'
+                'player': 'villain',
+                'value': '-1',
+                })
+            ]
+        },
+    ## Training Exercises
+    '4edbb9ee-d752-4d0d-9a21-96463be4a125': {
+        'onAssign': [
+            ('powerChange', {
+                'trigger': {
+                    'type': ['Team Character', 'Support Character'],
+                    'glyph': 'None'
                     },
                 'player': 'villain',
                 'value': '-1',
@@ -670,10 +879,11 @@ scriptsDict = {
     ## Establish Communications
     'edee7ab2-f431-4c28-b808-d6fa1ed59cc2': {
         'onAssign': [
-            ('discard', {
+            ('moveCard', {
                 'target': {
                     'group': "me.hand"
                     },
+                'to': ('me.Discard', 0),
                 'trigger': {
                     'cardName': "Jack O'Neill"
                     },
@@ -686,6 +896,24 @@ scriptsDict = {
                     'cardName': "Jack O'Neill"
                     },
                 'player': 'hero',
+                'value': '8'
+                })
+            ]
+        },
+    ## Explore Genetics Lab
+    '03ee4c09-1daa-43ed-a096-0b39cbbf1545': {
+        'onFailure': [
+            ('moveCard', {
+                'target': {
+                    'group': "me.hand"
+                    },
+                'to': ('me.Discard', 0),
+                'player': 'villain',
+                'count': '1',
+                'skippable': True
+                }),
+            ('fillHand', {
+                'player': 'villain',
                 'value': '8'
                 })
             ]
@@ -788,13 +1016,25 @@ scriptsDict = {
                 })
             ]
         },
+    ## Expose Blackmail
+    'cbde5070-f65b-4f31-a929-9202aedfd374': {
+        'onSuccess': [
+            ('statusChange', {
+                'target': {
+                    'type': ['Support Character'],
+                    'status': ['s','a','r']
+                    },
+                'action': 'ready',
+                'player': 'hero',
+                'count': "1"
+                })
+            ]
+        },
     ## Acquire Specimen
     'b73da326-be80-41c8-b201-a0e6d7bf2ec6': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': "self",
                 'skill': 'all',
                 'value': "len([c for c in storedCards if storedCards[c]['s'] == 'a' and 'Obstacle' in Card(c).Type])"
                 })
@@ -804,11 +1044,19 @@ scriptsDict = {
     'c0f58ccb-3278-4769-9040-31fec6b363ca': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': "self",
                 'skill': 'all',
                 'value': "0 if len([c for c in storedCards if storedCards[c]['s'] == 'a' and 'Adversary' in Card(c).Type]) == 0 else 1"
+                })
+            ]
+        },
+    ## Escape the Keeper
+    'f2062900-e1ba-4d57-9d59-d571c7714fcb': {
+        'onGetStats': [
+            ('skillChange', {
+                'trigger': "self",
+                'skill': 'all',
+                'value': "sum([len(storedCards[c]['g']) for c in storedCards if storedCards[c]['s'] == 'a' and 'g' in storedCards[c] ])"
                 })
             ]
         },
@@ -816,9 +1064,7 @@ scriptsDict = {
     'c4bf0315-ee48-4fd9-b02c-322f1b41e779': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': "self",
                 'skill': 'all',
                 'value': "1 if len([c for c in storedCards if storedCards[c]['s'] == 'c']) > 0 else 0"
                 })
@@ -844,15 +1090,13 @@ scriptsDict = {
     'de071fbb-e426-4bb2-8ed5-d40bd7f28e7c': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
+                'trigger': {
                     'type': ['Support Character', 'Team Character'],
                     'status': ['a'],
                     'trait': 'Asgard'
                     },
                 'skill': ['Science'],
-                'value': '1',
-                'count': 'all',
-                'duration': 'm'
+                'value': '1'
                 })
             ],
         'onSuccess': [
@@ -863,18 +1107,67 @@ scriptsDict = {
                 })
             ]
         },
+    ## Locate Renegades
+    '46b646c3-d60a-4030-8364-dab849d0f5ca': {
+        'onFailure': [
+            ('ruleSet', {
+                'rule': 'nmd',
+                'value': '1',
+                'list': True
+                })
+            ]
+        },
     ## Offworld Research
     'ec0d04f8-07e6-489f-8705-68aafac29407': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
+                'trigger': {
                     'type': ['Support Character'],
                     'status': ['a']
                     },
                 'skill': ['Science'],
-                'value': '1',
-                'count': 'all',
-                'duration': 'm'
+                'value': '1'
+                })
+            ]
+        },
+    ## Evacuate Village
+    'db9e6362-9cc3-4e4c-ba0c-0058379d12be': {
+        'onGetStats': [
+            ('skillChange', {
+                'trigger': {
+                    'type': ['Team Character'],
+                    'status': ['a'],
+                    'glyph': "[['O'],['G'],['L'],['P'],['T'],['S']]"
+                    },
+                'skill': ['Combat'],
+                'value': '1'
+                })
+            ]
+        },
+    ## Martouf, Tok'ra Liaison
+    '7dc161c5-2a99-4fb7-b3ee-0c421f48ad41': {
+        'onGetStats': [
+            ('skillChange', {
+                'trigger': {
+                    'type': ['Team Character', 'Support Character'],
+                    'glyph': "[ [Card(x).Glyph] for x in storedCards[sourceId].get('g', [])]",
+                    'ignoreSelf': True
+                    },
+                'skill': 'all',
+                'value': '1'
+                })
+            ]
+        },
+    ## Loop of Kon Garat
+    'dadf8a7e-525c-4440-9339-b9fe908ca265': {
+        'onGetStats': [
+            ('skillChange', {
+                'trigger': "self",
+                'condition': {
+                    'custom': "len([c for c in storedCards if storedCards[c]['s'] == 'a' and Card(c).name == 'Samantha Carter']) > 0"
+                    },
+                'skill': 'all',
+                'value': "-1"
                 })
             ]
         },
@@ -882,13 +1175,11 @@ scriptsDict = {
     '1b4317d7-c293-46c2-aa30-87dae348e5c0': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
+                'trigger': {
                     'cardName': ['Daniel Jackson']
                     },
                 'skill': ['Culture'],
-                'value': "len([c for c in storedCards if c != card._id and 'Team Character' in Card(c).Type and storedCards[c]['s'] == 'a'])",
-                'player': 'all',
-                'duration': 'm'
+                'value': "len([c for c in storedCards if c != card._id and 'Team Character' in Card(c).Type and storedCards[c]['s'] == 'a'])"
                 })
             ]
         },
@@ -905,6 +1196,20 @@ scriptsDict = {
                 'count': '1',
                 'duration': 'm',
                 'ignoreSource': True
+                })
+            ]
+        },
+    ## Search and Rescue
+    'bcbbceee-417b-47a9-ae15-b11445a5dacb': {
+        'onSuccess': [
+            ('statusChange', {
+                'target': {
+                    'status': ['s','a','r'],
+                    'type': ['Support Character', 'Team Character']
+                    },
+                'action': 'ready',
+                'player': 'hero',
+                'count': "1"
                 })
             ]
         },
@@ -954,7 +1259,33 @@ scriptsDict = {
                     'type': ['Support Character', 'Team Character']
                     },
                 'action': 'stop',
-                'player': 'all'
+                'player': 'hero',
+                'count': 'all'
+                })
+            ]
+        },
+    ## Prison Break
+    '9db0d9a1-edcd-45b4-947b-b4b979becac4': {
+        'onPlayMission': [
+            ('statusChange', {
+                'target': {
+                    'status': ['s','a','r'],
+                    'type': ['Support Character']
+                    },
+                'action': 'stop',
+                'player': 'hero',
+                'count': 'all'
+                })
+            ],
+        'onSuccess': [
+            ('statusChange', {
+                'target': {
+                    'status': ['s','a','r'],
+                    'type': ['Support Character']
+                    },
+                'action': 'ready',
+                'player': 'hero',
+                'count': 'all'
                 })
             ]
         },
@@ -981,6 +1312,21 @@ scriptsDict = {
                     },
                 'action': 'destroy',
                 'player': 'villain',
+                'count': "1"
+                })
+            ]
+        },
+    ## Cultural Exchange
+    '24c42819-dc31-418c-b7f4-2b1183bacc7e': {
+        'onPlayMission': [
+            ('statusChange', {
+                'target': {
+                    'status': ['s','a'],
+                    'type': ['Support Character']
+                    },
+                'action': 'ready',
+                'player': 'hero',
+                'skippable': True,
                 'count': "1"
                 })
             ]
@@ -1013,6 +1359,33 @@ scriptsDict = {
                 })
             ]
         },
+    ## Investigate Disappearance
+    '43f27324-da6d-4009-802f-c670e76e4e70': {
+        'onPlayMission': [
+            ('statusChange', {
+                'target': {
+                    'type': ['Support Character']
+                    },
+                'action': 'destroy',
+                'player': 'hero',
+                'count': "1"
+                })
+            ]
+        },
+    ## Brief Candle
+    '1db24625-e050-4a61-a0fe-c35e2cff1afe': {
+        'onPlayMission': [
+            ('statusChange', {
+                'target': {
+                    'type': ['Support Character', 'Team Character'],
+                    'status': ['a','r']
+                    },
+                'action': 'stop',
+                'player': 'hero',
+                'count': "1"
+                })
+            ]
+        },
     ## Fire Rain
     '8a097812-9963-4da7-ae55-0ff0196bfcff': {
         'onPlay': [
@@ -1022,7 +1395,7 @@ scriptsDict = {
                     },
                 'action': 'block',
                 'player': 'villain',
-                'count': "len([c for c in storedCards if 'Obstacle' in Card(c).Type and Card(c).name != card.name and storedCards[c]['s'] == 'a'])"
+                'count': "len([c for c in storedCards if 'Obstacle' in Card(c).Type and storedCards[c]['s'] == 'a']) - 1"
                 })
             ]
         },
@@ -1030,9 +1403,7 @@ scriptsDict = {
     '7b84361c-da40-4a9a-8c2e-c4a327109f71': {
         'onGetPlayCost': [
             ('costChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': 'self',
                 'condition': {
                     'custom': "len([c for c in storedCards if 'Team Character' in Card(c).Type and storedCards[c]['s'] == 'a' and len(storedCards[c].get('g',[])) == 0]) > 0"
                     },
@@ -1040,22 +1411,30 @@ scriptsDict = {
                 })
             ]
         },
+    ##Drey'auc
+    '75708da0-602d-40f0-9381-b6cc3940ce23': {
+        'onGetPlayCost': [
+            ('costChange', {
+                'trigger': 'self',
+                'condition': {
+                    'custom': "len(storedGameStats['sm']) > 0"
+                    },
+                'value': "-2"
+                })
+            ]
+        },
     ## Artok
     '87b224b8-8ae0-4081-aef3-5863b67bad26': {
         'onGetPlayCost': [
             ('costChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': 'self',
                 'condition': {
                     'custom': "storedMission[1] == 'Combat'"
                     },
                 'value': "-1"
                 }),
             ('costChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': 'self',
                 'condition': {
                     'custom': "len([c for c in storedCards if Card(c).isFaceUp == False and storedCards[c]['s'] == 'c']) >= 1"
                     },
@@ -1081,6 +1460,15 @@ scriptsDict = {
                 })
             ]
         },
+    ## Investigate Plague
+    'f23eb8cc-5ecb-406e-824b-5549f356e317': {
+        'onPlayMission': [
+            ('powerChange', {
+                'player': 'hero',
+                'value': '-2'
+                })
+            ]
+        },
     ## Supply Raid
     '5fbb2f8b-9b01-41f2-ad7d-d5aba336bcef': {
         'onSuccess': [
@@ -1096,6 +1484,19 @@ scriptsDict = {
             ('powerChange', {
                 'player': 'villain',
                 'value': '2'
+                })
+            ]
+        },
+    ## Nyan
+    '5f48ec23-8316-45e9-b6b9-a90ca1ad3f59': {
+        'onSuccess': [
+            ('powerChange', {
+                'player': 'villain',
+                'value': '-2'
+                }),
+            ('powerChange', {
+                'player': 'hero',
+                'value': '1'
                 })
             ]
         },
@@ -1136,9 +1537,7 @@ scriptsDict = {
     '2ecaf65d-1fe8-4cd7-8824-3160aef1d99b': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': "self",
                 'skill': 'all',
                 'value': "len(storedGameStats['sm'])"
                 })
@@ -1149,10 +1548,23 @@ scriptsDict = {
         'onGetStats': [
             ('skillChange', {
                 'target': {
-                    'special': "self" 
+                    'special': "self"
                     },
                 'skill': 'all',
                 'value': "1 if len(storedGameStats['sm']) == 0 else 0"
+                })
+            ]
+        },
+    ## What Fate Omaroca?
+    'f4d43cdf-496a-40a6-9b5e-995a7db693fd': {
+        'onGetStats': [
+            ('skillChange', {
+                'trigger': "self",
+                'condition': {
+                    'custom': "len([c for c in storedCards if storedCards[c]['s'] == 'a' and hasGlyph(storedCards[c].get('g',[]), [['G']])]) > 0"
+                    },
+                'skill': 'all',
+                'value': "-1"
                 })
             ]
         },
@@ -1160,9 +1572,7 @@ scriptsDict = {
     'dd59e9ee-9cf8-4d61-b891-5477c550b2b1': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': "self",
                 'skill': 'all',
                 'value': "len(storedGameStats['sm'])"
                 })
@@ -1172,11 +1582,42 @@ scriptsDict = {
     '13b58f59-4156-4d15-9c27-3212d8448b65': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
-                    'special': "self" 
-                    },
+                'trigger': "self",
                 'skill': 'all',
                 'value': "len([c for c in storedCards if storedCards[c]['s'] == 'a' and 'Obstacle' in Card(c).Type and 'Political' in Card(c).Traits]) + len(storedGameStats['fm'])"
+                })
+            ]
+        },
+    ## Red Sky
+    'c2675662-cb79-4dc3-9507-64b1ebad8939': {
+        'onGetStats': [
+            ('skillChange', {
+                'trigger': "self",
+                'skill': 'all',
+                'value': "len(storedGameStats['fm'])"
+                })
+            ]
+        },
+    ## Gerak, Leader of the Jaffa
+    '0a124022-4054-4952-83d9-3ac43d16e7a1': {
+        'onGetStats': [
+            ('skillChange', {
+                'trigger': "self",
+                'condition': {
+                    'custom': "me.Power >= 4"
+                    },
+                'skill': 'all',
+                'value': "1"
+                })
+            ]
+        },
+    ## Disclosure
+    '88e10d1d-e999-47ce-816c-9ba043641339': {
+        'onGetStats': [
+            ('skillChange', {
+                'trigger': "self",
+                'skill': 'all',
+                'value': "len(storedGameStats['fm'])"
                 })
             ]
         },
@@ -1194,10 +1635,17 @@ scriptsDict = {
 def createDecks():
     mute()
     scriptCards = []
-    if me.hasInvertedTable():
-        deck = oneil
+    switch = False
+    if switch == True:
+        if me.hasInvertedTable():
+            deck = oneil
+        else:
+            deck = jackson
     else:
-        deck = jackson
+        if me.hasInvertedTable():
+            deck = carter
+        else:
+            deck = tealc
     for c in deck['main']:
         qty, guid, name = c
         me.Deck.create(guid, qty)
@@ -1302,4 +1750,88 @@ oneil = {
     (1, "5fbb2f8b-9b01-41f2-ad7d-d5aba336bcef", "Supply Raid"),
     (1, "c4bf0315-ee48-4fd9-b02c-322f1b41e779", "Survey Goa'uld Pleasure Palace"),
     (1, "9f7363f0-0281-46d1-906c-da6ebcb61d3d", "Time Loop")
+  ]}
+
+carter = {
+  'main': [
+    (2, "4e172aed-da95-4717-a2a3-55bdf3835dca", "Top Minds"),
+    (3, "414ef0db-fe27-48c0-9e7a-9e13b346482b", "Seasoned Travelers"),
+    (3, "7861d9aa-aafb-448c-8c4d-98e691d3f53a", "Receiving a Go"),
+    (2, "3c381256-8ecd-4a17-ae67-dbe4a7b5305a", "Osbourne"),
+    (3, "5f48ec23-8316-45e9-b6b9-a90ca1ad3f59", "Nyan"),
+    (2, "f0c981ea-5b6f-4a98-a043-0ee5e6f0fb2e", "Malek"),
+    (2, "4e5d26f3-522e-43b4-b560-012b81b27a01", "Galaran Memory Device"),
+    (3, "75708da0-602d-40f0-9381-b6cc3940ce23", "Drey'auc"),
+    (2, "578658c0-5c09-4d63-a46f-5d7b7e5e8c64", "Apophis"),
+    (3, "ec8f6292-17e1-4ab8-8af3-6e60e6ab4de7", "Cloaked Ashrak"),
+    (2, "bbf126d3-587e-4be7-bd1d-121b79917281", "Language Barrier"),
+    (3, "6783ab0b-9da4-4375-9580-14ffb6661cf5", "Parasitic Insects"),
+    (3, "c2675662-cb79-4dc3-9507-64b1ebad8939", "Red Sky"),
+    (2, "13b58f59-4156-4d15-9c27-3212d8448b65", "Robert Kinsey"),
+    (2, "799a40e0-a9a9-4d4b-a548-b4a00bb004db", "Salish Spirits"),
+    (2, "7b84361c-da40-4a9a-8c2e-c4a327109f71", "Serpent Guards"),
+    (3, "b5e4ff90-7a72-4696-a937-6542aef7af54", "Telekinetic Mutants"),
+    (2, "cde9da8d-f010-4ff4-858e-c0777b931ecc", "Water-Based Life Forms")
+  ],
+  'team': [
+    (1, "ebb511ee-abe9-4b91-9cea-e0cb3794bc21", "Samantha Carter"),
+    (1, "7dc161c5-2a99-4fb7-b3ee-0c421f48ad41", "Martouf"),
+    (1, "4901fb59-e7cc-47d4-8f3a-4f1f2e93f78d", "Jack O'Neill"),
+    (1, "0f8362dc-132b-4eb3-96ec-453afddd5638", "Balinsky")
+  ],
+  'mission': [
+    (1, "aa340201-0599-4884-99aa-ecdf8b2abc53", "Antarctic Rescue"),
+    (1, "99856f4c-c9d8-44de-8044-b995d84ce141", "Cure the Vorlix"),
+    (1, "db9e6362-9cc3-4e4c-ba0c-0058379d12be", "Evacuate Village"),
+    (1, "00e1be97-291d-4e37-aea1-2c386a707f20", "Fall of Earth"),
+    (1, "43f27324-da6d-4009-802f-c670e76e4e70", "Investigate Disappearance"),
+    (1, "46b646c3-d60a-4030-8364-dab849d0f5ca", "Locate Renegades"),
+    (1, "dadf8a7e-525c-4440-9339-b9fe908ca265", "Loop of Kon Garat"),
+    (1, "9db0d9a1-edcd-45b4-947b-b4b979becac4", "Prison Break"),
+    (1, "b457732b-04e3-4d0e-afb7-68d3dc6b848c", "Research Advanced Races"),
+    (1, "e72c8088-c0f6-4692-a060-4e989ccc5c26", "Retrieve Artifact"),
+    (1, "4edbb9ee-d752-4d0d-9a21-96463be4a125", "Training Exercises"),
+    (1, "f4d43cdf-496a-40a6-9b5e-995a7db693fd", "What Fate Omaroca?")
+  ]}
+
+tealc = {
+  'main': [
+    (3, "87b224b8-8ae0-4081-aef3-5863b67bad26", "Artok"),
+    (3, "75708da0-602d-40f0-9381-b6cc3940ce23", "Drey'auc"),
+    (2, "0a124022-4054-4952-83d9-3ac43d16e7a1", "Gerak"),
+    (3, "ba2f1ef2-93e4-41f9-9a92-faa537293c88", "Loyal Sacrifice"),
+    (2, "3c381256-8ecd-4a17-ae67-dbe4a7b5305a", "Osbourne"),
+    (2, "7861d9aa-aafb-448c-8c4d-98e691d3f53a", "Receiving a Go"),
+    (3, "33adafa3-d70e-46c9-9bd0-54ed1a1d77d7", "Special Training"),
+    (2, "20b010bf-9c8c-45dc-8ea6-7d2df55f80a5", "Tolok"),
+    (2, "578658c0-5c09-4d63-a46f-5d7b7e5e8c64", "Apophis"),
+    (2, "2aebfd9e-d838-4542-846b-6861f2d6d369", "Brainwashing"),
+    (3, "ec8f6292-17e1-4ab8-8af3-6e60e6ab4de7", "Cloaked Ashrak"),
+    (2, "bbf126d3-587e-4be7-bd1d-121b79917281", "Language Barrier"),
+    (2, "b95f875a-0f2a-416a-bdc9-6b7aac41ffa8", "Out of Your Depth"),
+    (3, "c2675662-cb79-4dc3-9507-64b1ebad8939", "Red Sky"),
+    (3, "cbdd5fa9-138e-4e3e-ab51-552d1e3e675b", "Team Compromised"),
+    (3, "7bc7ab47-5fb6-40c5-b46b-91caf0ee6db0", "Tight Rein"),
+    (2, "cde9da8d-f010-4ff4-858e-c0777b931ecc", "Water-Based Life Forms"),
+    (2, "dd59e9ee-9cf8-4d61-b891-5477c550b2b1", "Yu")
+  ],
+  'team': [
+    (1, "5943d410-e654-46a4-9bc7-44124d8ee891", "Teal'c"),
+    (1, "dc4e26e7-2860-4851-9a5f-e53da0edf853", "Bra'tac"),
+    (1, "77d8c4e5-1911-40f1-a0e8-08f01cc8d082", "Daniel Jackson"),
+    (1, "ebb511ee-abe9-4b91-9cea-e0cb3794bc21", "Samantha Carter")
+  ],
+  'mission': [
+    (1, "1db24625-e050-4a61-a0fe-c35e2cff1afe", "Brief Candle"),
+    (1, "24c42819-dc31-418c-b7f4-2b1183bacc7e", "Cultural Exchange"),
+    (1, "88e10d1d-e999-47ce-816c-9ba043641339", "Disclosure"),
+    (1, "f2062900-e1ba-4d57-9d59-d571c7714fcb", "Escape the Keeper"),
+    (1, "03ee4c09-1daa-43ed-a096-0b39cbbf1545", "Explore Genetics Lab"),
+    (1, "cbde5070-f65b-4f31-a929-9202aedfd374", "Expose Blackmail"),
+    (1, "f23eb8cc-5ecb-406e-824b-5549f356e317", "Investigate Plague"),
+    (1, "c820d3f8-80a3-48fc-8dd3-0968cb7b9c23", "Repel Cronus"),
+    (1, "bcbbceee-417b-47a9-ae15-b11445a5dacb", "Search and Rescue"),
+    (1, "90c99fe3-8c27-4b90-8c91-46508712d0c6", "Stall Enemy"),
+    (1, "786035e2-fd01-44d3-8442-4e015f62fa9a", "Uncover the Stargate"),
+    (1, "be5853cf-047c-4392-9ef4-7e2c1d3fd267", "Wormhole X-Treme!")
   ]}
