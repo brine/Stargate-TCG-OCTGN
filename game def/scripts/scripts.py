@@ -49,7 +49,7 @@ villainTypes = ["Obstacle", "Adversary"]
 #                'p':/True if it was previously assigned/
 #                'rf':/True to remove failure text/
 #                '!':(/True to enable activation of ! triggers/, Source, Duration)
-#                'gs':/True to trigger global static stat changes/, Source, Duration)
+#                'sel': selected cards
 #                }
 
 #queue = ( card, trigger, action, count, priority, skippable, source )
@@ -169,7 +169,7 @@ scriptsDict = {
         },
     ## Nicholas Ballard, Outcast Scholar
     'db2e0e15-0970-4302-a434-d37c410d10f9': {
-        'onAbility1Cost': [
+        'onGetAbility1Cost': [
             ('moveCard', {
                 'target': {
                     'group': "me.hand"
@@ -298,7 +298,7 @@ scriptsDict = {
         },
     ## Harold Maybourne, Ally of Opportunity
     'c5358e72-16ac-450e-a2b8-923d4964f52c': {
-        'onAbility1Cost': [
+        'onGetAbility1Cost': [
             ('statusChange', {
                 'target': {
                     'special': "self"
@@ -340,7 +340,7 @@ scriptsDict = {
                 })
             ]
         },
-    ## Wormhole X-Treme! #TODO
+    ## Wormhole X-Treme!
     'be5853cf-047c-4392-9ef4-7e2c1d3fd267': {
         'onGetPlayCost': [
             ('costChange', {
@@ -372,7 +372,7 @@ scriptsDict = {
         },
     ## Transport Rings
     '57e5bbd8-c2f4-4333-8aad-9934807ba6bd': {
-        'onAbility1Cost': [
+        'onGetAbility1Cost': [
             ('statusChange', {
                 'target': {
                     'special': "self"
@@ -401,7 +401,7 @@ scriptsDict = {
         },
     ## Galaran Memory Device
     '4e5d26f3-522e-43b4-b560-012b81b27a01': {
-        'onAbility1Cost': [
+        'onGetAbility1Cost': [
             ('statusChange', {
                 'target': {
                     'special': "self"
@@ -426,10 +426,14 @@ scriptsDict = {
                     'type': ['Team Character', 'Support Character', 'Event', 'Gear'],
                     'group': 'me.Discard'
                     },
-                'to': ('me.Deck', 'shuffle'),
+                'to': ('me.Deck', 1),
                 'player': 'hero',
                 'skippable': True,
                 'count': "1"
+                }),
+            ('shuffleGroup', {
+                'group': 'me.Deck',
+                'player': 'hero'
                 })
             ]
         },
@@ -445,6 +449,10 @@ scriptsDict = {
                 'player': 'hero',
                 'skippable': True,
                 'count': "1"
+                }),
+            ('shuffleGroup', {
+                'group': 'me.Deck',
+                'player': 'hero'
                 })
             ]
         },
@@ -460,12 +468,16 @@ scriptsDict = {
                 'player': 'hero',
                 'skippable': True,
                 'count': "1"
+                }),
+            ('shuffleGroup', {
+                'group': 'me.Deck',
+                'player': 'hero'
                 })
             ]
         },
     ## Ill-Gotten Gains
     'f8a88854-b6b8-4ccc-aa15-268d5539776c': {
-        'onPlayCost': [
+        'onGetPlayCost': [
             ('statusChange', {
                 'target': {
                     'status': ['r'],
@@ -485,6 +497,10 @@ scriptsDict = {
                 'to': ('me.hand', -1),
                 'player': 'hero',
                 'count': "1"
+                }),
+            ('shuffleGroup', {
+                'group': 'me.Deck',
+                'player': 'hero'
                 })
             ]
         },
@@ -498,9 +514,9 @@ scriptsDict = {
                 })
             ]
         },
-    ## Zat Gun
+    ## Zat Gun  ##TODO: Use ChooseMode code
     'a853c2fe-bd32-44fb-9794-5213d00dfe22': {
-        'onAbility1Cost': [
+        'onGetAbility1Cost': [
             ('statusChange', {
                 'target': {
                     'special': "self"
@@ -529,7 +545,7 @@ scriptsDict = {
                 'ignoreSource': True
                 })
             ],
-        'onAbility2Cost': [
+        'onGetAbility2Cost': [
             ('statusChange', {
                 'target': {
                     'special': "self"
@@ -558,7 +574,7 @@ scriptsDict = {
                 'ignoreSource': True
                 })
             ],
-        'onAbility3Cost': [
+        'onGetAbility3Cost': [
             ('statusChange', {
                 'target': {
                     'special': "self"
@@ -594,7 +610,7 @@ scriptsDict = {
                 'value': '1'
                 })
             ],
-        'onAbility1Cost': [
+        'onGetAbility1Cost': [
             ('statusChange', {
                 'target': {
                     'special': "self"
@@ -623,7 +639,7 @@ scriptsDict = {
         },
     ## Osbourne, Antarctic Researcher
     '3c381256-8ecd-4a17-ae67-dbe4a7b5305a': {
-        'onAbility1Cost': [
+        'onGetAbility1Cost': [
             ('statusChange', {
                 'target': {
                     'special': "self"
@@ -642,9 +658,9 @@ scriptsDict = {
                 })
             ]
         },
-    ## Top Minds   TODO Top Minds passes cost check with just 1 character
+    ## Top Minds
     '4e172aed-da95-4717-a2a3-55bdf3835dca': {
-        'onPlayCost': [
+        'onGetPlayCost': [
             ('statusChange', {
                 'target': {
                     'status': ["a","r"],
@@ -669,7 +685,7 @@ scriptsDict = {
         },
     ## Samantha Carter, Problem Solver
     'ebb511ee-abe9-4b91-9cea-e0cb3794bc21': {
-        'onAbility1Cost': [
+        'onGetAbility1Cost': [
             ('statusChange', {
                 'target': {
                     'special': "self"
@@ -806,9 +822,125 @@ scriptsDict = {
                 })
             ]
         },
+    ## Water-Based Life Forms
+    'cde9da8d-f010-4ff4-858e-c0777b931ecc': {
+        'onFailure': [
+            ('chooseMode', {
+                'message': "Choose a mode for Water-Based Life Forms:",
+                'choices': [
+                    "Stop a Team Character.",
+                    "Destroy a Support Character."
+                    ],
+                'player': 'villain',
+                'count': "1"
+                })
+            ],
+        'onFailure1': [
+            ('statusChange', {
+                'target': {
+                    'status': ['s','a','r'],
+                    'type': ['Team Character']
+                    },
+                'action': 'stop',
+                'player': 'villain',
+                'count': "1"
+                })
+            ],
+        'onFailure2': [
+            ('statusChange', {
+                'target': {
+                    'type': ['Support Character']
+                    },
+                'action': 'destroy',
+                'player': 'hero',
+                'count': "1"
+                })
+            ]
+        },
+    ## Apophis, Threat to Earth
+    '578658c0-5c09-4d63-a46f-5d7b7e5e8c64': {
+        'onAssign': [
+            ('chooseMode', {
+                'message': "Choose a mode for Apophis:",
+                'choices': [
+                    "Stop two Characters.",
+                    "Allow your opponent to stop a Character."
+                    ],
+                'player': 'hero',
+                'count': "1"
+                })
+            ],
+        'onAssign1': [
+            ('statusChange', {
+                'target': {
+                    'status': ['a','r'],
+                    'type': ['Team Character', 'Support Character']
+                    },
+                'action': 'stop',
+                'player': 'hero',
+                'count': "2"
+                })
+            ],
+        'onAssign2': [
+            ('statusChange', {
+                'target': {
+                    'status': ['s','a','r'],
+                    'type': ['Team Character', 'Support Character']
+                    },
+                'action': 'stop',
+                'player': 'villain',
+                'count': "1"
+                })
+            ]
+        },
+        #[(triggers, "game", "glyph", 0, turnPlayer()._id, False, mission)]
+    ## Malek, Outpost Commander
+    'f0c981ea-5b6f-4a98-a043-0ee5e6f0fb2e': {
+        'onPlay': [
+            ('statusChange', {
+                'target': {
+                    'status': ['g']
+#                    'custom': "Card(getGlyphTarget(card._id)).Type == 'Team Character'"
+                    },
+                'attachTarget': ["Team Character", "Support Character"],
+                'action': 'glyph',
+                'player': 'hero',
+                'count': "1",
+                'skippable': True
+                })
+            ]
+        },
+    ## Loyal Sacrifice
+    'ba2f1ef2-93e4-41f9-9a92-faa537293c88': {
+        'onPlay': [
+            ('statusChange', {
+                'target': {
+                    'status': ['s','a','r'],
+                    'type': ['Support Character'],
+                    'trait': ['Jaffa']
+                    },
+                'action': 'destroy',
+                'player': 'hero',
+                'count': "999",
+                'saveCount': True,
+                'skippable': True
+                }),
+            ('statusChange', {
+                'target': {
+                    'status': ['s','a','r'],
+                    'type': ["Team Character"]
+                    },
+                'action': 'ready',
+                'player': 'hero',
+                'count': "storedGameStats.get('sc', 0)"
+                }),
+            ('delCount', {
+                })
+            ]
+        },
     ## Uncover the Stargate
     '786035e2-fd01-44d3-8442-4e015f62fa9a': {
-        'onAssignCost': [
+        'onGetAssignCost': [
             ('powerChange', {
                 'trigger': {
                     'type': ['Support Character'],
@@ -821,7 +953,7 @@ scriptsDict = {
         },
     ## Stall Enemy
     '90c99fe3-8c27-4b90-8c91-46508712d0c6': {
-        'onAssignCost': [
+        'onGetAssignCost': [
             ('powerChange', {
                 'trigger': {
                     'type': ['Adversary']
@@ -833,7 +965,7 @@ scriptsDict = {
         },
     ## Tight Rein
     '7bc7ab47-5fb6-40c5-b46b-91caf0ee6db0': {
-        'onAssignCost': [
+        'onGetAssignCost': [
             ('statusChange', {
                 'target': {
                     'status': ['a','r'],
@@ -872,7 +1004,20 @@ scriptsDict = {
                     'glyph': 'None'
                     },
                 'player': 'villain',
-                'value': '-1',
+                'value': '+1',
+                })
+            ]
+        },
+    ## Receiving a Go
+    '7861d9aa-aafb-448c-8c4d-98e691d3f53a': {
+        'onPlay': [
+            ('moveCard', {
+                'target': {
+                    'group': 'me.piles["Mission Pile"]',
+                    'top': "len([c for c in storedCards if cardActivity(Card(c)) != 'inactive' and storedCards[c]['s'] == 'r' and Card(c).Type in ['Support Character', 'Team Character'] and 'SGC' in Card(c).Traits])"
+                    },
+                'to': ('me.piles["Mission Pile"]', "t/b"),
+                'player': 'hero'
                 })
             ]
         },
@@ -888,7 +1033,7 @@ scriptsDict = {
                     'cardName': "Jack O'Neill"
                     },
                 'player': 'hero',
-                'count': '100',
+                'count': '999',
                 'skippable': True
                 }),
             ('fillHand', {
@@ -924,6 +1069,39 @@ scriptsDict = {
             ('fillHand', {
                 'player': 'enemy',
                 'value': '8'
+                })
+            ]
+        },
+    ## Tolok, Jaffa Elder
+    '20b010bf-9c8c-45dc-8ea6-7d2df55f80a5': {
+        'onPlayCost': [
+            ('powerChange', {
+                'player': 'hero',
+                'value': '-2'
+                }),
+            ('moveCard', {
+                'target': {
+                    'group': "me.hand"
+                    },
+                'to': ('me.Discard', 0),
+                'player': 'hero',
+                'count': '1'
+                }),
+            ('confirm', {
+                'message': "Tolok's ability: Pay 2 power and discard a card, to ready another Jaffa character?",
+                })
+            ],
+        'onPlay': [
+            ('statusChange', {
+                'target': {
+                    'type': ['Team Character', 'Support Character'],
+                    'trait': 'Jaffa',
+                    'status': ['s','a'],
+                    'ignoreSelf': True
+                    },
+                'action': 'ready',
+                'player': 'hero',
+                'count': "1"
                 })
             ]
         },
@@ -967,6 +1145,21 @@ scriptsDict = {
                     'group': 'me.Discard'
                     },
                 'to': ('me.hand', -1),
+                'player': 'hero',
+                'skippable': True,
+                'count': "1"
+                })
+            ]
+        },
+    ## Research Advanced Races
+    'b457732b-04e3-4d0e-afb7-68d3dc6b848c': {
+        'onSuccess': [
+            ('moveCard', {
+                'target': {
+                    'group': 'me.piles["Mission Pile"]',
+                    'index': "0"
+                    },
+                'to': ('me.piles["Mission Pile"]', -1),
                 'player': 'hero',
                 'skippable': True,
                 'count': "1"
@@ -1359,6 +1552,20 @@ scriptsDict = {
                 })
             ]
         },
+    ## Repel Cronus
+    'c820d3f8-80a3-48fc-8dd3-0968cb7b9c23': {
+        'onPlayMission': [
+            ('statusChange', {
+                'target': {
+                    'cardName': ["Teal'c"],
+                    'status': ['a','s']
+                    },
+                'action': 'ready',
+                'player': 'hero',
+                'count': "1"
+                })
+            ]
+        },
     ## Investigate Disappearance
     '43f27324-da6d-4009-802f-c670e76e4e70': {
         'onPlayMission': [
@@ -1415,7 +1622,6 @@ scriptsDict = {
     '75708da0-602d-40f0-9381-b6cc3940ce23': {
         'onGetPlayCost': [
             ('costChange', {
-                'trigger': 'self',
                 'condition': {
                     'custom': "len(storedGameStats['sm']) > 0"
                     },
@@ -1621,6 +1827,12 @@ scriptsDict = {
                 })
             ]
         },
+    ## Language Barrier
+    'bbf126d3-587e-4be7-bd1d-121b79917281': {
+        },
+    ## Harsh Conditions
+    'b52fa628-3c10-44ce-829b-4f9241bf6949': {
+        },
     ## TEMPLATE CARD
     'guid': {
         'scriptHook': [
@@ -1635,16 +1847,14 @@ scriptsDict = {
 def createDecks():
     mute()
     scriptCards = []
-    switch = False
-    if switch == True:
-        if me.hasInvertedTable():
+    rand = rnd(0,3)
+    if rand == 1:
             deck = oneil
-        else:
+    elif rand == 2:
             deck = jackson
-    else:
-        if me.hasInvertedTable():
+    elif rand == 3:
             deck = carter
-        else:
+    else:
             deck = tealc
     for c in deck['main']:
         qty, guid, name = c

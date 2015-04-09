@@ -16,20 +16,24 @@ def printGUID(card, x = 0, y = 0, txt = ""):
         txt = " (Scripted)"
     whisper("{}~{}{}".format(card, card.model, txt))
 
-def moveCardEvent(player, card, fromGroup, toGroup, oldIndex, index, oldX, oldY, x, y, highlight = None, markers = {}, isScriptMove = False ):
+def moveCardsEvent(player, cards, fromGroups, toGroups, oldIndexs, indexs, oldX, oldY, x, y, highlights, markers, isScriptMove):
     mute()
     if player != me:
         return
     if isScriptMove:
         return
-    if fromGroup == table: ## Return cards to their original position on the table
-        card.moveToTable(oldX,oldY)
-        card.setIndex(oldIndex)
-    elif fromGroup == me.hand and toGroup == me.hand: ## Allow re-arranging of the hand
-        return
-    else: ## Return card to itis original pile.
-        card.moveTo(fromGroup, oldIndex)
-        notify("Overriding card movement...")
+    count = 0
+    for card in cards:
+        if fromGroups[count] == table: ## Return cards to their original position on the table
+            card.moveToTable(oldX[count],oldY[count])
+            card.setIndex(oldIndexs[count])
+        elif fromGroups[count] == me.hand and toGroups[count] == me.hand: ## Allow re-arranging of the hand
+            return
+        else: ## Return card to itis original pile.
+            card.moveTo(fromGroups[count], oldIndexs[count])
+            notify("Overriding card movement...")
+        count += 1
+
 
 def resetVars(group, x = 0, y = 0):
     for p in getPlayers():
@@ -51,7 +55,10 @@ def reloadLocalVars(player):
         storedGameStats = eval(getGlobalVariable("gameStats"))
         storedCards = eval(getGlobalVariable("cards"))
         storedQueue = eval(getGlobalVariable("cardqueue"))
-        storedVictory = int(getPlayers()[1].getGlobalVariable("victory"))
+        if len(getPlayers()) > 1:
+            storedVictory = int(getPlayers()[1].getGlobalVariable("victory"))
+        else:
+            storedVictory = 0
         storedOppVictory = int(me.getGlobalVariable("victory"))
         
 def registerTeam(player, groups):
@@ -169,9 +176,9 @@ def globalVarChanged(varName, oldValue, newValue):
                 if confirm("Do you want to draw a new hand?"):
                     for c in me.hand:
                         c.moveTo(me.Deck)
-                    rnd(1,10)
+#                    rnd(1,10)
                     me.Deck.shuffle()
-                    rnd(1,10)
+#                    rnd(1,10)
                     fillHand(8)
                     notify("{} draws a new hand.".format(me))
                 else:
@@ -184,9 +191,9 @@ def globalVarChanged(varName, oldValue, newValue):
                 if confirm("Do you want to draw a new hand?"):
                     for c in me.hand:
                         c.moveTo(me.Deck)
-                    rnd(1,10)
+#                    rnd(1,10)
                     me.Deck.shuffle()
-                    rnd(1,10)
+ #                   rnd(1,10)
                     fillHand(8)
                     notify("{} draws a new hand.".format(me))
                 else:
@@ -511,7 +518,7 @@ def doubleClick(card, mouseButton, keysDown):
             whisper("Cannot assign: {} is not Ready.".format(card))
             return
         #### Check for additional costs to play the card
-        if not checkCosts(card, "onAssignCost", card._id):
+        if not checkCosts(card, "onGetAssignCost", card._id):
             return
         #### check if the card is being blocked
         blockedList = storedCards[card._id].get("b", [])
@@ -521,7 +528,7 @@ def doubleClick(card, mouseButton, keysDown):
         if len(blockedList) > 0:
             whisper("Cannot assign: {} is being blocked{}.".format(card, "" if blockedList == [None] else " by " + ", ".join([Card(x).name for x in blockedList if x != None])))
             return
-        storedQueue = phaseTriggers("onAssignCost", card._id) + [([card._id], "game", "assignCard", 0, me._id, False, None)] + phaseTriggers("onAssign", card._id) + storedQueue
+        storedQueue = phaseTriggers("onGetAssignCost", card._id) + [([card._id], "game", "assignCard", 0, me._id, False, None)] + phaseTriggers("onAssign", card._id) + storedQueue ##TODO move onAssign phaseTriggers to resolveQueue?
         setGlobalVariable("priority", str((getPlayers()[1]._id, False)))
         setGlobalVariable("cardqueue", str(storedQueue))
 
@@ -570,10 +577,10 @@ def playcard(card, x = 0, y = 0):
             whisper("Cannot play {}: {} is preventing it.".format(card, Card(source)))
             return
     #### Check for additional costs to play the card
-    if not checkCosts(card, "onPlayCost", card._id):
+    if not checkCosts(card, "onGetPlayCost", card._id):
         return
     #### Pay power cost to play card
-    cardCost = int(card.Cost)
+    costModifier = int(card.Cost)
     for c in storedCards.keys() + [card._id]:
         cardScripts = scriptsDict.get(Card(c).model, [])
         if "onGetPlayCost" in cardScripts:
@@ -584,17 +591,17 @@ def playcard(card, x = 0, y = 0):
                     if "trigger" in params:
                         if params["trigger"] == "self":
                             if c == card._id:
-                                cardCost += eval(params["value"])
+                                costModifier += eval(params["value"])
                         elif checkConditions(card, params["trigger"], c)[0]:
                             if params["trigger"].get("ignoreSelf", False) and c == card._id:
                                 continue
-                            cardCost += eval(params["value"])
-    if me.Power < cardCost:
+                            costModifier += eval(params["value"])
+    if costModifier > me.Power:
         whisper("You do not have enough Power to play that.")
         return
-    me.Power -= cardCost
+    me.Power -= costModifier
     card.moveTo(me.Team)
-    storedQueue = triggerScripts(card, "onPlayCost", card._id) + phaseTriggers("onPlayCost", card._id) + [([card._id], "game", "playCard", 0, me._id, False, None)] + storedQueue
+    storedQueue = triggerScripts(card, "onGetPlayCost", card._id) + phaseTriggers("onGetPlayCost", card._id) + [([card._id], "game", "playCard", 0, me._id, False, None)] + storedQueue
     setGlobalVariable("priority", str((getPlayers()[1]._id, False)))
     setGlobalVariable("cardqueue", str(storedQueue))
 
@@ -619,38 +626,44 @@ def activateAbility(card, x = 0, y = 0):
     if len(abilityText) == 0: ## cancel out if the card has no abilities
         return
     elif len(abilityText) == 1:
-        abilityTrigger = "onAbility1"
+        abilityTrigger = "1"
     else:
-        abilityTrigger = "onAbility" + str(askChoice("Choose an ability:", abilityText, []))
+        abilityTrigger = str(askChoice("Choose an ability:", abilityText, []))
     #### Check for additional costs to play the ability
-    if not checkCosts(card, "{}Cost".format(abilityTrigger), card._id):
+    if not checkCosts(card, "onGetAbility" + abilityTrigger + "Cost", card._id):
         return
-    storedQueue = phaseTriggers("{}Cost".format(abilityTrigger), card._id) + phaseTriggers("{}".format(abilityTrigger), card._id) + storedQueue
+#    storedQueue = phaseTriggers("onGetAbility" + abilityTrigger + "Cost", card._id) + [([card._id], "game", "activate1", 0, me._id, False, None)] + phaseTriggers("onAbility" + abilityTrigger, card._id) + storedQueue
+    storedQueue = phaseTriggers("onGetAbility" + abilityTrigger + "Cost", card._id) + phaseTriggers("onAbility" + abilityTrigger, card._id) + storedQueue
     setGlobalVariable("priority", str((getPlayers()[1]._id, False)))
     setGlobalVariable("cardqueue", str(storedQueue))
 
 def checkCosts(origCard, type, sourceId):  ## This function verifies if all costs can be met, but doesn't actually apply the costs
     mute()
     global storedCards
-    for c in storedCards:
+    cardList = [x for x in storedCards if cardActivity(Card(x)) in ["active", "active mission"] and type in scriptsDict.get(Card(x).model, [])]
+    if origCard in me.hand: #for play costs, the original card is still in hand
+        cardList += [origCard._id]
+    for c in cardList:
         card = Card(c)
-        if cardActivity(card) not in ["active", "active mission"]:
-            continue
         if type not in scriptsDict.get(card.model, []):
             continue
         for (actionType, params) in scriptsDict[card.model][type]:
+            if actionType == "costChange":
+                continue
             if card == origCard: ## if this is the original card
                 conditionCheck = checkConditions(card, params.get("condition", {}), None)
                 if conditionCheck[0] == False:
                     whisper("Cannot continue: {} does not have the required {}.".format(card, conditionCheck[1]))
                     return False
-            elif 'trigger' in params:
+            elif "trigger" in params:
                 conditionCheck = checkConditions(origCard, params.get("trigger", {}), None)
                 if conditionCheck[0] == False:
                     continue
-#                    whisper("Cannot continue: {} does not have the required {}.".format(origCard, conditionCheck[1]))
-#                    return False
             else:  ## skip if the card doesn't trigger
+                continue
+            if actionType == "confirm":
+                if not confirm("{}".format(params["message"])):
+                    return False
                 continue
             if actionType == "powerChange":
                 if params["player"] == "hero":
@@ -663,7 +676,7 @@ def checkCosts(origCard, type, sourceId):  ## This function verifies if all cost
                 continue
             if actionType == "statusChange":
                 targets = queueTargets(card._id, params, sourceId)
-                if len(targets) == 0:
+                if len(targets) < eval(params.get("count", "1")):
                     whisper("Cannot continue: there are no valid targets for {}.".format(card))
                     return False
                 continue
@@ -676,6 +689,30 @@ def checkCosts(origCard, type, sourceId):  ## This function verifies if all cost
                     whisper("Cannot continue: {} does not have enough cards in their hand.".format(player))
                     return False
     return True
+
+def passturn(group, x = 0, y = 0): 
+    mute()
+    #### Pass on skippable triggers in the queue
+    global storedQueue
+    if len(storedQueue) > 0: ## if the queue's not empty
+        resolveQueue(skip = True)
+        return
+    global storedPhase
+    if storedPhase == 6: ## mis.main
+        global storedPriority
+        if Player(storedPriority[0]) != me:
+            whisper("Cannot pass turn: You don't have priority.")
+            return
+        if len(storedQueue) > 0:
+            whisper("Cannot pass priority: There are abilities that need resolving.")
+            return
+        if storedPriority[1] == False:
+            notify("{} passes.".format(me))
+            setGlobalVariable("priority", str((getPlayers()[1]._id, True)))
+        else:
+            notify("{} passes, enters Mission Resolution.".format(me))
+            setGlobalVariable("priority", str((turnPlayer()._id, False)))
+            setGlobalVariable("phase", "7") ## mis.res
 
 def myPriority():
     global storedPriority
@@ -787,6 +824,14 @@ def hasGlyph(glyphList, requiredGlyphs):
         return False
     return True
 
+def getGlyphTarget(glyphId):
+    mute()
+    global storedCards
+    for c in storedCards:
+        if glyphId in storedCards[c].get("g", []):
+            return c
+    return None
+
 def getStats(card):
     mute()
     global storedCards
@@ -842,30 +887,6 @@ def getStats(card):
             baseSkills[baseSkill] += allSkillsValue
     return baseSkills
 
-def passturn(group, x = 0, y = 0): 
-    mute()
-    #### Pass on skippable triggers in the queue
-    global storedQueue
-    if len(storedQueue) > 0: ## if the queue's not empty
-        resolveQueue(skip = True)
-        return
-    global storedPhase
-    if storedPhase == 6: ## mis.main
-        global storedPriority
-        if Player(storedPriority[0]) != me:
-            whisper("Cannot pass turn: You don't have priority.")
-            return
-        if len(storedQueue) > 0:
-            whisper("Cannot pass priority: There are abilities that need resolving.")
-            return
-        if storedPriority[1] == False:
-            notify("{} passes.".format(me))
-            setGlobalVariable("priority", str((getPlayers()[1]._id, True)))
-        else:
-            notify("{} passes, enters Mission Resolution.".format(me))
-            setGlobalVariable("priority", str((turnPlayer()._id, False)))
-            setGlobalVariable("phase", "7") ## mis.res
-
 def queueTargets(qCard = None, params = None, qSource = None):
     mute()
     global storedQueue, storedCards
@@ -917,14 +938,14 @@ def phaseTriggers(triggerName, sourceId, skippable = False):
                 heroTriggers.append(c)
             else:
                 villainTriggers.append(c)
-    if len(villainTriggers) == 0 and heroTriggers == [sourceId]: ## Don't queue if the only trigger is the source
-        return triggerScripts(Card(sourceId), triggerName, sourceId)
+#    if len(villainTriggers) == 0 and heroTriggers == [sourceId]: ## Don't queue if the only trigger is the source
+#        return triggerScripts(Card(sourceId), triggerName, sourceId)
     if len(heroTriggers) > 0: ## attach hero triggers to queue
         newQueue += [(heroTriggers, "trig", triggerName, 0, turnPlayer()._id, skippable, sourceId)]
     if len(villainTriggers) > 0: ## attach villain triggers to queue
         newQueue += [(villainTriggers, "trig", triggerName, 0, turnPlayer(False)._id, skippable, sourceId)]
-    if len(newQueue) == 0: ## skip all this junk if there's no actual triggers
-        return []
+#    if len(newQueue) == 0: ## skip all this junk if there's no actual triggers
+#        return []
     return newQueue
 
 def hasTriggers(card, triggerName, sourceId):
@@ -938,8 +959,13 @@ def hasTriggers(card, triggerName, sourceId):
             if checkConditions(card, params.get("condition", {}), sourceId)[0]:
                 return True
         else: ## if the card is triggering off the source
-            if 'trigger' in params and checkConditions(Card(sourceId), params["trigger"], card._id)[0]:
-                return True
+            if "trigger" in params:
+                if params["trigger"] == "self":
+                    if card._id == sourceId:
+                        return True
+                else:
+                    if checkConditions(Card(sourceId), params["trigger"], card._id)[0]:
+                        return True
     return False
 
 def checkConditions(card, conditions, sourceId):
@@ -947,8 +973,6 @@ def checkConditions(card, conditions, sourceId):
     global storedCards, storedMission
     if card._id in storedCards and cardActivity(card) == "inactive":
         return (False, "Inactive")
-    if not eval(conditions.get("custom", 'True')):
-        return (False, "State")
     glyphCheck = conditions.get("glyph", [])
     if glyphCheck == "None":
         if len(storedCards[card._id].get("g", [])) > 0:
@@ -970,27 +994,22 @@ def checkConditions(card, conditions, sourceId):
     nameCheck = conditions.get("cardName", [])
     if nameCheck != [] and not card.Name in nameCheck:
         return (False, "Name")
+    if not eval(conditions.get("custom", 'True')):
+        return (False, "State")
     return (True, None)
 
 def triggerScripts(card, type, sourceId): ## note this function assumes that the card scripts exist, doesn't do any verifying
     mute()
     if not hasTriggers(card, type, sourceId):
         return []
-    cardScripts = scriptsDict[card.model][type]
-    global storedCards
+    ## Check to see if all costs are possible to pay
     queue = []
     scriptIndex = -1
-    for (actionType, params) in cardScripts:
+    for (actionType, params) in scriptsDict[card.model][type]:
         scriptIndex += 1
         ## Verify that the condition is met
         if checkConditions(card, params.get("condition", {}), sourceId)[0] == False:
             continue #### Skip this trigger if the condition wasn't met    
-        ## Acquire the targets for whatever action it may use
-#        targets = queueTargets(card._id, params, sourceId)
-#        targetCount = params.get("count", "None")
-#        ## add trigger to card queue
-#        if len(targets) == 0 or targetCount <= 0: ## Skip this loop if there are no legal targets to choose
-#            continue
         if params.get("player", "hero" if myTurn() else "enemy") == "hero":
             player = turnPlayer()._id
         else:
@@ -1004,13 +1023,14 @@ def resolveQueue(target = None, skip = False):
     tempQueue = eval(str(storedQueue))
     tempCards = eval(str(storedCards))
     tempPhase = eval(str(storedPhase))
+    tempGameStats = eval(str(storedGameStats))
     queueLoop = True
     while queueLoop == True:
         if len(storedQueue) == 0:
             queueLoop = "EMPTY"
             continue
         (qCard, qTrigger, qType, qCount, qPriority, qSkippable, qSource) = storedQueue[0] ## split apart the queue tuple
-        if qSource == None: ##
+        if qSource == None:
             sourceCard = Player(qPriority).name
         else:
             sourceCard = Card(qSource)
@@ -1027,7 +1047,7 @@ def resolveQueue(target = None, skip = False):
                 queueLoop = "BREAK"
             continue
         if qTrigger == "trig":  ## These hold cards which trigger on specific situations
-            qTargets = queueTargets() ## the list of valid targets for that trigger
+            qTargets = [c for c in qCard if c in storedCards or c == qSource] ## the list of valid targets for that trigger
             if len(qTargets) == 0: ## If there's no cards with triggers waiting to resolve
                 target = None
             elif len(qTargets) == 1: ## if there's only 1 target, automatically select it even if no target was passed
@@ -1046,7 +1066,11 @@ def resolveQueue(target = None, skip = False):
                 del storedQueue[0]
             else:
                 storedQueue[0] = (qTargets, qTrigger, qType, qCount + 1, qPriority, qSkippable, qSource)
-            storedQueue = triggerScripts(Card(target), qType, qSource) + storedQueue ## Add the new triggers to the queue
+            if not checkCosts(Card(target), qType + "Cost", qSource):
+                whisper("ERROR: costs cannot be paid") ##TODO: make proper whisper message
+                target = None
+                continue
+            storedQueue = phaseTriggers(qType + "Cost", qSource) + triggerScripts(Card(target), qType, qSource) + storedQueue ## Add the new triggers to the queue
             target = None
             continue
         elif qTrigger == "game":  ## Game engine scripts, non-card specific
@@ -1055,6 +1079,7 @@ def resolveQueue(target = None, skip = False):
         else: ## Card-specific triggers
             qAction, params = scriptsDict[Card(qCard).model][qType][int(qTrigger)] ## Get card script data for the queue trigger
             if checkConditions(Card(qCard), params.get("condition", {}), qSource)[0] == False: ##Skip this trigger if the condition wasn't met
+                whisper("ERROR #25")
                 break ####
             qTargets = queueTargets()  ## The list of valid targets for that trigger
         targetCount = params.get("count", "1")
@@ -1085,30 +1110,101 @@ def resolveQueue(target = None, skip = False):
             for c in [x for x in qCard]: # scan through the queue for cards no longer in play
                 if c in targets or c not in storedCards: ## remove the active targets as well
                     qCard.remove(c) ## remove the card from the queue
-        if qAction == "moveCard" or targetCount == "all" or ('target' in params and len(qTargets) == 0) or qCount + 1 >= eval(targetCount):
-            del storedQueue[0]
-        else:
-            storedQueue[0] = (qCard, qTrigger, qType, qCount + 1, qPriority, qSkippable, qSource)
         target = None  ## remove the active target so the engine doesn't re-target the same card again
         ## Announce that the triggers are resolving
         if qSource != None:
-            notify("{} is resolving {}'s {} ability.".format(me, Card(qSource), qType))
+            notify("{} is resolving {}'s {} ability.".format(me, Card(qSource), qType)) ##TODO: Needs to be source of the ability
+        ## Specialized actions with different queue interactions
+        if qAction == "moveCard":
+            del storedQueue[0]
+            targetCheck = params["target"]
+            fromGroup = eval(targetCheck["group"])
+            if fromGroup == me.Deck or fromGroup == me.piles["Mission Pile"]:  ## These piles are normally hidden, so permission to search is needed
+                if params.get("skippable", False): #when a choice is required
+                    if not confirm("Do you want to search your {} for a card?\n\nSource: {}".format(fromGroup.name, Card(qCard).name)):
+                        continue
+                fromGroup.setVisibility("me")
+                rnd(1,10)
+            skillCheck = targetCheck.get("hasSkill", None)
+            typeCheck = targetCheck.get("type", [])
+            loopCount = qCount
+            if 'index' in targetCheck:
+                groupList = [fromGroup[eval(targetCheck["index"])]]
+            elif 'top' in targetCheck:
+                groupList = list(fromGroup[:eval(targetCheck["top"])])
+            elif 'bottom' in targetCheck:
+                groupList = list(fromGroup[-eval(targetCheck["bottom"]):])
+            else:
+                groupList = fromGroup
+            toGroup = eval(params["to"][0])
+            toIndex = params["to"][1]
+            maxLoop = eval(params.get("count", "len([c for c in groupList])"))
+            targets = [c for c in groupList
+                if (typeCheck == [] or c.Type in typeCheck)
+                and (skillCheck == None or getStats(c)[skillCheck] != None)
+                ]
+            while loopCount < maxLoop:
+                if len(targets) == 0:
+                    break
+                choice = askCard(targets, "Choose {} card(s) to move from {} to {}".format(maxLoop - loopCount, fromGroup.name, toGroup.name))
+                if choice == None: ## If the player closes the window
+                    if params.get("skippable", False) == False: #when a choice is required
+                        continue
+                    else:
+                        break
+                targets.remove(choice)
+                bottom = False
+                if toIndex == "t/b": ## Choose between top or bottom
+                    tbChoice = 0
+                    while tbChoice == 0:
+                        tbChoice = askChoice("Put {} on top or bottom of {}?".format(choice.name, toGroup.name), ["Top", "Bottom"])
+                        if tbChoice == 1:
+                            choice.moveTo(toGroup, 0)
+                        elif tbChoice == 2:
+                            choice.moveTo(toGroup, -1)
+                            bottom = True
+                else:
+                    c.moveTo(toGroup, toIndex)
+                if fromGroup == me.hand and toGroup == me.Discard:
+                    notify("{} discards {} from hand.".format(me, c))
+                else:
+                    notify("{} moves {} to {}{} from {}.".format(me, c, "bottom of " if bottom else "", toGroup.name, fromGroup.name))
+                loopCount += 1
+            if me.Deck.visibility != "none":
+                me.Deck.setVisibility("none")
+            if me.piles["Mission Pile"].visibility != "none":
+                me.piles["Mission Pile"].setVisibility("none")
+        elif targetCount == "all" or ('target' in params and len(qTargets) == 0) or qCount + 1 >= eval(targetCount):
+            del storedQueue[0]
+        else:
+            storedQueue[0] = (qCard, qTrigger, qType, qCount + 1, qPriority, qSkippable, qSource)
+        if params.get("saveCount", False):
+            storedGameStats["sc"] = qCount + 1
         ## Apply trigger effects from the game engine
         if qAction == "phaseChange": ## This is a game trigger to switch phases once the queue empties
             storedPhase = phaseDict[storedPhase][1]
+        elif qAction == "delCount":
+            if "sc" in storedGameStats:
+                del storedGameStats["sc"]
+        elif qAction == "shuffleGroup":
+            shuffleGroup = eval(params["group"])
+            shuffleGroup.shuffle()
+            notify("{} shuffled their {}.".format(me, shuffleGroup.name))
         elif qAction == "playCard":
             for targetCard in targets:
                 #### Move the card to the correct location after playing it
                 card = Card(targetCard)
-                storedQueue = triggerScripts(card, "onPlay", qSource) + phaseTriggers("onPlay", targetCard) + storedQueue
                 if card.Type == "Event":
                     card.moveTo(card.owner.Discard)
+                    storedQueue = triggerScripts(card, "onPlay", targetCard) + phaseTriggers("onPlay", targetCard) + storedQueue
                 elif card.Type == "Obstacle":
                     card.moveToTable(0,0)
                     storedCards = storeNewCards(card, {"s": "a"}, storedCards)
+                    storedQueue = phaseTriggers("onPlay", targetCard) + storedQueue
                 else:
                     card.moveToTable(0,0)
                     storedCards = storeNewCards(card, {"s": "r"}, storedCards)
+                    storedQueue = phaseTriggers("onPlay", targetCard) + storedQueue
                 notify("{} plays {}.".format(me, card))
         elif qAction == "revive":
             for targetCard in targets:
@@ -1130,7 +1226,6 @@ def resolveQueue(target = None, skip = False):
                         del choiceMap[3]
                     else:
                         del choiceMap[2]
-                    notify("{}".format(choiceMap))
                 choiceList = sorted(choiceMap.values(), key=lambda x:x[1])
                 choiceResult = 0
                 while choiceResult == 0:
@@ -1150,10 +1245,8 @@ def resolveQueue(target = None, skip = False):
                     del storedCards[targetCard]
                     card.moveTo(card.owner.Discard)
                     scriptTrigger = "onDestroy"
-                qCount -= 1
                 if storedGameStats.get("nr", [False])[0]:
                     del storedGameStats["nr"]
-                    setGlobalVariable("gameStats", str(storedGameStats))
                 storedQueue = triggerScripts(card, scriptTrigger, None) + storedQueue
         elif qAction == "glyph":
             for targetCard in targets:
@@ -1165,52 +1258,15 @@ def resolveQueue(target = None, skip = False):
                 storedCards[qSource]["s"] = "g"  ## Sets the mission's status as an earned glyph
                 notify("{} earns the glyph ({}.)".format(Card(targetCard), Card(qSource)))
                 setGlobalVariable("activemission", "None")  ## Empties the active mission
-        elif qAction == "moveCard":
-            targetCheck = params["target"]
-            fromGroup = eval(targetCheck["group"])
-            if fromGroup == me.Deck:
-                if params.get("skippable", False): #when a choice is required
-                    if not confirm("Do you want to search your deck for a card?\n\nSource: {}".format(Card(qCard).name)):
+        elif qAction == "chooseMode":
+            choice = 0
+            while choice == 0:
+                choice = askChoice(params["message"], params["choices"])
+                if choice == 0:
+                    if params.get("skippable", False) == False:  # Mandatory choices must continue the loop until a choice is made
                         continue
-                me.Deck.setVisibility('me')
-                rnd(1,10)
-            skillCheck = targetCheck.get("hasSkill", None)
-            typeCheck = targetCheck.get("type", [])
-            loopCount = 0
-            choices = []
-            while qCount + loopCount < eval(params.get("count", "0")):
-                targets = [c for c in fromGroup
-                    if (typeCheck == [] or c.Type in typeCheck)
-                    and (skillCheck == None or getStats(c)[skillCheck] != None)
-                    ]
-                if len(targets) == 0:
-                    break
-                choice = askCard(targets)
-                if choice == None: ## If the player closes the window
-                    if params.get("skippable", False) == False: #when a choice is required
-                        continue
-                    else:
-                        break
-                choices.append(choice)
-                choice.moveTo(me.Team)
-                loopCount += 1
-            toGroup = eval(params["to"][0])
-            toIndex = params["to"][1]
-            doShuffle = False
-            if toIndex == "shuffle":
-                toIndex = 0
-                doShuffle = True            
-            for c in choices:
-                if fromGroup == me.hand and toGroup == me.Discard:
-                    notify("{} discards {} from hand.".format(me, choice))
-                else:
-                    notify("{} moves {} to {} from {}.".format(me, choice, toGroup.name, fromGroup.name))
-                c.moveTo(toGroup, toIndex)
-            if fromGroup == me.Deck or (toGroup == me.Deck and doShuffle == True): ## Shuffle the deck after looking at it
-                me.Deck.setVisibility('none')
-                rnd(1,10)
-                me.Deck.shuffle()
-                notify("{} shuffled their Deck.".format(me))
+                notify("{} chooses {}'s {} mode.".format(Player(qPriority), Card(qCard), params["choices"][choice - 1]))
+                storedQueue = triggerScripts(Card(qCard), qType + str(choice), qCard) + storedQueue ## Add the new triggers to the queue
         elif qAction == "ruleSet":
             rule = params["rule"]
             value = eval(params["value"])
@@ -1219,7 +1275,6 @@ def resolveQueue(target = None, skip = False):
                 storedGameStats[rule] = storedGameStats.get(rule, []) + [(value, qSource)]
             else:
                 storedGameStats[rule] = (value, qSource)
-            setGlobalVariable("gameStats", str(storedGameStats))
         elif qAction == "powerChange":
             if params["player"] == "hero":
                 player = turnPlayer()
@@ -1269,6 +1324,13 @@ def resolveQueue(target = None, skip = False):
                     if "b" in storedCards[targetCard]:
                         del storedCards[targetCard]["b"]
                     notify("{} readies {}'s {}.".format(sourceCard, Card(targetCard).owner, Card(targetCard)))
+                elif action == "glyph":
+                    glyphTarget = getGlyphTarget(targetCard)
+                    glyphList = storedCards[glyphTarget]["g"]
+                    glyphList.remove(targetCard)
+                    storedCards[glyphTarget]["g"] = glyphList
+                    newTargets = [c for c in storedCards if Card(c).Type in params["attachTarget"] and c != glyphTarget]
+                    storedQueue = [(newTargets, "game", "glyph", 0, qPriority, False, targetCard)] + storedQueue
                 elif action == "assign":
                     storedCards[targetCard]["s"] = "a"
                     notify("{} assigns {}'s {}.".format(sourceCard, Card(targetCard).owner, Card(targetCard)))
@@ -1328,6 +1390,8 @@ def resolveQueue(target = None, skip = False):
         setGlobalVariable("cardqueue", str(storedQueue))
     if storedPhase != tempPhase:
         setGlobalVariable("phase", str(storedPhase))
+    if storedGameStats != tempGameStats:
+        setGlobalVariable("gameStats", str(storedGameStats))
 
 
 def cleanTable(group, x = 0, y = 0):
@@ -1388,7 +1452,7 @@ def cleanup():
                     card.isFaceUp = False
                 if status != "c" and card.isFaceUp == False: ## fix face-down cards that are supposed to be face-up
                     card.isFaceUp = True
-                if status in ["i", "g"] or "b" in storedCards[c]:  ## rotate all cards that are blocked, incapacitated, or glyphs
+                if status == "i" or "b" in storedCards[c]:  ## rotate all cards that are blocked or incapacitated
                     if card.orientation != Rot90:
                         card.orientation = Rot90
                 else:
@@ -1402,7 +1466,7 @@ def cleanup():
                 continue                
             #### Prep Failed Missions
             if status == "f" and card.Type == "Mission":
-                xpos = (-79 if invert else -101) - 20 * failcount
+                xpos = (-109 if invert else -101) - 20 * failcount
                 ypos = (-145 - 10 * failcount) if invert else (60 + 10 * failcount)
                 failcount += 1
                 if card.controller == me: 
@@ -1471,8 +1535,8 @@ def cleanup():
                     expwin += int(glyph.experience)
                     glyphwin += 1
                     if glyph.controller == me:
-                        if glyph.position != (invertxpos if invert else xpos, ypos):
-                            glyph.moveToTable(invertxpos if invert else xpos, ypos)
+                        if glyph.position != (invertxpos - 25 if invert else xpos, ypos + 25):
+                            glyph.moveToTable(invertxpos - 25 if invert else xpos, ypos + 25)
                             glyph.sendToBack()
                     invertxpos -= 14
                     xpos += 14
@@ -1494,10 +1558,16 @@ def cleanup():
         #### Align inactive cards
         else:
             if card.controller == me:
-                if card.position != (-197, -44):
-                    card.moveToTable(-197, -44)
-                if card.orientation != Rot0:
-                    card.orientation = Rot0
+                if card.size() == "mission":
+                    if card.position != (-197, -20):
+                        card.moveToTable(-197, -20)
+                    if card.orientation != Rot90:
+                        card.orientation = Rot90
+                else:
+                    if card.position != (-197, -44):
+                        card.moveToTable(-197, -44)
+                    if card.orientation != Rot0:
+                        card.orientation = Rot0
                 #### Remove all markers from inactive cards
                 for marker in card.markers:
                     if card.markers[marker] > 0:
@@ -1505,10 +1575,10 @@ def cleanup():
     #### Align the active mission
     if storedMission != None:
         if myTurn():
-            if mission.position != (-81 if invert else -105, -45 if invert else -44):
-                mission.moveToTable(-81 if invert else -105, -45 if invert else -44)
-            if mission.orientation != Rot90:
-                mission.orientation = Rot90
+            if mission.position != (-106, -45 if invert else -31):
+                mission.moveToTable(-106, -45 if invert else -31)
+            if mission.orientation != 0:
+                mission.orientation = 0
             missionDiff += value
             mission.markers[markerTypes["skill"]] = missionSkill
             mission.markers[markerTypes["diff"]] = missionDiff
