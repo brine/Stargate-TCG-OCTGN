@@ -1876,7 +1876,6 @@ def createDecks():
         me.piles['Mission Pile'].create(guid, qty)
         if guid not in scriptsDict:
             scriptCards.append(name)
-    notify("{}: {}".format(me, scriptCards))
     if me.hasInvertedTable():
         registerTeam(me, None)
         remoteCall(players[1], "registerTeam", [players[1], None])

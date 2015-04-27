@@ -82,18 +82,59 @@ def registerTeam(player, groups, deleteDeck = False):
         whisper("cannot load deck -- you have already loaded a deck.")
         deleteDeck = True
     #### Verify deck contents
-    elif len(me.Team) != 4:
-        whisper("cannot load deck -- it does not have 4 team characters.")
-        deleteDeck = True
-    elif len(me.piles["Mission Pile"]) != 12:
-        whisper("cannot load deck -- it does not have 12 missions.")
-        deleteDeck = True
+    else:
+        whisper("~~~VALIDATING DECKS~~~")
+        if len(me.Team) != 4:
+            whisper("Team Error: You need exactly 4 Team Characters. ({} of 4)".format(len(me.Team)))
+            deleteDeck = True
+        deckCount = {}
+        for c in me.Team:
+            deckCount[c.Name] = deckCount.get(c.Name, 0) + 1
+        for x in deckCount:
+            if deckCount[x] > 1:
+                whisper("Team Error: You can only have one {} in your Team. ({} of 1)".format(x, deckCount[x]))
+                deleteDeck = True
+        heroCount = sum(1 for c in me.Deck if c.Type in heroTypes)
+        if heroCount < 20:
+            whisper("Deck Error: You need at least 20 Hero cards in your deck. ({} of 20)".format(heroCount))
+            deleteDeck = True
+        villainCount = sum(1 for c in me.Deck if c.Type in villainTypes)
+        if villainCount < 20:
+            whisper("Deck Error: You need at least 20 Villain cards in your deck. ({} of 20)".format(villainCount))
+            deleteDeck = True
+        for c in me.Deck:
+            deckCount[c.Name] = deckCount.get(c.Name, 0) + 1
+        for x in deckCount:
+            if deckCount[x] > 3:
+                whisper("Deck Error: You can have at most 3 {} in your Deck. ({} of 3)".format(x, deckCount[x]))
+                deleteDeck = True
+        if len(me.piles["Mission Pile"]) != 12:
+            whisper("Mission Pile Error: You need exactly 12 Missions. ({} of 12)".format(len(me.piles["Mission Pile"])))
+            deleteDeck = True
+        deckCount = {}
+        for c in me.piles["Mission Pile"]:
+            deckCount[c.Name] = deckCount.get(c.Name, 0) + 1
+        for x in deckCount:
+            if deckCount[x] > 1:
+                whisper("Mission Error: You can only have one {} in your Mission Pile. ({} of 1)".format(x, deckCount[x]))
+                deleteDeck = True
+        deckCount = {}
+        for c in me.piles["Mission Pile"]:
+            for stat in ["Culture", "Science", "Ingenuity", "Combat"]:
+                if c.properties[stat] != "":
+                    deckCount[stat] = deckCount.get(stat, 0) + 1
+        for x in deckCount:
+            if deckCount[x] != 3:
+                whisper("Mission Error: You need exactly 3 {} missions in your Mission Pile. ({} of 3)".format(x, deckCount[x]))
+                deleteDeck = True
+
     if deleteDeck == True:
         for group in [me.Deck, me.piles["Mission Pile"], me.Team]:
             for c in group:
                 if c._id not in safeCards:
                     c.delete()
         return
+    whisper("~~~DECKS ARE LEGAL~~~")
     #### Store the loaded card IDs
     me.setGlobalVariable("loadedCards", str([x._id for x in me.piles["Mission Pile"]] + [x._id for x in me.Deck] + [x._id for x in me.Team]))
     #### Add team to storedCards dict
