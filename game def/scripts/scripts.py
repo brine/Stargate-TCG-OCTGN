@@ -18,21 +18,23 @@ markerTypes = {
     }
 
 phaseDict = {
-    0: ['pre.1reg', 1],
-    1: ['pre.2reg', 2],
-    2: ['pre.1mul', 3],
-    3: ['pre.2mul', 4],
-    4: ['pow.main', 5],
-    5: ['mis.start', 6],
-    6: ['mis.main', 7],
-    7: ['mis.res', 8],
-    8: ['mis.sucfail', 9],
-    9: ['mis.adv', 10],
-    10: ['mis.gly', 11],
-    11: ['mis.end', 12],
-    12: ['deb.start', 13],
-    13: ['deb.ref', 14],
-    14: ['deb.end', 0]
+    0: ['pre.1load', 1],
+    1: ['pre.2load', 2],
+    2: ['pre.reg', 3],
+    3: ['pre.vic', 4],
+    4: ['pre.1mul', 5],
+    5: ['pre.2mul', 6],
+    6: ['pow.main', 7],
+    7: ['mis.start', 8],
+    8: ['mis.main', 9],
+    9: ['mis.res', 10],
+    10: ['mis.sucfail', 11],
+    11: ['mis.adv', 12],
+    12: ['mis.gly', 13],
+    13: ['mis.end', 14],
+    14: ['deb.start', 15],
+    15: ['deb.ref', 16],
+    16: ['deb.end', 0]
     }
 
 skillDict = {1: "Culture", 2: "Science", 3: "Combat", 4: "Ingenuity", 5: "all", 6: "Difficulty", "Culture": 1, "Science": 2, "Combat": 3, "Ingenuity": 4, "all": 5, "Difficulty": 6}
@@ -1846,6 +1848,9 @@ scriptsDict = {
 
 def createDecks():
     mute()
+    me.setGlobalVariable("loadedCards", "[]")
+    if not getSetting("debugMode", False):
+        return
     scriptCards = []
     rand = rnd(0,3)
     if rand == 1:

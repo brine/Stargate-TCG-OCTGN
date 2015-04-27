@@ -12,6 +12,8 @@ from System.Drawing import Point, Color, Font, FontStyle
 from System.Windows.Forms import *
 
 def printGUID(card, x = 0, y = 0, txt = ""):
+    if not getSetting("debugMode", False):
+        return
     if card.model in scriptsDict:
         txt = " (Scripted)"
     whisper("{}~{}{}".format(card, card.model, txt))
@@ -36,6 +38,9 @@ def moveCardsEvent(player, cards, fromGroups, toGroups, oldIndexs, indexs, oldX,
 
 
 def resetVars(group, x = 0, y = 0):
+    mute()
+    if not getSetting("debugMode", False):
+        return
     for p in getPlayers():
         remoteCall(p, 'reloadLocalVars', [p])
 
@@ -61,76 +66,46 @@ def reloadLocalVars(player):
             storedVictory = 0
         storedOppVictory = int(me.getGlobalVariable("victory"))
         
-def registerTeam(player, groups):
+def registerTeam(player, groups, deleteDeck = False):
     mute()
     reloadLocalVars(me)
     global storedCards, storedPhase, storedVictory, storedOppVictory, storedQueue
     if player != me:  #only execute this event if its your own deck
         return
+    safeCards = eval(me.getGlobalVariable("loadedCards"))
     #### The game only works with 2 players, so anyone else loading a deck will have their cards deleted
     if storedPhase not in [0, 1]: ## pre.1reg or pre.2reg
         whisper("cannot load deck -- there are already 2 players registered.")
-        for group in [me.Deck, me.piles["Mission Pile"], me.Team]:
-            for c in group:
-                c.delete()
-        return
+        deleteDeck = True
+    #### Delete loaded deck if a deck has already been loaded
+    elif len(safeCards) != 0:
+        whisper("cannot load deck -- you have already loaded a deck.")
+        deleteDeck = True
     #### Verify deck contents
-    if len(me.Team) != 4:
+    elif len(me.Team) != 4:
         whisper("cannot load deck -- it does not have 4 team characters.")
-        for group in [me.Deck, me.piles["Mission Pile"], me.Team]:
-            for c in group:
-                c.delete()
-        return
-    if len(me.piles["Mission Pile"]) != 12:
+        deleteDeck = True
+    elif len(me.piles["Mission Pile"]) != 12:
         whisper("cannot load deck -- it does not have 12 missions.")
+        deleteDeck = True
+    if deleteDeck == True:
         for group in [me.Deck, me.piles["Mission Pile"], me.Team]:
             for c in group:
-                c.delete()
+                if c._id not in safeCards:
+                    c.delete()
         return
-    #### Store victory points
-    victory = 0
+    #### Store the loaded card IDs
+    me.setGlobalVariable("loadedCards", str([x._id for x in me.piles["Mission Pile"]] + [x._id for x in me.Deck] + [x._id for x in me.Team]))
+    #### Add team to storedCards dict
     for card in me.Team:
-        card.moveToTable(0,0)
         storedCards = storeNewCards(card, {"s":"r"}, storedCards)
-        victory += int(card.Cost)  #add the card's cost to the victory total
-    me.setGlobalVariable("victory", str(victory)) #Stores your opponent's victory total
-    storedVictory = int(getPlayers()[1].getGlobalVariable("victory"))
-    storedOppVictory = int(me.getGlobalVariable("victory"))
-    notify("{} registers their Team ({} points).".format(me, victory))
+    setGlobalVariable("cards", str(storedCards))
     me.Deck.shuffle()
     me.piles["Mission Pile"].shuffle()
-    setGlobalVariable("cards", str(storedCards))
-    #### Determine who goes first
-    if storedPhase == 0: ## pre.1reg 
-        setGlobalVariable("phase", "1") 
-    #### After the second player registers their deck, the starting player can be determined
-    elif storedPhase == 1: ## pre.2reg
-        opponent = getPlayers()[1]
-        if storedVictory > storedOppVictory:
-            startingPlayer = me
-            notify("{} will play first.".format(me))
-        elif storedVictory < storedOppVictory:
-            startingPlayer = opponent
-            notify("{} will play first.".format(startingPlayer))
-        elif storedVictory == storedOppVictory:  ##randomly determine in the event of a tie
-            if rnd(1,2) == 1:
-                startingPlayer = me
-                notify("{} will play first, chosen randomly.".format(me))
-            else:
-                startingPlayer = opponent
-                notify("{} will play first, chosen randomly.".format(opponent))
-        if startingPlayer == me:
-            setGlobalVariable("turnplayer", str(me._id))
-            stopPlayer = opponent
-        else:
-            setGlobalVariable("turnplayer", str(startingPlayer._id))
-            stopPlayer = me
-        notify("{} will choose a team character to Stop.".format(stopPlayer))
-        oppTeam = [c for c in storedCards if "Team Character" in Card(c).Type and not Card(c).controller == stopPlayer]
-        setGlobalVariable("cardqueue", str([(oppTeam, "game", "stopCard", 0, stopPlayer._id, False, None), ([], "game", "nextPhase", 0, startingPlayer._id, False, None)]))
-    else:
-        notify("An error has occured: phase variable should be pre.1reg or pre.2reg")
-        return
+    if storedPhase == 0: ##pre.1load
+        setGlobalVariable("phase", "1")
+    elif storedPhase == 1: ##pre.2load
+        setGlobalVariable("phase", "2")
 
 def playerGlobalVarChanged(player, varName, oldValue, newValue):
     mute()
@@ -153,7 +128,8 @@ def globalVarChanged(varName, oldValue, newValue):
         storedTurnPlayer = int(newValue)
     elif varName == "cards":
         storedCards = eval(newValue)
-        cleanup()
+        if storedPhase > 3:
+            cleanup()
     elif varName == "activemission":
         storedMission = eval(newValue)
     elif varName == "gameStats":
@@ -169,8 +145,46 @@ def globalVarChanged(varName, oldValue, newValue):
     #### Phase Changes
     elif varName == "phase":
         storedPhase = eval(newValue)
+        #### Register Team
+        if storedPhase == 2: ## pre.reg
+            victory = 0
+            for card in me.Team:
+                card.moveToTable(0,0)
+                victory += int(card.Cost)  #add the card's cost to the victory total
+            me.setGlobalVariable("victory", str(victory)) #Stores your opponent's victory total
+            notify("{} registers their Team ({} points).".format(me, victory))
+            if Player(1) == me:
+                setGlobalVariable("phase", "3") ## pre.vic
+            return
+        if storedPhase == 3: ## pre.vic
+            #### Determine who goes first
+            if Player(1) == me:
+                opponent = getPlayers()[1]
+                if storedVictory > storedOppVictory:
+                    startingPlayer = me
+                    notify("{} will play first.".format(me))
+                elif storedVictory < storedOppVictory:
+                    startingPlayer = opponent
+                    notify("{} will play first.".format(startingPlayer))
+                elif storedVictory == storedOppVictory:  ##randomly determine in the event of a tie
+                    if rnd(1,2) == 1:
+                        startingPlayer = me
+                        notify("{} will play first, chosen randomly.".format(me))
+                    else:
+                        startingPlayer = opponent
+                        notify("{} will play first, chosen randomly.".format(opponent))
+                if startingPlayer == me:
+                    setGlobalVariable("turnplayer", str(me._id))
+                    stopPlayer = opponent
+                else:
+                    setGlobalVariable("turnplayer", str(startingPlayer._id))
+                    stopPlayer = me
+                notify("{} will choose a team character to Stop.".format(stopPlayer))
+                oppTeam = [c for c in storedCards if "Team Character" in Card(c).Type and not Card(c).controller == stopPlayer]
+                setGlobalVariable("cardqueue", str([(oppTeam, "game", "stopCard", 0, stopPlayer._id, False, None), ([], "game", "nextPhase", 0, startingPlayer._id, False, None)]))
+            return
         #### First Player Mulligan
-        if storedPhase == 2: ## "pre.1mul
+        if storedPhase == 4: ## "pre.1mul
             fillHand(8)
             if myTurn():
                 if confirm("Do you want to draw a new hand?"):
@@ -183,10 +197,10 @@ def globalVarChanged(varName, oldValue, newValue):
                     notify("{} draws a new hand.".format(me))
                 else:
                     notify("{} keeps their hand.".format(me))
-                setGlobalVariable("phase", "3") ## pre.2mul
+                setGlobalVariable("phase", "5") ## pre.2mul
             return
         #### Second Player Mulligan
-        if storedPhase == 3: ## pre.2mul
+        if storedPhase == 5: ## pre.2mul
             if not myTurn():
                 if confirm("Do you want to draw a new hand?"):
                     for c in me.hand:
@@ -201,10 +215,10 @@ def globalVarChanged(varName, oldValue, newValue):
                 turnPlayer().setActivePlayer()
                 cleanup()
                 notify(" ~~ {}'s Power Phase ~~ ".format(turnPlayer()))
-                setGlobalVariable("phase", "4") ## pow.main
+                setGlobalVariable("phase", "6") ## pow.main
             return
         #### Entering Power Phase
-        if storedPhase == 4: ## pow.main
+        if storedPhase == 6: ## pow.main
             power = 3 + len([c for c in storedCards if cardActivity(Card(c)) == "glyph"])
             me.Power = power
             notify("{} gained {} power.".format(me, power))
@@ -212,13 +226,13 @@ def globalVarChanged(varName, oldValue, newValue):
             if myTurn():
                 triggerQueue = phaseTriggers("onPowerEnd", None)
                 if len(triggerQueue) == 0:
-                    setGlobalVariable("phase", "5") ## mis.start
+                    setGlobalVariable("phase", "7") ## mis.start
                 else:
                     storedQueue = triggerQueue + [nextPhaseQueue()] + storedQueue
                     setGlobalVariable("cardqueue", str(storedQueue))
             return
         #### Setting up a new Mission
-        if storedPhase == 5: ## mis.start
+        if storedPhase == 7: ## mis.start
             if myTurn():
                 notify(" ~~ {}'s Mission Phase ~~ ".format(me))
                 if storedMission != None:
@@ -256,7 +270,7 @@ def globalVarChanged(varName, oldValue, newValue):
                 setGlobalVariable("priority", str((turnPlayer()._id, False)))
             return
         #### Resolving the current mission
-        if storedPhase == 7: ## mis.res
+        if storedPhase == 9: ## mis.res
             if myTurn():
                 if storedMission == None:
                     notify("ERROR: There is no registered active mission!")
@@ -272,9 +286,9 @@ def globalVarChanged(varName, oldValue, newValue):
                     missionOutcome = "failure"
                 notify("{} was a {}!".format(mission, missionOutcome))
                 setGlobalVariable("activemission", str((mission._id, type, missionOutcome[0])))
-                setGlobalVariable("phase", "8") ## mis.sucfail
+                setGlobalVariable("phase", "10") ## mis.sucfail
             return
-        if storedPhase == 8: ## mis.sucfail
+        if storedPhase == 10: ## mis.sucfail
             if myTurn():
                 if storedMission == None:
                     notify("ERROR: There is no registered active mission!")
@@ -299,7 +313,7 @@ def globalVarChanged(varName, oldValue, newValue):
                 if len(villainTriggers) > 0: ## attach villain triggers to queue
                     newQueue += [(villainTriggers, "trig", "on" + status, 0, turnPlayer(False)._id, False, None)]
                 if len(newQueue) == 0: ## skip all this junk if there's no actual triggers
-                    setGlobalVariable("phase", "9") ## mis.adv
+                    setGlobalVariable("phase", "11") ## mis.adv
                 else:
                     if len(heroTriggers) > 0:
                         notify("{} has {} triggers to resolve.".format(me, status))
@@ -308,7 +322,7 @@ def globalVarChanged(varName, oldValue, newValue):
                     storedQueue = newQueue + [nextPhaseQueue()] + storedQueue
                     setGlobalVariable("cardqueue", str(storedQueue))
             return
-        if storedPhase == 9: ## mis.adv
+        if storedPhase == 11: ## mis.adv
             if myTurn():
                 if storedMission == None:
                     notify("ERROR: There is no registered active mission!")
@@ -327,13 +341,13 @@ def globalVarChanged(varName, oldValue, newValue):
                 setGlobalVariable("cards", str(storedCards))
                 if len(triggers) == 0:
                     ## skip all this junk
-                    setGlobalVariable("phase", "10") ## mis.gly
+                    setGlobalVariable("phase", "12") ## mis.gly
                 else:
                     notify("{} has adversaries to revive.".format(turnPlayer(False)))
                     storedQueue = [(triggers, "game", "revive", 0, turnPlayer(False)._id, False, None)] + [nextPhaseQueue()] + storedQueue
                     setGlobalVariable("cardqueue", str(storedQueue))
             return
-        if storedPhase == 10: ## mis.gly
+        if storedPhase == 12: ## mis.gly
             #### Destroy all complications and obstacles
             if not myTurn():
                 heroEndTriggers = []
@@ -385,11 +399,11 @@ def globalVarChanged(varName, oldValue, newValue):
                     newQueue += [(villainEndTriggers, "trig", "onMissionEnd", 0, turnPlayer(False)._id, False, None)]
                 #### if the mission was successful we need to add the glyph-granting card queue
                 if len(newQueue) == 0:
-                    setGlobalVariable("phase", "11") ## mis.end
+                    setGlobalVariable("phase", "13") ## mis.end
                 else:
                     setGlobalVariable("cardqueue", str(newQueue + [nextPhaseQueue()] + storedQueue))
             return
-        if storedPhase == 11: ## mis.end
+        if storedPhase == 13: ## mis.end
             if myTurn():
                 setGlobalVariable("activemission", "None")
                 failCount = len(storedGameStats["fm"]) ##count the number of failed missions so far
@@ -414,16 +428,16 @@ def globalVarChanged(varName, oldValue, newValue):
                     me.Power -= failCount
                     turnPlayer(False).Power += failCount
                     setGlobalVariable("cards", str(storedCards))
-                    setGlobalVariable("phase", "5") ## mis.start
+                    setGlobalVariable("phase", "7") ## mis.start
                 else: ## Skip to Debrief Phase
                     notify(" ~~ {}'s Debrief Phase ~~ ".format(me))
                     newQueue = phaseTriggers("onDebrief", None)
                     if len(newQueue) == 0:
-                        setGlobalVariable("phase", "12") ## deb.start
+                        setGlobalVariable("phase", "14") ## deb.start
                     else:
                         setGlobalVariable("cardqueue", str(newQueue + [nextPhaseQueue()] + storedQueue))
             return
-        if storedPhase == 12: ## deb.start
+        if storedPhase == 14: ## deb.start
             if myTurn():
                 ## Clear the successful and failed missions
                 failedMissions = storedGameStats["fm"]
@@ -448,9 +462,9 @@ def globalVarChanged(varName, oldValue, newValue):
                     notify("{} has failed missions to return to their mission pile.".format(me))
                     setGlobalVariable("cardqueue", str([(failedMissions, "game", "failMiss", -len(failedMissions), turnPlayer()._id, False, None)] + [nextPhaseQueue()] + storedQueue))
                 else:
-                    setGlobalVariable("phase", "13") ## deb.ref
+                    setGlobalVariable("phase", "15") ## deb.ref
             return
-        if storedPhase == 13: ## deb.ref
+        if storedPhase == 15: ## deb.ref
             if myTurn():
                 newQueue = []
                 handSize = len(me.hand)
@@ -463,12 +477,12 @@ def globalVarChanged(varName, oldValue, newValue):
                         newQueue += [([], "game", "drawTo8", 0, player._id, False, None)]
 #                        notify("{} refilled hand to 8, drawing {} cards.".format(me, count))
                 if len(newQueue) == 0: ## jump to end of debrief step
-                    setGlobalVariable("phase", "14") ## deb.end
+                    setGlobalVariable("phase", "16") ## deb.end
                 else:
                     storedQueue = newQueue + [nextPhaseQueue()] + storedQueue
                     setGlobalVariable("cardqueue", str(storedQueue))
             return
-        if storedPhase == 14: ## deb.end
+        if storedPhase == 16: ## deb.end
             if myTurn():
                 notify("{}'s turn ends.".format(me))
                 nextPlayer = turnPlayer(False)
@@ -476,7 +490,7 @@ def globalVarChanged(varName, oldValue, newValue):
                 setGlobalVariable("turnplayer", str(nextPlayer._id))
                 cleanup()
                 notify(" ~~ {}'s Power Phase ~~ ".format(nextPlayer))
-                setGlobalVariable("phase", "4") ## pow.main
+                setGlobalVariable("phase", "6") ## pow.main
 
 def doubleClick(card, mouseButton, keysDown):
     mute()
@@ -497,7 +511,7 @@ def doubleClick(card, mouseButton, keysDown):
         whisper("Cannot perform action on {}: You don't have priority.".format(card))
         return
     #### general assigning character to the mission
-    if phase == 6: ## mis.main
+    if phase == 8: ## mis.main
         if card.Type not in ["Adversary", "Team Character", "Support Character"]:
             whisper("Cannot assign {}: It is not an assignable card type.".format(card))
             return
@@ -535,7 +549,7 @@ def doubleClick(card, mouseButton, keysDown):
 def playcard(card, x = 0, y = 0):
     mute()
     global storedPhase
-    if storedPhase != 6: ## mis.main
+    if storedPhase != 8: ## mis.main
         return
     if not myPriority():
         whisper("Cannot choose {}: You don't have priority.".format(card))
@@ -611,7 +625,7 @@ def activateAbility(card, x = 0, y = 0):
         whisper("Cannot activate {}'s ability: You don't have priority.".format(card))
         return
     global storedPhase
-    if storedPhase != 6: ## mis.main
+    if storedPhase != 8: ## mis.main
         whisper("Cannot activate {}'s ability at this time.".format(card))
         return
     if cardActivity(card) == "inactive":
@@ -698,7 +712,7 @@ def passturn(group, x = 0, y = 0):
         resolveQueue(skip = True)
         return
     global storedPhase
-    if storedPhase == 6: ## mis.main
+    if storedPhase == 8: ## mis.main
         global storedPriority
         if Player(storedPriority[0]) != me:
             whisper("Cannot pass turn: You don't have priority.")
@@ -712,7 +726,7 @@ def passturn(group, x = 0, y = 0):
         else:
             notify("{} passes, enters Mission Resolution.".format(me))
             setGlobalVariable("priority", str((turnPlayer()._id, False)))
-            setGlobalVariable("phase", "7") ## mis.res
+            setGlobalVariable("phase", "9") ## mis.res
 
 def myPriority():
     global storedPriority
@@ -1588,7 +1602,7 @@ def cleanup():
     for villain in me.piles["Villain Score Pile"]:
         villwin += int(villain.cost)
     me.counters["Villain Win"].value = villwin
-    if storedPhase > 3:
+    if storedPhase > 5:
         if glyphwin >= 7:
             notify("{} has won through Glyph Victory (7 glyphs.)".format(me))
         if expwin >= storedVictory:
@@ -1603,7 +1617,7 @@ def playComplication(card, x = 0, y = 0):
         return
     global storedPhase
     phase = storedPhase
-    if phase != 6: ## mis.main
+    if phase != 8: ## mis.main
         whisper("Cannot play {}: It's not the main mission phase.".format(card))
         return
     if not myPriority():
@@ -1640,8 +1654,44 @@ def remoteMove(card, pile, bottom = False):
     else:
         card.moveTo(card.owner.piles[pile])
 
+def checkScripts(card, actionType):
+    mute()
+    if card.name in scriptsDict:
+        cardScripts = scriptsDict[card.name]
+        if actionType in cardScripts:
+            script = cardScripts[actionType]
+            
+    return None
+
+
+#---------------------------------------------------------------------------
+# Table group actions
+#---------------------------------------------------------------------------
+
+def endquest(group, x = 0, y = 0):
+    mute()
+
+def endturn(group, x = 0, y = 0):
+    mute()
+
+def debugToggle(group, x = 0, y = 0):
+    mute()
+    debug = getSetting("debugMode", False)
+    if debug == False:
+        notify("{} enables Debug Mode.".format(me))
+        setSetting("debugMode", True)
+    else:
+        notify("{} disables Debug Mode.".format(me))
+        setSetting("debugMode", False)
+
+#---------------------------------------------------------------------------
+# Table card actions
+#---------------------------------------------------------------------------
+
 def assign(card, x = 0, y = 0):
     mute()
+    if not getSetting("debugMode", False):
+        return
     if cardActivity(card) == "inactive":
         whisper("You cannot play {} during your {}turn.".format(card, "" if myTurn() else "opponent's "))
         return
@@ -1650,7 +1700,7 @@ def assign(card, x = 0, y = 0):
         return
     global storedPhase
     phase = storedPhase
-    if phase != 6: ## mis.main
+    if phase != 8: ## mis.main
         whisper("Cannot assign {}: It's not the main mission phase.".format(card))
         return
     if not myPriority():
@@ -1679,70 +1729,10 @@ def assign(card, x = 0, y = 0):
     else:
         notify("ERROR: {} not in cards global dictionary.".format(card))
 
-def checkScripts(card, actionType):
-    mute()
-    if card.name in scriptsDict:
-        cardScripts = scriptsDict[card.name]
-        if actionType in cardScripts:
-            script = cardScripts[actionType]
-            
-    return None
-
-
-#---------------------------------------------------------------------------
-# Table group actions
-#---------------------------------------------------------------------------
-
-def endquest(group, x = 0, y = 0):
-    mute()
-    myCards = (card for card in table
-        if card.controller == me)
-    for card in myCards:
-        card.highlight = None
-        card.markers[markerTypes["block"]] = 0
-    notify("{} is ending the quest.".format(me))
-
-def endturn(group, x = 0, y = 0):
-    mute()
-    myCards = (card for card in table
-        if card.controller == me)
-    for card in myCards:
-        card.markers[markerTypes["stop"]] = 0
-        card.markers[markerTypes["block"]] = 0
-        card.highlight = None
-        if card.orientation == rot180:
-          card.orientation = rot90
-          card.markers[markerTypes["stop"]] = 1
-        else:
-          card.orientation = rot0
-    notify("{} ends their turn.".format(me))
-
-def clearAll(group, x = 0, y = 0):
-    notify("{} clears all targets and combat.".format(me))
-    for card in group:
-      card.target(False)
-      if card.controller == me and card.highlight in [AttackColor, BlockColor]:
-          card.highlight = None
-
-def roll20(group, x = 0, y = 0):
-    mute()
-    n = rnd(1, 20)
-    notify("{} rolls {} on a 20-sided die.".format(me, n))
-
-def flipCoin(group, x = 0, y = 0):
-    mute()
-    n = rnd(1, 2)
-    if n == 1:
-        notify("{} flips heads.".format(me))
-    else:
-        notify("{} flips tails.".format(me))
-
-#---------------------------------------------------------------------------
-# Table card actions
-#---------------------------------------------------------------------------
-
 def ready(card, x = 0, y = 0):
     mute()
+    if not getSetting("debugMode", False):
+        return
     global storedCards
     storedCards[card._id]["s"] = "r"
     if "b" in storedCards[card._id]:
@@ -1752,6 +1742,8 @@ def ready(card, x = 0, y = 0):
 
 def block(card, x = 0, y = 0):
     mute()
+    if not getSetting("debugMode", False):
+        return
     global storedCards
     storedCards[card._id]["b"] = [None]
     setGlobalVariable("cards", str(storedCards))
@@ -1759,6 +1751,8 @@ def block(card, x = 0, y = 0):
 
 def stop(card, x = 0, y = 0):
     mute()
+    if not getSetting("debugMode", False):
+        return
     global storedCards
     storedCards[card._id]["s"] = "s"
     setGlobalVariable("cards", str(storedCards))
@@ -1766,6 +1760,8 @@ def stop(card, x = 0, y = 0):
 
 def incapacitate(card, x = 0, y = 0):
     mute()
+    if not getSetting("debugMode", False):
+        return
     global storedCards
     storedCards[card._id]["s"] = "i"
     setGlobalVariable("cards", str(storedCards))
@@ -1773,6 +1769,8 @@ def incapacitate(card, x = 0, y = 0):
 
 def destroy(card, x = 0, y = 0):
     mute()
+    if not getSetting("debugMode", False):
+        return
     global storedCards
     if card._id in storedCards:
         del storedCards[card._id]
@@ -1786,6 +1784,8 @@ def destroy(card, x = 0, y = 0):
 
 def flip(card, x = 0, y = 0):
     mute()
+    if not getSetting("debugMode", False):
+        return
     if card.isFaceUp:
         notify("{} flips {} face down.".format(me, card))
         card.isFaceUp = False
@@ -1793,37 +1793,30 @@ def flip(card, x = 0, y = 0):
         card.isFaceUp = True
         notify("{} morphs {} face up.".format(me, card))
 
-def addMarker(card, x = 0, y = 0):
-    mute()
-    notify("{} adds a counter to {}.".format(me, card))
-    card.markers[markerTypes["counter"]] += 1
-
-def removeMarker(card, x = 0, y = 0):
-    mute()
-    addmarker = markerTypes["counter"]
-    if addmarker in card.markers:
-      card.markers[addmarker] -= 1
-      markername = addmarker[0]
-      notify("{} removes a counter from {}".format(me, card))
-
 #---------------------------------------------------------------------------
 # Group Actions
 #---------------------------------------------------------------------------
 
 def randomDiscard(group, x = 0, y = 0):
     mute()
+    if not getSetting("debugMode", False):
+        return
     card = group.random()
     if card == None: return
     notify("{} randomly discards a card.".format(me))
     card.moveTo(me.Discard)
 
 def draw(group, x = 0, y = 0):
+    if not getSetting("debugMode", False):
+        return
     if len(group) == 0: return
     mute()
     group[0].moveTo(me.hand)
     notify("{} draws a card.".format(me))
 
 def refill(group, x = 0, y = 0):
+    if not getSetting("debugMode", False):
+        return
     if len(group) == 0: return
     mute()
     count = len(me.hand)
@@ -1832,4 +1825,6 @@ def refill(group, x = 0, y = 0):
     notify("{} refills hand, drawing {} cards.".format(me, count2))
 
 def shuffle(group, x = 0, y = 0):
+    if not getSetting("debugMode", False):
+        return
     group.shuffle()
