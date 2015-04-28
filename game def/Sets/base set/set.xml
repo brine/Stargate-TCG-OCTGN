@@ -481,22 +481,6 @@
 			<property name="Text" value="Each assigned team character who has a glyph gets COM +1." />
 			<property name="Number" value="175" />
 		</card>
-		<card name="Excavation" id="2985e847-595b-45b6-990e-1f9f111d271d" >
-			<property name="Title" value="" />
-			<property name="Type" value="Obstacle" />
-			<property name="Traits" value="" />
-			<property name="Cost" value="1" />
-			<property name="Rarity" value="U" />
-			<property name="Culture" value="1" />
-			<property name="Science" value="" />
-			<property name="Combat" value="" />
-			<property name="Ingenuity" value="" />
-			<property name="Experience" value="" />
-			<property name="Revive" value="" />
-			<property name="Glyph" value="" />
-			<property name="Text" value="Each character who has 1 CUL or less is blocked." />
-			<property name="Number" value="230" />
-		</card>
 		<card name="Explore Genetics Lab" id="03ee4c09-1daa-43ed-a096-0b39cbbf1545" >
 			<property name="Title" value="Nirrti's Laboratory" />
 			<property name="Type" value="Mission" />
@@ -1089,6 +1073,22 @@
 			<property name="Text" value="When you play this mission, your opponent chooses a support character.&#xd;Failure: Destroy the chosen character." />
 			<property name="Number" value="191" />
 		</card>
+		<card name="Research Advanced Races" id="b457732b-04e3-4d0e-afb7-68d3dc6b848c" >
+			<property name="Title" value="Heliopolis" />
+			<property name="Type" value="Mission" />
+			<property name="Traits" value="" />
+			<property name="Cost" value="0" />
+			<property name="Rarity" value="S" />
+			<property name="Culture" value="" />
+			<property name="Science" value="4" />
+			<property name="Combat" value="" />
+			<property name="Ingenuity" value="" />
+			<property name="Experience" value="2" />
+			<property name="Revive" value="" />
+			<property name="Glyph" value="O" />
+			<property name="Text" value="Success: You may look at the top card of your mission pile, then place it on the top or bottom of that pile." />
+			<property name="Number" value="192" />
+		</card>
 		<card name="Retrieve Artifact" id="e72c8088-c0f6-4692-a060-4e989ccc5c26" >
 			<property name="Title" value="P5C-353" />
 			<property name="Type" value="Mission" />
@@ -1554,20 +1554,20 @@
 			<property name="Number" value="204" />
 		</card>
 		<card name="Wormhole X-Treme!" id="be5853cf-047c-4392-9ef4-7e2c1d3fd267" >
-			<property name="Title" value="" />
-			<property name="Type" value="Event" />
+			<property name="Title" value="The Bridge Studios" />
+			<property name="Type" value="Mission" />
 			<property name="Traits" value="" />
-			<property name="Cost" value="6" />
-			<property name="Rarity" value="R" />
+			<property name="Cost" value="0" />
+			<property name="Rarity" value="S" />
 			<property name="Culture" value="" />
 			<property name="Science" value="" />
 			<property name="Combat" value="" />
-			<property name="Ingenuity" value="" />
-			<property name="Experience" value="" />
+			<property name="Ingenuity" value="5" />
+			<property name="Experience" value="4" />
 			<property name="Revive" value="" />
-			<property name="Glyph" value="" />
-			<property name="Text" value="Destroy an obstacle or an assigned adversary." />
-			<property name="Number" value="137" />
+			<property name="Glyph" value="L" />
+			<property name="Text" value="Obstacles cost power +1 to play." />
+			<property name="Number" value="205" />
 		</card>
 		<card name="Yu" id="dd59e9ee-9cf8-4d61-b891-5477c550b2b1" >
 			<property name="Title" value="The Great" />
@@ -1586,5 +1586,20 @@
 			<property name="Number" value="26" />
 		</card>
 		<card name="Zat Gun" id="a853c2fe-bd32-44fb-9794-5213d00dfe22" >
+			<property name="Title" value="" />
+			<property name="Type" value="Gear" />
+			<property name="Traits" value="Jaffa" />
+			<property name="Cost" value="4" />
+			<property name="Rarity" value="C" />
+			<property name="Culture" value="" />
+			<property name="Science" value="" />
+			<property name="Combat" value="" />
+			<property name="Ingenuity" value="" />
+			<property name="Experience" value="" />
+			<property name="Revive" value="" />
+			<property name="Glyph" value="" />
+			<property name="Text" value="Stop this gear, pay power as listed below - Choose a COM obstacle and do one of the following:&#xd;1 power – It gets diffculty -1.&#xd;2 power – Remove its failure text.&#xd;3 power – Destroy it." />
+			<property name="Number" value="157" />
+		</card>
 	</cards>
 </set>

@@ -21,6 +21,9 @@
   </events>
   <proxygen definitionsrc="proxy/CardGenData.xml">
   </proxygen>
+  <documents>
+        <document name="{Label}" icon="groups/removed.png" src="docs/Stargate_Rulebook.pdf" />
+    </documents> 
   <globalvariables> 
     <globalvariable name="turnplayer" value="1"/>
     <globalvariable name="phase" value="0"/>
@@ -99,7 +102,7 @@
 		  <cardaction menu="Print GUID" shortcut="F1" execute="printGUID" />
 	  </cardactions>
     </group>
-    <group name="Discard" visibility="all" width="63" height="88" icon="groups/graveyard.png">=
+    <group name="Discard" visibility="all" width="63" height="88" icon="groups/graveyard.png">
       <cardactions menu="DEBUG MENU" >
 		<cardaction menu="Print GUID" shortcut="F1" execute="printGUID" />
 	  </cardactions>
