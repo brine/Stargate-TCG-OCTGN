@@ -903,7 +903,6 @@ scriptsDict = {
             ('statusChange', {
                 'target': {
                     'status': ['g']
-#                    'custom': "Card(getGlyphTarget(card._id)).Type == 'Team Character'"
                     },
                 'attachTarget': ["Team Character", "Support Character"],
                 'action': 'glyph',

@@ -429,6 +429,7 @@ def globalVarChanged(varName, oldValue, newValue):
                     storedGameStats["sm"] += [mission] ## Add the successful mission to the game stats
                     setGlobalVariable("gameStats", str(storedGameStats))
                     newQueue += [(triggers, "game", "glyph", 0, turnPlayer()._id, False, mission)]
+     #               setGlobalVariable("activemission", "None")  ## Empties the active mission
                 else:
                     #### Mission Failure
                     storedCards[mission]["s"] = "f"
@@ -1266,11 +1267,11 @@ def resolveQueue(target = None, skip = False):
                             choice.moveTo(toGroup, -1)
                             bottom = True
                 else:
-                    c.moveTo(toGroup, toIndex)
+                    choice.moveTo(toGroup, toIndex)
                 if fromGroup == me.hand and toGroup == me.Discard:
-                    notify("{} discards {} from hand.".format(me, c))
+                    notify("{} discards {} from hand.".format(me, choice))
                 else:
-                    notify("{} moves {} to {}{} from {}.".format(me, c, "bottom of " if bottom else "", toGroup.name, fromGroup.name))
+                    notify("{} moves {} to {}{} from {}.".format(me, choice, "bottom of " if bottom else "", toGroup.name, fromGroup.name))
                 loopCount += 1
             if me.Deck.visibility != "none":
                 me.Deck.setVisibility("none")
@@ -1359,7 +1360,6 @@ def resolveQueue(target = None, skip = False):
                 storedCards[targetCard]["g"] = glyphList + [qSource]  ## Add the glyph to the chosen character
                 storedCards[qSource]["s"] = "g"  ## Sets the mission's status as an earned glyph
                 notify("{} earns the glyph ({}.)".format(Card(targetCard), Card(qSource)))
-                setGlobalVariable("activemission", "None")  ## Empties the active mission
         elif qAction == "chooseMode":
             choice = 0
             while choice == 0:
@@ -1431,7 +1431,7 @@ def resolveQueue(target = None, skip = False):
                     glyphList = storedCards[glyphTarget]["g"]
                     glyphList.remove(targetCard)
                     storedCards[glyphTarget]["g"] = glyphList
-                    newTargets = [c for c in storedCards if Card(c).Type in params["attachTarget"] and c != glyphTarget]
+                    newTargets = [c for c in storedCards if cardActivity(Card(c)) != "inactive" and Card(c).Type in params["attachTarget"] and c != glyphTarget]
                     storedQueue = [(newTargets, "game", "glyph", 0, qPriority, False, targetCard)] + storedQueue
                 elif action == "assign":
                     storedCards[targetCard]["s"] = "a"
@@ -1637,9 +1637,9 @@ def cleanup():
                         invertxpos -= 14
                 for glyphID in glyphs:
                     glyph = Card(glyphID)
-                    expwin += int(glyph.experience)
-                    glyphwin += 1
                     if glyph.controller == me:
+                        expwin += int(glyph.experience)
+                        glyphwin += 1
                         if glyph.position != (invertxpos - 25 if invert else xpos, ypos + 25):
                             glyph.moveToTable(invertxpos - 25 if invert else xpos, ypos + 25)
                             glyph.sendToBack()
