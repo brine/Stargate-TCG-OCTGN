@@ -18,17 +18,19 @@ def printGUID(card, x = 0, y = 0, txt = ""):
         txt = " (Scripted)"
     whisper("{}~{}{}".format(card, card.model, txt))
 
-def moveCardsEvent(player, cards, fromGroups, toGroups, oldIndexs, indexs, oldX, oldY, x, y, highlights, markers, isScriptMove):
+def moveCardsEvent(player, cards, fromGroups, toGroups, oldIndexs, indexs, oldX, oldY, x, y, highlights, markers, faceups):
     mute()
-    if player != me:
+    if getSetting("debugMode", False):
         return
-    if isScriptMove:
+    if player != me:
         return
     count = 0
     for card in cards:
         if fromGroups[count] == table: ## Return cards to their original position on the table
-            card.moveToTable(oldX[count],oldY[count])
+            card.moveToTable(oldX[count],oldY[count], not faceups[count])
             card.setIndex(oldIndexs[count])
+            if faceups[count] == False:
+                card.peek()
         elif fromGroups[count] == me.hand and toGroups[count] == me.hand: ## Allow re-arranging of the hand
             return
         else: ## Return card to itis original pile.
@@ -39,8 +41,6 @@ def moveCardsEvent(player, cards, fromGroups, toGroups, oldIndexs, indexs, oldX,
 
 def resetVars(group, x = 0, y = 0):
     mute()
-    if not getSetting("debugMode", False):
-        return
     for p in getPlayers():
         remoteCall(p, 'reloadLocalVars', [p])
 
@@ -74,7 +74,7 @@ def registerTeam(player, groups, deleteDeck = False):
         return
     safeCards = eval(me.getGlobalVariable("loadedCards"))
     #### The game only works with 2 players, so anyone else loading a deck will have their cards deleted
-    if storedPhase not in [0, 1]: ## pre.1reg or pre.2reg
+    if storedPhase not in [0, 1, 17]: ## pre.1load, pre.2load, or endgame
         whisper("cannot load deck -- there are already 2 players registered.")
         deleteDeck = True
     #### Delete loaded deck if a deck has already been loaded
@@ -136,14 +136,14 @@ def registerTeam(player, groups, deleteDeck = False):
         return
     whisper("~~~DECKS ARE LEGAL~~~")
     #### Store the loaded card IDs
-    me.setGlobalVariable("loadedCards", str([x._id for x in me.piles["Mission Pile"]] + [x._id for x in me.Deck] + [x._id for x in me.Team]))
+    me.setGlobalVariable("loadedCards", str([[x._id for x in me.Deck],[x._id for x in me.Team],[x._id for x in me.piles["Mission Pile"]]]))
     #### Add team to storedCards dict
     for card in me.Team:
         storedCards = storeNewCards(card, {"s":"r"}, storedCards)
     setGlobalVariable("cards", str(storedCards))
     me.Deck.shuffle()
     me.piles["Mission Pile"].shuffle()
-    if storedPhase == 0: ##pre.1load
+    if storedPhase in [0, 17]: ##pre.1load
         setGlobalVariable("phase", "1")
     elif storedPhase == 1: ##pre.2load
         setGlobalVariable("phase", "2")
@@ -169,7 +169,7 @@ def globalVarChanged(varName, oldValue, newValue):
         storedTurnPlayer = int(newValue)
     elif varName == "cards":
         storedCards = eval(newValue)
-        if storedPhase > 3:
+        if storedPhase > 3 and not storedPhase == 17:
             cleanup()
     elif varName == "activemission":
         storedMission = eval(newValue)
@@ -179,10 +179,11 @@ def globalVarChanged(varName, oldValue, newValue):
         global storedPriority
         storedPriority = eval(newValue)
     elif varName == "cardqueue":
-        storedQueue = eval(newValue)
-        if len(storedQueue) > 0 and storedQueue[0][4] == me._id:
-            resolveQueue()
-        cleanup()
+        if storedPhase < 17:
+            storedQueue = eval(newValue)
+            if len(storedQueue) > 0 and storedQueue[0][4] == me._id:
+                resolveQueue()
+            cleanup()
     #### Phase Changes
     elif varName == "phase":
         storedPhase = eval(newValue)
@@ -532,6 +533,52 @@ def globalVarChanged(varName, oldValue, newValue):
                 cleanup()
                 notify(" ~~ {}'s Power Phase ~~ ".format(nextPlayer))
                 setGlobalVariable("phase", "6") ## pow.main
+            return
+        if storedPhase == 17: #endgame
+            me.setGlobalVariable("victory", "0")
+            if myTurn():
+                setGlobalVariable("turnplayer", "1")
+                setGlobalVariable("cards", "{}")
+                setGlobalVariable("cardqueue", "[]")
+                setGlobalVariable("activemission", "None")
+                setGlobalVariable("gameStats", "{ 'fm':[], 'sm':[] }")
+                setGlobalVariable("priority", "0")
+            num = askChoice(
+                    "The game has now ended. Please choose an option:",
+                    ["Reload this deck", "Choose a new deck", "Continue game"]
+                    )
+            if num in [1, 2]:
+                for c in table:
+                    if c.controller == me:
+                        c.delete()
+                for c in me.hand:
+                    c.delete()
+                for c in me.discard:
+                    c.delete()
+                for c in me.deck:
+                    c.delete()
+                for c in me.team:
+                    c.delete()
+                for c in me.piles["Mission Pile"]:
+                    c.delete()
+                for c in me.piles["Villain Score Pile"]:
+                    c.delete()
+                if num == 1:
+                    p = eval(me.getGlobalVariable("loadedCards"))
+                    for c in p[0]:
+                        me.deck.create(Card(c).model, 1)
+                    for c in p[1]:
+                        me.Team.create(Card(c).model, 1)
+                    for c in p[2]:
+                        me.piles["Mission Pile"].create(Card(c).model, 1)
+                    me.setGlobalVariable("loadedCards", "[]")
+                    registerTeam(me, [])
+                else:
+                    me.setGlobalVariable("loadedCards", "[]")
+            else:
+                confirm("To start a new game, select 'reset' in the 'game' menu.")
+            return
+            
 
 def doubleClick(card, mouseButton, keysDown):
     mute()
@@ -1499,6 +1546,9 @@ def cleanup():
             else:
                 if card.highlight != None:
                     card.highlight = None
+            if status == "c" and card.isFaceUp:
+                card.isFaceUp = False
+                card.peek()
         if status == "am": ## skip general alignment of the active mission since it's done later on
             continue
         if not cardActivity(card) == "inactive":
@@ -1646,10 +1696,13 @@ def cleanup():
     if storedPhase > 5:
         if glyphwin >= 7:
             notify("{} has won through Glyph Victory (7 glyphs.)".format(me))
-        if expwin >= storedVictory:
+            setGlobalVariable("phase", "17")
+        elif expwin >= storedVictory:
             notify("{} has won through Experience Victory ({} points.)".format(me, expwin))
-        if villwin >= storedVictory:
+            setGlobalVariable("phase", "17")
+        elif villwin >= storedVictory:
             notify("{} has won through Villain Victory ({} points.)".format(me, villwin))
+            setGlobalVariable("phase", "17")
 
 def playComplication(card, x = 0, y = 0):
     mute()

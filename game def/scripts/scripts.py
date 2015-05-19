@@ -34,7 +34,8 @@ phaseDict = {
     13: ['mis.end', 14],
     14: ['deb.start', 15],
     15: ['deb.ref', 16],
-    16: ['deb.end', 0]
+    16: ['deb.end', 0],
+    17: ['endgame', 0]
     }
 
 skillDict = {1: "Culture", 2: "Science", 3: "Combat", 4: "Ingenuity", 5: "all", 6: "Difficulty", "Culture": 1, "Science": 2, "Combat": 3, "Ingenuity": 4, "all": 5, "Difficulty": 6}

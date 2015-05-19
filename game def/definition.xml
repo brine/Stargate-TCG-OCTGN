@@ -3,7 +3,7 @@
   name="Stargate TCG" id="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" markersize="14"
   tags="stargate, sg, tcg" authors="brine"
   description="In the Stargate TCG, you'll guide a team of characters on journeys to other worlds, overcoming obstacles, defeating adversaries, and completing missions along the way. All the fun and adventure of the hit television series is here to enjoy!"
-  version="0.10.1.1" octgnVersion="3.1.0.0" scriptVersion="3.1.0.1"
+  version="0.10.1.2" octgnVersion="3.1.0.0" scriptVersion="3.1.0.1"
   gameurl="http://www.octgngames.com" setsurl="http://www.octgngames.com"
   iconurl="https://raw.github.com/brine/Stargate-TCG-OCTGN/master/o8g/cards/back.jpg" >
   <scripts>
@@ -31,7 +31,6 @@
     <globalvariable name="cards" value="{}"/>
 	<globalvariable name="cardqueue" value="[]"/>
     <globalvariable name="priority" value="0"/>
-    <globalvariable name="script" value="None"/>
     <globalvariable name="gameStats" value="{ 'fm':[], 'sm':[] }"/>
   </globalvariables>
   <card back="cards/back.jpg" front="cards/front.jpg" width="63" height="88" cornerRadius="3">
@@ -50,7 +49,7 @@
     <property name="Rarity" type="String" textKind="Enum" />
     <property name="Number" type="Integer"/>
     <property name="Script" type="String"/>
-	<size name="mission" back="cards/back.jpg" front="cards/front.jpg" width="88" height="63" cornerRadius="3" />
+	<size name="mission" back="cards/back.jpg" front="cards/front.jpg" width="88" backWidth="63" height="63" backHeight="88" cornerRadius="3" backCornerRadius="3" />
   </card>
   <table name="Table" visibility="undefined" ordered="True" width="866" height="708" background="board/wallpaper.jpg" backgroundStyle="uniformToFill" board="board/playmat.png" boardPosition="-205,-325,682,651" >
     <groupaction menu="Pass" shortcut="tab" execute="passturn" />
