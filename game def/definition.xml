@@ -51,7 +51,7 @@
     <property name="Script" type="String"/>
 	<size name="mission" back="cards/back.jpg" front="cards/front.jpg" width="88" backWidth="63" height="63" backHeight="88" cornerRadius="3" backCornerRadius="3" />
   </card>
-  <table name="Table" visibility="undefined" ordered="True" width="866" height="708" background="board/wallpaper.jpg" backgroundStyle="uniformToFill" board="board/playmat.png" boardPosition="-205,-325,682,651" >
+  <table name="Table" visibility="undefined" ordered="True" width="1078" height="429" background="board/wallpaper.jpg" backgroundStyle="uniformToFill" board="board/playmat2.png" boardPosition="-601,-214,1078,429" >
     <groupaction menu="Pass" shortcut="tab" execute="passturn" />
 	<groupactions menu="DEBUG MENU" >
 		<groupaction menu="End Quest" execute="endquest" />

@@ -1507,7 +1507,7 @@ def cleanup():
     else:
         invert = False
     missionSkill, missionDiff, failcount, compcount, glyphwin, expwin, villwin = (0, 0, 0, 0, 0, 0, 0)
-    alignvars = {"a": 0, "r": 0, "s": 0, "va": 0, "vr": 0, "vs": 0}
+    alignvars = {"a": 0, "r": -187, "s": -187, "va": 0, "vr": -187, "vs": -187}
     global storedCards, storedQueue
     if len(storedQueue) > 0 and len(storedQueue[0]) > 0:
         actionQueue = queueTargets()
@@ -1571,8 +1571,9 @@ def cleanup():
                 continue                
             #### Prep Failed Missions
             if status == "f" and card.Type == "Mission":
-                xpos = (-109 if invert else -101) - 20 * failcount
-                ypos = (-145 - 10 * failcount) if invert else (60 + 10 * failcount)
+#                xpos = (-109 if invert else -101) - 20 * failcount
+                xpos = (-109 if invert else -101)
+                ypos = (-130 - 14 * failcount) if invert else (68 + 14 * failcount)
                 failcount += 1
                 if card.controller == me: 
                     if card.position != (xpos, ypos):
@@ -1582,8 +1583,9 @@ def cleanup():
                             card.markers[marker] = 0
             #### Prep Complications
             elif status == "c":
-                xpos = (-79 if invert else -81) - 20 * compcount
-                ypos = (70 + 10 * compcount) if invert else (-155 - 10 * compcount)
+#                xpos = (-79 if invert else -81) - 20 * compcount
+                xpos = (-95 if invert else -91)
+                ypos = (70 + 14 * compcount) if invert else (-155 - 14 * compcount)
                 compcount += 1
                 missionDiff += 1
                 if card.controller == me:
@@ -1598,59 +1600,91 @@ def cleanup():
                 if card.Type in heroTypes:
                     if status == "a":
                         countType = "a"
-                        ypos = -98 if invert else 10
+                        ypos = -98 if invert else 11
                         if storedMission != None and cardSkills[type] != "":
                             missionSkill += cardSkills[type]
                     elif status == "r":
                         countType = "r"
-                        ypos = -207 if invert else 119
+                        ypos = -98 if invert else 11
                     else:
                         countType = "s"
-                        ypos = -316 if invert else 228
+                        ypos = -205 if invert else 118
                 #### Prep Villain Cards
                 elif card.Type in villainTypes:
                     if status == "a":
                         countType = "va"
-                        ypos = 10 if invert else -98
+                        ypos = 11 if invert else -98
                         if storedMission != None and cardSkills[type] != "":
                             missionDiff += cardSkills[type]
                     elif status == "r":
                         countType = "vr"
-                        ypos = 119 if invert else -207
+                        ypos = 11 if invert else -98
                     else:
                         countType = "vs"
-                        ypos = 228 if invert else -316
+                        ypos = 118 if invert else -205
                 xpos = alignvars[countType]
                 invertxpos = alignvars[countType]
-                #### Align the card
-                glyphs = storedCards[c].get("g", [])
-                invertxpos += 14*len(glyphs)
-                if len(glyphs) > 0:
-                    invertxpos += 12
-                if card.orientation == Rot90:
-                    invertxpos += 14 if len(glyphs) > 0 else 26
-                if card.controller == me:
-                    if card.position != (invertxpos if invert else xpos, ypos):
-                        card.moveToTable(invertxpos if invert else xpos, ypos)
-                if len(glyphs) > 0 and card.orientation == Rot90:
-                        xpos += 14
-                        invertxpos -= 14
-                for glyphID in glyphs:
-                    glyph = Card(glyphID)
+                glyphs = [Card(x) for x in storedCards[c].get("g", [])] ## Gets the list of glyphs attached to the card
+                if countType == "a":
+                    if not invert:
+                        #### Assigned cards invert side
+                        xpos += 14*len(glyphs)
+                        if len(glyphs) > 0:
+                            xpos += 12
+                        if card.orientation == Rot90:
+                            xpos += 14 if len(glyphs) > 0 else 26
+                        if card.controller == me:
+                            if card.position != (xpos, ypos):
+                                card.moveToTable(xpos, ypos)
+                        glyphpos = xpos - (39 if card.orientation == Rot90 else 25)
+                    else:
+                    #### Assigned cards normal side
+                        if card.controller == me:
+                            if card.position != (xpos, ypos):
+                                card.moveToTable(xpos, ypos)
+                        if card.orientation == Rot90:
+                            xpos += 14
+                            if len(glyphs) == 0:
+                                xpos += 12
+                        glyphpos = xpos + 0
+                        xpos += 14 * len(glyphs)
+                        if len(glyphs) > 0:
+                            xpos += 12
+                    alignvars[countType] = xpos + 64
+                else:
+                    if invert:
+                        #### ready cards invert side
+                        if card.controller == me:
+                            if card.position != (xpos, ypos):
+                                card.moveToTable(xpos, ypos)
+                        if card.orientation == Rot90:
+                            xpos -= 14
+                            if len(glyphs) == 0:
+                                xpos -= 12
+                        glyphpos = xpos - 25 
+                        xpos -= 14 * len(glyphs)
+                        if len(glyphs) > 0:
+                            xpos -= 12
+                    else:
+                        #### ready cards normal side
+                        xpos -= 14*len(glyphs)
+                        if len(glyphs) > 0:
+                            xpos -= 12
+                        if card.orientation == Rot90:
+                            xpos -= 14 if len(glyphs) > 0 else 26
+                        if card.controller == me:
+                            if card.position != (xpos, ypos):
+                                card.moveToTable(xpos, ypos)
+                        glyphpos = xpos + (14 if card.orientation == Rot90 else 0)
+                    alignvars[countType] = xpos - 64
+                for glyph in glyphs:
                     if glyph.controller == me:
                         expwin += int(glyph.experience)
                         glyphwin += 1
-                        if glyph.position != (invertxpos - 25 if invert else xpos, ypos + 25):
-                            glyph.moveToTable(invertxpos - 25 if invert else xpos, ypos + 25)
+                        if glyph.position != (glyphpos, ypos):
+                            glyph.moveToTable(glyphpos, ypos)
                             glyph.sendToBack()
-                    invertxpos -= 14
-                    xpos += 14
-                if len(glyphs) > 0:
-                    xpos += 12
-                if card.orientation == Rot90 and len(glyphs) == 0:
-                    alignvars[countType] = xpos + 90
-                else:
-                    alignvars[countType] = xpos + 64
+                    glyphpos += 14 * (-1 if invert else 1)
                 #### Add skill markers on the card to show its current values
                 if card.controller == me and card.Type != "Mission":
                     if card.isFaceUp:
@@ -1783,6 +1817,15 @@ def debugToggle(group, x = 0, y = 0):
 #---------------------------------------------------------------------------
 
 def assign(card, x = 0, y = 0):
+    mute()
+    if not getSetting("debugMode", False):
+        return
+    global storedCards
+    storedCards[card._id]["s"] = "a"
+    setGlobalVariable("cards", str(storedCards))
+    notify("{} readies {}.".format(me, card))
+
+def assign2(card, x = 0, y = 0):
     mute()
     if not getSetting("debugMode", False):
         return
