@@ -830,7 +830,9 @@ def cardActivity(card):
     mute()
     global storedCards
     status = storedCards.get(card._id, {}).get("s", "active")
-    if status == "am":
+    if card in card.owner.Team:
+        ret = "inactive"
+    elif status == "am":
         ret = "active mission"
     elif status == "c":
         ret = "complication"
@@ -1249,7 +1251,12 @@ def resolveQueue(target = None, skip = False):
             while loopCount < maxLoop:
                 if len(targets) == 0:
                     break
-                choice = askCard(targets, "Choose {} card(s) to move from {} to {}".format(maxLoop - loopCount, fromGroup.name, toGroup.name))
+                choice = askCard(targets, "Choose {}{} card(s) to move from {} to {}.{}".format(
+                                                  "up to " if params.get("skippable", False) else "",
+                                                    min(maxLoop - loopCount, len(targets)), 
+                                                                            fromGroup.name, 
+                                                                                  toGroup.name,
+                                                                                     " (Close window to finish)"))
                 if choice == None: ## If the player closes the window
                     if params.get("skippable", False) == False: #when a choice is required
                         continue
@@ -1697,25 +1704,13 @@ def cleanup():
         #### Align inactive cards
         else:
             if card.controller == me:
-                if card.size() == "mission":
-                    if card.position != (-197, -20):
-                        card.moveToTable(-197, -20)
-                    if card.orientation != Rot90:
-                        card.orientation = Rot90
-                else:
-                    if card.position != (-197, -44):
-                        card.moveToTable(-197, -44)
-                    if card.orientation != Rot0:
-                        card.orientation = Rot0
-                #### Remove all markers from inactive cards
-                for marker in card.markers:
-                    if card.markers[marker] > 0:
-                        card.markers[marker] = 0
+                if card not in me.Team:
+                    card.moveTo(me.Team)
     #### Align the active mission
     if storedMission != None:
         if myTurn():
-            if mission.position != (-106, -45 if invert else -31):
-                mission.moveToTable(-106, -45 if invert else -31)
+            if mission.position != (-106, -32 if invert else -31):
+                mission.moveToTable(-106, -32 if invert else -31)
             if mission.orientation != 0:
                 mission.orientation = 0
             missionDiff += value

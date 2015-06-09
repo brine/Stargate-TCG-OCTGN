@@ -3,7 +3,7 @@
   name="Stargate TCG" id="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" markersize="14"
   tags="stargate, sg, tcg" authors="brine"
   description="In the Stargate TCG, you'll guide a team of characters on journeys to other worlds, overcoming obstacles, defeating adversaries, and completing missions along the way. All the fun and adventure of the hit television series is here to enjoy!"
-  version="0.10.1.2" octgnVersion="3.1.0.0" scriptVersion="3.1.0.1"
+  version="0.10.1.3" octgnVersion="3.1.0.0" scriptVersion="3.1.0.1"
   gameurl="http://www.octgngames.com" setsurl="http://www.octgngames.com"
   iconurl="https://raw.github.com/brine/Stargate-TCG-OCTGN/master/o8g/cards/back.jpg" >
   <scripts>
@@ -51,7 +51,7 @@
     <property name="Script" type="String"/>
 	<size name="mission" back="cards/back.jpg" front="cards/front.jpg" width="88" backWidth="63" height="63" backHeight="88" cornerRadius="3" backCornerRadius="3" />
   </card>
-  <table name="Table" visibility="undefined" ordered="True" width="1078" height="429" background="board/wallpaper.jpg" backgroundStyle="uniformToFill" board="board/playmat2.png" boardPosition="-601,-214,1078,429" >
+  <table name="Table" visibility="undefined" width="1078" height="429" background="board/wallpaper.jpg" backgroundStyle="uniformToFill" board="board/playmat2.png" boardPosition="-601,-214,1078,429" >
     <groupaction menu="Pass" shortcut="tab" execute="passturn" />
 	<groupactions menu="DEBUG MENU" >
 		<groupaction menu="End Quest" execute="endquest" />
