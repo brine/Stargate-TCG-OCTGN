@@ -18,45 +18,52 @@ def printGUID(card, x = 0, y = 0, txt = ""):
         txt = " (Scripted)"
     whisper("{}~{}{}".format(card, card.model, txt))
 
-def moveCardsEvent(player, cards, fromGroups, toGroups, oldIndexs, indexs, oldX, oldY, x, y, highlights, markers, faceups):
+def counterChange(args):
+    mute()
+    if args.scripted:
+        return
+    if getSetting("debugMode", False):
+        return
+    if args.player == me:
+        args.counter.value = args.value
+
+def moveCardsEvent(args):
     mute()
     if getSetting("debugMode", False):
         return
-    if player != me:
+    if args.player != me:
         return
     count = 0
-    for card in cards:
-        if fromGroups[count] == table: ## Return cards to their original position on the table
-            card.moveToTable(oldX[count],oldY[count], not faceups[count])
-            card.setIndex(oldIndexs[count])
-            if faceups[count] == False:
+    for card in args.cards:
+        if args.fromGroups[count] == table: ## Return cards to their original position on the table
+            card.moveToTable(args.xs[count],args.ys[count], not args.faceups[count])
+            card.index = args.indexs[count]
+            if args.faceups[count] == False:
                 card.peek()
-        elif fromGroups[count] == me.hand and toGroups[count] == me.hand: ## Allow re-arranging of the hand
+        elif args.fromGroups[count] == me.hand and args.toGroups[count] == me.hand: ## Allow re-arranging of the hand
             return
         else: ## Return card to itis original pile.
-            card.moveTo(fromGroups[count], oldIndexs[count])
+            card.moveTo(args.fromGroups[count], args.indexs[count])
             notify("Overriding card movement...")
         count += 1
-
 
 def resetVars(group, x = 0, y = 0):
     mute()
     for p in getPlayers():
-        remoteCall(p, 'reloadLocalVars', [p])
-
+        remoteCall(p, 'reloadLocalVars', [])
 
 def nextPhaseQueue():
     return ([], "game", "nextPhase", 0, turnPlayer()._id, False, None)
 
-def reloadLocalVars(player):
+def reloadLocalVars(args = None):
     mute()
-    if player == me:
+    if args == None or args.player == me:
         #### Prep initial variables
         global storedCards, storedTurnPlayer, storedPhase, storedPriority, storedVictory, storedOppVictory, storedMission, storedGameStats, storedQueue
+        storedMission = eval(getGlobalVariable("activemission"))
         storedTurnPlayer = int(getGlobalVariable("turnplayer"))
         storedPhase = eval(getGlobalVariable("phase"))
         storedPriority = eval(getGlobalVariable("priority"))
-        storedMission = eval(getGlobalVariable("activemission"))
         storedGameStats = eval(getGlobalVariable("gameStats"))
         storedCards = eval(getGlobalVariable("cards"))
         storedQueue = eval(getGlobalVariable("cardqueue"))
@@ -65,12 +72,13 @@ def reloadLocalVars(player):
         else:
             storedVictory = 0
         storedOppVictory = int(me.getGlobalVariable("victory"))
-        
-def registerTeam(player, groups, deleteDeck = False):
+
+def registerTeam(args = None):
     mute()
-    reloadLocalVars(me)
+    deleteDeck = False
+    reloadLocalVars()
     global storedCards, storedPhase, storedVictory, storedOppVictory, storedQueue
-    if player != me:  #only execute this event if its your own deck
+    if args != None and args.player != me:  #only execute this event if its your own deck
         return
     safeCards = eval(me.getGlobalVariable("loadedCards"))
     #### The game only works with 2 players, so anyone else loading a deck will have their cards deleted
@@ -88,8 +96,10 @@ def registerTeam(player, groups, deleteDeck = False):
             whisper("Team Error: You need exactly 4 Team Characters. ({} of 4)".format(len(me.Team)))
             deleteDeck = True
         deckCount = {}
+        storedOppVictory = 0
         for c in me.Team:
             deckCount[c.Name] = deckCount.get(c.Name, 0) + 1
+            storedOppVictory += int(c.Cost)  #add the card's cost to the victory total
         for x in deckCount:
             if deckCount[x] > 1:
                 whisper("Team Error: You can only have one {} in your Team. ({} of 1)".format(x, deckCount[x]))
@@ -127,7 +137,6 @@ def registerTeam(player, groups, deleteDeck = False):
             if deckCount[x] != 3:
                 whisper("Mission Error: You need exactly 3 {} missions in your Mission Pile. ({} of 3)".format(x, deckCount[x]))
                 deleteDeck = True
-
     if deleteDeck == True:
         for group in [me.Deck, me.piles["Mission Pile"], me.Team]:
             for c in group:
@@ -143,25 +152,28 @@ def registerTeam(player, groups, deleteDeck = False):
     setGlobalVariable("cards", str(storedCards))
     me.Deck.shuffle()
     me.piles["Mission Pile"].shuffle()
+    me.setGlobalVariable("victory", str(storedOppVictory)) #Stores your opponent's victory total
     if storedPhase in [0, 17]: ##pre.1load
         setGlobalVariable("phase", "1")
     elif storedPhase == 1: ##pre.2load
         setGlobalVariable("phase", "2")
 
-def playerGlobalVarChanged(player, varName, oldValue, newValue):
+def playerGlobalVarChanged(args):
     mute()
-    if varName == "victory":
-        if player != me:
+    if args.name == "victory":
+        if args.player != me:
             global storedVictory
-            storedVictory = int(newValue)
+            storedVictory = int(args.value)
             return
         else:
             global storedOppVictory
-            storedOppVictory = int(newValue)
+            storedOppVictory = int(args.value)
             return
 
-def globalVarChanged(varName, oldValue, newValue):
+def globalVarChanged(args):
     mute()
+    varName = args.name
+    newValue = args.value
     global storedPhase, storedQueue, storedCards, storedGameStats, storedMission
     #### update python global variables
     if varName == "turnplayer":
@@ -189,12 +201,9 @@ def globalVarChanged(varName, oldValue, newValue):
         storedPhase = eval(newValue)
         #### Register Team
         if storedPhase == 2: ## pre.reg
-            victory = 0
             for card in me.Team:
                 card.moveToTable(0,0)
-                victory += int(card.Cost)  #add the card's cost to the victory total
-            me.setGlobalVariable("victory", str(victory)) #Stores your opponent's victory total
-            notify("{} registers their Team ({} points).".format(me, victory))
+            notify("{} registers their Team ({} points).".format(me, storedOppVictory))
             if Player(1) == me:
                 setGlobalVariable("phase", "3") ## pre.vic
             return
@@ -217,9 +226,17 @@ def globalVarChanged(varName, oldValue, newValue):
                         notify("{} will play first, chosen randomly.".format(opponent))
                 if startingPlayer == me:
                     setGlobalVariable("turnplayer", str(me._id))
+                    if me.isInverted:
+                        table.board = "invert"
+                    else:
+                        table.board = "Default"
                     stopPlayer = opponent
                 else:
                     setGlobalVariable("turnplayer", str(startingPlayer._id))
+                    if me.isInverted:
+                        table.board = "Default"
+                    else:
+                        table.board = "invert"
                     stopPlayer = me
                 notify("{} will choose a team character to Stop.".format(stopPlayer))
                 oppTeam = [c for c in storedCards if "Team Character" in Card(c).Type and not Card(c).controller == stopPlayer]
@@ -254,7 +271,8 @@ def globalVarChanged(varName, oldValue, newValue):
                     notify("{} draws a new hand.".format(me))
                 else:
                     notify("{} keeps their hand.".format(me))
-                turnPlayer().setActivePlayer()
+#                turnPlayer().setActive()
+                _api.setActivePlayer(turnPlayer()._id)
                 cleanup()
                 notify(" ~~ {}'s Power Phase ~~ ".format(turnPlayer()))
                 setGlobalVariable("phase", "6") ## pow.main
@@ -342,11 +360,15 @@ def globalVarChanged(varName, oldValue, newValue):
                 ## add any success or failure triggers to the queue
                 for c in storedCards:
                     card = Card(c)
-                    if card in table and storedCards[c]["s"] == "a" and storedCards[c].get("r" + storedMission[2], False) == False and hasTriggers(card, "on" + status, card._id):
-                        if card.controller == me:
-                            heroTriggers.append(c)
-                        else:
-                            villainTriggers.append(c)
+                    if cardActivity(card) != "inactive" and storedCards[c]["s"] == "a":  # find assigned characters
+                        if card.Type in heroTypes:
+                            storedCards[c]["p"] = True
+                        if storedCards[c].get("r" + storedMission[2], False) == False and hasTriggers(card, "on" + status, card._id):
+                            if card.controller == me:
+                                heroTriggers.append(c)
+                            else:
+                                villainTriggers.append(c)
+                setGlobalVariable("cards", str(storedCards))
                 if hasTriggers(mission, "on" + status, mission._id): ## Add the mission's trigger if it has one
                     heroTriggers.append(mission._id)
                 newQueue = []
@@ -373,13 +395,12 @@ def globalVarChanged(varName, oldValue, newValue):
                 triggers = []
                 for c in storedCards:
                     card = Card(c)
-                    if card in table and storedCards[c]["s"] == "a" and card.controller != me and card.Type == "Adversary": ## add assigned adversaries to the trigger list
-                        triggers.append(c)
-                    elif card in table and storedCards[c]["s"] == "a" and card.controller == me and card.Type in heroTypes: ## stops all assigned hero cards
-                        storedCards[c]["s"] = "s"
-                        storedCards[c]["p"] = True
-                    elif card not in table:
-                        notify("ERROR: {} in storedCards could not be found in table!".format(card))
+                    if cardActivity(card) != "inactive":
+                        if storedCards[c]["s"] == "a" and card.controller != me and card.Type == "Adversary": ## add assigned adversaries to the trigger list
+                            triggers.append(c)
+                        elif storedCards[c]["s"] == "a" and card.controller == me and card.Type in heroTypes: ## stops all assigned hero cards
+                            storedCards[c]["s"] = "s"
+#                        storedCards[c]["p"] = True
                 setGlobalVariable("cards", str(storedCards))
                 if len(triggers) == 0:
                     ## skip all this junk
@@ -397,11 +418,9 @@ def globalVarChanged(varName, oldValue, newValue):
                 triggers = []
                 for c in storedCards.keys():
                     card = Card(c)
-                    if card not in table:
-                        notify("ERROR: {} in storedCards could not be found in table!".format(card))
-                    else:
+                    if cardActivity(card) != "inactive":
                         ##find all previously assigned characters as glyph targets
-                        if "p" in storedCards[c]:
+                        if "p" in storedCards[c]: ##previously assigned characters
                             triggers.append(c)
                             del storedCards[c]["p"]
                         if storedCards[c]["s"] == "c" and card.controller == me and card.isFaceUp == False:
@@ -529,9 +548,13 @@ def globalVarChanged(varName, oldValue, newValue):
             if myTurn():
                 notify("{}'s turn ends.".format(me))
                 nextPlayer = turnPlayer(False)
-                nextPlayer.setActivePlayer()
+#                nextPlayer.setActive()
+                _api.setActivePlayer(nextPlayer._id)
                 setGlobalVariable("turnplayer", str(nextPlayer._id))
-                cleanup()
+                if me.isInverted:
+                    table.board = "Default"
+                else:
+                    table.board = "invert"
                 notify(" ~~ {}'s Power Phase ~~ ".format(nextPlayer))
                 setGlobalVariable("phase", "6") ## pow.main
             return
@@ -573,7 +596,7 @@ def globalVarChanged(varName, oldValue, newValue):
                     for c in p[2]:
                         me.piles["Mission Pile"].create(Card(c).model, 1)
                     me.setGlobalVariable("loadedCards", "[]")
-                    registerTeam(me, [])
+                    registerTeam()
                 else:
                     me.setGlobalVariable("loadedCards", "[]")
             else:
@@ -581,8 +604,9 @@ def globalVarChanged(varName, oldValue, newValue):
             return
             
 
-def doubleClick(card, mouseButton, keysDown):
+def doubleClick(args):
     mute()
+    card = args.card
     ##TODO: Allow discard queue triggers to target cards in your hand (currently only works for table)
     global storedPhase, storedQueue, storedCards
     phase = storedPhase
@@ -629,7 +653,7 @@ def doubleClick(card, mouseButton, keysDown):
             if blocker != None and blocker not in storedCards: ## If the blocker isn't in play anymore, remove it from the list.
                 blockedList.remove(blocker)
         if len(blockedList) > 0:
-            whisper("Cannot assign: {} is being blocked{}.".format(card, "" if blockedList == [None] else " by " + ", ".join([Card(x).name for x in blockedList if x != None])))
+            whisper("Cannot assign: {} is being blocked{}.".format(card, "" if blockedList == [None] else " by " + ", ".join(["{}".format(Card(x)) for x in blockedList if x != None])))
             return
         storedQueue = phaseTriggers("onGetAssignCost", card._id) + [([card._id], "game", "assignCard", 0, me._id, False, None)] + phaseTriggers("onAssign", card._id) + storedQueue ##TODO move onAssign phaseTriggers to resolveQueue?
         setGlobalVariable("priority", str((getPlayers()[1]._id, False)))
@@ -828,11 +852,11 @@ def myPriority():
 
 def cardActivity(card):
     mute()
+#    if card in card.owner.Team:
+#        return "inactive"
     global storedCards
     status = storedCards.get(card._id, {}).get("s", "active")
-    if card in card.owner.Team:
-        ret = "inactive"
-    elif status == "am":
+    if status == "am":
         ret = "active mission"
     elif status == "c":
         ret = "complication"
@@ -842,9 +866,8 @@ def cardActivity(card):
         ret = "failed mission"
     else:
         ret = "active"
-#    if myTurn() == ((card.controller == me) == ((card.Type in heroTypes) and (card.isFaceUp))):
     if myTurn():
-        if card.isFaceUp == False:
+        if status == "c":
             if card.controller == me:
                 return "inactive"
             else:
@@ -860,7 +883,7 @@ def cardActivity(card):
             else:
                 return ret
     else:
-        if card.isFaceUp == False:
+        if status == "c":
             if card.controller == me:
                 return ret
             else:
@@ -944,7 +967,7 @@ def getStats(card):
     allSkillsValue = 0
     ## Set the base skill from the printed card
     for baseSkill in baseSkills.keys():
-        if card.properties[baseSkill] not in ["", "?"]:
+        if card.properties[baseSkill] not in ["?", ""]:
             baseSkills[baseSkill] = int(card.properties[baseSkill])
     cardScripts = []
     for c in storedCards:
@@ -1005,6 +1028,8 @@ def queueTargets(qCard = None, params = None, qSource = None):
         elif qTrigger == "game": ## These are special game-based triggers, no card-specific scripts
             action, params = scriptsDict["game"][qType][0]
         else:
+            if Card(qCard).model == None:
+                return []
             action, params = scriptsDict[Card(qCard).model][qType][int(qTrigger)]
     targetDict = params.get("target", None)
     if targetDict == None:
@@ -1038,7 +1063,7 @@ def phaseTriggers(triggerName, sourceId, skippable = False):
     newQueue = []
     for c in storedCards:
         card = Card(c)
-        if card in table and cardActivity(card) in ["active", "active mission"] and hasTriggers(card, triggerName, sourceId):
+        if cardActivity(card) in ["active", "active mission"] and hasTriggers(card, triggerName, sourceId):
             if card.controller == me:
                 heroTriggers.append(c)
             else:
@@ -1122,6 +1147,12 @@ def triggerScripts(card, type, sourceId): ## note this function assumes that the
         queue.append((card._id, scriptIndex, type, 0, player, params.get("skippable", False), sourceId))
     return queue
 
+def debugQueue(group, x = 0, y = 0):
+    mute()
+    if not getSetting("debugMode", False):
+        return
+    resolveQueue()
+
 def resolveQueue(target = None, skip = False):
     global storedQueue, storedCards, storedPhase, storedGameStats
     ## Set the initial values of the queue and card database, to compare later on
@@ -1144,7 +1175,7 @@ def resolveQueue(target = None, skip = False):
             continue
         if skip == True:
             if qSkippable == True:
-                notify("{} skips {}'s {} trigger.".format(me, Card(qSource), qType))
+                notify("{} skips {}'s {} trigger.".format(me, sourceCard, qType))
                 del storedQueue[0]
                 skip = False
             else:
@@ -1172,7 +1203,7 @@ def resolveQueue(target = None, skip = False):
             else:
                 storedQueue[0] = (qTargets, qTrigger, qType, qCount + 1, qPriority, qSkippable, qSource)
             if not checkCosts(Card(target), qType + "Cost", qSource):
-                whisper("ERROR: costs cannot be paid") ##TODO: make proper whisper message
+                whisper("Cannot pay cost for {}'s {} ability.".format(Card(target), qType))
                 target = None
                 continue
             storedQueue = phaseTriggers(qType + "Cost", qSource) + triggerScripts(Card(target), qType, qSource) + storedQueue ## Add the new triggers to the queue
@@ -1217,7 +1248,7 @@ def resolveQueue(target = None, skip = False):
                     qCard.remove(c) ## remove the card from the queue
         target = None  ## remove the active target so the engine doesn't re-target the same card again
         ## Announce that the triggers are resolving
-        if qSource != None:
+        if qSource != None and not ('target' in params and len(qTargets) == 0):
             notify("{} is resolving {}'s {} ability.".format(me, Card(qSource), qType)) ##TODO: Needs to be source of the ability
         ## Specialized actions with different queue interactions
         if qAction == "moveCard":
@@ -1228,11 +1259,10 @@ def resolveQueue(target = None, skip = False):
                 if params.get("skippable", False): #when a choice is required
                     if not confirm("Do you want to search your {} for a card?\n\nSource: {}".format(fromGroup.name, Card(qCard).name)):
                         continue
-                fromGroup.setVisibility("me")
+                fromGroup.visibility = "me"
                 rnd(1,10)
             skillCheck = targetCheck.get("hasSkill", None)
             typeCheck = targetCheck.get("type", [])
-            loopCount = qCount
             if 'index' in targetCheck:
                 groupList = [fromGroup[eval(targetCheck["index"])]]
             elif 'top' in targetCheck:
@@ -1243,26 +1273,28 @@ def resolveQueue(target = None, skip = False):
                 groupList = fromGroup
             toGroup = eval(params["to"][0])
             toIndex = params["to"][1]
-            maxLoop = eval(params.get("count", "len([c for c in groupList])"))
             targets = [c for c in groupList
                 if (typeCheck == [] or c.Type in typeCheck)
                 and (skillCheck == None or getStats(c)[skillCheck] != None)
                 ]
-            while loopCount < maxLoop:
-                if len(targets) == 0:
+            skippable = params.get("skippable", False)
+            maxValue = min(eval(params.get("count", "len(targets)")), len(targets))
+            minValue = 0 if skippable else maxValue
+            choices = []
+            while len(choices) < maxValue:
+                dlg = cardDlg(targets)
+                dlg.text = "Choose {}{} card(s) to move from {} to {}.".format(
+                                    "up to " if skippable else "",
+                                    maxValue - len(choices),
+                                    fromGroup.name, 
+                                    toGroup.name
+                                    )
+                dlgChoice = dlg.show()
+                if dlgChoice == [] and skippable:
                     break
-                choice = askCard(targets, "Choose {}{} card(s) to move from {} to {}.{}".format(
-                                                  "up to " if params.get("skippable", False) else "",
-                                                    min(maxLoop - loopCount, len(targets)), 
-                                                                            fromGroup.name, 
-                                                                                  toGroup.name,
-                                                                                     " (Close window to finish)"))
-                if choice == None: ## If the player closes the window
-                    if params.get("skippable", False) == False: #when a choice is required
-                        continue
-                    else:
-                        break
-                targets.remove(choice)
+                targets.remove(dlgChoice[0])
+                choices += dlgChoice
+            for choice in choices:
                 bottom = False
                 if toIndex == "t/b": ## Choose between top or bottom
                     tbChoice = 0
@@ -1279,11 +1311,10 @@ def resolveQueue(target = None, skip = False):
                     notify("{} discards {} from hand.".format(me, choice))
                 else:
                     notify("{} moves {} to {}{} from {}.".format(me, choice, "bottom of " if bottom else "", toGroup.name, fromGroup.name))
-                loopCount += 1
             if me.Deck.visibility != "none":
-                me.Deck.setVisibility("none")
+                me.Deck.visibility = "none"
             if me.piles["Mission Pile"].visibility != "none":
-                me.piles["Mission Pile"].setVisibility("none")
+                me.piles["Mission Pile"].visibility = "none"
         elif targetCount == "all" or ('target' in params and len(qTargets) == 0) or qCount + 1 >= eval(targetCount):
             del storedQueue[0]
         else:
@@ -1442,22 +1473,22 @@ def resolveQueue(target = None, skip = False):
                     storedQueue = [(newTargets, "game", "glyph", 0, qPriority, False, targetCard)] + storedQueue
                 elif action == "assign":
                     storedCards[targetCard]["s"] = "a"
-                    notify("{} assigns {}'s {}.".format(sourceCard, Card(targetCard).owner, Card(targetCard)))
+                    notify("{} assigns {}.".format(sourceCard, Card(targetCard)))
                 elif action == "incapacitate":
                     storedCards[targetCard]["s"] = "i"
                     notify("{} incapacitates {}'s {}.".format(sourceCard, Card(targetCard).owner, Card(targetCard)))
                 elif action == "destroy":
-                    Card(targetCard).setController(Card(targetCard).owner)
+                    Card(targetCard).controller = Card(targetCard).owner
                     del storedCards[targetCard]
                     remoteCall(Card(targetCard).owner, "remoteMove", [Card(targetCard), 'Discard'])
                     notify("{} destroys {}'s {}.".format(sourceCard, Card(targetCard).owner, Card(targetCard)))
                 elif action == "mission":
-                    Card(targetCard).setController(Card(targetCard).owner)
+                    Card(targetCard).controller = Card(targetCard).owner
                     del storedCards[targetCard]
                     remoteCall(Card(targetCard).owner, "remoteMove", [Card(targetCard), 'Mission Pile'])
                     notify("{} puts {}'s {} on top of their Mission Pile.".format(sourceCard, Card(targetCard).owner, Card(targetCard)))
                 elif action == "missionBottom":
-                    Card(targetCard).setController(Card(targetCard).owner)
+                    Card(targetCard).controller = Card(targetCard).owner
                     del storedCards[targetCard]
                     remoteCall(Card(targetCard).owner, "remoteMove", [Card(targetCard), 'Mission Pile', True])
                     notify("{} puts {}'s {} on bottom of their Mission Pile.".format(sourceCard, Card(targetCard).owner, Card(targetCard)))
@@ -1509,12 +1540,13 @@ def cleanTable(group, x = 0, y = 0):
 
 def cleanup():
     mute()
-    if turnPlayer().hasInvertedTable():
+    if turnPlayer().isInverted:
         invert = True
     else:
         invert = False
     missionSkill, missionDiff, failcount, compcount, glyphwin, expwin, villwin = (0, 0, 0, 0, 0, 0, 0)
-    alignvars = {"a": 0, "r": -187, "s": -187, "va": 0, "vr": -187, "vs": -187}
+    alignvars = {"ha": (-71, 9), "hr": (-71, 117), "hg": (9,50), "va": (-70, -98) , "vg": (9,-138),
+                 "hai": (9, -98), "hri": (9, -207), "hgi": (-71,-139), "vai": (9, 9) , "vgi": (-71,50 )    }
     global storedCards, storedQueue
     if len(storedQueue) > 0 and len(storedQueue[0]) > 0:
         actionQueue = queueTargets()
@@ -1532,39 +1564,47 @@ def cleanup():
         type = storedMission[1]
         status = storedMission[2]
         value = getStats(mission)[type]
-#    #### Scan the table for cards that shouldn't belong there
-#    for card in table:
-#        if card._id not in storedCards and card != mission:
-#            notify("ERROR: {}'s {} did not enter play properly.".format(card.controller, card))
     #### Start aligning the cards on the table
     for c in sorted(storedCards.items(), key=lambda x: x[1]["#"]):
         c = c[0]
         card = Card(c)
         status = storedCards[c]["s"]
-        if card.controller == me:
-            if card not in table: ## If for some reason the card is no longer on the table, move it back
-                if status == "c":
-                    card.moveToTable(0,0, True)
-                else:
-                    card.moveToTable(0,0)
-            if c in actionQueue:  ## add highlight for cards in the action queue
-                if card.highlight != actionColor:
-                    card.highlight = actionColor
-            else:
-                if card.highlight != None:
-                    card.highlight = None
-            if status == "c" and card.isFaceUp:
-                card.isFaceUp = False
-                card.peek()
         if status == "am": ## skip general alignment of the active mission since it's done later on
             continue
         if not cardActivity(card) == "inactive":
             if card.controller == me:
-                if status == "c" and card.isFaceUp == True: ## fix face-up complications
+                ## If for some reason the card is no longer on the table, move it back
+                if card not in table:
+                    if status == "c":
+                        card.moveToTable(0,0, True)
+                    else:
+                        card.moveToTable(0,0)
+                ## add highlight for cards in the action queue
+                if c in actionQueue:
+                    if card.highlight != actionColor:
+                        card.highlight = actionColor
+                else:
+                    if card.highlight != None:
+                        card.highlight = None
+                ## add a yellow filter to cards which are the source of a queue action
+                if len(storedQueue) > 0 and storedQueue[0][0] == c:
+                    if card.filter != FilterColor:
+                        card.filter = FilterColor
+                elif status ==  "i":
+                    if card.filter != KOColor:
+                        card.filter = KOColor
+                else:
+                    if card.filter != None:
+                        card.filter = None
+                ## fix face-up complications
+                if status == "c" and card.isFaceUp == True:
                     card.isFaceUp = False
-                if status != "c" and card.isFaceUp == False: ## fix face-down cards that are supposed to be face-up
+                    card.peek()
+                ## fix face-down cards that are supposed to be face-up
+                if status != "c" and card.isFaceUp == False:
                     card.isFaceUp = True
-                if status == "i" or "b" in storedCards[c]:  ## rotate all cards that are blocked or incapacitated
+                ## rotate all cards that are stopped, blocked or incapacitated
+                if status in ["i", "s"]:
                     if card.orientation != Rot90:
                         card.orientation = Rot90
                 else:
@@ -1578,21 +1618,20 @@ def cleanup():
                 continue                
             #### Prep Failed Missions
             if status == "f" and card.Type == "Mission":
-#                xpos = (-109 if invert else -101) - 20 * failcount
-                xpos = (-109 if invert else -101)
-                ypos = (-130 - 14 * failcount) if invert else (68 + 14 * failcount)
+                xpos = (-197 - 14 * failcount) if invert else (110 + 14 * failcount)
+                ypos = (-32 if invert else -31)
                 failcount += 1
                 if card.controller == me: 
                     if card.position != (xpos, ypos):
                         card.moveToTable(xpos, ypos)
+                    card.sendToBack()
                     for marker in card.markers:
                         if card.markers[marker] > 0:
                             card.markers[marker] = 0
             #### Prep Complications
             elif status == "c":
-#                xpos = (-79 if invert else -81) - 20 * compcount
-                xpos = (-95 if invert else -91)
-                ypos = (70 + 14 * compcount) if invert else (-155 - 14 * compcount)
+                xpos = (-347 - 14 * compcount) if invert else (260 + 14 * compcount)
+                ypos = (-44 if invert else -45)
                 compcount += 1
                 missionDiff += 1
                 if card.controller == me:
@@ -1604,48 +1643,35 @@ def cleanup():
             else:
                 cardSkills = getStats(card)
                 #### Prep Hero cards
-                if card.Type in heroTypes:
+                if card.Type in ["Team Character", "Support Character"]:
                     if status == "a":
-                        countType = "a"
-                        ypos = -98 if invert else 11
+                        countType = "ha"
+                        ypos = alignvars[countType][1]
                         if storedMission != None and cardSkills[type] != "":
                             missionSkill += cardSkills[type]
-                    elif status == "r":
-                        countType = "r"
-                        ypos = -98 if invert else 11
                     else:
-                        countType = "s"
-                        ypos = -205 if invert else 118
+                        countType = "hr"
+                #### Prep Gear Cards
+                elif card.Type == "Gear":
+                    countType = "hg"
                 #### Prep Villain Cards
                 elif card.Type in villainTypes:
                     if status == "a":
                         countType = "va"
-                        ypos = 11 if invert else -98
                         if storedMission != None and cardSkills[type] != "":
                             missionDiff += cardSkills[type]
-                    elif status == "r":
-                        countType = "vr"
-                        ypos = 11 if invert else -98
                     else:
-                        countType = "vs"
-                        ypos = 118 if invert else -205
-                xpos = alignvars[countType]
-                invertxpos = alignvars[countType]
+                        countType = "vg"
+                else: ## in case a card doesnt match the above types?
+                    continue
+                if table.board == "invert":
+                    countType += "i"
+                ypos = alignvars[countType][1]
+                xpos = alignvars[countType][0]
                 glyphs = [Card(x) for x in storedCards[c].get("g", [])] ## Gets the list of glyphs attached to the card
-                if countType == "a":
-                    if not invert:
-                        #### Assigned cards invert side
-                        xpos += 14*len(glyphs)
-                        if len(glyphs) > 0:
-                            xpos += 12
-                        if card.orientation == Rot90:
-                            xpos += 14 if len(glyphs) > 0 else 26
-                        if card.controller == me:
-                            if card.position != (xpos, ypos):
-                                card.moveToTable(xpos, ypos)
-                        glyphpos = xpos - (39 if card.orientation == Rot90 else 25)
-                    else:
-                    #### Assigned cards normal side
+                dump = []
+                if countType in ["hg", "vai"]:
+                    #### normal position, positive
                         if card.controller == me:
                             if card.position != (xpos, ypos):
                                 card.moveToTable(xpos, ypos)
@@ -1657,10 +1683,21 @@ def cleanup():
                         xpos += 14 * len(glyphs)
                         if len(glyphs) > 0:
                             xpos += 12
-                    alignvars[countType] = xpos + 64
-                else:
-                    if invert:
-                        #### ready cards invert side
+                        alignvars[countType] = (xpos + 64, ypos)
+                elif countType in ["vg", "hai","hri"]:
+                    #### invert position, positive 
+                    xpos += 14*len(glyphs)
+                    if len(glyphs) > 0:
+                        xpos += 12
+                    if card.orientation == Rot90:
+                        xpos += 14 if len(glyphs) > 0 else 26
+                    if card.controller == me:
+                        if card.position != (xpos, ypos):
+                            card.moveToTable(xpos, ypos)
+                    glyphpos = xpos - (39 if card.orientation == Rot90 else 25)
+                    alignvars[countType] = (xpos + 64, ypos)
+                elif countType in ["va", "hgi"]:
+                        #### normal position, negative
                         if card.controller == me:
                             if card.position != (xpos, ypos):
                                 card.moveToTable(xpos, ypos)
@@ -1672,8 +1709,9 @@ def cleanup():
                         xpos -= 14 * len(glyphs)
                         if len(glyphs) > 0:
                             xpos -= 12
-                    else:
-                        #### ready cards normal side
+                        alignvars[countType] = (xpos - 64, ypos)
+                elif countType in ["hr", "ha", "vgi"]:
+                        #### invert position, negative
                         xpos -= 14*len(glyphs)
                         if len(glyphs) > 0:
                             xpos -= 12
@@ -1683,7 +1721,7 @@ def cleanup():
                             if card.position != (xpos, ypos):
                                 card.moveToTable(xpos, ypos)
                         glyphpos = xpos + (14 if card.orientation == Rot90 else 0)
-                    alignvars[countType] = xpos - 64
+                        alignvars[countType] = (xpos - 64, ypos)
                 for glyph in glyphs:
                     if glyph.controller == me:
                         expwin += int(glyph.experience)
@@ -1709,10 +1747,16 @@ def cleanup():
     #### Align the active mission
     if storedMission != None:
         if myTurn():
-            if mission.position != (-106, -32 if invert else -31):
-                mission.moveToTable(-106, -32 if invert else -31)
-            if mission.orientation != 0:
-                mission.orientation = 0
+            if table.board == "invert":
+                if mission.position != (-97,-32):
+                    mission.moveToTable(-97, -32)
+                if mission.orientation != 0:
+                    mission.orientation = 0
+            else:
+                if mission.position != (10, -31):
+                    mission.moveToTable(10,-31)
+                if mission.orientation != 0:
+                    mission.orientation = 0
             missionDiff += value
             mission.markers[markerTypes["skill"]] = missionSkill
             mission.markers[markerTypes["diff"]] = missionDiff

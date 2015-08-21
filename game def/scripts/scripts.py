@@ -1,8 +1,8 @@
 
 VillainActionColor = "#ff0000" #red
-HeroActionColor = "#0000ff" #blue
-BlockColor = "#ffff00" #yellow
-KOColor = "#ffffff" #black
+HeroActionColor = "#00ff00" #green
+FilterColor = "#88ffff00" #yellow
+KOColor = "#bb000000" #black
 
 markerTypes = {
     'block': ("Block", "fc100fdc-aa4b-4429-97f5-02a7ccca2697"),
@@ -14,7 +14,6 @@ markerTypes = {
     'Combat': ("Combat", "74aa2881-b871-4452-ba25-c3c34dd10d7a"),
     'skill': ("Skill", "05660912-e56c-4eb3-8aa8-c06af722b3b3"),
     'diff': ("Difficulty", "8f61a0d9-615d-4382-b884-7fc27d5b615e")
-
     }
 
 phaseDict = {
@@ -74,6 +73,7 @@ storedCards = {}
 storedGameStats = { 'fm': [], 'sm': []}
 storedQueue = []
 storedPriority = 0
+storedPower = 0
 
 scriptsDict = {
 #### Game-based scripts
@@ -136,7 +136,7 @@ scriptsDict = {
                     'group': "me.hand"
                     },
                 'to': ('me.Discard', 0),
-                'count': "0"
+                'count': "len(me.hand) - 8"
                 }),
             ],
         'drawTo8': [
@@ -1010,7 +1010,7 @@ scriptsDict = {
                 })
             ]
         },
-    ## Receiving a Go
+    ## Receiving a Go   #TODO: fix sequencing
     '7861d9aa-aafb-448c-8c4d-98e691d3f53a': {
         'onPlay': [
             ('moveCard', {
@@ -1556,11 +1556,20 @@ scriptsDict = {
         },
     ## Repel Cronus
     'c820d3f8-80a3-48fc-8dd3-0968cb7b9c23': {
+        'onPlayMissionCost': [
+            ('powerChange', {
+                'player': 'hero',
+                'value': '-1'
+                }),
+            ('confirm', {
+                'message': "Repel Cronus's ability: Pay 1 power to ready Teal'c?",
+                })
+            ],
         'onPlayMission': [
             ('statusChange', {
                 'target': {
                     'cardName': ["Teal'c"],
-                    'status': ['a','s']
+                    'status': ['s','a','r']
                     },
                 'action': 'ready',
                 'player': 'hero',
@@ -1624,6 +1633,7 @@ scriptsDict = {
     '75708da0-602d-40f0-9381-b6cc3940ce23': {
         'onGetPlayCost': [
             ('costChange', {
+                'trigger': 'self',
                 'condition': {
                     'custom': "len(storedGameStats['sm']) > 0"
                     },
@@ -1755,9 +1765,7 @@ scriptsDict = {
     '7ee0dd5e-05ab-4a8c-848f-52792b362509': {
         'onGetStats': [
             ('skillChange', {
-                'target': {
-                    'special': "self"
-                    },
+                'trigger': "self",
                 'skill': 'all',
                 'value': "1 if len(storedGameStats['sm']) == 0 else 0"
                 })
@@ -1848,11 +1856,13 @@ scriptsDict = {
 
 def createDecks():
     mute()
+    reloadLocalVars()
     me.setGlobalVariable("loadedCards", "[]")
     if not getSetting("debugMode", False):
         return
     scriptCards = []
-    rand = rnd(0,3)
+    rand = askChoice("choose a deck:", ["O'Neil", "Jackson", "Carter", "Teal'c"])
+#    rand = rnd(0,3)
     if rand == 1:
             deck = oneil
     elif rand == 2:
@@ -1876,9 +1886,9 @@ def createDecks():
         me.piles['Mission Pile'].create(guid, qty)
         if guid not in scriptsDict:
             scriptCards.append(name)
-    if me.hasInvertedTable():
-        registerTeam(me, None)
-        remoteCall(players[1], "registerTeam", [players[1], None])
+    if me.isInverted:
+        registerTeam()
+        remoteCall(players[1], "registerTeam", [])
 
 
 

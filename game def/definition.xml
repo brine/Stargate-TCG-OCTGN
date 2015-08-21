@@ -3,7 +3,7 @@
   name="Stargate TCG" id="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" markersize="14"
   tags="stargate, sg, tcg" authors="brine"
   description="In the Stargate TCG, you'll guide a team of characters on journeys to other worlds, overcoming obstacles, defeating adversaries, and completing missions along the way. All the fun and adventure of the hit television series is here to enjoy!"
-  version="0.10.1.3" octgnVersion="3.1.0.0" scriptVersion="3.1.0.1"
+  version="0.10.1.3" octgnVersion="3.1.0.0" scriptVersion="3.1.0.2"
   gameurl="http://www.octgngames.com" setsurl="http://www.octgngames.com"
   iconurl="https://raw.github.com/brine/Stargate-TCG-OCTGN/master/o8g/cards/back.jpg" >
   <scripts>
@@ -11,13 +11,14 @@
     <script src="scripts/scripts.py" />
   </scripts>
   <events>
-    <event name="OnGameStart" action="createDecks" />
-    <event name="OnLoadDeck" action="registerTeam" />
-    <event name="OnCardDoubleClick" action="doubleClick" />
+    <event name="OnGameStarted" action="createDecks" />
+    <event name="OnDeckLoaded" action="registerTeam" />
+    <event name="OnCardDoubleClicked" action="doubleClick" />
 	<event name="OnGlobalVariableChanged" action="globalVarChanged" />
 	<event name="OnPlayerGlobalVariableChanged" action="playerGlobalVarChanged" />
-	<event name="OnMoveCards" action="moveCardsEvent" />
-	<event name="OnPlayerConnect" action="reloadLocalVars" />
+	<event name="OnCardsMoved" action="moveCardsEvent" />
+	<event name="OnPlayerConnected" action="reloadLocalVars" />
+	<event name="OnCounterChanged" action="counterChange" />
   </events>
   <proxygen definitionsrc="proxy/CardGenData.xml">
   </proxygen>
@@ -51,7 +52,10 @@
     <property name="Script" type="String"/>
 	<size name="mission" back="cards/back.jpg" front="cards/front.jpg" width="88" backWidth="63" height="63" backHeight="88" cornerRadius="3" backCornerRadius="3" />
   </card>
-  <table name="Table" visibility="undefined" width="1078" height="429" background="board/wallpaper.jpg" backgroundStyle="uniformToFill" board="board/playmat2.png" boardPosition="-601,-214,1078,429" >
+  <gameboards src="board/playmat.png" x="-485" y="-147" width="971" height="362">
+    <gameboard name="invert" src="board/playmat2.png" x="-485" y="-215" width="971" height="462"/>
+  </gameboards>
+  <table name="Table" visibility="undefined" width="971" height="362" background="board/wallpaper.jpg" backgroundStyle="uniformToFill" >
     <groupaction menu="Pass" shortcut="tab" execute="passturn" />
 	<groupactions menu="DEBUG MENU" >
 		<groupaction menu="End Quest" execute="endquest" />
@@ -59,6 +63,7 @@
 		<groupaction menu="Enable/Disable Debug Mode" execute="debugToggle" />
 		<groupaction menu="Refresh Vars" shortcut="F2" execute="resetVars" />
 		<groupaction menu="cleanup" shortcut="F3" execute="cleanTable" />
+		<groupaction menu="resolve Queue" shortcut="F4" execute="debugQueue" />
 	</groupactions>
     <cardaction menu="Use Card Ability" shortcut="ctrl+Q" execute="activateAbility" />
     <cardactions menu="DEBUG MENU" >
@@ -74,12 +79,13 @@
   </table>
   <player summary="/ PWR:{#Power} / GLY:{#Glyph Win} / EXP:{#Experience Win} / VIL:{#Villain Win}">
     <globalvariable name="victory" value="0"/>
+    <globalvariable name="power" value="0"/>
     <globalvariable name="loadedCards" value="[]"/>
     <counter name="Power" icon="counters/mp.png" />
     <counter name="Glyph Win" icon="groups/mission.png" />
     <counter name="Experience Win" icon="counters/exp.png" />
     <counter name="Villain Win" icon="counters/ewin.png" />
-    <hand name="Hand" visibility="me" ordered="False" width="63" height="88" icon="groups/hand.png">
+    <hand name="Hand" visibility="me" ordered="False" width="63" height="88" moveto="False" icon="groups/hand.png">
       <cardaction menu="Play card" default="True" execute="playcard" />
       <cardaction menu="Play as Complication" shortcut="ctrl+C" execute="playComplication" />
       <groupactions menu="DEBUG MENU" >
@@ -90,7 +96,7 @@
 		<cardaction menu="Print GUID" shortcut="F1" execute="printGUID" />
 	  </cardactions>
     </hand>
-    <group name="Deck" visibility="none" width="63" height="88" icon="groups/library.png">
+    <group name="Deck" visibility="none" width="63" height="88" moveto="False" icon="groups/library.png">
       <groupactions menu="DEBUG MENU" >
 		  <groupaction menu="Draw" shortcut="ctrl+d" default="True" execute="draw" />
 		  <groupaction menu="Refill Hand" shortcut="ctrl+shift+d" execute="refill" />
@@ -101,12 +107,12 @@
 		  <cardaction menu="Print GUID" shortcut="F1" execute="printGUID" />
 	  </cardactions>
     </group>
-    <group name="Discard" visibility="all" width="63" height="88" icon="groups/graveyard.png">
+    <group name="Discard" visibility="all" width="63" height="88" moveto="False" icon="groups/graveyard.png">
       <cardactions menu="DEBUG MENU" >
 		<cardaction menu="Print GUID" shortcut="F1" execute="printGUID" />
 	  </cardactions>
 	</group>
-    <group name="Mission Pile" visibility="none" width="63" height="88" icon="groups/mission.png" collapsed="False">
+    <group name="Mission Pile" visibility="none" width="63" height="88" icon="groups/mission.png" moveto="False" collapsed="False">
       <groupactions menu="DEBUG MENU" >
 		  <groupaction menu="Shuffle" shortcut="ctrl+s" execute="shuffle" />
 		  <groupaction menu="Play Top Mission" default="True" execute="playcard" />
@@ -115,9 +121,9 @@
 		  <cardaction menu="Print GUID" shortcut="F1" execute="printGUID" />
 	  </cardactions>
     </group>
-    <group name="Team" visibility="me" width="63" height="88" icon="groups/removed.png" collapsed="True">
+    <group name="Team" visibility="me" width="63" height="88" icon="groups/removed.png" moveto="False" collapsed="True">
     </group>
-    <group name="Villain Score Pile" collapsed="True" visibility="all" width="63" height="88" icon="counters/ewin.png">
+    <group name="Villain Score Pile" collapsed="True" visibility="all" width="63" height="88" moveto="False" icon="counters/ewin.png">
 	</group>
   </player>
   <deck>
