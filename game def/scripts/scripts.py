@@ -170,52 +170,6 @@ scriptsDict = {
                 })
             ]
         },
-    ## Nicholas Ballard, Outcast Scholar
-    'db2e0e15-0970-4302-a434-d37c410d10f9': {
-        'onGetAbility1Cost': [
-            ('moveCard', {
-                'target': {
-                    'group': "me.hand"
-                    },
-                'to': ('me.Discard', 0),
-                'condition': {
-                    'custom': "storedCards[card._id].get('!', (False, None))[0] == False"
-                    },
-                'player': 'hero',
-                'count': '1'
-                })
-            ],
-        'onAbility1': [
-            ('skillChange', {
-                'target': {
-                    'special': "self"
-                    },
-                'skill': ['Culture'],
-                'value': '2',
-                'duration': "m",
-                'ignoreSource': True
-                }),
-            ('tagSet', {
-                'target': {
-                    'special': "self"
-                    },
-                'tag': '!',
-                'value': 'True',
-                'ignoreSource': True
-                })
-            ],
-        'onMissionEnd': [
-            ('statusChange', {
-                'target': {
-                    'special': "self"
-                    },
-                'condition': {
-                    'custom': "storedCards[card._id].get('!', [False])[0]"
-                    },
-                'action': 'destroy',
-                })
-            ]
-        },
     ## Brainwashing
     '2aebfd9e-d838-4542-846b-6861f2d6d369': {
         'onPlay': [
@@ -402,111 +356,6 @@ scriptsDict = {
                 })
             ]
         },
-    ## Galaran Memory Device
-    '4e5d26f3-522e-43b4-b560-012b81b27a01': {
-        'onGetAbility1Cost': [
-            ('statusChange', {
-                'target': {
-                    'special': "self"
-                    },
-                'condition': {
-                    'status': ['r']
-                    },
-                'action': 'stop'
-                }),
-            ('moveCard', {
-                'target': {
-                    'group': "me.hand"
-                    },
-                'to': ('me.Discard', 0),
-                'player': 'hero',
-                'count': '1'
-                })
-            ],
-        'onAbility1': [
-            ('moveCard', {
-                'target': {
-                    'type': ['Team Character', 'Support Character', 'Event', 'Gear'],
-                    'group': 'me.Discard'
-                    },
-                'to': ('me.Deck', 1),
-                'player': 'hero',
-                'skippable': True,
-                'count': "1"
-                }),
-            ('shuffleGroup', {
-                'group': 'me.Deck',
-                'player': 'hero'
-                })
-            ]
-        },
-    ## Salvage Technology
-    'c81249ce-abc2-489c-a32c-28ca0e18293b': {
-        'onSuccess': [
-            ('moveCard', {
-                'target': {
-                    'type': ['Gear'],
-                    'group': 'me.Deck'
-                    },
-                'to': ('me.hand', -1),
-                'player': 'hero',
-                'skippable': True,
-                'count': "1"
-                }),
-            ('shuffleGroup', {
-                'group': 'me.Deck',
-                'player': 'hero'
-                })
-            ]
-        },
-    ## Cure the Vorlix
-    '99856f4c-c9d8-44de-8044-b995d84ce141': {
-        'onSuccess': [
-            ('moveCard', {
-                'target': {
-                    'type': ['Support Character', 'Team Character'],
-                    'group': 'me.Deck'
-                    },
-                'to': ('me.hand', -1),
-                'player': 'hero',
-                'skippable': True,
-                'count': "1"
-                }),
-            ('shuffleGroup', {
-                'group': 'me.Deck',
-                'player': 'hero'
-                })
-            ]
-        },
-    ## Ill-Gotten Gains
-    'f8a88854-b6b8-4ccc-aa15-268d5539776c': {
-        'onGetPlayCost': [
-            ('statusChange', {
-                'target': {
-                    'status': ['r'],
-                    'type': ['Team Character']
-                    },
-                'action': 'stop',
-                'player': 'hero',
-                'count': "1"
-                })
-            ],
-        'onPlay': [
-            ('moveCard', {
-                'target': {
-                    'type': ['Gear'],
-                    'group': 'me.Deck'
-                    },
-                'to': ('me.hand', -1),
-                'player': 'hero',
-                'count': "1"
-                }),
-            ('shuffleGroup', {
-                'group': 'me.Deck',
-                'player': 'hero'
-                })
-            ]
-        },
     ## Fall of Earth
     '00e1be97-291d-4e37-aea1-2c386a707f20': {
         'onPlayMission': [
@@ -538,7 +387,7 @@ scriptsDict = {
             ('skillChange', {
                 'target': {
                     'type': ['Obstacle'],
-                    'hasSkill': 'Combat'
+                    'skill': 'Combat'
                     },
                 'skill': ['all'],
                 'value': '-1',
@@ -568,7 +417,7 @@ scriptsDict = {
                 'target': {
                     'status': ['a'],
                     'type': ['Obstacle'],
-                    'hasSkill': 'Combat'
+                    'skill': 'Combat'
                     },
                 'player': 'hero',
                 'count': "1",
@@ -596,7 +445,7 @@ scriptsDict = {
             ('statusChange', {
                 'target': {
                     'type': ['Obstacle'],
-                    'hasSkill': 'Combat',
+                    'skill': 'Combat',
                     'status': ['a']
                     },
                 'action': 'destroy',
@@ -1010,71 +859,60 @@ scriptsDict = {
                 })
             ]
         },
-    ## Receiving a Go   #TODO: fix sequencing
-    '7861d9aa-aafb-448c-8c4d-98e691d3f53a': {
-        'onPlay': [
+    ## Nicholas Ballard, Outcast Scholar
+    ## Discard a card – Nicholas Ballard gets CUL +2 until the end of the current mission.
+    'db2e0e15-0970-4302-a434-d37c410d10f9': {
+        'onGetAbility1Cost': [
             ('moveCard', {
                 'target': {
-                    'group': 'me.piles["Mission Pile"]',
-                    'top': "len([c for c in storedCards if cardActivity(Card(c)) != 'inactive' and storedCards[c]['s'] == 'r' and Card(c).Type in ['Support Character', 'Team Character'] and 'SGC' in Card(c).Traits])"
+                    'group': "me.hand"
                     },
-                'to': ('me.piles["Mission Pile"]', "t/b"),
+                'to': {
+                    'group': 'me.Discard', 
+                    'index': '0',
+                    'min': '1',
+                    'max': '1'
+                    },
+                'condition': {
+                    'custom': "storedCards[card._id].get('!', (False, None))[0] == False"
+                    },
                 'player': 'hero'
                 })
-            ]
-        },
-    ## Establish Communications
-    'edee7ab2-f431-4c28-b808-d6fa1ed59cc2': {
-        'onAssign': [
-            ('moveCard', {
+            ],
+        'onAbility1': [
+            ('skillChange', {
                 'target': {
-                    'group': "me.hand"
+                    'special': "self"
                     },
-                'to': ('me.Discard', 0),
-                'trigger': {
-                    'cardName': "Jack O'Neill"
-                    },
-                'player': 'hero',
-                'count': '999',
-                'skippable': True
+                'skill': ['Culture'],
+                'value': '2',
+                'duration': "m",
+                'ignoreSource': True
                 }),
-            ('fillHand', {
-                'trigger': {
-                    'cardName': "Jack O'Neill"
-                    },
-                'player': 'hero',
-                'value': '8'
-                })
-            ]
-        },
-    ## Explore Genetics Lab
-    '03ee4c09-1daa-43ed-a096-0b39cbbf1545': {
-        'onFailure': [
-            ('moveCard', {
+            ('tagSet', {
                 'target': {
-                    'group': "me.hand"
+                    'special': "self"
                     },
-                'to': ('me.Discard', 0),
-                'player': 'villain',
-                'count': '1',
-                'skippable': True
-                }),
-            ('fillHand', {
-                'player': 'villain',
-                'value': '8'
+                'tag': '!',
+                'value': 'True',
+                'ignoreSource': True
                 })
-            ]
-        },
-    ## Relocate Advanced Civilizations
-    '2bb7b341-26e1-495a-bd27-1635d81dcc5f': {
-        'onPlayMission': [
-            ('fillHand', {
-                'player': 'enemy',
-                'value': '8'
+            ],
+        'onMissionEnd': [
+            ('statusChange', {
+                'target': {
+                    'special': "self"
+                    },
+                'condition': {
+                    'custom': "storedCards[card._id].get('!', [False])[0]"
+                    },
+                'action': 'destroy',
                 })
             ]
         },
     ## Tolok, Jaffa Elder
+    ## When you play Tolok, you may pay 2 power and discard a card.
+    ## If you do, ready another Jaffa character.
     '20b010bf-9c8c-45dc-8ea6-7d2df55f80a5': {
         'onPlayCost': [
             ('powerChange', {
@@ -1085,9 +923,13 @@ scriptsDict = {
                 'target': {
                     'group': "me.hand"
                     },
-                'to': ('me.Discard', 0),
-                'player': 'hero',
-                'count': '1'
+                'to': {
+                    'group': 'me.Discard',
+                    'index': '0',
+                    'min': '1',
+                    'max': '1'
+                    },
+                'player': 'hero'
                 }),
             ('confirm', {
                 'message': "Tolok's ability: Pay 2 power and discard a card, to ready another Jaffa character?",
@@ -1108,18 +950,322 @@ scriptsDict = {
             ]
         },
     ## Out of Your Depth
+    ## Failure: You may take a SCI obstacle card from your discard pile into hand.
     'b95f875a-0f2a-416a-bdc9-6b7aac41ffa8': {
         'onFailure': [
             ('moveCard', {
                 'target': {
                     'type': ['Obstacle'],
-                    'hasSkill': 'Science',
+                    'skill': 'Science',
                     'group': 'me.Discard'
                     },
-                'to': ('me.hand', -1),
+                'to': {
+                    'group': 'me.hand',
+                    'index': '-1',
+                    'min': '1',
+                    'max': '1'
+                    },
                 'player': 'villain',
-                'skippable': True,
+                'skippable': True
+                })
+            ]
+        },
+    ## Conduct Repairs
+    ## Success: You may take a gear card from your discard pile into hand.
+    'b443d736-2f46-4176-94b4-6c18f57cdf84': {
+        'onSuccess': [
+            ('moveCard', {
+                'target': {
+                    'type': ['Gear'],
+                    'group': 'me.Discard'
+                    },
+                'to': {
+                    'group': 'me.hand',
+                    'index': '-1',
+                    'min': '1',
+                    'max': '1'
+                    },
+                'player': 'hero',
+                'skippable': True
+                })
+            ]
+        },
+    ## Research Advanced Races
+    ## Success: You may look at the top card of your mission pile, then place it on the top or bottom of that pile.
+    'b457732b-04e3-4d0e-afb7-68d3dc6b848c': {
+        'onSuccess': [
+            ('moveCard', {
+                'target': {
+                    'group': 'me.piles["Mission Pile"]',
+                    'top': "1"
+                    },
+                'to': {
+                    'group': 'me.piles["Mission Pile"]',
+                    'index': '0',
+                    'label': 'Top of Mission Pile'
+                    },
+                'altTo': {
+                    'group': 'me.piles["Mission Pile"]',
+                    'index': '-1',
+                    'label': 'Bottom of Mission Pile'
+                    },
+                'player': 'hero',
+                'skippable': True
+                })
+            ]
+        },
+    ## Attend Triad
+    ## Success: You may take a character card from your discard pile into hand.
+    '7cd9c3b2-a979-460a-ae6d-0fa1dbe1431b': {
+        'onSuccess': [
+            ('moveCard', {
+                'target': {
+                    'type': ['Support Character', 'Team Character'],
+                    'group': 'me.Discard'
+                    },
+                'to': {
+                    'group': 'me.hand',
+                    'index': '-1',
+                    'min': '1',
+                    'max': '1'
+                    },
+                'player': 'hero',
+                'skippable': True
+                })
+            ]
+        },
+    ## Prevent Invasion
+    ## When you play this mission, your opponent may take an obstacle card from his discard pile into hand.
+    'a4e3f614-51f0-4976-8ee5-ca96f3e0cf63': {
+        'onPlayMission': [
+            ('moveCard', {
+                'target': {
+                    'type': ['Obstacle'],
+                    'group': 'me.Discard'
+                    },
+                'to': {
+                    'group': 'me.hand',
+                    'index': '-1',
+                    'min': '1',
+                    'max': '1'
+                    },
+                'player': 'villain',
+                'skippable': True
+                })
+            ]
+        },
+    ## Receiving a Go   #TODO: fix sequencing
+    ## Look at one card from the top of your mission pile for each ready SGC character.
+    ## Place those cards in any order on the top and/or bottom of that pile.
+    '7861d9aa-aafb-448c-8c4d-98e691d3f53a': {
+        'onPlay': [
+            ('moveCard', {
+                'target': {
+                    'group': 'me.piles["Mission Pile"]',
+                    'top': "len([c for c in storedCards if cardActivity(Card(c)) != 'inactive' and storedCards[c]['s'] == 'r' and Card(c).Type in ['Support Character', 'Team Character'] and 'SGC' in Card(c).Traits])"
+                    },
+                'to': {
+                    'group': 'me.piles["Mission Pile"]',
+                    'index': '0',
+                    'label': 'Top of Mission Pile'
+                    },
+                'altTo': {
+                    'group': 'me.piles["Mission Pile"]',
+                    'index': '-1',
+                    'label': 'Bottom of Mission Pile'
+                    },
+                'player': 'hero'
+                })
+            ]
+        },
+    ## Establish Communications
+    ## Each time you assign Jack O'Neill, you may discard any number of cards, 
+    ## then refill your hand.
+    'edee7ab2-f431-4c28-b808-d6fa1ed59cc2': {
+        'onAssign': [
+            ('moveCard', {
+                'trigger': {
+                    'cardName': "Jack O'Neill"
+                    },
+                'target': {
+                    'group': "me.hand"
+                    },
+                'to': {
+                    'group': 'me.Discard', 
+                    'index': '0'
+                    },
+                'player': 'hero',
+                'skippable': True
+                }),
+            ('fillHand', {
+                'trigger': {
+                    'cardName': "Jack O'Neill"
+                    },
+                'player': 'hero',
+                'value': '8'
+                })
+            ]
+        },
+    ## Explore Genetics Lab
+    ## Failure: Your opponent may discard a card, then refill his hand.
+    '03ee4c09-1daa-43ed-a096-0b39cbbf1545': {
+        'onFailure': [
+            ('moveCard', {
+                'target': {
+                    'group': "me.hand"
+                    },
+                'to': {
+                    'group': 'me.Discard',
+                    'index': '0',
+                    'max': '1'
+                    },
+                'player': 'villain',
+                'skippable': True
+                }),
+            ('fillHand', {
+                'player': 'villain',
+                'value': '8'
+                })
+            ]
+        },
+    ## Galaran Memory Device
+    ## Stop this gear, discard a card – 
+    ## Take a hero card from your discard pile and shuffle that card into your deck.
+    '4e5d26f3-522e-43b4-b560-012b81b27a01': {
+        'onGetAbility1Cost': [
+            ('statusChange', {
+                'target': {
+                    'special': "self"
+                    },
+                'condition': {
+                    'status': ['r']
+                    },
+                'action': 'stop'
+                }),
+            ('moveCard', {
+                'target': {
+                    'group': "me.hand"
+                    },
+                'to': {
+                    'group': 'me.Discard',
+                    'index': '0',
+                    'min': '1',
+                    'max': '1'
+                    },
+                'player': 'hero'
+                })
+            ],
+        'onAbility1': [
+            ('moveCard', {
+                'target': {
+                    'type': ['Team Character', 'Support Character', 'Event', 'Gear'],
+                    'group': 'me.Discard'
+                    },
+                'to': {
+                    'group': 'me.Deck',
+                    'index': '0',
+                    'min': '1',
+                    'max': '1'
+                    },
+                'player': 'hero',
+                }),
+            ('shuffle', {
+                'group': 'me.Deck',
+                'player': 'hero'
+                })
+            ]
+        },
+    ## Salvage Technology
+    ## Success: You may search your deck for a card. 
+    ## If you do, reveal it, take it into hand, and shuffle your deck.
+    'c81249ce-abc2-489c-a32c-28ca0e18293b': {
+        'onSuccess': [
+            ('moveCard', {
+                'target': {
+                    'type': ['Gear'],
+                    'group': 'me.Deck'
+                    },
+                'to': {
+                    'group': 'me.hand',
+                    'index': '-1',
+                    'min': '1',
+                    'max': '1'
+                    },
+                'player': 'hero',
+                'skippable': True
+                }),
+            ('shuffle', {
+                'group': 'me.Deck',
+                'player': 'hero'
+                })
+            ]
+        },
+    ## Cure the Vorlix
+    ## Success: You may search your deck for a character card.
+    ## If you do, reveal it, take it into hand, and shuffle your deck.
+    '99856f4c-c9d8-44de-8044-b995d84ce141': {
+        'onSuccess': [
+            ('moveCard', {
+                'target': {
+                    'type': ['Support Character', 'Team Character'],
+                    'group': 'me.Deck'
+                    },
+                'to': {
+                    'group': 'me.hand',
+                    'index': '-1',
+                    'min': '1',
+                    'max': '1'
+                    },
+                'player': 'hero',
+                'skippable': True
+                }),
+            ('shuffle', {
+                'group': 'me.Deck',
+                'player': 'hero'
+                })
+            ]
+        },
+    ## Ill-Gotten Gains
+    ## To play this event, stop a team character.
+    ## Search your deck for a card, reveal it, take it into hand, and shuffle your deck.
+    'f8a88854-b6b8-4ccc-aa15-268d5539776c': {
+        'onGetPlayCost': [
+            ('statusChange', {
+                'target': {
+                    'status': ['r'],
+                    'type': ['Team Character']
+                    },
+                'action': 'stop',
+                'player': 'hero',
                 'count': "1"
+                })
+            ],
+        'onPlay': [
+            ('moveCard', {
+                'target': {
+                    'type': ['Gear'],
+                    'group': 'me.Deck'
+                    },
+                'to': {
+                    'group': 'me.hand',
+                    'index': '-1',
+                    'min': '1',
+                    'max': '1'
+                    },
+                'player': 'hero',
+                }),
+            ('shuffle', {
+                'group': 'me.Deck',
+                'player': 'hero'
+                })
+            ]
+        },
+    ## Relocate Advanced Civilizations
+    '2bb7b341-26e1-495a-bd27-1635d81dcc5f': {
+        'onPlayMission': [
+            ('fillHand', {
+                'player': 'enemy',
+                'value': '8'
                 })
             ]
         },
@@ -1135,66 +1281,6 @@ scriptsDict = {
                 'player': 'hero',
                 'skippable': True,
                 'count': "len(storedGameStats['fm'])"
-                })
-            ]
-        },
-    ## Conduct Repairs
-    'b443d736-2f46-4176-94b4-6c18f57cdf84': {
-        'onSuccess': [
-            ('moveCard', {
-                'target': {
-                    'type': ['Gear'],
-                    'group': 'me.Discard'
-                    },
-                'to': ('me.hand', -1),
-                'player': 'hero',
-                'skippable': True,
-                'count': "1"
-                })
-            ]
-        },
-    ## Research Advanced Races
-    'b457732b-04e3-4d0e-afb7-68d3dc6b848c': {
-        'onSuccess': [
-            ('moveCard', {
-                'target': {
-                    'group': 'me.piles["Mission Pile"]',
-                    'index': "0"
-                    },
-                'to': ('me.piles["Mission Pile"]', -1),
-                'player': 'hero',
-                'skippable': True,
-                'count': "1"
-                })
-            ]
-        },
-    ## Attend Triad
-    '7cd9c3b2-a979-460a-ae6d-0fa1dbe1431b': {
-        'onSuccess': [
-            ('moveCard', {
-                'target': {
-                    'type': ['Support Character', 'Team Character'],
-                    'group': 'me.Discard'
-                    },
-                'to': ('me.hand', -1),
-                'player': 'hero',
-                'skippable': True,
-                'count': "1"
-                })
-            ]
-        },
-    ## Prevent Invasion
-    'a4e3f614-51f0-4976-8ee5-ca96f3e0cf63': {
-        'onPlayMission': [
-            ('moveCard', {
-                'target': {
-                    'type': ['Obstacle'],
-                    'group': 'me.Discard'
-                    },
-                'to': ('me.hand', -1),
-                'player': 'villain',
-                'skippable': True,
-                'count': "1"
                 })
             ]
         },
@@ -1890,7 +1976,11 @@ def createDecks():
         registerTeam()
         remoteCall(players[1], "registerTeam", [])
 
-
+def genTestCards(group, x = 0, y = 0):
+    mute()
+    for x in scriptsDict:
+        if 'test' in scriptsDict[x]:
+            me.hand.create(x)
 
 jackson = {
   'main': [
@@ -2019,6 +2109,19 @@ carter = {
   ]}
 
 tealc = {
+  'main': [
+    (3, "87b224b8-8ae0-4081-aef3-5863b67bad26", "Artok"),
+    (3, "75708da0-602d-40f0-9381-b6cc3940ce23", "Drey'auc"),
+    (2, "0a124022-4054-4952-83d9-3ac43d16e7a1", "Gerak"),
+    (3, "ba2f1ef2-93e4-41f9-9a92-faa537293c88", "Loyal Sacrifice"),
+    (2, "3c381256-8ecd-4a17-ae67-dbe4a7b5305a", "Osbourne"),
+  ],
+  'team': [
+  ],
+  'mission': [
+  ]}
+  
+tealc2 = {
   'main': [
     (3, "87b224b8-8ae0-4081-aef3-5863b67bad26", "Artok"),
     (3, "75708da0-602d-40f0-9381-b6cc3940ce23", "Drey'auc"),

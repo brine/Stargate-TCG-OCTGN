@@ -27,6 +27,22 @@ def counterChange(args):
     if args.player == me:
         args.counter.value = args.value
 
+def debugQueue(group, x = 0, y = 0):
+    mute()
+    if not getSetting("debugMode", False):
+        return
+    resolveQueue()
+
+def debugToggle(group, x = 0, y = 0):
+    mute()
+    debug = getSetting("debugMode", False)
+    if debug == False:
+        notify("{} enables Debug Mode.".format(me))
+        setSetting("debugMode", True)
+    else:
+        notify("{} disables Debug Mode.".format(me))
+        setSetting("debugMode", False)
+
 def moveCardsEvent(args):
     mute()
     if getSetting("debugMode", False):
@@ -646,7 +662,7 @@ def doubleClick(args):
             return
         #### Check for additional costs to play the card
         if not checkCosts(card, "onGetAssignCost", card._id):
-            return
+            return 
         #### check if the card is being blocked
         blockedList = storedCards[card._id].get("b", [])
         for blocker in blockedList:
@@ -759,7 +775,6 @@ def activateAbility(card, x = 0, y = 0):
     #### Check for additional costs to play the ability
     if not checkCosts(card, "onGetAbility" + abilityTrigger + "Cost", card._id):
         return
-#    storedQueue = phaseTriggers("onGetAbility" + abilityTrigger + "Cost", card._id) + [([card._id], "game", "activate1", 0, me._id, False, None)] + phaseTriggers("onAbility" + abilityTrigger, card._id) + storedQueue
     storedQueue = phaseTriggers("onGetAbility" + abilityTrigger + "Cost", card._id) + phaseTriggers("onAbility" + abilityTrigger, card._id) + storedQueue
     setGlobalVariable("priority", str((getPlayers()[1]._id, False)))
     setGlobalVariable("cardqueue", str(storedQueue))
@@ -812,8 +827,8 @@ def checkCosts(origCard, type, sourceId):  ## This function verifies if all cost
                     player = turnPlayer()
                 else:
                     player = turnPlayer(False)
-                if len(eval(params["target"]["group"])) < eval(params["count"]):
-                    whisper("Cannot continue: {} does not have enough cards in their hand.".format(player))
+                if "min" in params["to"] and len(eval(params["target"]["group"])) < eval(params["to"]["min"]):
+                    whisper("Cannot continue: {} does not have enough cards in their {}.".format(player, eval(params["to"]["group"]).name))
                     return False
     return True
 
@@ -930,10 +945,6 @@ def storeNewCards(card, initialState, cardDict):
         cardData["#"] = 1
     else:
         cardData["#"] = max([c.get("#", 0) for c in cardDict.values()]) + 1
-#    for (k,v) in scriptsDict.get(card.model, {}).items():
-#        for (actionType, params) in v:
-#            if k == "onGetStats" and params.get("target", "self") != "self":
-#                cardData["gs"] = (True, None, "p")
     cardDict[card._id] = cardData
     return cardDict
 
@@ -1068,14 +1079,10 @@ def phaseTriggers(triggerName, sourceId, skippable = False):
                 heroTriggers.append(c)
             else:
                 villainTriggers.append(c)
-#    if len(villainTriggers) == 0 and heroTriggers == [sourceId]: ## Don't queue if the only trigger is the source
-#        return triggerScripts(Card(sourceId), triggerName, sourceId)
     if len(heroTriggers) > 0: ## attach hero triggers to queue
         newQueue += [(heroTriggers, "trig", triggerName, 0, turnPlayer()._id, skippable, sourceId)]
     if len(villainTriggers) > 0: ## attach villain triggers to queue
         newQueue += [(villainTriggers, "trig", triggerName, 0, turnPlayer(False)._id, skippable, sourceId)]
-#    if len(newQueue) == 0: ## skip all this junk if there's no actual triggers
-#        return []
     return newQueue
 
 def hasTriggers(card, triggerName, sourceId):
@@ -1112,7 +1119,7 @@ def checkConditions(card, conditions, sourceId):
     statusCheck = conditions.get("status", [])
     if statusCheck != [] and storedCards[card._id]["s"] not in statusCheck:
         return (False, "Status")
-    skillCheck = conditions.get("hasSkill", None)
+    skillCheck = conditions.get("skill", None)
     if skillCheck != None and getStats(card)[skillCheck] != None:
         return (False, "Skill")
     typeCheck = conditions.get("type", [])
@@ -1146,12 +1153,6 @@ def triggerScripts(card, type, sourceId): ## note this function assumes that the
             player = turnPlayer(False)._id
         queue.append((card._id, scriptIndex, type, 0, player, params.get("skippable", False), sourceId))
     return queue
-
-def debugQueue(group, x = 0, y = 0):
-    mute()
-    if not getSetting("debugMode", False):
-        return
-    resolveQueue()
 
 def resolveQueue(target = None, skip = False):
     global storedQueue, storedCards, storedPhase, storedGameStats
@@ -1255,14 +1256,7 @@ def resolveQueue(target = None, skip = False):
             del storedQueue[0]
             targetCheck = params["target"]
             fromGroup = eval(targetCheck["group"])
-            if fromGroup == me.Deck or fromGroup == me.piles["Mission Pile"]:  ## These piles are normally hidden, so permission to search is needed
-                if params.get("skippable", False): #when a choice is required
-                    if not confirm("Do you want to search your {} for a card?\n\nSource: {}".format(fromGroup.name, Card(qCard).name)):
-                        continue
-                fromGroup.visibility = "me"
-                rnd(1,10)
-            skillCheck = targetCheck.get("hasSkill", None)
-            typeCheck = targetCheck.get("type", [])
+            ## subdivide the group if necessary
             if 'index' in targetCheck:
                 groupList = [fromGroup[eval(targetCheck["index"])]]
             elif 'top' in targetCheck:
@@ -1271,46 +1265,56 @@ def resolveQueue(target = None, skip = False):
                 groupList = list(fromGroup[-eval(targetCheck["bottom"]):])
             else:
                 groupList = fromGroup
-            toGroup = eval(params["to"][0])
-            toIndex = params["to"][1]
+            skippable = params.get("skippable", False)
+            ## request permission to view piles that are normally hidden from that player
+            if fromGroup.name in ["Deck", "Mission Pile"]:
+                if not skippable: #when a choice is required
+                    if not confirm("Do you want to search your {} for a card?\n\nSource: {}".format(fromGroup.name, Card(qCard).name)):
+                        continue
+                fromGroup.visibility = "me"
+                rnd(1,10)
+            skillCheck = targetCheck.get("skill", None)
+            typeCheck = targetCheck.get("type", [])
             targets = [c for c in groupList
                 if (typeCheck == [] or c.Type in typeCheck)
                 and (skillCheck == None or getStats(c)[skillCheck] != None)
                 ]
-            skippable = params.get("skippable", False)
-            maxValue = min(eval(params.get("count", "len(targets)")), len(targets))
-            minValue = 0 if skippable else maxValue
-            choices = []
-            while len(choices) < maxValue:
-                dlg = cardDlg(targets)
-                dlg.text = "Choose {}{} card(s) to move from {} to {}.".format(
-                                    "up to " if skippable else "",
-                                    maxValue - len(choices),
-                                    fromGroup.name, 
-                                    toGroup.name
-                                    )
-                dlgChoice = dlg.show()
-                if dlgChoice == [] and skippable:
-                    break
-                targets.remove(dlgChoice[0])
-                choices += dlgChoice
-            for choice in choices:
-                bottom = False
-                if toIndex == "t/b": ## Choose between top or bottom
-                    tbChoice = 0
-                    while tbChoice == 0:
-                        tbChoice = askChoice("Put {} on top or bottom of {}?".format(choice.name, toGroup.name), ["Top", "Bottom"])
-                        if tbChoice == 1:
-                            choice.moveTo(toGroup, 0)
-                        elif tbChoice == 2:
-                            choice.moveTo(toGroup, -1)
-                            bottom = True
-                else:
-                    choice.moveTo(toGroup, toIndex)
+            toGroup = eval(params["to"]["group"])
+            toIndex = eval(params["to"]["index"])
+            dlg = cardDlg(targets)
+            dlg.max = min(eval(params['to'].get("max", "len(targets)")), len(targets))
+            if "min" in params["to"]:
+                dlg.min = eval(params["to"]["min"])
+            elif skippable:
+                dlg.min = 0
+            else:
+                dlg.min = dlg.max
+            dlg.label = params["to"].get("label", "from {} to {}".format(fromGroup.name, toGroup.name))
+            if 'altTo' in params:
+                dlg = cardDlg(targets, [])
+                altToGroup = eval(params["altTo"]['group'])
+                altToIndex = eval(params["altTo"]['index'])
+                dlg.bottomLabel = params["altTo"].get("label", "from {} to {}".format(fromGroup.name, altToGroup.name))
+            dlg.text = "Choose {}{} card(s) to move from {} to {}.".format(
+                               "up to " if skippable else "",
+                                 dlg.max,
+                                                         fromGroup.name,
+                                                               toGroup.name
+                               )
+            dlgChoice = dlg.show()
+            for choice in (dlgChoice if dlg.min == 1 and dlg.max == 1 and dlg.bottomList == None else dlg.list):
+                choice.moveTo(toGroup, toIndex)
                 if fromGroup == me.hand and toGroup == me.Discard:
                     notify("{} discards {} from hand.".format(me, choice))
                 else:
-                    notify("{} moves {} to {}{} from {}.".format(me, choice, "bottom of " if bottom else "", toGroup.name, fromGroup.name))
+                    notify("{} moves {} to {} from {}.".format(me, choice, dlg.label, fromGroup.name))
+            if dlg.bottomList != None:
+                for choice in dlg.bottomList:
+                    choice.moveTo(altToGroup, altToIndex)
+                    if fromGroup == me.hand and altToGroup == me.Discard:
+                        notify("{} discards {} from hand.".format(me, choice))
+                    else:
+                        notify("{} moves {} to {} from {}.".format(me, choice, dlg.bottomLabel, fromGroup.name))
             if me.Deck.visibility != "none":
                 me.Deck.visibility = "none"
             if me.piles["Mission Pile"].visibility != "none":
@@ -1327,10 +1331,10 @@ def resolveQueue(target = None, skip = False):
         elif qAction == "delCount":
             if "sc" in storedGameStats:
                 del storedGameStats["sc"]
-        elif qAction == "shuffleGroup":
-            shuffleGroup = eval(params["group"])
-            shuffleGroup.shuffle()
-            notify("{} shuffled their {}.".format(me, shuffleGroup.name))
+        elif qAction == "shuffle":
+            shuffle = eval(params["group"])
+            shuffle.shuffle()
+            notify("{} shuffled their {}.".format(me, shuffle.name))
         elif qAction == "playCard":
             for targetCard in targets:
                 #### Move the card to the correct location after playing it
@@ -1571,7 +1575,12 @@ def cleanup():
         status = storedCards[c]["s"]
         if status == "am": ## skip general alignment of the active mission since it's done later on
             continue
-        if not cardActivity(card) == "inactive":
+        glyphs = [Card(x) for x in storedCards[c].get("g", [])] ## Gets the list of glyphs attached to the card
+        for glyph in glyphs:
+            if glyph.controller == me:
+                expwin += int(glyph.experience)
+                glyphwin += 1
+        if cardActivity(card) != "inactive":
             if card.controller == me:
                 ## If for some reason the card is no longer on the table, move it back
                 if card not in table:
@@ -1668,7 +1677,6 @@ def cleanup():
                     countType += "i"
                 ypos = alignvars[countType][1]
                 xpos = alignvars[countType][0]
-                glyphs = [Card(x) for x in storedCards[c].get("g", [])] ## Gets the list of glyphs attached to the card
                 dump = []
                 if countType in ["hg", "vai"]:
                     #### normal position, positive
@@ -1724,8 +1732,6 @@ def cleanup():
                         alignvars[countType] = (xpos - 64, ypos)
                 for glyph in glyphs:
                     if glyph.controller == me:
-                        expwin += int(glyph.experience)
-                        glyphwin += 1
                         if glyph.position != (glyphpos, ypos):
                             glyph.moveToTable(glyphpos, ypos)
                             glyph.sendToBack()
@@ -1821,38 +1827,8 @@ def remoteMove(card, pile, bottom = False):
     else:
         card.moveTo(card.owner.piles[pile])
 
-def checkScripts(card, actionType):
-    mute()
-    if card.name in scriptsDict:
-        cardScripts = scriptsDict[card.name]
-        if actionType in cardScripts:
-            script = cardScripts[actionType]
-            
-    return None
-
-
 #---------------------------------------------------------------------------
-# Table group actions
-#---------------------------------------------------------------------------
-
-def endquest(group, x = 0, y = 0):
-    mute()
-
-def endturn(group, x = 0, y = 0):
-    mute()
-
-def debugToggle(group, x = 0, y = 0):
-    mute()
-    debug = getSetting("debugMode", False)
-    if debug == False:
-        notify("{} enables Debug Mode.".format(me))
-        setSetting("debugMode", True)
-    else:
-        notify("{} disables Debug Mode.".format(me))
-        setSetting("debugMode", False)
-
-#---------------------------------------------------------------------------
-# Table card actions
+# Debug Actions
 #---------------------------------------------------------------------------
 
 def assign(card, x = 0, y = 0):
@@ -1863,47 +1839,6 @@ def assign(card, x = 0, y = 0):
     storedCards[card._id]["s"] = "a"
     setGlobalVariable("cards", str(storedCards))
     notify("{} readies {}.".format(me, card))
-
-def assign2(card, x = 0, y = 0):
-    mute()
-    if not getSetting("debugMode", False):
-        return
-    if cardActivity(card) == "inactive":
-        whisper("You cannot play {} during your {}turn.".format(card, "" if myTurn() else "opponent's "))
-        return
-    if card.Type not in ["Adversary", "Team Character", "Support Character"]:
-        whisper("Cannot assign {}: It is not an assignable card type.".format(card))
-        return
-    global storedPhase
-    phase = storedPhase
-    if phase != 8: ## mis.main
-        whisper("Cannot assign {}: It's not the main mission phase.".format(card))
-        return
-    if not myPriority():
-        whisper("Cannot assign {}: You don't have priority.".format(card))
-        return
-    if storedMission == None:
-        whisper("Cannot assign {} as there is no active mission.".format(card))
-        return
-    global storedQueue
-    if len(storedQueue) > 0:
-        whisper("Cannot assign {}: There are abilities that need resolving.".format(card))
-        return
-    mission, type, value, status = storedMission
-    if card.properties[type] == None or card.properties[type] == "":
-        whisper("Cannot assign {}: Does not match the active mission's {} skill.".format(card, type))
-        return
-    global storedCards
-    if card._id in storedCards:
-        if storedCards[card._id]["s"] != "r":
-            whisper("Cannot assign: {} is not Ready.".format(card))
-            return
-        storedCards[card._id]["s"] = "a"
-        setGlobalVariable("cards", str(storedCards))
-        setGlobalVariable("priority", str((turnPlayer(False)._id, False)))
-        notify("{} assigns {}.".format(me, card))
-    else:
-        notify("ERROR: {} not in cards global dictionary.".format(card))
 
 def ready(card, x = 0, y = 0):
     mute()
@@ -1969,19 +1904,6 @@ def flip(card, x = 0, y = 0):
         card.isFaceUp = True
         notify("{} morphs {} face up.".format(me, card))
 
-#---------------------------------------------------------------------------
-# Group Actions
-#---------------------------------------------------------------------------
-
-def randomDiscard(group, x = 0, y = 0):
-    mute()
-    if not getSetting("debugMode", False):
-        return
-    card = group.random()
-    if card == None: return
-    notify("{} randomly discards a card.".format(me))
-    card.moveTo(me.Discard)
-
 def draw(group, x = 0, y = 0):
     if not getSetting("debugMode", False):
         return
@@ -1989,16 +1911,6 @@ def draw(group, x = 0, y = 0):
     mute()
     group[0].moveTo(me.hand)
     notify("{} draws a card.".format(me))
-
-def refill(group, x = 0, y = 0):
-    if not getSetting("debugMode", False):
-        return
-    if len(group) == 0: return
-    mute()
-    count = len(me.hand)
-    count2 = 8 - count
-    for c in group.top(count2): c.moveTo(me.hand)
-    notify("{} refills hand, drawing {} cards.".format(me, count2))
 
 def shuffle(group, x = 0, y = 0):
     if not getSetting("debugMode", False):
