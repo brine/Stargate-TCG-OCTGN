@@ -4,7 +4,7 @@
   tags="stargate, sg, tcg" authors="brine"
   description="In the Stargate TCG, you'll guide a team of characters on journeys to other worlds, overcoming obstacles, defeating adversaries, and completing missions along the way. All the fun and adventure of the hit television series is here to enjoy!"
   version="0.11.0.0" octgnVersion="3.1.0.0" scriptVersion="3.1.0.2"
-  gameurl="http://www.octgngames.com" setsurl="http://www.octgngames.com"
+  gameurl="https://github.com/brine/Stargate-TCG-OCTGN" setsurl="https://github.com/brine/Stargate-TCG-OCTGN"
   iconurl="https://raw.github.com/brine/Stargate-TCG-OCTGN/master/o8g/cards/back.jpg" >
   <scripts>
     <script src="scripts/actions.py" />
@@ -58,13 +58,13 @@
 	<marker name="Stop Indicator" id="stop" src="assets/stop.png" />
 	<marker name="Block Indicator" id="block" src="assets/block.png" />
 	<marker name="Generic Marker" id="counter" src="assets/marker.png" />
-	<symbol name="Orion Glyph" id="orion" src="assets/orion.png" />
-	<symbol name="Gemini Glyph" id="gemini" src="assets/gemini.png" />
-	<symbol name="Triangulum Glyph"  id="triangulum" src="assets/triangulum.png" />
-	<symbol name="Pisces Glyph" id="pisces" src="assets/pisces.png" />
-	<symbol name="Scorpius Glyph" id="scorpius" src="assets/scorpius.png" />
-	<symbol name="Libra Glyph" id="libra" src="assets/libra.png" />
-	<symbol name="Promotion Counter" id="promotion" src="assets/marker.png" />
+	<marker name="Orion Glyph" id="orion" src="assets/orion.png" />
+	<marker name="Gemini Glyph" id="gemini" src="assets/gemini.png" />
+	<marker name="Triangulum Glyph"  id="triangulum" src="assets/triangulum.png" />
+	<marker name="Pisces Glyph" id="pisces" src="assets/pisces.png" />
+	<marker name="Scorpius Glyph" id="scorpius" src="assets/scorpius.png" />
+	<marker name="Libra Glyph" id="libra" src="assets/libra.png" />
+	<marker name="Promotion Counter" id="promotion" src="assets/marker.png" />
   </markers>
   <card back="cards/back.jpg" front="cards/front.jpg" width="63" height="88" cornerRadius="3">
     <property name="Title" type="String" />
