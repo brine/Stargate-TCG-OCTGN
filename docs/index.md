@@ -1,37 +1,15 @@
-## Welcome to GitHub Pages
+## Stargate TCG for OCTGN
 
-You can use the [editor on GitHub](https://github.com/brine/Stargate-TCG-OCTGN/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+# How to Install:
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Install the Stargate TCG game plugin via the **Games Manager** tab in OCTGN.
 
-### Markdown
+#Adding Card Images:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+[Download the Image Pack here](https://github.com/brine/Stargate-TCG-OCTGN/raw/master/STARGATE_TCG_BASE_SET_v1.0.o8c).  In the OCTGN game manager, click the green **ADD IMAGE PACKS** button, and navigate to the **.o8c** image pack you just downloaded.
 
-```markdown
-Syntax highlighted code block
+#Playing Stargate TCG
 
-# Header 1
-## Header 2
-### Header 3
+The game is currently in minimal scripting.  Use your mouse to drag and drop cards from various piles.  Right-click a card, pile, or the table, to view some additional gameplay actions.  Hold SHIFT as you click cards to add target icons to them, or draw targetting arrows.
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/brine/Stargate-TCG-OCTGN/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+The 4 preconstructed decks from the base set can be located in the "Load Pre-Built Deck" menu option.
