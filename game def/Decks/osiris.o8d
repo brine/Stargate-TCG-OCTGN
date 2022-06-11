@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<deck game="11ec1f21-7d4c-4bf0-9d72-df01c6c78911">
+  <section name="Main" shared="False">
+    <card qty="2" id="cec32155-7eb9-4001-a923-1bf3b4ca0150">Merrin</card>
+    <card qty="3" id="3066cec0-ec6f-4810-ba0e-ba885249cb71">Chaska</card>
+    <card qty="3" id="ba1cd1aa-f343-4474-ab8c-13e269eb52a7">Graham Simmons</card>
+    <card qty="3" id="6a2555a2-b4ab-4419-af52-778b7cbc125a">Kearney</card>
+    <card qty="2" id="85ea858e-9af4-4fda-b4ab-2c0bf9f115bd">Shau'nac</card>
+    <card qty="3" id="1ed9b004-fdbf-41c3-9a49-870e0f28ec29">Celebration</card>
+    <card qty="2" id="7a9f3da7-5324-4c8c-9945-828425ee902f">Ma'chello's Notes</card>
+    <card qty="2" id="7ff44717-d0d6-4077-91eb-8c6b74d76c7e">Walkie-Talkie</card>
+    <card qty="2" id="901730f8-698c-4076-b74d-95e86d24fda6">Lack of Experience</card>
+    <card qty="2" id="7b84361c-da40-4a9a-8c2e-c4a327109f71">Serpent Guards</card>
+    <card qty="2" id="7bc7ab47-5fb6-40c5-b46b-91caf0ee6db0">Tight Rein</card>
+    <card qty="2" id="a2076dc6-9eea-420d-8db2-d7b2fa94e3ab">Troop Landing</card>
+    <card qty="3" id="ff6d6c62-c814-4c4d-ac1d-5bc42c2d44fb">Borren</card>
+    <card qty="2" id="3c75b77e-bb87-4911-bed1-09361c7ffde7">Osiris</card>
+    <card qty="3" id="a9105f54-5fe9-4813-b146-66e7e1bae85f">Battle Losses</card>
+    <card qty="3" id="0952c7d6-3fd0-4c23-97c0-abd06c691123">Estrangement</card>
+    <card qty="2" id="ba7753ff-85d9-402e-ae1c-f72ce4720292">Terminal Condition</card>
+    <card qty="3" id="872599fb-d11a-4fef-a2f9-d50e7bd8f33c">Test of Worthiness</card>
+  </section>
+  <section name="Team" shared="False">
+    <card qty="1" id="a8120187-ee39-43f1-8bd6-feba6af069df">Cameron Mitchell</card>
+    <card qty="1" id="cf48f4a8-6a2d-42d3-9010-7dfb64310dd7">Mansfield</card>
+    <card qty="1" id="41ce8770-0a83-46dc-a7d1-70330c486f30">Narim</card>
+    <card qty="1" id="93208371-39e7-4a4c-b1c0-331f5cecce78">Teal'c</card>
+  </section>
+  <section name="Mission Pile" shared="False">
+    <card qty="1" id="6ee0bfd9-1174-466e-85bb-eecbb43c184a">Activate Trap</card>
+    <card qty="1" id="82c517e7-ab63-43ac-a4a7-081894fc14e7">Defeat Replicators</card>
+    <card qty="1" id="723254fe-64d4-4531-9561-7b59d99e0d82">Defend the Byrsa</card>
+    <card qty="1" id="2dac12c3-eb31-4a1b-8253-d7162168c52a">Escape Bounty Hunter</card>
+    <card qty="1" id="61f14ffb-96db-4a0a-a036-6b8f59bd41f7">Escape Naquadah Mine</card>
+    <card qty="1" id="460fda08-84c7-4a45-9bed-ff63f1006f41">Invasion Reconnaissance</card>
+    <card qty="1" id="773845c6-9509-4077-8048-93dcd1409cb9">Restore Odin's Light</card>
+    <card qty="1" id="fb33cca1-31ea-4af2-bad8-4ce93aa3070b">Restore Symbiotic Balance</card>
+    <card qty="1" id="f6bfe523-272f-4541-872b-23c1ed822f75">Reveal Coercion</card>
+    <card qty="1" id="cb578d69-b3f2-4de2-a45b-408917ba8ad3">Stop Experiments</card>
+    <card qty="1" id="82201f82-96b6-479b-a012-f1feaaffba1b">Sway Villagers</card>
+    <card qty="1" id="2788410b-90b8-48fa-8f84-25f90d972f2c">Translate Cartouche</card>
+  </section>
+  <notes><![CDATA[]]></notes>
+</deck>

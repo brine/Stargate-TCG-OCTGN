@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<deck game="11ec1f21-7d4c-4bf0-9d72-df01c6c78911">
+  <section name="Main" shared="False">
+    <card qty="2" id="87b224b8-8ae0-4081-aef3-5863b67bad26">Artok</card>
+    <card qty="2" id="414ef0db-fe27-48c0-9e7a-9e13b346482b">Seasoned Travelers</card>
+    <card qty="2" id="57e5bbd8-c2f4-4333-8aad-9934807ba6bd">Transport Rings</card>
+    <card qty="2" id="e0a6d4d3-cce2-47ea-a504-b978c294439d">Golon Jarlath</card>
+    <card qty="3" id="6480d4b9-70fe-47aa-b627-28aafed4cc06">Marell</card>
+    <card qty="3" id="79d75c41-d601-4723-a912-9d31cc2a1a79">Maz'rai</card>
+    <card qty="3" id="68082071-a493-49a6-8430-a01bb86eadda">Perks</card>
+    <card qty="3" id="85ea858e-9af4-4fda-b4ab-2c0bf9f115bd">Shau'nac</card>
+    <card qty="2" id="eecfb69b-103f-4b53-83c4-1242749c6731">Body Swap</card>
+    <card qty="2" id="b95f875a-0f2a-416a-bdc9-6b7aac41ffa8">Out of Your Depth</card>
+    <card qty="2" id="37882be1-d378-4031-b9c9-c41da8642b88">Yu</card>
+    <card qty="3" id="89a9e106-eedc-4fe1-ad45-0d0ea0b05c76">Herak</card>
+    <card qty="3" id="a9105f54-5fe9-4813-b146-66e7e1bae85f">Battle Losses</card>
+    <card qty="2" id="7472e756-db84-4574-aeec-9c4b85703824">Cut Off</card>
+    <card qty="2" id="89ae2164-ca09-4290-b28c-5ac949bd5e91">Galactic Threat</card>
+    <card qty="3" id="6a89ad25-9fee-44e3-8d08-f2db6de86818">On Alert</card>
+    <card qty="2" id="9921c22a-9945-4d8e-bb07-1d8de267e5d6">Strained Relations</card>
+    <card qty="3" id="fb828232-1751-4c35-8813-0e51ec498fa5">Turncoat</card>
+  </section>
+  <section name="Team" shared="False">
+    <card qty="1" id="9b659c51-41fa-450e-b9be-97cde9d416c4">Altman</card>
+    <card qty="1" id="80a68e63-21f4-44c0-bc31-a49ea5e7f8f8">Daniel Jackson</card>
+    <card qty="1" id="cf48f4a8-6a2d-42d3-9010-7dfb64310dd7">Mansfield</card>
+    <card qty="1" id="cb7647c4-cb4b-43e8-97a3-d2de334fdf40">Vala Mal Doran</card>
+  </section>
+  <section name="Mission Pile" shared="False">
+    <card qty="1" id="a5d72770-4f7c-414c-97b1-60025aef8187">Catalog Alien Technology</card>
+    <card qty="1" id="1068bd30-3320-42e1-8831-6325f3738034">Defeat Kull Warrior</card>
+    <card qty="1" id="0bc06fd4-340b-4e12-928c-94f8d754d9ef">Destroy Ori Beachhead</card>
+    <card qty="1" id="2549588f-cf58-4e59-be2c-1c141299c5e6">Elude Patrols</card>
+    <card qty="1" id="d8a31eca-570c-43b2-9099-d1f9c4e8df29">Inform New President</card>
+    <card qty="1" id="cf1f4288-0915-4744-b8bd-dc9034925481">Intercept Osiris</card>
+    <card qty="1" id="575cb97d-e0b1-4aa1-b48b-886c701da498">Investigate Ancient Inscriptions</card>
+    <card qty="1" id="357fc714-d15e-4a43-b94d-c72c7e9993b6">Investigate Mass Murder</card>
+    <card qty="1" id="9cb30ed0-c8a4-46c9-ba65-ed03d3a45182">Reach Out to the Asgard</card>
+    <card qty="1" id="02ccc9ce-e450-46d8-b0ea-8bc3fd3f198e">Recover Z.P.M.</card>
+    <card qty="1" id="d0e0f2a4-e0fa-4ff6-9076-04447a71edfa">Repair the Sentinel</card>
+    <card qty="1" id="a9910d71-8008-4955-b3f2-9182997adfc2">Stop Prim'tah</card>
+  </section>
+  <notes><![CDATA[]]></notes>
+</deck>

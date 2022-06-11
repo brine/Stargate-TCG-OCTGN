@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<deck game="11ec1f21-7d4c-4bf0-9d72-df01c6c78911">
+  <section name="Main" shared="False">
+    <card qty="3" id="87b224b8-8ae0-4081-aef3-5863b67bad26">Artok</card>
+    <card qty="3" id="75708da0-602d-40f0-9381-b6cc3940ce23">Drey'auc</card>
+    <card qty="2" id="4e172aed-da95-4717-a2a3-55bdf3835dca">Top Minds</card>
+    <card qty="3" id="57e5bbd8-c2f4-4333-8aad-9934807ba6bd">Transport Rings</card>
+    <card qty="2" id="6480d4b9-70fe-47aa-b627-28aafed4cc06">Marell</card>
+    <card qty="2" id="1ed9b004-fdbf-41c3-9a49-870e0f28ec29">Celebration</card>
+    <card qty="3" id="d5ec1d1b-f6b5-4c5d-b2b5-9c77671d164e">Emmett Bregman</card>
+    <card qty="2" id="3599bff8-6fbf-4bfb-9785-b73f57aae9aa">Fannis</card>
+    <card qty="2" id="dd59e9ee-9cf8-4d61-b891-5477c550b2b1">Yu</card>
+    <card qty="3" id="c2675662-cb79-4dc3-9507-64b1ebad8939">Red Sky</card>
+    <card qty="2" id="b5e4ff90-7a72-4696-a937-6542aef7af54">Telekinetic Mutants</card>
+    <card qty="2" id="7bc7ab47-5fb6-40c5-b46b-91caf0ee6db0">Tight Rein</card>
+    <card qty="3" id="a2076dc6-9eea-420d-8db2-d7b2fa94e3ab">Troop Landing</card>
+    <card qty="2" id="ba7753ff-85d9-402e-ae1c-f72ce4720292">Terminal Condition</card>
+    <card qty="3" id="3b694601-f040-42c5-bb75-5952db38a696">Kali</card>
+    <card qty="2" id="3dbc8c01-13ca-4699-ba0d-13c326467a6e">Clues from the Past</card>
+    <card qty="2" id="84e11f7f-be2b-43f2-973b-8e4be317a400">Too Easy</card>
+    <card qty="3" id="7774d229-3a25-48d9-b6e4-9aac7ef2df78">Super Pheromones</card>
+  </section>
+  <section name="Team" shared="False">
+    <card qty="1" id="ebb511ee-abe9-4b91-9cea-e0cb3794bc21">Samantha Carter</card>
+    <card qty="1" id="12bd724f-3159-4057-8795-4a229436bce4">Lindsay</card>
+    <card qty="1" id="41ce8770-0a83-46dc-a7d1-70330c486f30">Narim</card>
+    <card qty="1" id="89c2a434-0450-4da4-92e3-ee44e73b131a">Cameron Mitchell</card>
+  </section>
+  <section name="Mission Pile" shared="False">
+    <card qty="1" id="4b0a2eef-19fb-45ea-8c90-d47850cd058b">Aid Evacuation</card>
+    <card qty="1" id="14be7346-7a4f-431c-bd62-d18985076a5d">Aid Resistance</card>
+    <card qty="1" id="5d7f5f59-bd1e-4086-9297-dba33ac5ed48">Attend Jaffa Summit</card>
+    <card qty="1" id="2154fc37-34bd-4c5f-92c6-0bf2368ce693">Cloak Earth</card>
+    <card qty="1" id="120deaeb-8fc7-4279-9015-8b18ab426f44">Escape the Pressure</card>
+    <card qty="1" id="50541115-e388-497a-9c18-9ff1d1bf5fd8">Free Unas</card>
+    <card qty="1" id="6401981d-3cc7-47a4-be1f-50532eddefe4">Halt Subterranean Reaction</card>
+    <card qty="1" id="b303b980-004c-4c07-9a3b-7cbfb71b6a7f">Infiltrate Lucian Alliance</card>
+    <card qty="1" id="b5b4a22e-e748-46ad-87ab-c3650a10c0e5">Investigate the Aschen</card>
+    <card qty="1" id="1480b394-e353-4436-b953-11196fbbf00e">Liberate Labor Camp</card>
+    <card qty="1" id="aaeced11-25f6-4f49-9025-9d075a8debb3">Reverse Space/Time Rupture</card>
+    <card qty="1" id="0abe7c69-845d-4e37-8751-7309b87ecfbc">Trade Rendezvous</card>
+  </section>
+  <notes><![CDATA[]]></notes>
+</deck>

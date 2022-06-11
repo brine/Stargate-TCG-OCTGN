@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<deck game="11ec1f21-7d4c-4bf0-9d72-df01c6c78911">
+  <section name="Main" shared="False">
+    <card qty="2" id="826a9118-8df1-4e7b-a15d-22d388773fb4">Cross</card>
+    <card qty="2" id="57e5bbd8-c2f4-4333-8aad-9934807ba6bd">Transport Rings</card>
+    <card qty="3" id="3066cec0-ec6f-4810-ba0e-ba885249cb71">Chaska</card>
+    <card qty="3" id="ba1cd1aa-f343-4474-ab8c-13e269eb52a7">Graham Simmons</card>
+    <card qty="2" id="d15c49a4-7df2-4d6a-aee4-0e42e3227472">Kheb Monk</card>
+    <card qty="3" id="49442567-af7d-411a-8669-a6bcd6599cf9">Yuri</card>
+    <card qty="3" id="01a23889-6272-450f-8966-83be0e34ce75">Teamwork</card>
+    <card qty="2" id="7ff44717-d0d6-4077-91eb-8c6b74d76c7e">Walkie-Talkie</card>
+    <card qty="2" id="eecfb69b-103f-4b53-83c4-1242749c6731">Body Swap</card>
+    <card qty="2" id="b95f875a-0f2a-416a-bdc9-6b7aac41ffa8">Out of Your Depth</card>
+    <card qty="2" id="7b84361c-da40-4a9a-8c2e-c4a327109f71">Serpent Guards</card>
+    <card qty="2" id="f11aa318-c75a-41d5-b041-0385aaefeab1">Apophis</card>
+    <card qty="3" id="ff6d6c62-c814-4c4d-ac1d-5bc42c2d44fb">Borren</card>
+    <card qty="2" id="7472e756-db84-4574-aeec-9c4b85703824">Cut Off</card>
+    <card qty="3" id="0952c7d6-3fd0-4c23-97c0-abd06c691123">Estrangement</card>
+    <card qty="3" id="6a89ad25-9fee-44e3-8d08-f2db6de86818">On Alert</card>
+    <card qty="2" id="1eec68b9-414e-4870-a353-280ed57d2eee">Security Field</card>
+    <card qty="3" id="fb828232-1751-4c35-8813-0e51ec498fa5">Turncoat</card>
+  </section>
+  <section name="Team" shared="False">
+    <card qty="1" id="80a68e63-21f4-44c0-bc31-a49ea5e7f8f8">Daniel Jackson</card>
+    <card qty="1" id="4cc0b175-0aed-47ec-9ee0-abd1d0f715f2">Jack O'Neill</card>
+    <card qty="1" id="41ce8770-0a83-46dc-a7d1-70330c486f30">Narim</card>
+    <card qty="1" id="b9e078c7-fdb8-4666-b593-e665a5be90b6">Samantha Carter</card>
+  </section>
+  <section name="Mission Pile" shared="False">
+    <card qty="1" id="64888566-8484-4859-99f6-8a5d93e45d41">Build Naquadah Reactor</card>
+    <card qty="1" id="bbaa88b6-14b8-46c9-9154-a0e8f145ac82">Canvass Illegal Operations</card>
+    <card qty="1" id="c3d193e6-685a-40e6-bbae-48e77c1cb5c6">Contact Giant Aliens</card>
+    <card qty="1" id="1f3163fc-d7a4-4e61-adb7-a078cb603cb5">Entrap Goa'uld</card>
+    <card qty="1" id="c28ffac1-de46-4355-8768-851dc18db2f7">Escape Prison World</card>
+    <card qty="1" id="84640224-4b0d-4b90-b99e-642dc5f7f8ae">Excavate Ancient Artifacts</card>
+    <card qty="1" id="c0e6db9c-7091-432f-8536-8d8681200f34">Expose Fraud</card>
+    <card qty="1" id="6d364164-b1e5-4492-9b60-b89ba1bc67bf">Free Captives</card>
+    <card qty="1" id="b49af150-d120-48ee-baa5-f32192eca8a6">Investigate Dead Hosts</card>
+    <card qty="1" id="fa25d968-8bf6-47de-b5eb-864d6f76ffff">Persuade Oma Desala</card>
+    <card qty="1" id="232c82e4-ea02-4df1-a375-8b4ca73cec74">Prevent Annihilation</card>
+    <card qty="1" id="450179bb-6573-4dcb-892f-0e6f28bef855">Prevent Theft</card>
+  </section>
+  <notes><![CDATA[]]></notes>
+</deck>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<deck game="11ec1f21-7d4c-4bf0-9d72-df01c6c78911">
+  <section name="Main" shared="False">
+    <card qty="3" id="87b224b8-8ae0-4081-aef3-5863b67bad26">Artok</card>
+    <card qty="3" id="826a9118-8df1-4e7b-a15d-22d388773fb4">Cross</card>
+    <card qty="2" id="3c381256-8ecd-4a17-ae67-dbe4a7b5305a">Osbourne</card>
+    <card qty="3" id="745bea32-98ed-49ac-9120-52965ab2716c">Sense of Adventure</card>
+    <card qty="2" id="4e172aed-da95-4717-a2a3-55bdf3835dca">Top Minds</card>
+    <card qty="2" id="4e5d26f3-522e-43b4-b560-012b81b27a01">Galaran Memory Device</card>
+    <card qty="3" id="9b1e1999-9963-4329-9c30-a4d0b63809de">Brooks</card>
+    <card qty="2" id="3599bff8-6fbf-4bfb-9785-b73f57aae9aa">Fannis</card>
+    <card qty="3" id="c2675662-cb79-4dc3-9507-64b1ebad8939">Red Sky</card>
+    <card qty="2" id="7b84361c-da40-4a9a-8c2e-c4a327109f71">Serpent Guards</card>
+    <card qty="2" id="7bc7ab47-5fb6-40c5-b46b-91caf0ee6db0">Tight Rein</card>
+    <card qty="2" id="a2076dc6-9eea-420d-8db2-d7b2fa94e3ab">Troop Landing</card>
+    <card qty="3" id="0952c7d6-3fd0-4c23-97c0-abd06c691123">Estrangement</card>
+    <card qty="2" id="ba7753ff-85d9-402e-ae1c-f72ce4720292">Terminal Condition</card>
+    <card qty="2" id="85b8abf3-b06b-4967-b863-eea48752a34c">Adria</card>
+    <card qty="3" id="3b694601-f040-42c5-bb75-5952db38a696">Kali</card>
+    <card qty="3" id="3462a37b-c943-4d49-8a97-4f37233b3707">Technology Interface</card>
+    <card qty="2" id="84e11f7f-be2b-43f2-973b-8e4be317a400">Too Easy</card>
+  </section>
+  <section name="Team" shared="False">
+    <card qty="1" id="4cc0b175-0aed-47ec-9ee0-abd1d0f715f2">Jack O'Neill</card>
+    <card qty="1" id="12bd724f-3159-4057-8795-4a229436bce4">Lindsay</card>
+    <card qty="1" id="6a3d0d4d-ba8d-437c-b59e-3e558bcc303c">Teal'c</card>
+    <card qty="1" id="dad3f62b-6268-4a40-93e8-ebe1f5100fb5">Jonas Quinn</card>
+  </section>
+  <section name="Mission Pile" shared="False">
+    <card qty="1" id="9a3cd38e-57b6-4afa-b831-45588d77b327">Appropriations Committee Meeting</card>
+    <card qty="1" id="06edff5b-f3cb-485c-9943-548991919165">Calibrate Super-Weapon</card>
+    <card qty="1" id="dae57817-4cd5-408b-b8a1-12e906ae42a1">Cure Deadly Virus</card>
+    <card qty="1" id="ab237679-03c8-49ee-b086-4566030e820d">Diplomatic Envoy</card>
+    <card qty="1" id="45c00c19-cb01-4a90-91e0-ec09dcf3b6cd">Explore Ruins</card>
+    <card qty="1" id="dbb439bd-11fc-493b-af98-e3cf6bec90df">Extract Prisoners</card>
+    <card qty="1" id="8192e6b8-5076-4088-91a6-a26b4f0b5a52">Hide the Harcesis</card>
+    <card qty="1" id="0b221753-9ca4-45b7-b5fe-9b969c75db4b">Investigate Farrow-Marshall</card>
+    <card qty="1" id="81d4fa90-4ca5-4484-a37f-14de5a5c2874">Repair Engines</card>
+    <card qty="1" id="3ef5427c-35b7-425c-9b53-143e1b1dac88">Retain Custody</card>
+    <card qty="1" id="31d13ce6-1247-4c52-84f1-516f05525957">Sabotage Ship Construction</card>
+    <card qty="1" id="a172c8a5-ba84-42d6-a17b-7addc9194ab1">Withstand Armada</card>
+  </section>
+  <notes><![CDATA[]]></notes>
+</deck>

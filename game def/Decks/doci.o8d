@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<deck game="11ec1f21-7d4c-4bf0-9d72-df01c6c78911">
+  <section name="Main" shared="False">
+    <card qty="3" id="db2e0e15-0970-4302-a434-d37c410d10f9">Nicholas Ballard</card>
+    <card qty="3" id="57e5bbd8-c2f4-4333-8aad-9934807ba6bd">Transport Rings</card>
+    <card qty="3" id="ba1cd1aa-f343-4474-ab8c-13e269eb52a7">Graham Simmons</card>
+    <card qty="2" id="6a2555a2-b4ab-4419-af52-778b7cbc125a">Kearney</card>
+    <card qty="2" id="85ea858e-9af4-4fda-b4ab-2c0bf9f115bd">Shau'nac</card>
+    <card qty="2" id="7ff44717-d0d6-4077-91eb-8c6b74d76c7e">Walkie-Talkie</card>
+    <card qty="3" id="d5ec1d1b-f6b5-4c5d-b2b5-9c77671d164e">Emmett Bregman</card>
+    <card qty="2" id="a4cc8014-3d3f-4792-8e89-0f4c30f41a48">Cheap Knockoff</card>
+    <card qty="2" id="8a097812-9963-4da7-ae55-0ff0196bfcff">Fire Rain</card>
+    <card qty="2" id="b95f875a-0f2a-416a-bdc9-6b7aac41ffa8">Out of Your Depth</card>
+    <card qty="2" id="7b84361c-da40-4a9a-8c2e-c4a327109f71">Serpent Guards</card>
+    <card qty="3" id="a2076dc6-9eea-420d-8db2-d7b2fa94e3ab">Troop Landing</card>
+    <card qty="3" id="89a9e106-eedc-4fe1-ad45-0d0ea0b05c76">Herak</card>
+    <card qty="2" id="872599fb-d11a-4fef-a2f9-d50e7bd8f33c">Test of Worthiness</card>
+    <card qty="2" id="e6dc082e-bd1c-4ec0-b209-fbdeb61e5a94">The Doci</card>
+    <card qty="3" id="77519387-617b-4ad3-85e7-cc28a3fa1d41">Alliance in Jeopardy</card>
+    <card qty="2" id="3c2a95b2-3d0c-48da-82d3-22a71c8f3d5d">Goa'uld Probe</card>
+    <card qty="3" id="3462a37b-c943-4d49-8a97-4f37233b3707">Technology Interface</card>
+  </section>
+  <section name="Team" shared="False">
+    <card qty="1" id="da9a7837-a593-4269-acb6-d88449a0d07a">Cameron Mitchell</card>
+    <card qty="1" id="77d8c4e5-1911-40f1-a0e8-08f01cc8d082">Daniel Jackson</card>
+    <card qty="1" id="4cc0b175-0aed-47ec-9ee0-abd1d0f715f2">Jack O'Neill</card>
+    <card qty="1" id="8345a08b-5804-41c8-a6c8-13d0577aa507">Hadden</card>
+  </section>
+  <section name="Mission Pile" shared="False">
+    <card qty="1" id="5cbfce0c-9447-4356-b97e-43350df7a4a0">Accompany Documentary Crew</card>
+    <card qty="1" id="1a38fd64-e919-4662-ada2-f2a652425c18">Coordinated Assault</card>
+    <card qty="1" id="0a480138-c10d-432f-8812-fb1de8e06f05">Destroy Kassa Shipment</card>
+    <card qty="1" id="4f49262f-5111-4e15-9478-013d41d99e0b">Destroy Weapon</card>
+    <card qty="1" id="71b3817b-9867-412f-80c8-5dc4ecc16460">Discredit Leak</card>
+    <card qty="1" id="c045070e-9dc1-4adb-9174-d337924d3b7a">Eradicate Computer Virus</card>
+    <card qty="1" id="7fdbf931-6a70-4e3c-bcba-136e34ce3851">Escape Time Dilation Field</card>
+    <card qty="1" id="5d84270b-d43f-49be-8a25-1a519d61c6e3">Escort IOA Representatives</card>
+    <card qty="1" id="37f20de2-b79f-4a0e-8567-c36afa6b066d">Lie Low</card>
+    <card qty="1" id="cae3ee92-c376-4531-974b-a01b23026cc7">Negotiate Mining Rights</card>
+    <card qty="1" id="07dd5275-52d8-4a80-ac87-27591f0ca6e1">Restore Timeline</card>
+    <card qty="1" id="14d3d4fc-e6c7-4260-bd46-808b95e05b27">Secure Crash Site</card>
+  </section>
+  <notes><![CDATA[]]></notes>
+</deck>

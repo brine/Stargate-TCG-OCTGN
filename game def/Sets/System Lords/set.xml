@@ -1081,7 +1081,7 @@ While Jack O'Neill is assigned, Young Jack gets <s value="ing">ingenuity</s> +1.
 			<property name="Number" value="88"/>
 		</card>
 		<card name="Jack O'Neill" id="4cc0b175-0aed-47ec-9ee0-abd1d0f715f2">
-			<property name="Subtitle" value="Witty Explorer"/>
+			<property name="Subtitle" value="Optimist"/>
 			<property name="Type" value="Team Character"/>
 			<property name="Traits" value="SGC"/>
 			<property name="Affiliation" value="Hero"/>
@@ -1979,7 +1979,7 @@ Stop this gear and a Tok'ra support character - Turn an obstacle at the current 
 			<property name="Text">Each time your opponent assigns an adversary, plays an obstacle, or plays a complication, you discard a random card.</property>
 			<property name="Number" value="173"/>
 		</card>
-		<card name="Escape the Bounty Hunter" id="2dac12c3-eb31-4a1b-8253-d7162168c52a" size="mission">
+		<card name="Escape Bounty Hunter" id="2dac12c3-eb31-4a1b-8253-d7162168c52a" size="mission">
 			<property name="Subtitle" value="Uncontrrolled Planet"/>
 			<property name="Type" value="Mission"/>
 			<property name="Affiliation" value="Hero"/>
@@ -2001,7 +2001,7 @@ Stop this gear and a Tok'ra support character - Turn an obstacle at the current 
 			<property name="Text">When you play this mission, you may ready a character. If you do, that character is blocked.</property>
 			<property name="Number" value="175"/>
 		</card>
-		<card name="Excape Prison World" id="c28ffac1-de46-4355-8768-851dc18db2f7" size="mission">
+		<card name="Escape Prison World" id="c28ffac1-de46-4355-8768-851dc18db2f7" size="mission">
 			<property name="Subtitle" value="Hadante"/>
 			<property name="Type" value="Mission"/>
 			<property name="Affiliation" value="Hero"/>
@@ -2199,7 +2199,7 @@ Stop this gear and a Tok'ra support character - Turn an obstacle at the current 
 			<property name="Text">Complications get difficulty +1.</property>
 			<property name="Number" value="193"/>
 		</card>
-		<card name="Protected Planet Negociations" id="bc2693f4-4656-4989-8e81-50ed6ec66418" size="mission">
+		<card name="Protected Planet Negotiations" id="bc2693f4-4656-4989-8e81-50ed6ec66418" size="mission">
 			<property name="Subtitle" value="Cheyenne Mountain"/>
 			<property name="Type" value="Mission"/>
 			<property name="Affiliation" value="Hero"/>

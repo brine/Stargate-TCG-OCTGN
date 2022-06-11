@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<deck game="11ec1f21-7d4c-4bf0-9d72-df01c6c78911">
+  <section name="Main" shared="False">
+    <card qty="3" id="cec32155-7eb9-4001-a923-1bf3b4ca0150">Merrin</card>
+    <card qty="3" id="db2e0e15-0970-4302-a434-d37c410d10f9">Nicholas Ballard</card>
+    <card qty="2" id="15b6eda3-98c2-4aec-b0b7-6b817630c978">Olaf</card>
+    <card qty="3" id="745bea32-98ed-49ac-9120-52965ab2716c">Sense of Adventure</card>
+    <card qty="2" id="39b6a212-7c89-4327-ae56-ae9d49e9935e">Dialing Computer</card>
+    <card qty="3" id="9b1e1999-9963-4329-9c30-a4d0b63809de">Brooks</card>
+    <card qty="2" id="a4cc8014-3d3f-4792-8e89-0f4c30f41a48">Cheap Knockoff</card>
+    <card qty="2" id="dd59e9ee-9cf8-4d61-b891-5477c550b2b1">Yu</card>
+    <card qty="2" id="b95f875a-0f2a-416a-bdc9-6b7aac41ffa8">Out of Your Depth</card>
+    <card qty="2" id="b5e4ff90-7a72-4696-a937-6542aef7af54">Telekinetic Mutants</card>
+    <card qty="3" id="a2076dc6-9eea-420d-8db2-d7b2fa94e3ab">Troop Landing</card>
+    <card qty="3" id="89a9e106-eedc-4fe1-ad45-0d0ea0b05c76">Herak</card>
+    <card qty="2" id="85ea858e-9af4-4fda-b4ab-2c0bf9f115bd">Shau'nac</card>
+    <card qty="2" id="872599fb-d11a-4fef-a2f9-d50e7bd8f33c">Test of Worthiness</card>
+    <card qty="3" id="77519387-617b-4ad3-85e7-cc28a3fa1d41">Alliance in Jeopardy</card>
+    <card qty="2" id="3dbc8c01-13ca-4699-ba0d-13c326467a6e">Clues from the Past</card>
+    <card qty="2" id="3c2a95b2-3d0c-48da-82d3-22a71c8f3d5d">Goa'uld Probe</card>
+    <card qty="3" id="7774d229-3a25-48d9-b6e4-9aac7ef2df78">Super Pheromones</card>
+  </section>
+  <section name="Team" shared="False">
+    <card qty="1" id="4cc0b175-0aed-47ec-9ee0-abd1d0f715f2">Jack O'Neill</card>
+    <card qty="1" id="cf48f4a8-6a2d-42d3-9010-7dfb64310dd7">Mansfield</card>
+    <card qty="1" id="b9e078c7-fdb8-4666-b593-e665a5be90b6">Samantha Carter</card>
+    <card qty="1" id="cb5bbac3-0975-4cba-9dec-8971f2696397">Vala Mal Doran</card>
+  </section>
+  <section name="Mission Pile" shared="False">
+    <card qty="1" id="24ab73b9-04ec-47e1-be9d-9b41cacb0f40">Capture Clone</card>
+    <card qty="1" id="1b884d68-00db-48e6-b1e0-81322d87c2a3">Consult Expert</card>
+    <card qty="1" id="3c42031a-6de2-4b5c-9d27-62c34e2a5f44">Disable Orbital Weapon</card>
+    <card qty="1" id="d897f1f4-55e9-4881-886d-822420f61d43">Exonerate Team Member</card>
+    <card qty="1" id="9503df49-e2a0-4156-9170-aa404faa2f78">Locate the Eye of Ra</card>
+    <card qty="1" id="e25fcc15-d2e7-449b-aeeb-9415746c5ef3">Obtain Information</card>
+    <card qty="1" id="ece36b49-f866-4622-af29-770d4e042857">Protect Village</card>
+    <card qty="1" id="7549f8b5-58b8-4b79-a8b4-2aef0012b207">Recover Team Member</card>
+    <card qty="1" id="5fbeefdd-86cf-4c87-8bba-4e9aa331ea9b">Recover Touchstone</card>
+    <card qty="1" id="123e012b-0827-43a8-90f7-b01df8ab7a9d">Repel Moloc</card>
+    <card qty="1" id="11ae8bff-bfda-4bde-9540-45aac0a94838">Review Hollywood Script</card>
+    <card qty="1" id="f7b0550a-dbc9-4010-b998-d7be6c701294">Salvage Enemy Ship</card>
+  </section>
+  <notes><![CDATA[]]></notes>
+</deck>

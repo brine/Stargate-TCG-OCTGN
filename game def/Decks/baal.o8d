@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<deck game="11ec1f21-7d4c-4bf0-9d72-df01c6c78911">
+  <section name="Main" shared="False">
+    <card qty="2" id="75708da0-602d-40f0-9381-b6cc3940ce23">Drey'auc</card>
+    <card qty="2" id="414ef0db-fe27-48c0-9e7a-9e13b346482b">Seasoned Travelers</card>
+    <card qty="2" id="6480d4b9-70fe-47aa-b627-28aafed4cc06">Marell</card>
+    <card qty="3" id="79d75c41-d601-4723-a912-9d31cc2a1a79">Maz'rai</card>
+    <card qty="3" id="3e09c2a8-38c2-4132-9d06-46841187cc01">Seevis</card>
+    <card qty="3" id="49442567-af7d-411a-8669-a6bcd6599cf9">Yuri</card>
+    <card qty="3" id="1ed9b004-fdbf-41c3-9a49-870e0f28ec29">Celebration</card>
+    <card qty="2" id="e61e5eae-9843-4b2d-82a2-2b81cd56414f">Reole Chemical</card>
+    <card qty="2" id="901730f8-698c-4076-b74d-95e86d24fda6">Lack of Experience</card>
+    <card qty="2" id="799a40e0-a9a9-4d4b-a548-b4a00bb004db">Salish Spirits</card>
+    <card qty="2" id="7bc7ab47-5fb6-40c5-b46b-91caf0ee6db0">Tight Rein</card>
+    <card qty="2" id="947656c8-b7bc-485d-9e61-398517998060">Baal</card>
+    <card qty="3" id="89a9e106-eedc-4fe1-ad45-0d0ea0b05c76">Herak</card>
+    <card qty="3" id="a9105f54-5fe9-4813-b146-66e7e1bae85f">Battle Losses</card>
+    <card qty="3" id="ed2ba1fb-5bb4-4b18-85a0-d6a056fcf5d7">False Memory</card>
+    <card qty="2" id="9921c22a-9945-4d8e-bb07-1d8de267e5d6">Strained Relations</card>
+    <card qty="2" id="ba7753ff-85d9-402e-ae1c-f72ce4720292">Terminal Condition</card>
+    <card qty="3" id="872599fb-d11a-4fef-a2f9-d50e7bd8f33c">Test of Worthiness</card>
+  </section>
+  <section name="Team" shared="False">
+    <card qty="1" id="cb7647c4-cb4b-43e8-97a3-d2de334fdf40">Vala Mal Doran</card>
+    <card qty="1" id="12bd724f-3159-4057-8795-4a229436bce4">Lindsay</card>
+    <card qty="1" id="b9e078c7-fdb8-4666-b593-e665a5be90b6">Samantha Carter</card>
+    <card qty="1" id="a8120187-ee39-43f1-8bd6-feba6af069df">Cameron Mitchell</card>
+  </section>
+  <section name="Mission Pile" shared="False">
+    <card qty="1" id="b1185d73-38bc-4640-b81e-70840644536e">Avert Bombing</card>
+    <card qty="1" id="9bd956ad-12b8-4867-87d6-6c4d161b296d">Construct Anti-Replicator Weapon</card>
+    <card qty="1" id="bc1065ea-9e31-4d6b-8993-3db91c518613">Disable the Link</card>
+    <card qty="1" id="f9479cbe-a1d5-45a5-9156-b7e89c0e9532">Explore Anubis' Hybrid Lab</card>
+    <card qty="1" id="3be80630-8b94-47c1-aa67-8b4314909ef7">Gather Intelligence</card>
+    <card qty="1" id="8a05732f-5c37-412e-a682-ae378c46ad9d">Hold Off Ambush</card>
+    <card qty="1" id="88081328-3093-4dde-83aa-4675765c523e">Hunt Goa'uld</card>
+    <card qty="1" id="21a090f1-5a10-4e76-89e5-059b6f3287bf">Liberate Servants of Baal</card>
+    <card qty="1" id="bc2693f4-4656-4989-8e81-50ed6ec66418">Protected Planet Negotiations</card>
+    <card qty="1" id="29e88966-1a03-470f-a57e-a5b0db20dae0">Rescue Captive</card>
+    <card qty="1" id="4748e14a-e04f-4f42-b82d-68b88f7ec5f6">Rescue Team</card>
+    <card qty="1" id="3d621d98-3653-4863-8a16-765cb40ff622">Sabotage Goa'uld Alliance</card>
+  </section>
+  <notes><![CDATA[]]></notes>
+</deck>
