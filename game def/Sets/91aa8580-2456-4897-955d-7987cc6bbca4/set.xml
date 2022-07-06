@@ -1,0 +1,802 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<set name="Missions" id="91aa8580-2456-4897-955d-7987cc6bbca4" gameId="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" gameVersion="0.9.0.0" version="1.0.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CardSet.xsd">
+	<cards>
+		<card name="Activate Ancient Weapons Platform" id="1ac04dfb-4c87-4762-8ed9-c1bc21a0dd72" size="mission">
+			<property name="Subtitle" value="Lantean Solar System"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="3"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="s">Scorpius</s></property>
+			<property name="Text"><b>Success:</b> Your opponent may destroy a gear.</property>
+			<property name="Number" value="1"/>
+		</card>
+		<card name="Assist Russian Stargate Program" id="5bb70aa5-0368-4caf-8929-fb9080524bcc" size="mission">
+			<property name="Subtitle" value="Siberia"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="5"/>
+			<property name="Experience" value="4"/>
+			<property name="Glyph"><s value="o">Orion</s></property>
+			<property name="Text"><b>Success:</b> Ready a team character for each failed mission this turn.</property>
+			<property name="Number" value="2"/>
+		</card>
+		<card name="Attempt to Cure the Wraith" id="42fb3e2a-07b2-4c4e-a626-caafe5ca4609" size="mission">
+			<property name="Subtitle" value="Atlantis"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="3"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="o">Orion</s></property>
+			<property name="Text"><b>Failure:</b> Your opponent stops a support character.</property>
+			<property name="Number" value="3"/>
+		</card>
+		<card name="Childhood's End" id="ec45fd0a-90b6-465b-a2a9-9003915f8fd2" size="mission">
+			<property name="Subtitle" value="M7G-677"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="3"/>
+			<property name="Experience" value="1"/>
+			<property name="Glyph"><s value="o">Orion</s></property>
+			<property name="Text">Each time your opponent plays a complication, they may draw a card.</property>
+			<property name="Number" value="4"/>
+		</card>
+		<card name="Commandeer Goa'uld Ship" id="51fb51cb-47cf-43e6-a27c-180b57e1f29d" size="mission">
+			<property name="Subtitle" value="Juna"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="5"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="g">Gemini</s></property>
+			<property name="Text"><b>Success:</b> You may play a hero ship at no cost.</property>
+			<property name="Number" value="5"/>
+		</card>
+		<card name="Common Ground" id="4e882cc8-3ba6-4db6-aff4-9201a5116857" size="mission">
+			<property name="Subtitle" value="Kolya's Compound"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="4"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="t">Triangulum</s></property>
+			<property name="Text"><b>Success:</b> You may gain 3 power. If you do, your opponent gains 2 power.</property>
+			<property name="Number" value="6"/>
+		</card>
+		<card name="Conduct Trade Negotiations" id="462941e7-9d81-4ca7-9166-a688f22b1770" size="mission">
+			<property name="Subtitle" value="Langara"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="4"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="o">Orion</s></property>
+			<property name="Text">This mission gets difficulty +1 while Jonas Quinn is not assigned to it.</property>
+			<property name="Number" value="7"/>
+		</card>
+		<card name="Contain Cured Wraith" id="49830df9-b7b8-460c-8174-db7fb185fa0d" size="mission">
+			<property name="Subtitle" value="M8G-352"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="4"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="s">Scorpius</s></property>
+			<property name="Text">Each time you assign a support character, your opponent may pay 1 power. If they do, they play a complication at no cost.</property>
+			<property name="Number" value="8"/>
+		</card>
+		<card name="Cripple Hyperdrive" id="ab7a455c-fb58-4976-aa9f-a721ed50434d" size="mission">
+			<property name="Subtitle" value="The Daedalus"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="4"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="p">Pisces</s></property>
+			<property name="Text">Obstacles with <b>dominion</b> cost power +1 to play, and can't be scored.</property>
+			<property name="Number" value="9"/>
+		</card>
+		<card name="Deceive the Lucian Alliance's Fleet" id="102e612b-f0eb-4846-8c75-28fa85a673c0" size="mission">
+			<property name="Subtitle" value="Tenat and Jup's Planet"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="5"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="l">Libra</s></property>
+			<property name="Text">Hero ships get firepower +1.</property>
+			<property name="Number" value="10"/>
+		</card>
+		<card name="Defend the SGC's Budget" id="a5bc2ade-f9bc-4e70-8bb5-e833918f4eb8" size="mission">
+			<property name="Subtitle" value="Washington, D.C."/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Experience" value="1"/>
+			<property name="Glyph"><s value="t">Triangulum</s></property>
+			<property name="Text"><b>Failure:</b> Political obstacles get difficulty +1 until the end of the turn.</property>
+			<property name="Number" value="11"/>
+		</card>
+		<card name="Deploy Retrovirus Weapon" id="91b7418a-2f77-4968-9cb9-15d1d7066e1c" size="mission">
+			<property name="Subtitle" value="Hive Ship"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="4"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="l">Libra</s></property>
+			<property name="Text"><b>Success:</b> You may play a support character at no cost.</property>
+			<property name="Number" value="12"/>
+		</card>
+		<card name="Destroy the Attero Device" id="e9e4743c-476e-4b1c-8ed3-b517a728efb4" size="mission">
+			<property name="Subtitle" value="Janus' Research Outpost"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="5"/>
+			<property name="Experience" value="4"/>
+			<property name="Glyph"><s value="g">Gemini</s></property>
+			<property name="Text">When you play this mission, you may pay X power. If you do, stop X villain ships.</property>
+			<property name="Number" value="13"/>
+		</card>
+		<card name="Destroy Wraith Cloning Facility" id="a41ce1f8-e495-4f80-932d-e273972768f0" size="mission">
+			<property name="Subtitle" value="Wraith Outpost"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="3"/>
+			<property name="Experience" value="1"/>
+			<property name="Glyph"><s value="g">Gemini</s></property>
+			<property name="Text"><b>Success:</b> Discard a card. Lose 1 power, unless the discarded card was a hero ship.</property>
+			<property name="Number" value="14"/>
+		</card>
+		<card name="Dial Atlantis" id="5f4a64d5-f249-4b15-afdb-b51ae2304b6a" size="mission">
+			<property name="Subtitle" value="Cheyenne Mountain"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Experience" value="1"/>
+			<property name="Glyph"><s value="t">Triangulum</s></property>
+			<property name="Text"><b>Success:</b> Obstacles cost power -1 until the end of the next mission this turn.</property>
+			<property name="Number" value="15"/>
+		</card>
+		<card name="Diplomatic Time Out" id="91699804-b22d-4895-998e-d21d48234ca0" size="mission">
+			<property name="Subtitle" value="Cheyenne Mountain"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="5"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="t">Triangulum</s></property>
+			<property name="Text">Each time your opponent plays an obstacle or assigns an adversary, they must <b>drain 2</b>.</property>
+			<property name="Number" value="16"/>
+		</card>
+		<card name="Discover Time Travel" id="5f305fc8-0192-49a1-9f36-e63e318d97ce" size="mission">
+			<property name="Subtitle" value="1969"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="5"/>
+			<property name="Experience" value="4"/>
+			<property name="Glyph"><s value="l">Libra</s></property>
+			<property name="Text"><b>Success:</b> Search your mission pile for a mission, reveal it, shuffle your mission pile, and place the revealed mission on the bottom of that pile.</property>
+			<property name="Number" value="17"/>
+		</card>
+		<card name="Engage Ori Fleet" id="f70f6f31-689d-4e04-a321-f981d017dac7" size="mission">
+			<property name="Subtitle" value="P3Y-229"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="3"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="p">Pisces</s></property>
+			<property name="Text">Villain ships get firepower +1.</property>
+			<property name="Number" value="18"/>
+		</card>
+		<card name="Eradicate Wraith Computer Virus" id="d1bbdaf9-9cc6-4bc8-8876-771eac22e621" size="mission">
+			<property name="Subtitle" value="The Daedalus"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="4"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="o">Orion</s></property>
+			<property name="Text"><b>Failure:</b> Your opponent may choose an obstacle at the current mission and take it into hand.</property>
+			<property name="Number" value="19"/>
+		</card>
+		<card name="Escape Unstable Abandoned Mine" id="74286695-3013-4a0e-a061-fa24041ece49" size="mission">
+			<property name="Subtitle" value="M5V-801"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Experience" value="1"/>
+			<property name="Glyph"><s value="p">Pisces</s></property>
+			<property name="Text">This mission gets difficulty +1 while there is at least one obstacle.</property>
+			<property name="Number" value="20"/>
+		</card>
+		<card name="Execute Anti-Replicator Command" id="186057f8-4ea5-453a-9b0b-7eabef8d1a33" size="mission">
+			<property name="Subtitle" value="Asuras"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="5"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="l">Libra</s></property>
+			<property name="Text">Replicator obstacles cost power +1 to play. To assign a Replicator adversary, your opponent must pay 1 power.</property>
+			<property name="Number" value="21"/>
+		</card>
+		<card name="Explore Possible Lantean Colony" id="f113897b-d299-4846-be16-76547ec24c47" size="mission">
+			<property name="Subtitle" value="Asuras"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="4"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="g">Gemini</s></property>
+			<property name="Text">Support characters and obstacles cost power -1 to play.</property>
+			<property name="Number" value="22"/>
+		</card>
+		<card name="Expose Con Man" id="a0ea85bd-3006-4391-99af-87de058b1bac" size="mission">
+			<property name="Subtitle" value="Lucius' Planet"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="4"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="l">Libra</s></property>
+			<property name="Text">Support characters cost power -1 to play.
+Support characters are blocked.</property>
+			<property name="Number" value="23"/>
+		</card>
+		<card name="Face IOA Review" id="ea201d08-0701-4ace-8e80-50884ee5997b" size="mission">
+			<property name="Subtitle" value="Cheyenne Mountain"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="5"/>
+			<property name="Experience" value="4"/>
+			<property name="Glyph"><s value="t">Triangulum</s></property>
+			<property name="Text"><b>Success:</b> If Elizabeth Weir is assigned, you may shuffle any number of cards from your hand into your deck, then draw that many cards.</property>
+			<property name="Number" value="24"/>
+		</card>
+		<card name="Fake Atlantis' Destruction" id="6523d31b-7ec2-473d-8524-9225925fd6cf" size="mission">
+			<property name="Subtitle" value="Lantea"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="4"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="p">Pisces</s></property>
+			<property name="Text"><b>Success:</b> You can't play any more missions this turn.</property>
+			<property name="Number" value="25"/>
+		</card>
+		<card name="Fix Demonstration Gone Awry" id="3cc0c4d5-98d3-4113-9b28-de6b8390956f" size="mission">
+			<property name="Subtitle" value="Secret Facility on Earth"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="5"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="o">Orion</s></property>
+			<property name="Text">Rodney McKay gets <s value="sci">Science</s> +1 for each other assigned character.</property>
+			<property name="Number" value="26"/>
+		</card>
+		<card name="Follow Visions" id="79ec5379-33fd-461b-971e-59e28bf3ad78" size="mission">
+			<property name="Subtitle" value="M2S-181"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Experience" value="1"/>
+			<property name="Glyph"><s value="o">Orion</s></property>
+			<property name="Text"><b>Success:</b> Your opponent may take a card from their discard pile into hand.</property>
+			<property name="Number" value="27"/>
+		</card>
+		<card name="Free Hunted Runner" id="b1ef9cb5-85c8-4de7-952d-dc631605ee6e" size="mission">
+			<property name="Subtitle" value="P3M-736"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="5"/>
+			<property name="Experience" value="4"/>
+			<property name="Glyph"><s value="s">Scorpius</s></property>
+			<property name="Text"><b>Success:</b> Ready an SGC or Atlantis team character.</property>
+			<property name="Number" value="28"/>
+		</card>
+		<card name="Hold Defensive Position" id="7c1e399d-da44-4fae-a62f-f55b319b29ea" size="mission">
+			<property name="Subtitle" value="P7S-441"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="4"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="s">Scorpius</s></property>
+			<property name="Text">The first support character you play during this mission costs power -2 to play.</property>
+			<property name="Number" value="29"/>
+		</card>
+		<card name="Hold Off Jaffa Assault" id="b7d24215-5a51-44be-ab03-bef3279147b8" size="mission">
+			<property name="Subtitle" value="Baal's Observatory"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="4"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="g">Gemini</s></property>
+			<property name="Text"><b>Success:</b> Retrieve a card you own that was purged during this game, and take it into hand.</property>
+			<property name="Number" value="30"/>
+		</card>
+		<card name="Honor the Asgard's Legacy" id="6986cecb-bd99-4c6c-8e96-9e518486cf7a" size="mission">
+			<property name="Subtitle" value="Orilla"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="5"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="g">Gemini</s></property>
+			<property name="Text"><b>Success:</b> You may search your deck for an Asgard card. If you do, reveal it, take it into hand, and shuffle your deck.</property>
+			<property name="Number" value="31"/>
+		</card>
+		<card name="Impersonate Wraith Queen" id="b075a43e-a68f-4295-ae10-0f2c56636416" size="mission">
+			<property name="Subtitle" value="Wraith Primary's Hive"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="4"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="o">Orion</s></property>
+			<property name="Text"><b>Success:</b> Your opponent must <b>drain 4</b>.</property>
+			<property name="Number" value="32"/>
+		</card>
+		<card name="Infiltrate Exclusive Party" id="e81b00e7-aba1-4538-b5db-bd417a931799" size="mission">
+			<property name="Subtitle" value="Kinsey Residence"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="l">Libra</s></property>
+			<property name="Text">When you play this mission, you may discard a hero card. If you don't, lose 2 power.</property>
+			<property name="Number" value="33"/>
+		</card>
+		<card name="Inquisition" id="fac16cf5-452b-4413-b01d-84f6c43f773f" size="mission">
+			<property name="Subtitle" value="Trial Chamber"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="o">Orion</s></property>
+			<property name="Text">Political obstacles and Political adversaries get difficulty +1.</property>
+			<property name="Number" value="34"/>
+		</card>
+		<card name="Investigate Ancient Weapon" id="f842aa61-a180-4ebb-8c7c-1078c3237453" size="mission">
+			<property name="Subtitle" value="Proculus"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="5"/>
+			<property name="Experience" value="4"/>
+			<property name="Glyph"><s value="l">Libra</s></property>
+			<property name="Text">Assigned adversaries can't be scored.</property>
+			<property name="Number" value="35"/>
+		</card>
+		<card name="Investigate Underground Civilization" id="3f911718-890f-472e-b65e-594f6d41414d" size="mission">
+			<property name="Subtitle" value="Genii Homeworld"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="4"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="t">Triangulum</s></property>
+			<property name="Text">Ships are blocked.</property>
+			<property name="Number" value="36"/>
+		</card>
+		<card name="The Last Man" id="f8a84f2b-066a-4d7a-a053-5c9e81eb0c5a" size="mission">
+			<property name="Subtitle" value="48,000 AD"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="5"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="p">Pisces</s></property>
+			<property name="Text">Each time you assign John Sheppard to this mission, draw two cards.</property>
+			<property name="Number" value="37"/>
+		</card>
+		<card name="Outsmart Bounty Hunters" id="d038849c-49a6-4c5e-b99c-4b0dedd65314" size="mission">
+			<property name="Subtitle" value="Auburn, Kansas"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="4"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="t">Triangulum</s></property>
+			<property name="Text">The first event card you play during this mission costs power -2 to play.</property>
+			<property name="Number" value="38"/>
+		</card>
+		<card name="Overcome Nanite Deceptions" id="94149032-3791-4338-86bb-6c5df9c631b6" size="mission">
+			<property name="Subtitle" value="Elizabeth Weir's Mind"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="g">Gemini</s></property>
+			<property name="Text">When you play this mission, your opponent may discard up to two cards. If they do, they gain 1 power for each card they discarded.</property>
+			<property name="Number" value="39"/>
+		</card>
+		<card name="Overcome Wraith Enzyme Addiction" id="88d2403e-e539-4610-bea9-c60aa7d7cfb2" size="mission">
+			<property name="Subtitle" value="Edowin"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="3"/>
+			<property name="Experience" value="1"/>
+			<property name="Glyph"><s value="s">Scorpius</s></property>
+			<property name="Text"><b>Failure:</b> Your opponent may <b>wound</b> a character.</property>
+			<property name="Number" value="40"/>
+		</card>
+		<card name="Overpower Wraith Queen's Mind" id="a21e3936-496c-4d92-bdc1-ef75910132ef" size="mission">
+			<property name="Subtitle" value="Cloning Facility"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="4"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="p">Pisces</s></property>
+			<property name="Text">Each time your opponent plays an obstacle or a complication, you may draw a card.</property>
+			<property name="Number" value="41"/>
+		</card>
+		<card name="Overthrow the False Gods" id="0a819d03-b54a-41db-a6f6-fc8907cd75a6" size="mission">
+			<property name="Subtitle" value="Dakara's Orbit"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="5"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="s">Scorpius</s></property>
+			<property name="Text">Goa'uld obstacles cost power +1 to play.
+To assign a Goa'uld adversary, your opponent must pay 1 power.</property>
+			<property name="Number" value="42"/>
+		</card>
+		<card name="Parley with the Wraith" id="adf94b97-b94f-49db-9cd0-22b7e40717c1" size="mission">
+			<property name="Subtitle" value="Atlantis"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Experience" value="1"/>
+			<property name="Glyph"><s value="g">Gemini</s></property>
+			<property name="Text">Adversaries cost power -1 to play.</property>
+			<property name="Number" value="43"/>
+		</card>
+		<card name="Poisoning the Well" id="892ae28e-50b1-4668-bd44-acb79760fd19" size="mission">
+			<property name="Subtitle" value="Hoff"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="3"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="l">Libra</s></property>
+			<property name="Text"><b>Failure:</b> <b>Drain 2</b>. If any of the drained cards was a hero card, destroy a support character.</property>
+			<property name="Number" value="44"/>
+		</card>
+		<card name="Prevent Wraith Invasion" id="21a83b4a-3308-4930-882c-28659eb8968c" size="mission">
+			<property name="Subtitle" value="Earth's Orbit"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="5"/>
+			<property name="Experience" value="4"/>
+			<property name="Glyph"><s value="s">Scorpius</s></property>
+			<property name="Text"><b>Success:</b> Destroy a villain ship.</property>
+			<property name="Number" value="45"/>
+		</card>
+		<card name="Protect Free Jaffa Stronghold" id="a1f571e3-3ebb-4828-be45-7956b19ff358" size="mission">
+			<property name="Subtitle" value="Dakara"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="4"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="g">Gemini</s></property>
+			<property name="Text">To assign a hero ship, you must pay 1 power.</property>
+			<property name="Number" value="46"/>
+		</card>
+		<card name="Recover Naquadria Cache" id="ecbf7faf-c329-4f31-93d8-071e7438e8f7" size="mission">
+			<property name="Subtitle" value="Langara"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="4"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="s">Scorpius</s></property>
+			<property name="Text"><b>Success:</b> Gear cards cost power -1 to play until the end of the turn.</property>
+			<property name="Number" value="47"/>
+		</card>
+		<card name="Recruit Disreputable Allies" id="70bfa4ad-a29c-428b-993f-f31dddf602ac" size="mission">
+			<property name="Subtitle" value="Netan's Ha'tak"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="5"/>
+			<property name="Experience" value="4"/>
+			<property name="Glyph"><s value="g">Gemini</s></property>
+			<property name="Text"><b>Success:</b> Gain 1 power and draw a card for each assigned character with no affiliation trait.</property>
+			<property name="Number" value="48"/>
+		</card>
+		<card name="Remove Alien Parasite" id="2969252a-7c6d-4591-8b1d-cae3b3ab6226" size="mission">
+			<property name="Subtitle" value="Wraith Homeworld"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="3"/>
+			<property name="Experience" value="1"/>
+			<property name="Glyph"><s value="l">Libra</s></property>
+			<property name="Text">When you play this mission, <b>drain 3</b>.</property>
+			<property name="Number" value="49"/>
+		</card>
+		<card name="Repel Genii Invasion" id="5d2713e9-5ce3-44ec-8416-b362fbad18ea" size="mission">
+			<property name="Subtitle" value="Atlantis"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="3"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="s">Scorpius</s></property>
+			<property name="Text">When you play this mission, your opponent may <b>wound</b> a ready character.</property>
+			<property name="Number" value="50"/>
+		</card>
+		<card name="Repel Replicator Swarm" id="ccbbfc0c-78b3-4dd9-a3b1-38b1aa42137c" size="mission">
+			<property name="Subtitle" value="The Odyssey"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="3"/>
+			<property name="Experience" value="1"/>
+			<property name="Glyph"><s value="s">Scorpius</s></property>
+			<property name="Text">Each time one of your cards would be placed in your discard pile, purge that card instead.</property>
+			<property name="Number" value="51"/>
+		</card>
+		<card name="Rescue Family Members" id="98d97a58-46b7-4cd2-ae38-240ccb69ab6e" size="mission">
+			<property name="Subtitle" value="Chulak"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="4"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="s">Scorpius</s></property>
+			<property name="Text">Obstacles that cost 3 or less get <b>dominion</b>.</property>
+			<property name="Number" value="52"/>
+		</card>
+		<card name="Rescue Trapped Survivors" id="6bf1987b-4008-4902-9078-3f7a81fd41c7" size="mission">
+			<property name="Subtitle" value="M2S-445"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="4"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="p">Pisces</s></property>
+			<property name="Text"><b>Failure:</b> Your opponent destroys an assigned or stopped support character.</property>
+			<property name="Number" value="53"/>
+		</card>
+		<card name="Restore Trust" id="379a8d7e-fd91-41b6-a298-d57598e5f697" size="mission">
+			<property name="Subtitle" value="Lantea"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="5"/>
+			<property name="Experience" value="4"/>
+			<property name="Glyph"><s value="o">Orion</s></property>
+			<property name="Text"><b>Success:</b> If Teyla Emmagan is assigned, draw two cards and gain 1 power.</property>
+			<property name="Number" value="54"/>
+		</card>
+		<card name="Retrieve Abducted Teammates" id="8862257b-147d-4e57-9536-379c585d72f7" size="mission">
+			<property name="Subtitle" value="Thenora"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="4"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="o">Orion</s></property>
+			<property name="Text"><b>Success:</b> Ready two support characters.
+<b>Failure:</b> Destroy a support character.</property>
+			<property name="Number" value="55"/>
+		</card>
+		<card name="Save Wraith Hive Captives" id="66fc9beb-19e6-434a-8680-ecf00ddabc74" size="mission">
+			<property name="Subtitle" value="Wraith Hive"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="t">Triangulum</s></property>
+			<property name="Text">This mission gets difficulty +1 for each assigned support character.</property>
+			<property name="Number" value="56"/>
+		</card>
+		<card name="Secure Atlantis" id="6441365b-8873-4304-9bc6-58ff6af120d9" size="mission">
+			<property name="Subtitle" value="Lantea"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="4"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="l">Libra</s></property>
+			<property name="Text">Gears and complications cost power -1 to play.</property>
+			<property name="Number" value="57"/>
+		</card>
+		<card name="Secure Potentia" id="2aa26a10-2f80-4f19-961f-f0d366e462ff" size="mission">
+			<property name="Subtitle" value="Dagan"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="5"/>
+			<property name="Experience" value="4"/>
+			<property name="Glyph"><s value="p">Pisces</s></property>
+			<property name="Text"><b>Success:</b> Your opponent may discard up to four cards. Gain power equal to 4 minus the number of cards they discarded this way.</property>
+			<property name="Number" value="58"/>
+		</card>
+		<card name="See Through the Deceptive Mist" id="f08dc0c2-c20c-41b5-880e-eef4c14a4b38" size="mission">
+			<property name="Subtitle" value="M5S-224"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="t">Triangulum</s></property>
+			<property name="Text"><b>Success:</b> Lose 1 power. Your opponent gains 1 power.</property>
+			<property name="Number" value="59"/>
+		</card>
+		<card name="Seek the Seer's Guidance" id="1d30f083-5083-4a65-b6fd-379aad9ca076" size="mission">
+			<property name="Subtitle" value="Vedeena"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="4"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="g">Gemini</s></property>
+			<property name="Text"><b>Success:</b> Look at the bottom card of your mission pile, then you may place it on the top of that pile.</property>
+			<property name="Number" value="60"/>
+		</card>
+		<card name="Solve Morgan le Fay's Riddles" id="cb19813c-d859-4d4d-adc6-f6b07e2e64e9" size="mission">
+			<property name="Subtitle" value="Camelot"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="5"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="o">Orion</s></property>
+			<property name="Text">Ori obstacles cost power +1 to play.
+To assign an Ori adversary, your opponent must pay 1 power.</property>
+			<property name="Number" value="61"/>
+		</card>
+		<card name="Steal Asuran Z.P.M." id="9d76ab2c-6885-4432-b36c-27fb6008d535" size="mission">
+			<property name="Subtitle" value="Asuras"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="4"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="l">Libra</s></property>
+			<property name="Text"><b>Success:</b> Gain 1 power. Your opponent loses 1 power.</property>
+			<property name="Number" value="62"/>
+		</card>
+		<card name="Survive Michael's Creatures" id="3149e641-67bb-410a-a36f-3c9943f327cc" size="mission">
+			<property name="Subtitle" value="Taranian Settlement"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="3"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="g">Gemini</s></property>
+			<property name="Text">When you play this mission, discard two random cards.</property>
+			<property name="Number" value="63"/>
+		</card>
+		<card name="Survive Wraith Hunting Party" id="e347dc23-dafc-4619-8e1c-e3c5e6f6faf2" size="mission">
+			<property name="Subtitle" value="Sateda"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="5"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="p">Pisces</s></property>
+			<property name="Text"><b>Success:</b> If Ronon Dex is assigned, ready him.</property>
+			<property name="Number" value="64"/>
+		</card>
+		<card name="Thirty-Eight Minutes" id="5bc832ac-57d6-4bd0-bdeb-c692f2461b1b" size="mission">
+			<property name="Subtitle" value="Wraith Homeworld"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Experience" value="2"/>
+			<property name="Glyph"><s value="p">Pisces</s></property>
+			<property name="Text"><b>Failure:</b> Your opponent destroys a hero ship.</property>
+			<property name="Number" value="65"/>
+		</card>
+		<card name="Treasure Hunt" id="9cbbc48c-e142-4085-917d-402600712877" size="mission">
+			<property name="Subtitle" value="All over the Galaxy"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="5"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="t">Triangulum</s></property>
+			<property name="Text">While Vala Mal Doran is assigned to this mission, each time you assign another character, you may discard a card. If you do, your opponent discards a random card.</property>
+			<property name="Number" value="66"/>
+		</card>
+		<card name="Uncover Wraith Experiments" id="907f2b9b-8f59-4970-8e28-dfbe0b407b24" size="mission">
+			<property name="Subtitle" value="Wraith Science Lab"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="5"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="s">Scorpius</s></property>
+			<property name="Text">When you play this mission, you may <b>drain</b> up to four cards, then draw that many cards.</property>
+			<property name="Number" value="67"/>
+		</card>
+		<card name="Weather Mega-Storm" id="0e64fd43-83ee-4609-b5cc-ddf1eec374e4" size="mission">
+			<property name="Subtitle" value="Lantea"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Experience" value="1"/>
+			<property name="Glyph"><s value="l">Libra</s></property>
+			<property name="Text">When you play this mission, your opponent may draw two cards.</property>
+			<property name="Number" value="68"/>
+		</card>
+		<card name="Wipe Out Asuran Shipyards" id="7148d738-4c3b-4954-ae5b-bf82e9f57b8d" size="mission">
+			<property name="Subtitle" value="Asuras"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="5"/>
+			<property name="Experience" value="4"/>
+			<property name="Glyph"><s value="p">Pisces</s></property>
+			<property name="Text"><b>Success:</b> Until the end of the turn, villain ships are blocked and your opponent can't play ships.</property>
+			<property name="Number" value="69"/>
+		</card>
+		<card name="Withstand Interrogation" id="31c86352-e3a4-4dc8-9350-be154f72b770" size="mission">
+			<property name="Subtitle" value="Juna's Orbit"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="3"/>
+			<property name="Experience" value="1"/>
+			<property name="Glyph"><s value="p">Pisces</s></property>
+			<property name="Text"><b>Success:</b> The next mission this turn costs power +1 to play.</property>
+			<property name="Number" value="70"/>
+		</card>
+		<card name="Withstand Wraith Onslaught" id="8587e8d8-8283-44c2-8a29-2692e3cfe1cf" size="mission">
+			<property name="Subtitle" value="Atlantis"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="5"/>
+			<property name="Experience" value="4"/>
+			<property name="Glyph"><s value="t">Triangulum</s></property>
+			<property name="Text">To assign a villain ship, your opponent must pay 1 power.</property>
+			<property name="Number" value="71"/>
+		</card>
+		<card name="Witness Goa'uld Execution" id="c61490c3-f715-4522-8a7d-1200e9025086" size="mission">
+			<property name="Subtitle" value="Tok'ra Homeworld"/>
+			<property name="Type" value="Mission"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="4"/>
+			<property name="Experience" value="3"/>
+			<property name="Glyph"><s value="t">Triangulum</s></property>
+			<property name="Text">When you play this mission, block all adversaries.
+<b>Failure:</b>Your opponent may score an adversary. <i>(That adversary does not have to be assigned.)</i></property>
+			<property name="Number" value="72"/>
+		</card>
+	</cards>
+</set>

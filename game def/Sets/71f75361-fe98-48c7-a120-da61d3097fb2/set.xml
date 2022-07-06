@@ -4,7 +4,7 @@
 		<card name="Aden Corso" id="547b6228-ea31-4688-b150-4f45b2fbe62b">
 			<property name="Subtitle" value="Convicted Criminal"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
@@ -16,8 +16,8 @@
 		<card name="Adria" id="85b8abf3-b06b-4967-b863-eea48752a34c">
 			<property name="Subtitle" value="The Orici"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="2"/>
@@ -30,8 +30,8 @@
 		<card name="Anubis" id="8ccfb28c-4438-42a6-be8e-6972cb02710b">
 			<property name="Subtitle" value="Warlord"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="3"/>
@@ -44,8 +44,8 @@
 		<card name="Apophis" id="28e38e66-18ff-4510-8ba0-67a0357e38ef">
 			<property name="Subtitle" value="Risen from the Fires"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Combat" value="2"/>
@@ -57,8 +57,8 @@
 		<card name="The Doci" id="e6dc082e-bd1c-4ec0-b209-fbdeb61e5a94">
 			<property name="Subtitle" value="Voice of the Ori"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="2"/>
@@ -70,8 +70,8 @@
 		<card name="Dutiful Prior" id="71f75361-fe98-48c7-a120-da61d3097fb2">
 			<property name="Subtitle" value="Adria's Attendant"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="1"/>
@@ -83,8 +83,8 @@
 		<card name="Enlightened Prior" id="b7e98873-c6b6-4c70-872c-bcd47f2b8d36">
 			<property name="Subtitle" value="Teacher of Origin"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -96,8 +96,8 @@
 		<card name="First" id="aa742e48-824f-4260-ae6c-512f6e30418a">
 			<property name="Subtitle" value="Leap in Evolution"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Replicator"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Replicator"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Science" value="2"/>
@@ -111,8 +111,8 @@ While First is assigned, each of your Replicator obstacles gets <b>dominion</b>.
 		<card name="Heru'ur" id="6e4e2984-dc39-4aa1-bb0d-eb91e3711546">
 			<property name="Subtitle" value="Shrewd Rival"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
@@ -124,8 +124,8 @@ While First is assigned, each of your Replicator obstacles gets <b>dominion</b>.
 		<card name="Kali" id="3b694601-f040-42c5-bb75-5952db38a696">
 			<property name="Subtitle" value="The Destroyer"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="C"/>
 			<property name="Science" value="2"/>
@@ -138,19 +138,19 @@ While First is assigned, each of your Replicator obstacles gets <b>dominion</b>.
 		<card name="Kefflin" id="e276823a-350c-4762-8268-a60d8528ad2f">
 			<property name="Subtitle" value="Loyal Second"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Combat" value="2"/>
 			<property name="Revive" value="4"/>
-			<property name="Text">While Kefflin is ready, <s value="cul">culture</s> missions get difficulty +1.</property>
+			<property name="Text">While Kefflin is ready, <s value="cul">Culture</s> missions get difficulty +1.</property>
 			<property name="Number" value="11"/>
 		</card>
 		<card name="Moloc" id="d029a413-8db0-49fa-950b-101acd968257">
 			<property name="Subtitle" value="Great and Powerful"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Science" value="2"/>
@@ -162,7 +162,7 @@ While First is assigned, each of your Replicator obstacles gets <b>dominion</b>.
 		<card name="Netan" id="f6d88dda-5e0c-4c71-9731-723d93958cbd">
 			<property name="Subtitle" value="Head of the Lucian Alliance"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
@@ -175,7 +175,7 @@ While First is assigned, each of your Replicator obstacles gets <b>dominion</b>.
 		<card name="Odai Ventrell" id="63729200-f480-499b-81da-28703d06cc7f">
 			<property name="Subtitle" value="Bounty Hunter"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Science" value="1"/>
@@ -188,8 +188,8 @@ While First is assigned, each of your Replicator obstacles gets <b>dominion</b>.
 		<card name="Quartus" id="e8027e87-921c-42dd-927d-ce5327f9dca0">
 			<property name="Subtitle" value="Chief Negotiation Officer"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Political"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Political"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="0"/>
@@ -201,8 +201,8 @@ While First is assigned, each of your Replicator obstacles gets <b>dominion</b>.
 		<card name="Robert Kinsey" id="ddb4254d-b461-4cd5-b2f5-5e4353de8732">
 			<property name="Subtitle" value="Goa'uld Infiltrator"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld Political"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld Political"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
@@ -214,8 +214,8 @@ While First is assigned, each of your Replicator obstacles gets <b>dominion</b>.
 		<card name="Ronan" id="f8d4cfcb-bde4-449d-b900-6b049581eeb2">
 			<property name="Subtitle" value="Betrayer"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Combat" value="2"/>
@@ -227,19 +227,19 @@ While First is assigned, each of your Replicator obstacles gets <b>dominion</b>.
 		<card name="Ted" id="84363f7a-254b-4e2b-81a6-f86f10306ff0">
 			<property name="Subtitle" value="Alien Deserter"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
 			<property name="Revive" value="4"/>
-			<property name="Text">While Ted is ready, <s value="sci">science</s> missions get difficulty +1.</property>
+			<property name="Text">While Ted is ready, <s value="sci">Science</s> missions get difficulty +1.</property>
 			<property name="Number" value="18"/>
 		</card>
 		<card name="Tomin" id="d2acebf2-d3ff-48c6-8afb-f56288cac5bb">
 			<property name="Subtitle" value="Strong, Proud Warrior"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Combat" value="2"/>
@@ -251,8 +251,8 @@ While First is assigned, each of your Replicator obstacles gets <b>dominion</b>.
 		<card name="Vengeful Prior" id="a48072e8-534c-4cba-a376-66def6a8f1b0">
 			<property name="Subtitle" value="Hand of the Ori"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Science" value="1"/>
@@ -266,8 +266,8 @@ Disease obstacles cost power -1 to play while Vengeful Prior is assigned.</prope
 		<card name="Adam Banks" id="a7c235c4-3a01-4a73-b6b4-05398a4e3250">
 			<property name="Subtitle" value="Gunner"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="R"/>
 			<property name="Combat" value="2"/>
@@ -277,7 +277,7 @@ Disease obstacles cost power -1 to play while Vengeful Prior is assigned.</prope
 		<card name="Arlos" id="8208f73c-b688-43ab-a8af-dc034acea9cc">
 			<property name="Subtitle" value="Alien Technology Expert"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
@@ -288,21 +288,21 @@ Disease obstacles cost power -1 to play while Vengeful Prior is assigned.</prope
 		<card name="Birra" id="4200566a-8bfc-4ce6-814e-5ea901c8e163">
 			<property name="Subtitle" value="Citizen of Kallana"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="1"/>
 			<property name="Ingenuity" value="1"/>
-			<property name="Text">Birra gets <s value="cul">culture</s> +1 for each <s value="ing">ingenuity</s> obstacle at the current mission.
-Birra gets <s value="ing">ingenuity</s> +1 for each <s value="cul">culture</s> obstacle at the current mission.</property>
+			<property name="Text">Birra gets <s value="cul">Culture</s> +1 for each <s value="ing">Ingenuity</s> obstacle at the current mission.
+Birra gets <s value="ing">Ingenuity</s> +1 for each <s value="cul">Culture</s> obstacle at the current mission.</property>
 			<property name="Number" value="23"/>
 		</card>
 		<card name="Brooks" id="9b1e1999-9963-4329-9c30-a4d0b63809de">
 			<property name="Subtitle" value="Computer Tech"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="NID"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="C"/>
 			<property name="Science" value="2"/>
@@ -313,8 +313,8 @@ Birra gets <s value="ing">ingenuity</s> +1 for each <s value="cul">culture</s> o
 		<card name="Cameron Mitchell" id="cc688b13-20d0-42cc-9658-98c3b37b4665">
 			<property name="Subtitle" value="Blue Leader"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Combat" value="2"/>
@@ -325,7 +325,7 @@ Birra gets <s value="ing">ingenuity</s> +1 for each <s value="cul">culture</s> o
 		<card name="Cicero" id="7e4b12f5-f4cb-4e64-8538-f286e6cd52e1">
 			<property name="Subtitle" value="Archaeological Researcher"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="1"/>
@@ -335,7 +335,7 @@ Birra gets <s value="ing">ingenuity</s> +1 for each <s value="cul">culture</s> o
 		<card name="&quot;Colonel Danning&quot;" id="da2a42b4-7caa-4e1c-8f02-0b707823c817">
 			<property name="Subtitle" value="X-cellent Hero"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Combat" value="1"/>
@@ -346,8 +346,8 @@ Birra gets <s value="ing">ingenuity</s> +1 for each <s value="cul">culture</s> o
 		<card name="Daniel Jackson" id="02540aa3-a2b2-4262-92ee-9e29dabbcae3">
 			<property name="Subtitle" value="Prior of the Ori"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="6"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="3"/>
@@ -359,8 +359,8 @@ During your opponent's turn, Daniel Jackson becomes an Ori adversary with revive
 		<card name="Devon" id="90eeae81-e44d-4d1a-85a5-2aaadec3b6d6">
 			<property name="Subtitle" value="Trust Operative"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="NID"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="1"/>
@@ -371,7 +371,7 @@ During your opponent's turn, Daniel Jackson becomes an Ori adversary with revive
 		<card name="&quot;Dr. Levant&quot;" id="7bbda8f8-a1aa-48f4-91b6-5a9ed834f843">
 			<property name="Subtitle" value="X-cellent Hero"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="1"/>
@@ -382,8 +382,8 @@ During your opponent's turn, Daniel Jackson becomes an Ori adversary with revive
 		<card name="Elizabeth Weir" id="a530d6d9-019b-4bdc-90df-5d2a513c062d">
 			<property name="Subtitle" value="Ancient Language Expert"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Atlantis"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Atlantis"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
@@ -394,7 +394,7 @@ During your opponent's turn, Daniel Jackson becomes an Ori adversary with revive
 		<card name="Emmett Bregman" id="d5ec1d1b-f6b5-4c5d-b2b5-9c77671d164e">
 			<property name="Subtitle" value="Documentary Filmmaker"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="1"/>
@@ -405,7 +405,7 @@ During your opponent's turn, Daniel Jackson becomes an Ori adversary with revive
 		<card name="Fannis" id="3599bff8-6fbf-4bfb-9785-b73f57aae9aa">
 			<property name="Subtitle" value="Ancestral Investigator"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -415,7 +415,7 @@ During your opponent's turn, Daniel Jackson becomes an Ori adversary with revive
 		<card name="Francis Maynard" id="c69a9d91-e385-4d10-afba-adf129f7af8a">
 			<property name="Subtitle" value="Chairman of the Joint Chiefs"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Combat" value="2"/>
@@ -425,7 +425,7 @@ During your opponent's turn, Daniel Jackson becomes an Ori adversary with revive
 		<card name="&quot;Grell&quot;" id="ca4eca62-9d75-4039-9400-8aa6314db29c">
 			<property name="Subtitle" value="X-cellent Hero"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="1"/>
@@ -437,7 +437,7 @@ During your opponent's turn, Daniel Jackson becomes an Ori adversary with revive
 		<card name="Jacek" id="4fe3185e-e3a8-4916-94a4-e2a31d90764e">
 			<property name="Subtitle" value="Petty Thief"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="1"/>
@@ -448,20 +448,20 @@ During your opponent's turn, Daniel Jackson becomes an Ori adversary with revive
 		<card name="Jalen" id="eda20645-7045-46cd-8d80-9cff85b47cfe">
 			<property name="Subtitle" value="Field Agent"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Tok'ra"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="1"/>
 			<property name="Combat" value="1"/>
-			<property name="Text">When you play Jalen, she gets <s value="com">combat</s> +2 until the end of the current mission.</property>
+			<property name="Text">When you play Jalen, she gets <s value="com">Combat</s> +2 until the end of the current mission.</property>
 			<property name="Number" value="37"/>
 		</card>
 		<card name="John Sheppard" id="30520032-985c-4427-9484-5f856ac508ad">
 			<property name="Subtitle" value="Unconventional Leader"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Atlantis"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Atlantis"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Combat" value="2"/>
@@ -472,7 +472,7 @@ During your opponent's turn, Daniel Jackson becomes an Ori adversary with revive
 		<card name="Jonas Quinn" id="98ff6985-f8e9-46be-851c-b5a5f89b84e5">
 			<property name="Subtitle" value="Special Advisor"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="1"/>
@@ -483,8 +483,8 @@ During your opponent's turn, Daniel Jackson becomes an Ori adversary with revive
 		<card name="Lindsey Novak" id="1029c2b1-a80b-43ac-b26d-e0d9657aa784">
 			<property name="Subtitle" value="Eccentric Engineer"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="U"/>
 			<property name="Science" value="2"/>
@@ -494,19 +494,19 @@ During your opponent's turn, Daniel Jackson becomes an Ori adversary with revive
 		<card name="Linea" id="cb5296c5-293a-4df5-b1d9-16a7e7ea5d3c">
 			<property name="Subtitle" value="Destroyer of Worlds"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Science" value="3"/>
 			<property name="Ingenuity" value="1"/>
-			<property name="Text"><s value="cul">culture</s> missions get difficulty +1.
+			<property name="Text"><s value="cul">Culture</s> missions get difficulty +1.
 During your opponent's turn, Linea becomes an adversary. She can't be revived or scored.</property>
 			<property name="Number" value="41"/>
 		</card>
 		<card name="Ma'chello" id="854c1ea4-c60f-4058-9c6b-7038fc83776e">
 			<property name="Subtitle" value="Inventor"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="U"/>
 			<property name="Science" value="3"/>
@@ -516,7 +516,7 @@ During your opponent's turn, Linea becomes an adversary. She can't be revived or
 		<card name="&quot;Major Monroe&quot;" id="21b9413e-b610-4e92-aa75-e1d97635a49f">
 			<property name="Subtitle" value="X-cellent Hero"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Science" value="1"/>
@@ -527,8 +527,8 @@ During your opponent's turn, Linea becomes an adversary. She can't be revived or
 		<card name="Merlin" id="e75bce14-2fa0-409b-ac00-56de733d871d">
 			<property name="Subtitle" value="Dissenting Ancient"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Atlantis"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Atlantis"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="R"/>
 			<property name="Science" value="0"/>
@@ -540,7 +540,7 @@ Stop and destroy Merlin, pay 3 power - Choose a team character to get skills +2 
 		<card name="Michael Ryan" id="436a7a4d-f3d9-41a4-be46-1bda48e075f4">
 			<property name="Subtitle" value="U.S. Air Force Chief of Staff"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="1"/>
@@ -553,8 +553,8 @@ While Michael Ryan is assigned, each assigned SGC character gets skills +1.</pro
 		<card name="Morgan le Fay" id="dd36e207-da31-4e67-8fa1-7c429d86e683">
 			<property name="Subtitle" value="Dissident Ancient"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Ancient"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Ancient"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="3"/>
@@ -565,29 +565,29 @@ While Michael Ryan is assigned, each assigned SGC character gets skills +1.</pro
 		<card name="Mr. Parker" id="a6d0e207-bff6-49ef-9447-5b0d5c55d1d2">
 			<property name="Subtitle" value="Leader of the Trust"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="NID"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Science" value="1"/>
-			<property name="Text">Mr. Parker gets <s value="sci">science</s> +1 for each NID character who has a glyph.</property>
+			<property name="Text">Mr. Parker gets <s value="sci">Science</s> +1 for each NID character who has a glyph.</property>
 			<property name="Number" value="47"/>
 		</card>
 		<card name="Mr. Wayne" id="8d647f11-6648-43d8-8e0b-5c9886dc34c8">
 			<property name="Subtitle" value="Leader of the Trust"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="NID"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Ingenuity" value="1"/>
-			<property name="Text">Mr. Parker gets <s value="ing">ingenuity</s> +1 for each NID character who has a glyph.</property>
+			<property name="Text">Mr. Parker gets <s value="ing">Ingenuity</s> +1 for each NID character who has a glyph.</property>
 			<property name="Number" value="48"/>
 		</card>
 		<card name="Pete Shanahan" id="9dba2adf-71fc-4da2-b4d6-46fa8cbea654">
 			<property name="Subtitle" value="Inquisitive Detective"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Combat" value="2"/>
@@ -598,8 +598,8 @@ While Michael Ryan is assigned, each assigned SGC character gets skills +1.</pro
 		<card name="Rodney McKay" id="dab14cf9-190c-486d-af11-e98edcd2f3d1">
 			<property name="Subtitle" value="Munitions Yield Expert"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Atlantis"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Atlantis"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="R"/>
 			<property name="Science" value="3"/>
@@ -610,8 +610,8 @@ While Michael Ryan is assigned, each assigned SGC character gets skills +1.</pro
 		<card name="Ryk'l" id="f00cc077-03db-4f92-b1f4-cc9a02691dae">
 			<property name="Subtitle" value="Freedom Fighter"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -622,8 +622,8 @@ While Michael Ryan is assigned, each assigned SGC character gets skills +1.</pro
 		<card name="Se'tak" id="6a0f4a30-9772-4279-aa25-dceaf67e92c2">
 			<property name="Subtitle" value="Leader of the Jaffa"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="U"/>
 			<property name="Combat" value="2"/>
@@ -634,7 +634,7 @@ While Michael Ryan is assigned, each assigned SGC character gets skills +1.</pro
 		<card name="Sha're" id="137d8cff-d841-4489-9840-d2c369f54e88">
 			<property name="Subtitle" value="Beloved Wife and Daughter"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="1"/>
@@ -645,8 +645,8 @@ While Michael Ryan is assigned, each assigned SGC character gets skills +1.</pro
 		<card name="Ta'Seem" id="7a39bcde-255f-4785-958e-da397ab89e69">
 			<property name="Subtitle" value="Tok'ra Surgeon"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Tok'ra"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Science" value="2"/>
@@ -656,20 +656,20 @@ While Michael Ryan is assigned, each assigned SGC character gets skills +1.</pro
 		<card name="Tass'an" id="5e718c5b-0650-4a55-9c96-5891515e4f61">
 			<property name="Subtitle" value="Settler"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Ingenuity" value="2"/>
-			<property name="Text">Tass'an gets <s value="ing">ingenuity</s> +1 while an adversary is assigned.
-Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa character.</property>
+			<property name="Text">Tass'an gets <s value="ing">Ingenuity</s> +1 while an adversary is assigned.
+Tass'an gets <s value="ing">Ingenuity</s> +1 while assigned with another Jaffa character.</property>
 			<property name="Number" value="55"/>
 		</card>
 		<card name="Thoran" id="f67d9287-d664-4f9e-84be-97a014b48435">
 			<property name="Subtitle" value="Tok'ra Intermediary"/>
 			<property name="Type" value="Support Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Tok'ra"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
@@ -679,8 +679,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Bo'rel" id="a2f5c411-83d7-46d1-8e4d-28fe98caeb7c">
 			<property name="Subtitle" value="Free Jaffa"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="1"/>
@@ -693,8 +693,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Bra'tac" id="15725c70-6092-4f78-b670-c5d898ff9aea">
 			<property name="Subtitle" value="Honored Teacher"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
@@ -707,8 +707,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Cameron Mitchell" id="89c2a434-0450-4da4-92e3-ee44e73b131a">
 			<property name="Subtitle" value="&quot;Mr. Shaft&quot;"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="1"/>
@@ -721,8 +721,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Chekov" id="e1b7fb4e-ff73-4086-bbc9-5cf23b0cb41d">
 			<property name="Subtitle" value="Korolev Captain"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Russian"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="3"/>
@@ -735,8 +735,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Daniel Jackson" id="6ffd0086-2db6-4d24-af57-ffb823bca542">
 			<property name="Subtitle" value="Ambassador of Earth"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="3"/>
@@ -751,8 +751,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Dave Dixon" id="0a53c627-cff9-4ec0-97b3-232d95105c7b">
 			<property name="Subtitle" value="SG-13 Commander"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="1"/>
@@ -765,8 +765,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Erin Gant" id="94d2d075-0f6b-4a0a-b683-16982ae91f83">
 			<property name="Subtitle" value="Bridge Officer"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="6"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="0"/>
@@ -779,22 +779,22 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Hadden" id="8345a08b-5804-41c8-a6c8-13d0577aa507">
 			<property name="Subtitle" value="SG-12 Commander"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="2"/>
 			<property name="Science" value="2"/>
 			<property name="Combat" value="2"/>
 			<property name="Ingenuity" value="0"/>
-			<property name="Text">Hadden gets <s value="ing">ingenuity</s> +1 for each different glyph he has.</property>
+			<property name="Text">Hadden gets <s value="ing">Ingenuity</s> +1 for each different glyph he has.</property>
 			<property name="Number" value="64"/>
 		</card>
 		<card name="Harold Maybourne" id="57eec296-1dc8-4199-9714-e4c73b4e8ae2">
 			<property name="Subtitle" value="Helpful Informant"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Russian NID"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian NID"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
@@ -808,8 +808,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Hoskins" id="88d19a1a-76d1-4a97-89bf-e7f8f2f13b0c">
 			<property name="Subtitle" value="Agent of the Trust"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="NID"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="0"/>
@@ -822,39 +822,39 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Jack O'Neill" id="ea698422-96be-4129-bd92-2317ae91f3cc">
 			<property name="Subtitle" value="Dynamic Leader"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="0"/>
 			<property name="Science" value="1"/>
 			<property name="Combat" value="2"/>
 			<property name="Ingenuity" value="2"/>
-			<property name="Text"><s value="l">Libra</s> or <s value="o">Orion</s>: Each assigned team character gets <s value="com">combat</s> +1 while Jack O'Neill is assigned.
-<s value="g">Gemini</s> and <s value="o">Orion</s>: Each assigned team character gets <s value="ing">ingenuity</s> +1 while Jack O'Neill is assigned.</property>
+			<property name="Text"><s value="l">Libra</s> or <s value="o">Orion</s>: Each assigned team character gets <s value="com">Combat</s> +1 while Jack O'Neill is assigned.
+<s value="g">Gemini</s> and <s value="o">Orion</s>: Each assigned team character gets <s value="ing">Ingenuity</s> +1 while Jack O'Neill is assigned.</property>
 			<property name="Number" value="67"/>
 		</card>
 		<card name="Jacob Cater" id="cde2eefc-8222-4052-9d2e-a88bee43ef5e">
 			<property name="Subtitle" value="Tok'ra Ambassador"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Tok'ra"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
 			<property name="Science" value="1"/>
 			<property name="Combat" value="1"/>
 			<property name="Ingenuity" value="2"/>
-			<property name="Text"><s value="p">Pisces</s>: Jacob Carter gets <s value="cul">culture</s> +1 and <s value="com">combat</s> +1.
-<s value="t">Triangulum</s>: Jacob Carter gets <s value="sci">science</s> +1 and <s value="ing">ingenuity</s> +1.
-<s value="p">Pisces</s> and <s value="t">Triangulum</s>: Jacob Carter gets <s value="sci">science</s> +1 and <s value="com">combat</s> +1.</property>
+			<property name="Text"><s value="p">Pisces</s>: Jacob Carter gets <s value="cul">Culture</s> +1 and <s value="com">Combat</s> +1.
+<s value="t">Triangulum</s>: Jacob Carter gets <s value="sci">Science</s> +1 and <s value="ing">Ingenuity</s> +1.
+<s value="p">Pisces</s> and <s value="t">Triangulum</s>: Jacob Carter gets <s value="sci">Science</s> +1 and <s value="com">Combat</s> +1.</property>
 			<property name="Number" value="68"/>
 		</card>
 		<card name="Jonas Quinn" id="dad3f62b-6268-4a40-93e8-ebe1f5100fb5">
 			<property name="Subtitle" value="Quick Study"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="2"/>
@@ -867,8 +867,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Lionel Pendergast" id="53838920-1d76-4829-a718-224717435380">
 			<property name="Subtitle" value="Prometheus Commander"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
@@ -881,8 +881,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Loki" id="bfe94253-94a3-429c-8e21-01c0289a46e4">
 			<property name="Subtitle" value="Banished Scientist"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Asgard"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Asgard"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="1"/>
@@ -895,8 +895,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Malek" id="d8a02cb9-cc3f-4396-8b5d-02bee1964162">
 			<property name="Subtitle" value="Tok'ra Warrior"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Tok'ra"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="1"/>
@@ -910,8 +910,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Marks" id="2fe0c6c9-f177-4b8c-87c7-1c5c7cbdc4ba">
 			<property name="Subtitle" value="Bridge Officer"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -924,8 +924,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Neath" id="e6360e13-a13c-4500-8eb8-731dddb6a0b8">
 			<property name="Subtitle" value="Hardened Warrior"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="1"/>
@@ -939,8 +939,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Paul Emerson" id="01c55663-c0f3-41ac-a0b9-4fa25961c439">
 			<property name="Subtitle" value="Odyssey Commander"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
@@ -954,8 +954,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Samantha Carter" id="6803b219-db1e-4ea5-8ff4-70b54f746e0e">
 			<property name="Subtitle" value="Formidable Warrior"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="1"/>
@@ -970,8 +970,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Sergei Evanov" id="08a66011-3427-49ba-abba-8f470c72b424">
 			<property name="Subtitle" value="Team Leader"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Russian"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -984,8 +984,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Simon Coombs" id="a83c9958-74e2-4149-9efb-906729c89786">
 			<property name="Subtitle" value="Scientist in the Field"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="1"/>
@@ -998,38 +998,38 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Teal'c" id="6a3d0d4d-ba8d-437c-b59e-3e558bcc303c">
 			<property name="Subtitle" value="Man of Action"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
 			<property name="Science" value="0"/>
 			<property name="Combat" value="3"/>
 			<property name="Ingenuity" value="1"/>
-			<property name="Text"><s value="p">Pisces</s> and <s value="p">Pisces</s>: Each time you play a <s value="cul">culture</s> mission, you may ready Teal'c.
-<s value="t">Triangulum</s> and <s value="t">Triangulum</s>: Each time you play a <s value="com">combat</s> mission, you may ready Teal'c.
-<s value="g">Gemini</s> and <s value="g">Gemini</s>: Each time you play a <s value="ing">ingenuity</s> mission, you may ready Teal'c.</property>
+			<property name="Text"><s value="p">Pisces</s> and <s value="p">Pisces</s>: Each time you play a <s value="cul">Culture</s> mission, you may ready Teal'c.
+<s value="t">Triangulum</s> and <s value="t">Triangulum</s>: Each time you play a <s value="com">Combat</s> mission, you may ready Teal'c.
+<s value="g">Gemini</s> and <s value="g">Gemini</s>: Each time you play a <s value="ing">Ingenuity</s> mission, you may ready Teal'c.</property>
 			<property name="Number" value="79"/>
 		</card>
 		<card name="Thor" id="4f5c383a-45c0-4af3-9793-5bcda3c6acd4">
 			<property name="Subtitle" value="Supreme Commander"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Asgard"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Asgard"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
 			<property name="Science" value="2"/>
 			<property name="Combat" value="0"/>
 			<property name="Ingenuity" value="1"/>
-			<property name="Text"><s value="p">Pisces</s> or <s value="t">Triangulum</s>: Each assigned team character gets <s value="cul">culture</s> +1 while Thor is assigned.
-<s value="p">Pisces</s> and <s value="s">Scorpius</s>: Each assigned team character gets <s value="sci">science</s> +1 while Thor is assigned.</property>
+			<property name="Text"><s value="p">Pisces</s> or <s value="t">Triangulum</s>: Each assigned team character gets <s value="cul">Culture</s> +1 while Thor is assigned.
+<s value="p">Pisces</s> and <s value="s">Scorpius</s>: Each assigned team character gets <s value="sci">Science</s> +1 while Thor is assigned.</property>
 			<property name="Number" value="80"/>
 		</card>
 		<card name="Vala Mal Doran" id="cb5bbac3-0975-4cba-9dec-8971f2696397">
 			<property name="Subtitle" value="Practiced Thief"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="2"/>
@@ -1042,8 +1042,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Vala Mal Doran" id="ed06f408-db58-495b-9536-f955af457f0e">
 			<property name="Subtitle" value="SG-1 Member"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
@@ -1056,8 +1056,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="Weaver" id="cb97916e-62f7-4564-a3e2-a81df61790a9">
 			<property name="Subtitle" value="Trust Interrogator"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="NID"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
 			<property name="Cost" value="6"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
@@ -1070,8 +1070,8 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		<card name="William Ronson" id="a7b8c0fd-960e-405a-b122-e80907c86c53">
 			<property name="Subtitle" value="Prometheus Commander"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="0"/>
@@ -1083,7 +1083,7 @@ Tass'an gets <s value="ing">ingenuity</s> +1 while assigned with another Jaffa c
 		</card>
 		<card name="Cheap Knockoff" id="a4cc8014-3d3f-4792-8e89-0f4c30f41a48">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="0"/>
 			<property name="Rarity" value="C"/>
 			<property name="Text">To play this event, pay power equal to double the cost of an obstacle.
@@ -1092,8 +1092,8 @@ Destroy that obstacle.</property>
 		</card>
 		<card name="Conservation" id="2b376bc4-a680-4bf6-81d1-90222483c312">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Tok'ra"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="C"/>
 			<property name="Text">This event costs power -1 to play for each Tok'ra character who has a glyph.
@@ -1102,7 +1102,7 @@ Take a hero card from your discard pile into hand.</property>
 		</card>
 		<card name="Covert Strike" id="d5f9d981-a491-4027-96ab-514c6e9072e0">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Text">To play this event, stop any number of team characters.
@@ -1111,7 +1111,7 @@ Destroy an obstacle with a cost equal to that number of characters.</property>
 		</card>
 		<card name="Fend Off" id="88ea515b-1fd3-4307-bdaf-af5c23e67f62">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Text">Choose one: stop a villain ship; or destroy a stopped villain ship.</property>
@@ -1119,8 +1119,8 @@ Destroy an obstacle with a cost equal to that number of characters.</property>
 		</card>
 		<card name="Harsh Justice" id="54951413-b740-4a7b-8d35-95b8755e7177">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="6"/>
 			<property name="Rarity" value="C"/>
 			<property name="Text">This event costs power -1 to play for each Jaffa character who has a glyph.
@@ -1129,7 +1129,7 @@ Destroy an adversary.</property>
 		</card>
 		<card name="Indulgences" id="731477fa-2d84-412a-81c1-89785e7777ce">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="U"/>
 			<property name="Text">Discard any number of cards from your hand, then draw a card.</property>
@@ -1137,8 +1137,8 @@ Destroy an adversary.</property>
 		</card>
 		<card name="Insight" id="37c8342d-db14-4704-8a1a-0bd091ced926">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Text">Place a promotion token on a team character. <i>(They get point value +1 for each such token, to a maximum point value of 6.)</i> They get skills +1 until the end of the current mission.</property>
@@ -1146,8 +1146,8 @@ Destroy an adversary.</property>
 		</card>
 		<card name="Interference" id="6f6bd00b-faea-42f5-b854-16cd22dc7845">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Ancient"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Ancient"/>
 			<property name="Cost" value="0"/>
 			<property name="Rarity" value="U"/>
 			<property name="Text">To play this event, stop and destroy an Ancient support character.
@@ -1156,7 +1156,7 @@ Destroy an adversary who costs less than that character.</property>
 		</card>
 		<card name="Nice Enough Couple" id="8e792bd6-38e8-4a52-bf07-d132c4c9ca62">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Text">Choose a character. They and each other character who has at least one glyph matching one of theirs get skills +1 until the end of the current mission.</property>
@@ -1164,7 +1164,7 @@ Destroy an adversary who costs less than that character.</property>
 		</card>
 		<card name="Part of the Plan" id="8863a915-bb7b-4a37-bc5c-b0ea2ed0c948">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="R"/>
 			<property name="Text">Ready an assigned adversary. They are blocked from the current mission.</property>
@@ -1172,8 +1172,8 @@ Destroy an adversary who costs less than that character.</property>
 		</card>
 		<card name="Proactive Stance" id="f9ae1bc2-ad07-4a51-9a6b-977d8b1a7b42">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="NID"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="C"/>
 			<property name="Text">This event costs power -1 to play for each NID character who has a glyph.
@@ -1182,8 +1182,8 @@ Ready a gear.</property>
 		</card>
 		<card name="Proceeding with Caution" id="f694535e-8dae-4a81-adf5-c86de58d5f7a">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Russian"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="C"/>
 			<property name="Text">This event costs power -1 to play for each Russian character who has a glyph.
@@ -1192,8 +1192,8 @@ Each character gets skills +1 until the end of the current mission for each glyp
 		</card>
 		<card name="Protector of All" id="cdf19625-b3c2-41b0-811c-77ec9da8e7e9">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Asgard"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Asgard"/>
 			<property name="Cost" value="6"/>
 			<property name="Rarity" value="C"/>
 			<property name="Text">This event costs power -1 to play for each Asgard character who has a glyph.
@@ -1202,7 +1202,7 @@ Destroy an obstacle.</property>
 		</card>
 		<card name="Revisionist History" id="dada5e57-5bf2-4bc0-a7c5-9e8071b5d31b">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Text">To play this event, stop an assigned character.
@@ -1211,7 +1211,7 @@ Choose up to four non-event cards in a player's discard pile. That player shuffl
 		</card>
 		<card name="Scramble" id="d3a2d255-7d74-4127-a000-bec1204adab7">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Text">Ready a hero ship.</property>
@@ -1219,7 +1219,7 @@ Choose up to four non-event cards in a player's discard pile. That player shuffl
 		</card>
 		<card name="Temptation" id="86afe39a-93b6-4c8a-ad63-6c03c8e4a21d">
 			<property name="Type" value="Event"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="0"/>
 			<property name="Rarity" value="R"/>
 			<property name="Text">Stop an adversary. Your opponent may stop a character.</property>
@@ -1227,8 +1227,8 @@ Choose up to four non-event cards in a player's discard pile. That player shuffl
 		</card>
 		<card name="Anti-Replicator Disruptor" id="efc0e727-093f-4d90-9eff-9091113af50f">
 			<property name="Type" value="Gear"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Ancient"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Ancient"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Text">Stop this gear - Reveal a random card from an opponent's hand. If it's a Replicator card, they discard it.
@@ -1237,8 +1237,8 @@ Destroy this gear, pay 2 power - Destroy a replicator obstacle or assigned Repli
 		</card>
 		<card name="HUD Headset" id="62a594a8-6d16-4b4f-beed-b98d47bf89bb">
 			<property name="Type" value="Gear"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Tok'ra Jaffa"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra Jaffa"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="C"/>
 			<property name="Text">While a Tok'ra character is assigned, you get total firepower +1 in each ship battle.
@@ -1247,7 +1247,7 @@ While a Jaffa character is assigned, you get total firepower +1 in each ship bat
 		</card>
 		<card name="Mind Transference Device" id="e7c89e7e-fd3b-4452-aaa7-da3ba942699e">
 			<property name="Type" value="Gear"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Text">Stop this gear, stop a team character, pay 2 power - Ready another character.</property>
@@ -1255,7 +1255,7 @@ While a Jaffa character is assigned, you get total firepower +1 in each ship bat
 		</card>
 		<card name="Quantum Mirror Control" id="ab1b7b88-9dae-455c-837f-fe97fd11e4c4">
 			<property name="Type" value="Gear"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="R"/>
 			<property name="Text">Pay 3 power, stop this gear - Search your deck for a character card and reveal it. Then shuffle the rest of your deck and place that card on top of it.</property>
@@ -1263,7 +1263,7 @@ While a Jaffa character is assigned, you get total firepower +1 in each ship bat
 		</card>
 		<card name="Quarantine Container" id="7195f8b6-e722-498c-b452-24e1d6c3fcd8">
 			<property name="Type" value="Gear"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="R"/>
 			<property name="Text">Stop this gear - Choose an obstacle. When it would be destroyed, place it face up beneath this gear instead. Your opponent discards any other card beneath this gear.
@@ -1272,8 +1272,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Russian-Controlled DHD" id="6c00ba5f-1fba-4a9b-a8ed-05e2ac108ca1">
 			<property name="Type" value="Gear"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Russian Ancient"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian Ancient"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Text">Stop this gear, stop a Russian team character or two Russian support characters - Search your mission pile for a mission, shuffle the rest of the pile, then place that mission on top of it.</property>
@@ -1281,7 +1281,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Terra-Root" id="28d818f1-2620-4bef-b59d-1ed9ebb67082">
 			<property name="Type" value="Gear"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="U"/>
 			<property name="Text">Destroy this gear - Gain 1 power.</property>
@@ -1289,8 +1289,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="U.A.V." id="b5f74a6f-a49d-42c3-97cd-5aae67314891">
 			<property name="Type" value="Gear"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="R"/>
 			<property name="Text">Stop this gear, pay 1 power - Reveal a random card from your opponent's hand. If it's a villain card, the current mission gets difficulty -1.</property>
@@ -1299,18 +1299,18 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Accompany Documentary Crew" id="5cbfce0c-9447-4356-b97e-43350df7a4a0" size="mission">
 			<property name="Subtitle" value="Cheyenne Mountain"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="5"/>
 			<property name="Experience" value="3"/>
 			<property name="Glyph"><s value="g">Gemini</s></property>
-			<property name="Text">Each assigned team character who has a glyph gets <s value="cul">culture</s> +1.</property>
+			<property name="Text">Each assigned team character who has a glyph gets <s value="cul">Culture</s> +1.</property>
 			<property name="Number" value="109"/>
 		</card>
 		<card name="Aid Evacuation" id="4b0a2eef-19fb-45ea-8c90-d47850cd058b" size="mission">
 			<property name="Subtitle" value="Vorash"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Combat" value="3"/>
 			<property name="Experience" value="1"/>
@@ -1321,7 +1321,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Aid Resistance" id="14be7346-7a4f-431c-bd62-d18985076a5d" size="mission">
 			<property name="Subtitle" value="Hak'tyl"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="5"/>
 			<property name="Experience" value="4"/>
@@ -1332,7 +1332,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Appropriations Committee Meeting" id="9a3cd38e-57b6-4afa-b831-45588d77b327" size="mission">
 			<property name="Subtitle" value="Washington, D.C."/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="5"/>
 			<property name="Experience" value="3"/>
@@ -1343,7 +1343,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Attend Jaffa Summit" id="5d7f5f59-bd1e-4086-9297-dba33ac5ed48" size="mission">
 			<property name="Subtitle" value="Dar Eshkalon"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="4"/>
 			<property name="Experience" value="2"/>
@@ -1354,7 +1354,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Calibrate Super-Weapon" id="06edff5b-f3cb-485c-9943-548991919165" size="mission">
 			<property name="Subtitle" value="Dakara"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Science" value="3"/>
 			<property name="Experience" value="2"/>
@@ -1365,7 +1365,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Capture Clone" id="24ab73b9-04ec-47e1-be9d-9b41cacb0f40" size="mission">
 			<property name="Subtitle" value="Baal's Ha'tak"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Combat" value="5"/>
 			<property name="Experience" value="4"/>
@@ -1376,7 +1376,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Cloak Earth" id="2154fc37-34bd-4c5f-92c6-0bf2368ce693" size="mission">
 			<property name="Subtitle" value="Parallel Universe"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Science" value="4"/>
 			<property name="Experience" value="2"/>
@@ -1387,7 +1387,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Consult Expert" id="1b884d68-00db-48e6-b1e0-81322d87c2a3" size="mission">
 			<property name="Subtitle" value="Adora"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Science" value="4"/>
 			<property name="Experience" value="3"/>
@@ -1398,7 +1398,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Coordinated Assault" id="1a38fd64-e919-4662-ada2-f2a652425c18" size="mission">
 			<property name="Subtitle" value="Trust Safehouse"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Combat" value="4"/>
 			<property name="Experience" value="2"/>
@@ -1409,7 +1409,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Cure Deadly Virus" id="dae57817-4cd5-408b-b8a1-12e906ae42a1" size="mission">
 			<property name="Subtitle" value="Vagonbrei"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Science" value="4"/>
 			<property name="Experience" value="2"/>
@@ -1420,7 +1420,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Destroy Kassa Shipment" id="0a480138-c10d-432f-8812-fb1de8e06f05" size="mission">
 			<property name="Subtitle" value="Lucian Alliance Freighter"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Combat" value="5"/>
 			<property name="Experience" value="4"/>
@@ -1431,7 +1431,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Destroy Weapon" id="4f49262f-5111-4e15-9478-013d41d99e0b" size="mission">
 			<property name="Subtitle" value="Stronghold of Anubis"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Combat" value="5"/>
 			<property name="Experience" value="3"/>
@@ -1442,7 +1442,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Diplomatic Envoy" id="ab237679-03c8-49ee-b086-4566030e820d" size="mission">
 			<property name="Subtitle" value="Moscow"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="4"/>
 			<property name="Experience" value="2"/>
@@ -1453,7 +1453,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Disable Orbital Weapon" id="3c42031a-6de2-4b5c-9d27-62c34e2a5f44" size="mission">
 			<property name="Subtitle" value="Tegalus"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="3"/>
 			<property name="Experience" value="2"/>
@@ -1464,7 +1464,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Discredit Leak" id="71b3817b-9867-412f-80c8-5dc4ecc16460" size="mission">
 			<property name="Subtitle" value="&quot;Inside Access&quot;"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Science" value="4"/>
 			<property name="Experience" value="3"/>
@@ -1475,7 +1475,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Eradicate Computer Virus" id="c045070e-9dc1-4adb-9174-d337924d3b7a" size="mission">
 			<property name="Subtitle" value="P5S-117"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Science" value="3"/>
 			<property name="Experience" value="2"/>
@@ -1486,7 +1486,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Escape the Pressure" id="120deaeb-8fc7-4279-9015-8b18ab426f44" size="mission">
 			<property name="Subtitle" value="Silver Creek"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Ingenuity" value="4"/>
 			<property name="Experience" value="3"/>
@@ -1497,7 +1497,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Escape Time Dilation Field" id="7fdbf931-6a70-4e3c-bcba-136e34ce3851" size="mission">
 			<property name="Subtitle" value="P3X-474"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Science" value="3"/>
 			<property name="Experience" value="1"/>
@@ -1508,7 +1508,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Escort IOA Representatives" id="5d84270b-d43f-49be-8a25-1a519d61c6e3" size="mission">
 			<property name="Subtitle" value="Gamma Site"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="3"/>
 			<property name="Experience" value="1"/>
@@ -1519,7 +1519,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Exonerate Team Member" id="d897f1f4-55e9-4881-886d-822420f61d43" size="mission">
 			<property name="Subtitle" value="Galar"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Ingenuity" value="5"/>
 			<property name="Experience" value="4"/>
@@ -1530,7 +1530,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Explore Ruins" id="45c00c19-cb01-4a90-91e0-ec09dcf3b6cd" size="mission">
 			<property name="Subtitle" value="Excavation Site"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="5"/>
 			<property name="Experience" value="4"/>
@@ -1541,7 +1541,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Extract Prisoners" id="dbb439bd-11fc-493b-af98-e3cf6bec90df" size="mission">
 			<property name="Subtitle" value="Excavation Site"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Combat" value="4"/>
 			<property name="Experience" value="3"/>
@@ -1552,7 +1552,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Free Unas" id="50541115-e388-497a-9c18-9ff1d1bf5fd8" size="mission">
 			<property name="Subtitle" value="Slave Pen"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Combat" value="3"/>
 			<property name="Experience" value="2"/>
@@ -1564,7 +1564,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Halt Subterranean Reaction" id="6401981d-3cc7-47a4-be1f-50532eddefe4" size="mission">
 			<property name="Subtitle" value="Langara"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Science" value="5"/>
 			<property name="Experience" value="3"/>
@@ -1575,7 +1575,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Hide the Harcesis" id="8192e6b8-5076-4088-91a6-a26b4f0b5a52" size="mission">
 			<property name="Subtitle" value="Abydos"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Ingenuity" value="3"/>
 			<property name="Experience" value="2"/>
@@ -1586,7 +1586,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Infiltrate Lucian Alliance" id="b303b980-004c-4c07-9a3b-7cbfb71b6a7f" size="mission">
 			<property name="Subtitle" value="Netan's Flagship"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Ingenuity" value="3"/>
 			<property name="Experience" value="1"/>
@@ -1597,7 +1597,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Investigate Farrow-Marshall" id="0b221753-9ca4-45b7-b5fe-9b969c75db4b" size="mission">
 			<property name="Subtitle" value="Bethesda"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Ingenuity" value="4"/>
 			<property name="Experience" value="3"/>
@@ -1608,18 +1608,18 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Investigate the Aschen" id="b5b4a22e-e748-46ad-87ab-c3650a10c0e5" size="mission">
 			<property name="Subtitle" value="Volia"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="3"/>
 			<property name="Experience" value="2"/>
 			<property name="Glyph"><s value="t">Triangulum</s></property>
-			<property name="Text">When you play this mission, your opponent may stop an adversary. If they do, they gain power equal to that adversary's <s value="cul">culture</s>.</property>
+			<property name="Text">When you play this mission, your opponent may stop an adversary. If they do, they gain power equal to that adversary's <s value="cul">Culture</s>.</property>
 			<property name="Number" value="137"/>
 		</card>
 		<card name="Liberate Labor Camp" id="1480b394-e353-4436-b953-11196fbbf00e" size="mission">
 			<property name="Subtitle" value="Erebus"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Combat" value="4"/>
 			<property name="Experience" value="3"/>
@@ -1630,7 +1630,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Lie Low" id="37f20de2-b79f-4a0e-8567-c36afa6b066d" size="mission">
 			<property name="Subtitle" value="Ver Isca"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Ingenuity" value="4"/>
 			<property name="Experience" value="2"/>
@@ -1641,7 +1641,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Locate the Eye of Ra" id="9503df49-e2a0-4156-9170-aa404faa2f78" size="mission">
 			<property name="Subtitle" value="Abydos"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="3"/>
 			<property name="Experience" value="1"/>
@@ -1652,7 +1652,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Negotiate Mining Rights" id="cae3ee92-c376-4531-974b-a01b23026cc7" size="mission">
 			<property name="Subtitle" value="P3X-403"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="4"/>
 			<property name="Experience" value="3"/>
@@ -1663,7 +1663,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Obtain Information" id="e25fcc15-d2e7-449b-aeeb-9415746c5ef3" size="mission">
 			<property name="Subtitle" value="Former Goa'uld Hangar"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Culture" value="4"/>
 			<property name="Experience" value="3"/>
@@ -1674,7 +1674,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Protect Village" id="ece36b49-f866-4622-af29-770d4e042857" size="mission">
 			<property name="Subtitle" value="P9C-882"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Science" value="3"/>
 			<property name="Experience" value="1"/>
@@ -1685,7 +1685,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Recover Team Member" id="7549f8b5-58b8-4b79-a8b4-2aef0012b207" size="mission">
 			<property name="Subtitle" value="P2M-903"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Combat" value="3"/>
 			<property name="Experience" value="2"/>
@@ -1697,7 +1697,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Recover Touchstone" id="5fbeefdd-86cf-4c87-8bba-4e9aa331ea9b" size="mission">
 			<property name="Subtitle" value="Madrona"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Ingenuity" value="4"/>
 			<property name="Experience" value="2"/>
@@ -1708,7 +1708,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Repair Engines" id="81d4fa90-4ca5-4484-a37f-14de5a5c2874" size="mission">
 			<property name="Subtitle" value="Interstellar Gas Cloud"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Science" value="5"/>
 			<property name="Experience" value="4"/>
@@ -1719,7 +1719,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Repel Moloc" id="123e012b-0827-43a8-90f7-b01df8ab7a9d" size="mission">
 			<property name="Subtitle" value="New Hak'tyl Settlement"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Combat" value="4"/>
 			<property name="Experience" value="2"/>
@@ -1730,7 +1730,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Restore Timeline" id="07dd5275-52d8-4a80-ac87-27591f0ca6e1" size="mission">
 			<property name="Subtitle" value="Giza, 3000 B.C."/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Ingenuity" value="5"/>
 			<property name="Experience" value="4"/>
@@ -1741,7 +1741,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Retain Custody" id="3ef5427c-35b7-425c-9b53-143e1b1dac88" size="mission">
 			<property name="Subtitle" value="Cheyenne Mountain"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Ingenuity" value="3"/>
 			<property name="Experience" value="1"/>
@@ -1752,7 +1752,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Reverse Space/Time Rupture" id="aaeced11-25f6-4f49-9025-9d075a8debb3" size="mission">
 			<property name="Subtitle" value="Cheyenne Mountain"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Science" value="5"/>
 			<property name="Experience" value="4"/>
@@ -1763,7 +1763,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Review Hollywood Script" id="11ae8bff-bfda-4bde-9540-45aac0a94838" size="mission">
 			<property name="Subtitle" value="Cheyenne Mountain"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Ingenuity" value="5"/>
 			<property name="Experience" value="4"/>
@@ -1774,7 +1774,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Sabotage Ship Construction" id="31d13ce6-1247-4c52-84f1-516f05525957" size="mission">
 			<property name="Subtitle" value="Shipyard Near Ver Isca"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Combat" value="3"/>
 			<property name="Experience" value="1"/>
@@ -1785,7 +1785,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Salvage Enemy Ship" id="f7b0550a-dbc9-4010-b998-d7be6c701294" size="mission">
 			<property name="Subtitle" value="Earth Orbit"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Science" value="5"/>
 			<property name="Experience" value="3"/>
@@ -1796,7 +1796,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Secure Crash Site" id="14d3d4fc-e6c7-4260-bd46-808b95e05b27" size="mission">
 			<property name="Subtitle" value="Rocky Mountains"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Ingenuity" value="3"/>
 			<property name="Experience" value="2"/>
@@ -1807,7 +1807,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Trade Rendezvous" id="0abe7c69-845d-4e37-8751-7309b87ecfbc" size="mission">
 			<property name="Subtitle" value="Off-the-Grid Planet"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Ingenuity" value="5"/>
 			<property name="Experience" value="3"/>
@@ -1818,7 +1818,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		<card name="Withstand Armada" id="a172c8a5-ba84-42d6-a17b-7addc9194ab1" size="mission">
 			<property name="Subtitle" value="Antarctica"/>
 			<property name="Type" value="Mission"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Rarity" value="S"/>
 			<property name="Combat" value="5"/>
 			<property name="Ingenuity" value="3"/>
@@ -1828,8 +1828,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Adaptation" id="910c9155-434c-423f-bc82-d8fbb76ec902">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Replicator"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Replicator"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Science" value="2"/>
@@ -1839,8 +1839,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Alliance in Jeopardy" id="77519387-617b-4ad3-85e7-cc28a3fa1d41">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Jaffa Political"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa Political"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -1850,8 +1850,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Ambushed Summit" id="3211421e-05bf-4d9f-afd4-edee4ebab67e">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Combat" value="2"/>
@@ -1861,7 +1861,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Barroom Thugs" id="6502c5a5-aa4d-4f3a-bba1-961632af75ec">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -1872,8 +1872,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Battered Defenses" id="a0788974-d46c-4a1a-b077-56673bc0f0b8">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Science" value="2"/>
@@ -1883,7 +1883,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Clues from the Past" id="3dbc8c01-13ca-4699-ba0d-13c326467a6e">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -1892,8 +1892,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Cornered" id="f0dff355-cfb6-4084-a5ad-bedeeb1a6533">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Replicator"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Replicator"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Science" value="2"/>
@@ -1903,8 +1903,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Corrupted Ally" id="38af5217-94af-4e1c-a76c-1090662c02d8">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
@@ -1914,8 +1914,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Debilitated" id="21fa0826-42a1-407a-bef5-242b41ea2d06">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Disease"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Disease"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Science" value="2"/>
@@ -1925,8 +1925,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Direct Hit" id="36aec16e-53d9-463d-a0ee-dcfe50126b23">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="0"/>
@@ -1938,8 +1938,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Execution Squad" id="93a67529-711f-4fa5-9b68-eeaa5d319dd6">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="R"/>
 			<property name="Combat" value="1"/>
@@ -1949,8 +1949,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Exploitation" id="64c50c1c-5fb9-4e38-997d-25c294a505d9">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Political"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Political"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="0"/>
@@ -1962,8 +1962,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Final Challenge" id="d26de964-e887-4bae-8f80-afccb57853d2">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Jaffa Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa Goa'uld"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
@@ -1973,7 +1973,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Friends at Odds" id="b0074b1e-fe12-42d8-9311-20429bb2d494">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="1"/>
@@ -1985,8 +1985,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="The Game of Diplomacy" id="ef83199e-cf64-4f65-a647-a0b09a71230f">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Political"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Political"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
@@ -1996,8 +1996,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Genetic Manipulations" id="f9089cb9-ed72-4425-8544-0d13a779c80d">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Science" value="3"/>
@@ -2007,8 +2007,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Goa'uld Probe" id="3c2a95b2-3d0c-48da-82d3-22a71c8f3d5d">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="C"/>
 			<property name="Science" value="1"/>
@@ -2019,8 +2019,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Government Oversight" id="108c95a3-066d-41a8-8917-48681426f7ef">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Political"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Political"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -2030,7 +2030,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Greed Exploited" id="77adc49a-b21f-47dc-b08d-d9634c94381c">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="0"/>
@@ -2040,8 +2040,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Hathor's Interogation" id="43486028-f960-4abc-9360-36a9f68f88b3">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="U"/>
 			<property name="Combat" value="1"/>
@@ -2051,8 +2051,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Hok'taur Experiments" id="2de07f01-98bd-4e74-9a5b-0e077cc6c3aa">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld Disease"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld Disease"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="C"/>
 			<property name="Science" value="2"/>
@@ -2061,8 +2061,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="A Matter of Trust" id="d89a2d44-63c5-49aa-93ab-89e7b45d27fe">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -2073,8 +2073,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Might of the Orici" id="05fcc7b5-b980-4600-8567-0d9d946e954c">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -2084,7 +2084,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Mutated Creature" id="933f8a4f-1e61-40af-bdde-6df8ab2aadb0">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Science" value="1"/>
@@ -2094,7 +2094,7 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Nerve Gas Attack" id="ad63398c-cb74-4ef0-a095-3dac2c9815a5">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="U"/>
 			<property name="Science" value="2"/>
@@ -2105,8 +2105,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Nothing But Weakness" id="1650d754-14b0-40be-ae8c-d352d266f45e">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Combat" value="2"/>
@@ -2115,8 +2115,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Orbital Bombardment" id="ce54d999-3f17-46d2-97d7-4db3df5a5360">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld Jaffa"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld Jaffa"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="0"/>
@@ -2128,8 +2128,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Ori Ground Forces" id="4c45ab02-7bdd-4aaa-ab81-54dcff034ab4">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Science" value="2"/>
@@ -2139,8 +2139,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Ori Satellite Attack" id="a15660f4-3113-43ba-8881-79d1b443bbc3">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -2151,8 +2151,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Prelude to Invasion" id="28670a5c-e184-49f4-83f5-3a271dc997c5">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="R"/>
 			<property name="Science" value="1"/>
@@ -2162,8 +2162,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Prior Bugs" id="15e0ef31-bd81-478e-a707-de43752f6056">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Science" value="1"/>
@@ -2174,8 +2174,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Prior Engagement" id="16c3143e-22f3-4e45-94e7-bdbd5fe5d14b">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Science" value="2"/>
@@ -2185,8 +2185,8 @@ Your opponent can't play an obstacle that has the same title as a card beneath t
 		</card>
 		<card name="Probing the Subconscious" id="8549d4c8-4ca5-4670-877c-23ca69b65292">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="U"/>
 			<property name="Combat" value="2"/>
@@ -2197,8 +2197,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Reanimated Dead" id="f5aa6459-7728-424f-ab8f-64fd665f7f8f">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
@@ -2209,8 +2209,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Relentless Pursuit" id="da10a974-620c-4f3e-9321-2248293b4534">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="0"/>
@@ -2222,8 +2222,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Replicator Ruse" id="ee03c4fe-dd67-4a09-8441-8d4a10912b51">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Replicator"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Replicator"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
@@ -2233,7 +2233,7 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Rerouted" id="5b7c2b44-0aba-4afa-a9f7-65a62b730dea">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Science" value="2"/>
@@ -2243,8 +2243,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Senseless Slaughter" id="7d7052fa-8199-40da-a4e6-3a0d5f887319">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
@@ -2254,8 +2254,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Set Up" id="47ee2e80-b924-4fc4-8895-c84c9bb27dd8">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Science" value="1"/>
@@ -2265,8 +2265,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Spies Everywhere" id="40ba16a6-25e9-4405-949d-5f1346ebf541">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -2276,8 +2276,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Super Pheromones" id="7774d229-3a25-48d9-b6e4-9aac7ef2df78">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Disease Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Disease Goa'uld"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Science" value="1"/>
@@ -2287,8 +2287,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Teachings of Origin" id="ac32cd69-5f08-4b03-82ec-3278371c5acf">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="0"/>
@@ -2300,7 +2300,7 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Technology Interface" id="3462a37b-c943-4d49-8a97-4f37233b3707">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="0"/>
@@ -2310,8 +2310,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Teeming Numbers" id="59c0b219-3184-4195-b20f-c75d0ccf6a29">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Replicator"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Replicator"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Combat" value="0"/>
@@ -2321,7 +2321,7 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Threat of Force" id="a8c380d6-180d-49cf-a55c-65de458a1bae">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Culture" value="2"/>
@@ -2332,7 +2332,7 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Too Easy" id="84e11f7f-be2b-43f2-973b-8e4be317a400">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="C"/>
 			<property name="Ingenuity" value="2"/>
@@ -2341,7 +2341,7 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Transdimensional Bridge" id="030ec148-c572-4ec8-b731-23e656825159">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
@@ -2351,8 +2351,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Trial By Fire" id="ba96358e-e387-426b-9502-ba3d2208eb36">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="U"/>
 			<property name="Culture" value="2"/>
@@ -2363,8 +2363,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Ultimatum" id="e8c34b88-4f91-4d6c-ac7a-641c30666abf">
 			<property name="Type" value="Obstacle"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="R"/>
 			<property name="Culture" value="2"/>
@@ -2374,8 +2374,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="Archaic Death Glider" id="536586a1-887a-47b2-b11d-fdd1e1578877">
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="C"/>
 			<property name="Firepower" value="1"/>
@@ -2385,8 +2385,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		<card name="The Daniel Jackson" id="519ca741-209d-4237-8545-d3948951ae41">
 			<property name="Subtitle" value="Supreme Commander's Ship"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Asgard"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Asgard"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Firepower" value="4"/>
@@ -2395,18 +2395,18 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		</card>
 		<card name="F-302" id="f803c195-cbfa-4a6d-b53c-e1a871bc72ce">
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="U"/>
 			<property name="Firepower" value="2"/>
-			<property name="Text">Each time you assign this ship, you may pay 3 power. If you do, turn a <s value="com">combat</s> obstacle at the current mission face down <i>(it becomes a complication).</i></property>
+			<property name="Text">Each time you assign this ship, you may pay 3 power. If you do, turn a <s value="com">Combat</s> obstacle at the current mission face down <i>(it becomes a complication).</i></property>
 			<property name="Number" value="208"/>
 		</card>
 		<card name="Free Jaffa Ha'tak" id="10bdafb3-d53e-4752-9338-c63bb4fa5d30">
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Firepower" value="2"/>
@@ -2416,7 +2416,7 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		<card name="Jacek's Tel'tak" id="b0a349b9-8645-4e2f-a39b-22ee4a8d23da">
 			<property name="Subtitle" value="Cargo Ship"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Firepower" value="1"/>
@@ -2426,8 +2426,8 @@ Each character who has a glyph matching the current mission is blocked.</propert
 		<card name="Korolev" id="a05670db-6211-4856-9b4f-a1faecce8df0">
 			<property name="Subtitle" value="Russian Flagship"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Russian"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Firepower" value="4"/>
@@ -2438,8 +2438,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="The O'Neill" id="1009407e-5ab7-49b1-a92e-de9a58c89f3d">
 			<property name="Subtitle" value="Last Great Hope"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Asgard"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Asgard"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="R"/>
 			<property name="Firepower" value="4"/>
@@ -2450,8 +2450,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="Odyssey" id="9355f917-0bb0-4bd7-b2dd-c28add83ba84">
 			<property name="Subtitle" value="Deep Space Carrier"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Firepower" value="3"/>
@@ -2461,8 +2461,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="Prometheus" id="5854c33f-8ab1-4cdf-b112-f1c40dd11d8f">
 			<property name="Subtitle" value="The X-303"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Firepower" value="3"/>
@@ -2473,7 +2473,7 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="Seberus" id="0cb65547-64cf-4ab8-8059-1b8817634ad0">
 			<property name="Subtitle" value="Racing Ship"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
+			<property name="Allegiance" value="Hero"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="C"/>
 			<property name="Firepower" value="1"/>
@@ -2483,8 +2483,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="Selmak's Tel'tak" id="664e66f8-6f42-4635-a1b5-24e1d1a60922">
 			<property name="Subtitle" value="Scout Ship"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Tok'ra"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Firepower" value="1"/>
@@ -2494,8 +2494,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		</card>
 		<card name="Tok'ra Tel'tak" id="a5f70768-f4c4-427e-95b6-53e9cde2984f">
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Tok'ra"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="U"/>
 			<property name="Firepower" value="1"/>
@@ -2505,8 +2505,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="Trust-Controlled Al'kesh" id="509499da-b938-4df5-8fce-e4971e73a6e0">
 			<property name="Subtitle" value="Commandeered Vessel"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="NID"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Firepower" value="2"/>
@@ -2516,8 +2516,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="Adria's Mothership" id="0fe2f919-35e9-497b-8296-d9cbeef94307">
 			<property name="Subtitle" value="Light of Origin"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="R"/>
 			<property name="Firepower" value="4"/>
@@ -2526,8 +2526,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		</card>
 		<card name="Al'kesh Bomber" id="b0c1cbd7-7f8c-4078-ab29-85aced7c9f11">
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Firepower" value="2"/>
@@ -2537,8 +2537,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="Anubis' Mothership" id="a1d3d679-fa55-4bad-8573-17aa8f3209c8">
 			<property name="Subtitle" value="Seat of Power"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Firepower" value="4"/>
@@ -2548,8 +2548,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="Apophis' Ha'tak" id="e4e04408-04d8-4a38-82be-b8cb48c98177">
 			<property name="Subtitle" value="The Serpent's Tooth"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="U"/>
 			<property name="Firepower" value="1"/>
@@ -2559,8 +2559,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		</card>
 		<card name="Archaic Tel'tak" id="0de4e3f5-b340-4119-9b11-dfd510aec4aa">
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="C"/>
 			<property name="Firepower" value="1"/>
@@ -2569,7 +2569,7 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		</card>
 		<card name="Aschen Harvester" id="55009277-dc9b-440b-843d-850b7c25319e">
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Firepower" value="2"/>
@@ -2580,8 +2580,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="Baal's Ha'tak" id="cd804782-0a72-4076-b13f-5dd90d8c18d7">
 			<property name="Subtitle" value="Mighty Warship"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Firepower" value="3"/>
@@ -2591,8 +2591,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		</card>
 		<card name="Death Glider" id="199e83ed-0efc-4bc4-b4d7-d71fdd7aae34">
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Jaffa"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="C"/>
 			<property name="Firepower" value="2"/>
@@ -2602,7 +2602,7 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="Gadmeer Ship" id="b87013da-d940-4eac-bc0f-bc3c3c66750f">
 			<property name="Subtitle" value="Legacy of a Civilization"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Firepower" value="3"/>
@@ -2611,8 +2611,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		</card>
 		<card name="Goa'uld Ha'tak" id="04167a2a-5c4e-41fa-a764-87fccf5ab42d">
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="C"/>
 			<property name="Firepower" value="3"/>
@@ -2622,7 +2622,7 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		</card>
 		<card name="Lucian Alliance Freighter" id="efd72045-8031-4038-a696-d4a46d1ab81f">
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
+			<property name="Allegiance" value="Villain"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="U"/>
 			<property name="Firepower" value="1"/>
@@ -2631,8 +2631,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		</card>
 		<card name="Ori Fighter" id="9bd21d9b-5e94-4b68-abb3-eed26c1f4ba3">
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="C"/>
 			<property name="Firepower" value="2"/>
@@ -2641,8 +2641,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		</card>
 		<card name="Ori Mothership" id="2e450a6d-97d3-4da8-934e-f7333f325772">
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="U"/>
 			<property name="Firepower" value="4"/>
@@ -2653,8 +2653,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="Ra's Mothership" id="52463818-06d1-4549-b6c5-116ce141678d">
 			<property name="Subtitle" value="Vessel of the Sun God"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="R"/>
 			<property name="Firepower" value="3"/>
@@ -2665,8 +2665,8 @@ Each time you assign Korolev, ready a Russian character or a character who has a
 		<card name="Replicator Lander" id="1a76ce87-921c-4f57-bbae-fdc31da77b06">
 			<property name="Subtitle" value="Vanguard"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Replicator"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Replicator"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="U"/>
 			<property name="Firepower" value="1"/>
@@ -2677,8 +2677,8 @@ Each time you assign Replicator Lander, you may pay X power. If you do, take a R
 		<card name="Replicator Mothership" id="d926d171-5eee-4d68-88fd-dfdc840e778f">
 			<property name="Subtitle" value="Symbol of Change"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Replicator"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Replicator"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="R"/>
 			<property name="Firepower" value="4"/>
@@ -2689,8 +2689,8 @@ Each time you assign Replicator Lander, you may pay X power. If you do, take a R
 		<card name="Adria" id="bceb1023-d231-4e09-9d93-436c458e5a94">
 			<property name="Subtitle" value="Leader of Great Enlightenment"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Ori"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="UR"/>
 			<property name="Culture" value="2"/>
@@ -2703,8 +2703,8 @@ Each time you assign Replicator Lander, you may pay X power. If you do, take a R
 		<card name="Dr. Jackson" id="2050fc54-8584-4436-8f94-c0101e9976b6">
 			<property name="Subtitle" value="Spy for Apophis"/>
 			<property name="Type" value="Adversary"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="UR"/>
 			<property name="Culture" value="3"/>
@@ -2717,8 +2717,8 @@ When you score Dr. Jackson, incapacitate an SGC team character.</property>
 		<card name="Jack O'Neill" id="3b2a76ce-c1e5-4ad7-9de1-f701768a5215">
 			<property name="Subtitle" value="Jack of All Trades"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="UR"/>
 			<property name="Culture" value="0"/>
@@ -2732,8 +2732,8 @@ When you score Dr. Jackson, incapacitate an SGC team character.</property>
 		<card name="Jonas Quinn" id="ab0b0e40-4dec-4237-81e8-5e6027264a72">
 			<property name="Subtitle" value="Adventurer"/>
 			<property name="Type" value="Team Character"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="SGC"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
 			<property name="Cost" value="4"/>
 			<property name="Rarity" value="UR"/>
 			<property name="Culture" value="2"/>
@@ -2746,8 +2746,8 @@ When you score Dr. Jackson, incapacitate an SGC team character.</property>
 		<card name="Beliskner" id="b256c4a6-1203-4729-8ec7-7b2096035a30">
 			<property name="Subtitle" value="Thor's Chariot"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Hero"/>
-			<property name="Traits" value="Asgard"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Asgard"/>
 			<property name="Cost" value="5"/>
 			<property name="Rarity" value="UR"/>
 			<property name="Firepower" value="4"/>
@@ -2758,8 +2758,8 @@ When you score Dr. Jackson, incapacitate an SGC team character.</property>
 		<card name="Apophis' Mothership" id="c66042ec-07e4-4ca8-94a6-9a6cc5394189">
 			<property name="Subtitle" value="The Serpent's Venom"/>
 			<property name="Type" value="Ship"/>
-			<property name="Affiliation" value="Villain"/>
-			<property name="Traits" value="Goa'uld"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
 			<property name="Cost" value="3"/>
 			<property name="Rarity" value="UR"/>
 			<property name="Firepower" value="4"/>
