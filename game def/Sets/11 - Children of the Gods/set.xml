@@ -1594,7 +1594,7 @@ This obstacle gets difficulty +1 for each Ori card in your villain score pile.</
 			<property name="Rarity" value="F"/>
 			<property name="Culture" value="3"/>
 			<property name="Ingenuity" value="3"/>
-			<property name="Text">When you play this obstacle, choose a support character. Stop them.<b><b>Success:</b> Ready the chosen character.
+			<property name="Text">When you play this obstacle, choose a support character. Stop them.<b>Success:</b> Ready the chosen character.
 <b>Failure:</b> Destroy the chosen character.</property>
 			<property name="Number" value="130"/>
 		</card>

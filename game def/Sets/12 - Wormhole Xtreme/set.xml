@@ -967,7 +967,7 @@ Each character that has the same title as a chosen card is blocked.</property>
 			<property name="Rarity" value="F"/>
 			<property name="Science" value="3"/>
 			<property name="Ingenuity" value="2"/>
-			<property name="Text"></b>Failure:</b> Destroy a gear for each mission played so far this turn.</property>
+			<property name="Text"><b>Failure:</b> Destroy a gear for each mission played so far this turn.</property>
 			<property name="Number" value="79"/>
 		</card>
 		<card name="Censored Language" id="0957ef66-9189-4732-8857-9169df786c7b">

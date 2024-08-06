@@ -3,7 +3,7 @@
   name="Stargate TCG" id="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" markersize="14"
   tags="stargate, sg, tcg" authors="brine"
   description="In the Stargate TCG, you'll guide a team of characters on journeys to other worlds, overcoming obstacles, defeating adversaries, and completing missions along the way. All the fun and adventure of the hit television series is here to enjoy!"
-  version="0.11.1.0" octgnVersion="3.1.0.0" scriptVersion="3.1.0.2"
+  version="0.11.1.1" octgnVersion="3.1.0.0" scriptVersion="3.1.0.2"
   gameurl="http://brine.github.io/Stargate-TCG-OCTGN/" setsurl="http://brine.github.io/Stargate-TCG-OCTGN/"
   iconurl="https://github.com/brine/Stargate-TCG-OCTGN/raw/master/game%20def/cards/back.jpg" >
   <scripts>
