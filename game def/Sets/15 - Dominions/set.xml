@@ -1,0 +1,1346 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<set name="Dominions" id="910978fc-2bc3-4273-8be9-3e021de0ae67" gameId="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" gameVersion="0.9.0.0" version="1.0.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CardSet.xsd">
+	<cards>
+		<card name="Alternate Teal'c" id="be4434da-dea1-4142-8767-1fb502e7f2ba">
+			<property name="Subtitle" value="First Prime of Baal"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Combat" value="3"/>
+			<property name="Revive" value="6"/>
+			<property name="Text">Each time you assign Alternate Teal'c, gain 1 power for each Jaffa obstacle at the current mission. If at least one of the Jaffa obstacles at this mission has <b>dominion</b>, you may draw a card.</property>
+			<property name="Number" value="1"/>
+		</card>
+		<card name="Cunning Queen" id="441f0d07-477b-4d35-abb7-6a6fbea9ad70">
+			<property name="Subtitle" value="Betrayer"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Wraith"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Revive" value="5"/>
+			<property name="Text">While Cunning Queen is assigned, other Wraith adversaries that don't already have it get <b>Wraith vassal</b>.
+<b>Failure:</b> Until the end of the mission, each time you pay the revive cost of a Wraith adversary, your opponent must <b>drain</b> an equal number of cards.</property>
+			<property name="Number" value="2"/>
+		</card>
+		<card name="Dutiful Prior" id="e4c3803c-c04d-4031-8efc-e998c3164d7a">
+			<property name="Subtitle" value="Witness of Prophecy"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Combat" value="2"/>
+			<property name="Revive" value="4"/>
+			<property name="Text"><b>Ori vassal.</b> 
+Ori adversaries assigned with Dutiful Prior get revive cost -2 (or -3 for Adria).
+While Dutiful Prior is assigned, complications cost power -1 to play.</property>
+			<property name="Number" value="3"/>
+		</card>
+		<card name="Hale" id="3171430b-ebb7-455c-99ef-823d05a53fd4">
+			<property name="Subtitle" value="Kelownan Commander"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Political"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="2"/>
+			<property name="Revive" value="4"/>
+			<property name="Text">While Hale is assigned to a <s value="com">Combat</s> mission, you may ignore skill requirements when playing Political obstacles, and each time you play a Political obstacle, both Hale and that obstacle get <s value="com">Combat</s> +1 until the end of the current mission.</property>
+			<property name="Number" value="4"/>
+		</card>
+		<card name="Herak" id="ac006205-4191-4774-9afb-d93c63b2cfa7">
+			<property name="Subtitle" value="Devoted First Prime"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Revive" value="4"/>
+			<property name="Text"><b>Dominion</b>. <b>Goa'uld vassal.</b>
+While Herak is assigned, you may play Jaffa obstacles from your discard pile. If you do, each of those get: "When this card would be placed in your discard pile, purge it instead."</property>
+			<property name="Number" value="5"/>
+		</card>
+		<card name="Hive Ship Seed" id="90c31f5c-688b-4055-a27b-78c5fce9aa1a">
+			<property name="Subtitle" value="Growing Threat"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Disease Wraith"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Revive" value="3"/>
+			<property name="Text">Stop Hive Ship Seed, <b>drain 3</b> - Disease obstacles cost power -1 to play until the end of the current mission. 
+Each time your opponent fails a mission, you may destroy Hive Ship Seed and pay 1 power. If you do, play a villain ship at no cost.</property>
+			<property name="Number" value="6"/>
+		</card>
+		<card name="Inquisitor Prior" id="b20f2cd2-0994-439e-b905-e259074c6982">
+			<property name="Subtitle" value="Scourge of the Sodan"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Revive" value="6"/>
+			<property name="Text">Each time you assign Inquisitor Prior, choose a support character. While the chosen character is assigned to the current mission, each other assigned character gets skills -1.
+<b>Failure:</b> Destroy the chosen character.</property>
+			<property name="Number" value="7"/>
+		</card>
+		<card name="Joran" id="771ad338-038a-445e-8096-91cb1469b676">
+			<property name="Subtitle" value="Jaffa Commander"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Revive" value="5"/>
+			<property name="Text">Joran gets difficulty +1 for each obstacle card in your villain score pile. 
+After each time you revive Joran, you may take a Jaffa obstacle or a Jaffa adversary card from your discard pile into hand.</property>
+			<property name="Number" value="8"/>
+		</card>
+		<card name="Khalek" id="f28f7e20-b5ad-4e89-824b-2908286896b6">
+			<property name="Subtitle" value="Unstoppable"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="1"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Revive" value="4"/>
+			<property name="Text">Khalek gets difficulty +1 and revive cost +1 for each ten cards in your opponent's discard pile.
+<b>Failure:</b> Your opponent discards their hand.</property>
+			<property name="Number" value="9"/>
+		</card>
+		<card name="Marduk" id="694bbd98-8cf6-4d48-8492-fa09dc6fe950">
+			<property name="Subtitle" value="Babylonian Tyrant"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="3"/>
+			<property name="Combat" value="3"/>
+			<property name="Revive" value="6"/>
+			<property name="Text"><b>Success</b> or <b>Failure:</b> Incapacitate an assigned team character. If the mission was a success, destroy Marduk.</property>
+			<property name="Number" value="10"/>
+		</card>
+		<card name="Ovirda" id="1201b6fc-3612-4aa1-abc9-71737595f026">
+			<property name="Subtitle" value="Langaran Ambassador"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Political"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Revive" value="3"/>
+			<property name="Text">Each time your opponent plays a <s value="com">Combat</s> or a <s value="sci">Science</s> mission, you may destroy Ovirda. If you do, that mission becomes a <s value="cul">Culture</s> or an <s value="ing">Ingenuity</s> mission <i>(you choose which)</i>.</property>
+			<property name="Number" value="11"/>
+		</card>
+		<card name="Primeval Queen" id="bf85bc5f-8832-4ee2-96a6-36cfd46420cc">
+			<property name="Subtitle" value="Forsaken"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Wraith"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Revive" value="5"/>
+			<property name="Text">Primeval Queen gets difficulty +1 for each assigned support character.
+<b>Failure:</b> Your opponent may <b>drain X</b>, where X is equal to Primeval Queen's <s value="ing">Ingenuity</s>. If they do, gain X power. If they don't, incapacitate a team character.</property>
+			<property name="Number" value="12"/>
+		</card>
+		<card name="Rhea" id="f99e7dbd-6533-4fd1-ad07-5dae9832ec6e">
+			<property name="Subtitle" value="Queen of Cronus"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Revive" value="4"/>
+			<property name="Text">Stop Rhea - Look at one card from the top of your deck for each assigned team character. Take one of those cards into hand and shuffle the rest into your deck. Discard a card.</property>
+			<property name="Number" value="13"/>
+		</card>
+		<card name="Richard Woolsey" id="38d42958-e443-4980-bf31-69dac53d70c6">
+			<property name="Subtitle" value="Hostile Investigator"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Political"/>
+			<property name="Cost" value="5"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Revive" value="4"/>
+			<property name="Text">Richard Woolsey costs power -2 to play for each failed mission this turn. 
+<b>Failure:</b> For each assigned character, look at one card from the top of your mission pile, then place them in any order on the top and/or bottom of that pile.</property>
+			<property name="Number" value="14"/>
+		</card>
+		<card name="Swarm Mother" id="cb1210ff-8985-4a5f-967b-dd8e56cacef7">
+			<property name="Subtitle" value="Industrious Queen"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Replicator"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Revive" value="3"/>
+			<property name="Text">Stop Swarm Mother, purge a Replicator card from your discard pile, <b>drain 2</b> - Play a Replicator obstacle at no cost. 
+Each time your opponent fails a mission, you may destroy Swarm Mother and pay 1 power. If you do, play a Replicator adversary at no cost.</property>
+			<property name="Number" value="15"/>
+		</card>
+		<card name="Thanos" id="11b21f50-1e9d-40c6-966a-1b0f9131a9f4">
+			<property name="Subtitle" value="Ruler of Langara"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="3"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Revive" value="5"/>
+			<property name="Text">Thanos can't be blocked while the current mission is a <s value="sci">Science</s> mission. 
+When you score Thanos, you may destroy a gear. If you do, gain power equal to its cost.</property>
+			<property name="Number" value="16"/>
+		</card>
+		<card name="Tiberian" id="e37fac9e-9c7f-40cf-b7b4-556e20342c4f">
+			<property name="Subtitle" value="Ransacking Zealot"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Revive" value="4"/>
+			<property name="Text">Each time you assign Tiberian, you may pay 1 power. If you do, your opponent chooses a card from their hand and places it face down at the current mission <i>(it becomes a complication. It will be placed in its owner's discard pile when it is destroyed)</i>.</property>
+			<property name="Number" value="17"/>
+		</card>
+		<card name="Wraith Hybrid" id="7b8990de-29f5-45af-ae93-a5fd1e7cd8c3">
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Wraith"/>
+			<property name="Cost" value="1"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="1"/>
+			<property name="Revive" value="2"/>
+			<property name="Text"><b>Dominion</b>. <b>Wraith vassal</b>. 
+<b>Failure:</b> You may score one additional card with <b>dominion</b> at the current mission.</property>
+			<property name="Number" value="18"/>
+		</card>
+		<card name="Wraith Tracker" id="1ac8d5b0-bc39-4d95-bdad-a93107c0b0eb">
+			<property name="Subtitle" value="Tenacious Hunter"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Wraith"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Revive" value="3"/>
+			<property name="Text"><b>Wraith vassal</b>. 
+Each time you assign Wraith Tracker, choose one: he gets dominion until the end of the current mission; or your opponent must <b>drain 1</b> for each Wraith card in your villain score pile.</property>
+			<property name="Number" value="19"/>
+		</card>
+		<card name="Yu" id="53a1968d-e47c-45fe-89bd-2ecd3b4e92d1">
+			<property name="Subtitle" value="The Jade Emperor"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Combat" value="2"/>
+			<property name="Revive" value="3"/>
+			<property name="Text">While Yu is assigned, each Jaffa and/or Goa'uld obstacle at the current mission whose cost is 2 or less gets <b>dominion</b>.</property>
+			<property name="Number" value="20"/>
+		</card>
+		<card name="Aiden Ford" id="c72b6238-e719-423a-ab9d-f81405c2a2af">
+			<property name="Subtitle" value="Fanatic Warrior"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="2"/>
+			<property name="Text">Stop and destroy Aiden Ford, pay 2 power, <b>drain 2</b> - Destroy each assigned adversary except one chosen by your opponent.</property>
+			<property name="Number" value="21"/>
+		</card>
+		<card name="Altman" id="c17fbe75-ac79-4b20-8720-8d278cbbdf38">
+			<property name="Subtitle" value="Technical Specialist"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="1"/>
+			<property name="Text">Stop a gear - Altman gets skills +1 until the end of the current mission. You can do this only once each turn.</property>
+			<property name="Number" value="22"/>
+		</card>
+		<card name="Aris Boch" id="be422ec3-2021-40c0-8599-58fb26d744d9">
+			<property name="Subtitle" value="Diligent Tracker"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="3"/>
+			<property name="Text">To play Aris Boch, choose an adversary and place a <b>bounty token</b> on them. <i>(To assign an adversary who has a bounty token, your opponent must pay 1 power. Your opponent gets: "Pay 2 power - Destroy a bounty token.")</i>
+Aris Boch is blocked while the chosen.adversary has a bounty token.</property>
+			<property name="Number" value="23"/>
+		</card>
+		<card name="Caulfield" id="4963032b-2686-497f-b4df-41067449da19">
+			<property name="Subtitle" value="Impersonator"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">When you play Caulfield, you may discard a card and choose another character. If you do, until the end of the current mission, she loses all her skills and gains all the current skills of the chosen character.</property>
+			<property name="Number" value="24"/>
+		</card>
+		<card name="Dol'ok" id="afcee5e3-bede-4ac2-9067-638daf10b215">
+			<property name="Subtitle" value="Free Jaffa"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa Tok'ra"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">Each time you fail a mission, you may destroy Dol'ok and discard a card. If you do, gain 1 power and, until the end of the turn, your cards consider the number of successful missions to be one higher.</property>
+			<property name="Number" value="25"/>
+		</card>
+		<card name="Dovzhenko" id="82555210-2e0b-4f69-9fc6-454db2df0549">
+			<property name="Subtitle" value="Driver"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian"/>
+			<property name="Cost" value="1"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">When you play Dovzhenko, your opponent gains 2 power unless you stop him or unless there was a failed mission this turn.</property>
+			<property name="Number" value="26"/>
+		</card>
+		<card name="Dreylock" id="142e13a5-ea38-4b11-9be5-41ad7c9b6a7a">
+			<property name="Subtitle" value="Kelownan Diplomat"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Text">Your opponent's victory total is two points higher <i>(even While you are the villain player)</i>. 
+To assign Dreylock, discard a card.</property>
+			<property name="Number" value="27"/>
+		</card>
+		<card name="Hoskins" id="5375ae7b-e683-4cb2-b238-702c99a15853">
+			<property name="Subtitle" value="Phlegmatic Agent"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="2"/>
+			<property name="Text">Stop Hoskins, pay 2 power - Destroy an obstacle with the <b>dominion</b> keyword at the current mission. 
+Stop Hoskins - Destroy an obstacle with the <b>withdraw</b> keyword at the current mission. Your opponent gains power equal to its withdraw value.</property>
+			<property name="Number" value="28"/>
+		</card>
+		<card name="Jennifer Keller" id="6c5c4734-566d-49de-bbab-0e85e74eb79c">
+			<property name="Subtitle" value="Insecure Doctor"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Atlantis"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text">Jennifer Keller gets skills +1 while she's assigned with another character who has a glyph. 
+Stop Jennifer Keller, discard a card - Destroy all <b>wound tokens</b> on a character.</property>
+			<property name="Number" value="29"/>
+		</card>
+		<card name="Katie Brown" id="7a369404-8c08-427f-a257-dee5d8220d99">
+			<property name="Subtitle" value="Botanist"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Atlantis"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="1"/>
+			<property name="Text">Each time you assign Katie Brown, you may pay 2 power. If you do, choose a character with 3 <s value="sci">Science</s> or more. Unblock them and, for as long as Katie Brown stays assigned, the chosen character can't become blocked.</property>
+			<property name="Number" value="30"/>
+		</card>
+		<card name="Konstantin Nechayev" id="e70dd710-b5e0-4986-b314-c07449fcd633">
+			<property name="Subtitle" value="IOA Representatitve"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian"/>
+			<property name="Cost" value="5"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text">Each time your opponent plays a Political obstacle or assigns a Political adversary, you may pay 2 power. If you do, ready Konstantin Nechayev. 
+Stop Konstantin Nechayev, discard a Russian or a Political card - Play a Russian support character at no cost.</property>
+			<property name="Number" value="31"/>
+		</card>
+		<card name="Korvyn" id="c51e10cc-8aa0-45e1-a074-28858d4944b2">
+			<property name="Subtitle" value="Security Detail"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text"><b>Success:</b> Each assigned adversary gets revive cost +2 until the end of the current mission.</property>
+			<property name="Number" value="32"/>
+		</card>
+		<card name="Laura Michaels" id="81ccab97-0457-4832-a600-1b2396f19b13">
+			<property name="Subtitle" value="U.S. Senator"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Text">Each time you assign Laura Michaels, you may have your opponent lose 1 power. If you do, destroy her at the end of the current mission.</property>
+			<property name="Number" value="33"/>
+		</card>
+		<card name="Linda Johnson" id="5c224985-37f0-49ed-aecb-0bfd89ded332">
+			<property name="Subtitle" value="CIA Officer"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Text">Stop Linda Johnson - Both you and your opponent lose 1 power. If there is an assigned adversary that is either Goa'uld or Jaffa, your opponent also discards a random card.</property>
+			<property name="Number" value="34"/>
+		</card>
+		<card name="Loran" id="fac68381-17a7-4aa6-8feb-1b3cb4aa4b77">
+			<property name="Subtitle" value="Lonely Orphan"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">Stop Loran, pay 2 power - Remove the <b>failure</b> text on a Goa'uld or a Disease obstacle at the current mission.</property>
+			<property name="Number" value="35"/>
+		</card>
+		<card name="Morozov" id="5202b451-f113-43cf-bc19-acf63eece4cf">
+			<property name="Subtitle" value="Military Escort"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="2"/>
+			<property name="Text">When you play Morozov, you may destroy him. If you do, destroy a prepared <b>ambush</b> obstacle and, until the end of the turn, your cards consider the number of failed missions to be one higher.</property>
+			<property name="Number" value="36"/>
+		</card>
+		<card name="Orlov" id="f56e48ad-19a9-446a-b3cf-f200e1a2d711">
+			<property name="Subtitle" value="Military Advisor"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Combat" value="2"/>
+			<property name="Text">Orlov is blocked during the first mission played each turn. 
+Each time your opponent plays an obstacle or adversary with the <b>dominion</b> keyword, gain 1 power.</property>
+			<property name="Number" value="37"/>
+		</card>
+		<card name="Rak'nor" id="b888df35-a6b7-426e-8c4d-b843e0971b1c">
+			<property name="Subtitle" value="Ardent Warrior"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text"><b>Success:</b> Choose a non-adversary card in your opponent's villain score pile and place it in its owner's discard pile. If the chosen card is Jaffa, gain 1 power.</property>
+			<property name="Number" value="38"/>
+		</card>
+		<card name="Sarnouk" id="cd21194c-a9bf-400d-8fbe-f65964a722f0">
+			<property name="Subtitle" value="Tok'ra Envoy"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text">Sarnouk gets skills +1 while there is at least one non-adversary card in your opponent's villain score pile.</property>
+			<property name="Number" value="39"/>
+		</card>
+		<card name="Sofiya Kaminskaya" id="e1b1cee7-4461-4d29-b2e6-576825c96295">
+			<property name="Subtitle" value="Trauma Surgeon"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="2"/>
+			<property name="Text">When you play Sofiya Kaminskaya, if there was a failed mission this turn, you may stop her. If you do, choose one: Ready a stopped character; or stop an incapacitated character <i>(they are no longer incapacitated)</i>.</property>
+			<property name="Number" value="40"/>
+		</card>
+		<card name="Teal'c" id="6a2a01f7-b9b2-4dee-9fcc-c2c1a28423b3">
+			<property name="Subtitle" value="Patient Mentor"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="5"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Combat" value="2"/>
+			<property name="Text">While Teal'c is ready, each time you play a support character, you may draw a card.</property>
+			<property name="Number" value="41"/>
+		</card>
+		<card name="Vala Mal Doran" id="20c0f297-7a76-40f8-9547-98150bb0acc2">
+			<property name="Subtitle" value="Cheerful Adventurer"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
+			<property name="Cost" value="5"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Text">Pay 4 power, discard a card - Ready Vala Mal Doran. You can do this only once each turn. This ability costs power -1 to activate for each ready gear.</property>
+			<property name="Number" value="42"/>
+		</card>
+		<card name="Zaddik" id="bea1b189-74f5-4034-b90c-d2732dd0e8c5">
+			<property name="Subtitle" value="Reclusive Alchemist"/>
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Science" value="1"/>
+			<property name="Text"><b>Failure:</b> You may destroy Zaddik. If you do, place a <b>lore token</b> on an assigned team character. That lore token's glyph must be the same as the current mission's glyph.</property>
+			<property name="Number" value="43"/>
+		</card>
+		<card name="Amelia Banks" id="3a201d42-0037-4ad5-b8f1-393d6ae4215c">
+			<property name="Subtitle" value="Adaptable Gate Technician"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Atlantis"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Science" value="2"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text"><s value="g">Gemini</s> or <s value="o">Orion</s>. During your power phase and your mission phase, each time you resolve an ability or effect that changes the order of the cards in your mission pile, gain 1 power.</property>
+			<property name="Number" value="44"/>
+		</card>
+		<card name="Bill Lee" id="ddea1f31-dc01-4f91-88ff-2f14908a89cd">
+			<property name="Subtitle" value="Experimental Engineer"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
+			<property name="Cost" value="6"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="2"/>
+			<property name="Combat" value="0"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text">Each time you assign Bill Lee, for each glyph he has, reveal one random card from your deck. Bill Lee gets skills +1 until the end of the current mission for each hero card revealed, and your opponent gains 1 power for each villain card revealed. Shuffle the revealed cards back into your deck.</property>
+			<property name="Number" value="45"/>
+		</card>
+		<card name="Camile Wray" id="99a8c181-513e-423e-a62b-2ce473dee899">
+			<property name="Subtitle" value="Hardened Mediator"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Destiny"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="0"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text"><b>Grit</b>. 
+<s value="g">Gemini</s>: At the end of your power phase, gain 1 power and draw a card. 
+<s value="o">Orion</s>: At the end of your power phase, gain 1 power and draw a card. 
+<s value="g">Gemini</s> and <s value="o">Orion</s>: Each time Camile Wray uses grit, gain 1 power and draw a card.</property>
+			<property name="Number" value="46"/>
+		</card>
+		<card name="Dana Scully" id="8c85ed95-c7b5-4271-9386-4e2c40e33825">
+			<property name="Subtitle" value="Skeptical Forensic Pathologist"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="X-Files"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Science" value="3"/>
+			<property name="Combat" value="0"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text"><s value="l">Libra</s> or <s value="o">Orion</s>: Dana Scully gets <s value="com">Combat</s> +1, or <s value="com">Combat</s> +2 instead if she's assigned with Fox Mulder.
+<s value="g">Gemini</s> and <s value="o">Orion</s>: Obstacles cost power +1 to play for each <s value="sci">Science</s> obstacle at the current mission.</property>
+			<property name="Number" value="47"/>
+		</card>
+		<card name="Devon" id="6b12e487-4a27-4151-a723-3c0c07287874">
+			<property name="Subtitle" value="Scheming Operative"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text"><s value="g">Gemini</s> or <s value="l">Libra</s>: At the end of your power phase, gain 1 power. 
+<s value="l">Libra</s>: At the end of your power phase, gain 1 power for each adversary.</property>
+			<property name="Number" value="48"/>
+		</card>
+		<card name="Fox Mulder" id="91b52d8a-f754-4592-85f4-0e23adf00027">
+			<property name="Subtitle" value="True Believer"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="X-Files"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Science" value="0"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Text"><b>Grit</b>.
+<s value="g">Gemini</s> or <s value="o">Orion</s>: Fox Mulder gets <s value="sci">Science</s> +1, or <s value="sci">Science</s> +2 instead if he's assigned with Dana Scully.
+<s value="l">Libra</s> and <s value="o">Orion</s>, Discard a hero card, pay 1 power - Unblock Fox Mulder.</property>
+			<property name="Number" value="49"/>
+		</card>
+		<card name="Garshaw" id="25558596-f609-492c-a8e6-e8998fe75e63">
+			<property name="Subtitle" value="Of Belote"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="0"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text"><s value="o">Orion</s>: Assigned adversaries can't contribute more than 2 difficulty to missions. <i>(If their difficulty is 3 or more, it's considered to be 2 instead.)</i> 
+<s value="o">Orion</s> and <s value="s">Scorpius</s>: Obstacles can't contribute more than 2 difficulty to missions.</property>
+			<property name="Number" value="50"/>
+		</card>
+		<card name="Grigori Bogdanov" id="eae9b486-5ac8-4369-ba24-5573e291b93b">
+			<property name="Subtitle" value="Theoretical Physicist"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="3"/>
+			<property name="Combat" value="0"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text"><s value="l">Libra</s> or <s value="s">Scorpius</s>: Grigori Bogdanov gets: "<b>Failure:</b> You may look at one card from the top of your mission pile for each failed mission this turn. If you do, place those cards in any order on the top and/or bottom of that pile."</property>
+			<property name="Number" value="51"/>
+		</card>
+		<card name="Jack O'Neill" id="5298a906-1ea0-4bfd-8602-f465dc346b42">
+			<property name="Subtitle" value="A Simple Man"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="0"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="3"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Text"><b>Grit</b>.</property>
+			<property name="Number" value="52"/>
+		</card>
+		<card name="Ka'lel" id="e81c51ba-7364-4f77-b638-8abe22d65eae">
+			<property name="Subtitle" value="Steadfast Protector"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="5"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="0"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text"><s value="g">Gemini</s> or <s value="t">Triangulum</s>: Ka'lel gets skills +1 for each successful mission this turn or each different glyph she has, whichever is lower.</property>
+			<property name="Number" value="53"/>
+		</card>
+		<card name="Martin Kennedy" id="4a61b2fe-d520-4f64-b067-9e538bc98914">
+			<property name="Subtitle" value="CIA Interrogator"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="NID"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="1"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text"><s value="l">Libra</s> or <s value="s">Scorpius</s>: Martin Kennedy gets experience +1 for each <b>promotion token</b> he has. <i>(A team character can have any number of promotion tokens. He gets point value +1 for each such token, to a maximum point value of 6.)</i></property>
+			<property name="Number" value="54"/>
+		</card>
+		<card name="Nikolai Vostrikov" id="a8e658a8-8b66-4526-8fdf-82ee108b3ef8">
+			<property name="Subtitle" value="Submarine Captain"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text"><s value="g">Gemini</s> or <s value="o">Orion</s>: Nikolai Vostrikov gets: "<b>Failure:</b> You may destroy an assigned Russian support character. If you do, your other Russian characters get skills +1 until the end of the turn. You can do this only once each turn."</property>
+			<property name="Number" value="55"/>
+		</card>
+		<card name="Reynolds" id="a8cc69b3-98f2-42e6-af85-c3a1415a1ab3">
+			<property name="Subtitle" value="Stalwart Commander"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text"><s value="o">Orion</s> or <s value="p">Pisces</s>: Reynolds gets: "<b>Failure:</b> Place the current mission on the top or bottom of your mission pile. <i>(It isn't counted as a failed mission)</i>" 
+<s value="o">Orion</s> and <s value="p">Pisces</s>: Reynolds gets: "<b>Failure:</b> You may pay 3 power. If you do, ready an SGC team character.</property>
+			<property name="Number" value="56"/>
+		</card>
+		<card name="Ronald Greer" id="0c433dda-6924-44f4-b25f-72a8c1e0bb80">
+			<property name="Subtitle" value="Combat Veteran"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Destiny"/>
+			<property name="Cost" value="5"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="0"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text"><b>Grit</b>. 
+To assign an adversary while Ronald Greer is assigned, your opponent pays 1 power for each different glyph he has. 
+<s value="s">Scorpius</s> or <s value="t">Triangulum</s>: Ronald Greer gets <s value="com">Combat</s> +1 and <s value="ing">Ingenuity</s> +1.</property>
+			<property name="Number" value="57"/>
+		</card>
+		<card name="Rya'c" id="0428dd12-34c1-46f0-9cba-d5d3c8d9c417">
+			<property name="Subtitle" value="Son of Teal'c"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="6"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Science" value="0"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text"><s value="g">Gemini</s> or <s value="s">Scorpius</s>: Rya'c gets <s value="cul">Culture</s> +1 and <s value="com">Combat</s> +1. 
+<s value="p">Pisces</s>: Complications cost power +1 to play while Rya'c is assigned. 
+<s value="t">Triangulum</s>: Rya'c gets skills +1 while an adversary is assigned.</property>
+			<property name="Number" value="58"/>
+		</card>
+		<card name="Samantha Carter" id="d8e3a030-227c-462c-a721-0a3648fafe58">
+			<property name="Subtitle" value="Atlantis Expedition Leader"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Atlantis SGC"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Science" value="3"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text">Each time you assign Samantha Carter to a mission that has a glyph matching one of hers, you may pay 1 power. If you do, ready a support character.</property>
+			<property name="Number" value="59"/>
+		</card>
+		<card name="Stan Kovacek" id="2ecc1450-525f-4ce7-a3c5-0fab28e1c7f2">
+			<property name="Subtitle" value="SG-9 Team Leader"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Science" value="2"/>
+			<property name="Combat" value="1"/>
+			<property name="Ingenuity" value="0"/>
+			<property name="Text"><s value="t">Triangulum</s>, Stop Stan Kovacek, pay 3 power - Destroy a Political obstacle.
+<s value="t">Triangulum</s> and <s value="t">Triangulum</s>: Each time you activate Stan Kovacek's first ability, you may pay 2 power. If you do, ready him.</property>
+			<property name="Number" value="60"/>
+		</card>
+		<card name="The Lone Gunmen" id="9733a460-80ce-4956-9bd2-e3e1ba12d284">
+			<property name="Subtitle" value="Conspiracy Theories Experts"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="X-Files"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Science" value="3"/>
+			<property name="Combat" value="0"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Text">The Lone Gunmen get skills -1 while they are assigned. 
+Stop The Lone Gunmen, discard X cards (X must be equal to the number of obstacles at the current mission) - Draw X cards. You can do this only once each turn.</property>
+			<property name="Number" value="61"/>
+		</card>
+		<card name="Walter Skinner" id="bae15f8a-39ae-4e3b-af92-9c7d730b24a3">
+			<property name="Subtitle" value="FBI Assistant Director"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="X-Files"/>
+			<property name="Cost" value="5"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="0"/>
+			<property name="Combat" value="1"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text"><s value="g">Gemini</s> or <s value="l">Libra</s>: Other X-Files team characters assigned with Walter Skinner get <s value="cul">Culture</s> +1. 
+<s value="o">Orion</s>: Each time your opponent plays an obstacle, you may pay 1 power. If you do, your opponent loses 1 power (or 2 power if the obstacle is Political).</property>
+			<property name="Number" value="62"/>
+		</card>
+		<card name="Yat'Yir" id="9f4a3809-eefa-464e-98a3-78a1c27366b1">
+			<property name="Subtitle" value="Rising Confidant"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="0"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text"><s value="s">Scorpius</s>: Yat'Yir gets <s value="cul">Culture</s> +1 and point value +1.
+<s value="t">Triangulum</s>: Yat'Yir gets <s value="com">Combat</s> +1 and point value +1.
+<s value="s">Scorpius</s> and <s value="t">Triangulum</s>: Yat'Yir gets <s value="ing">Ingenuity</s> +1 and <b>grit</b>.</property>
+			<property name="Number" value="63"/>
+		</card>
+		<card name="Brothers in Arms" id="56bd0ba2-9c22-4edf-8747-e446d99eed63">
+			<property name="Type" value="Event"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa Tok'ra"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">Choose a team character. They get skills +1 for each different affiliation trait other assigned team characters have that they don't, until the end of the current mission.</property>
+			<property name="Number" value="64"/>
+		</card>
+		<card name="Full-Automatic Fire" id="67d7c806-a78d-4105-93b1-b083d068d804">
+			<property name="Type" value="Event"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="SGC Atlantis"/>
+			<property name="Cost" value="1"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">To play this event, block a ready character with 1 <s value="com">Combat</s> or more from the current mission. 
+<b>Wound</b> an adversary X times, where X is equal to the blocked character's <s value="com">Combat</s>. Until the end of the turn, these <b>wound tokens</b> can't be destroyed.</property>
+			<property name="Number" value="65"/>
+		</card>
+		<card name="The Gift of Life" id="5b42ddfc-0619-4a07-b995-8dba58200ae9">
+			<property name="Type" value="Event"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Atlantis"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">If there is a ready or assigned Wraith adversary, this event costs power -2 to play and your opponent gains 2 power when you play it. 
+Ready an incapacitated character <i>(they are no longer incapacitated)</i>.</property>
+			<property name="Number" value="66"/>
+		</card>
+		<card name="Momentous DIscovery" id="a581272f-8e9e-49cf-9634-d63e19bd5b29">
+			<property name="Type" value="Event"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Ancient Asgard"/>
+			<property name="Cost" value="0"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">To play this event, stop a character with either 2 <s value="cul">Culture</s> or more or 2 <s value="sci">Science</s> or more. 
+The current mission gets: "<b>Success:</b> place a <b>lore token</b> on an assigned character."</property>
+			<property name="Number" value="67"/>
+		</card>
+		<card name="Spycraft" id="821b3d13-e9a3-4b41-845b-ddf4bd505308">
+			<property name="Type" value="Event"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Tok'ra"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">To play this event, stop a character.
+If your opponent has three or more cards in their villain score pile, they must choose one they own among them to take into hand (or to place on top of their deck if the stopped character is Tok'ra).</property>
+			<property name="Number" value="68"/>
+		</card>
+		<card name="Stopgap Fix" id="22e53c77-e85c-46be-851f-5118801e493c">
+			<property name="Type" value="Event"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Destiny"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">Choose one: Move a gear attachment from one character to another: or take a gear card from your discard pile into hand.</property>
+			<property name="Number" value="69"/>
+		</card>
+		<card name="Android Assembly Bay" id="2da99529-de1f-4fbc-b6f4-0caf1c04fcf2">
+			<property name="Type" value="Gear"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">Pay 3 power - Choose a skill. Until the end of the current mission, this card becomes a support character with 2 in the chosen skill and no game text. <i>(It's no longer a gear.)</i></property>
+			<property name="Number" value="70"/>
+		</card>
+		<card name="Eurondan Stasis Chamber" id="fdbbf108-17f4-4d5e-93d1-df6be4d3b870">
+			<property name="Type" value="Gear"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">Stop this gear - Choose a ready support character with a "when you play (this character)" triggered effect. Resolve that effect as if that character had just been played <i>(other costs must be paid as normal)</i>, then destroy him.</property>
+			<property name="Number" value="71"/>
+		</card>
+		<card name="Foxtrot Class Submarine" id="07b6b290-3cba-434d-99a0-d14231408efe">
+			<property name="Type" value="Gear"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Russian"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">Each time you fail a mission, you may destroy this gear. if you do, choose one: You may play a gear or a support character at no cost; or you may play a support character from your discard pile at no cost.</property>
+			<property name="Number" value="72"/>
+		</card>
+		<card name="Licensed Card Game" id="c2b103cd-6398-4393-ba68-cc1e02ba2a00">
+			<property name="Type" value="Gear"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">Stop this gear, predict to your opponent whether the top card of your deck costs more, the same, or less than the top card of their deck, then <b>drain 1</b> - Your opponent must <b>drain 1</b>. If you predicted correctly, gain 2 power. If you didn't, your opponent gains 2 power.</property>
+			<property name="Number" value="73"/>
+		</card>
+		<card name="Rebel Jaffa Camp" id="eb03784a-bb42-4a4c-9b57-d7934853583d">
+			<property name="Type" value="Gear"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">Stop this gear and a team character - Play a support character as normal, except they cost power -1 to play (or power -2 to play if both the stopped and the played characters are Jaffa).</property>
+			<property name="Number" value="74"/>
+		</card>
+		<card name="Stargate Shield" id="c60010ad-005b-4ba7-9f41-d854915391b1">
+			<property name="Type" value="Gear"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Affiliation" value="Atlantis Agent"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">While this gear is ready, each time an <b>ambush</b> obstacle would become prepared, it is destroyed instead, unless your opponent pays 1 power. 
+Stop this gear, pay 2 power - Remove the <b>failure</b> text from an obstacle at the current mission.</property>
+			<property name="Number" value="75"/>
+		</card>
+		<card name="Air Strike" id="28240e05-90ef-4681-a722-19f1eced4559">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Cost" value="1"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="2"/>
+			<property name="Text"><b>Outlaw</b>. 
+<b>Victory:</b> The current mission gets difficulty +1 for each assigned villain ship.</property>
+			<property name="Number" value="76"/>
+		</card>
+		<card name="At Oberoth's Mercy" id="a81ef988-884f-4afa-bac9-d36a950a7fba">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Replicator"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="2"/>
+			<property name="Combat" value="1"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">This card may be used to boost any Replicator adversary. 
+<b>Failure:</b> Place this obstacle beneath an adversary. They get "While this adversary is assigned, obstacles that share at least one affiliation trait with them cost power -1 to play, but can't cost less than 1 power."</property>
+			<property name="Number" value="77"/>
+		</card>
+		<card name="Borrowed Strength" id="ecc8f467-9dfa-495f-9007-beecaf209ac9">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Wraith"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="2"/>
+			<property name="Text">When you play this obstacle, choose a Wraith adversary. They get difficulty +2 until the end of the current mission. 
+<b>Success</b> or <b>Failure:</b> At the start of your next turn <i>(as the hero player)</i>, <b>wound</b> a ready team character twice.</property>
+			<property name="Number" value="78"/>
+		</card>
+		<card name="Callous Counterstrike" id="802b0ff5-485e-4e77-a894-bba2b04a406f">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="1"/>
+			<property name="Combat" value="1"/>
+			<property name="Text">When you play this obstacle, for each obstacle card in your villain score pile, your opponent destroys a support character.</property>
+			<property name="Number" value="79"/>
+		</card>
+		<card name="Contingency Plans" id="68ec65fa-d410-4814-aba2-ce88c67f6100">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
+			<property name="Cost" value="1"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="0"/>
+			<property name="Science" value="0"/>
+			<property name="Combat" value="0"/>
+			<property name="Ingenuity" value="0"/>
+			<property name="Text">Each time you play an obstacle with a "when you play this obstacle" triggered effect, you may destroy Contingency Plans. If you do, that obstacle's triggered effect resolves one additional time.</property>
+			<property name="Number" value="80"/>
+		</card>
+		<card name="Eyes of the Goa'uld" id="f82b7e1b-abab-4a8c-82a5-fdaf4ced7ddc">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
+			<property name="Cost" value="6"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="6"/>
+			<property name="Combat" value="6"/>
+			<property name="Text"><b>Victory:</b> You may score an assigned Goa'uld ship <i>(place it in your villain score pile)</i>.</property>
+			<property name="Number" value="81"/>
+		</card>
+		<card name="Flagisallus" id="86bc21f9-ec09-4873-a8c9-76957307c74b">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text"><b>Success:</b> If this card is an obstacle, it permanently becomes a support character with: "When you assign Flagisallus, at the end of the current mission, destroy it." <i>(It is now a hero card and loses the obstacle trait.)</i></property>
+			<property name="Number" value="82"/>
+		</card>
+		<card name="Forced Evolution" id="317743df-b0ab-4d6a-8444-7cb50c1e1341">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Disease"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="3"/>
+			<property name="Text">When you play this obstacle, choose a team character. They are blocked.
+<b>Success:</b> The chosen character gets skills +2 until the end of the turn.
+<b>Failure:</b> Incapacitate the chosen character.</property>
+			<property name="Number" value="83"/>
+		</card>
+		<card name="Ghastly Warning" id="377145a3-9b3b-40c7-9bac-66a01170c1b0">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="2"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Text">When you play this obstacle, ready an assigned character. They are blocked.
+<b>Failure:</b> Stop all characters.</property>
+			<property name="Number" value="84"/>
+		</card>
+		<card name="Hathor's Resurrection" id="1211c6e9-51a1-4a64-96a0-a27fc43372f1">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">This card may be used to boost any Goa'uld adversary. 
+<b>Failure:</b> Place this obstacle beneath an adversary. They get revive cost -5.</property>
+			<property name="Number" value="85"/>
+		</card>
+		<card name="Hostage Negotiations" id="d1ffe94e-d688-491b-8436-14eafcfd4e88">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Political"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Combat" value="3"/>
+			<property name="Text"><b>Failure:</b> Choose an affiliation trait on a character. Destroy each support character who does not have the chosen affiliation trait.</property>
+			<property name="Number" value="86"/>
+		</card>
+		<card name="IOA Investigation" id="0fac0d2d-9207-4696-9f89-55eff804c208">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Political"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="1"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">This card may be used to boost any Political adversary. 
+<b>Failure:</b> Place this obstacle beneath an adversary. They get "Each time you assign this adversary, your opponent loses 2 power and you gain 2 power."</property>
+			<property name="Number" value="87"/>
+		</card>
+		<card name="Jaffa Elite Troops" id="a25bb805-0b62-4237-a0a8-5107856d003b">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="1"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text"><b>Dominion</b>.
+<b>Failure:</b> If a Jaffa adversary is assigned, you may score one additional card with <b>dominion</b> at the current mission.</property>
+			<property name="Number" value="88"/>
+		</card>
+		<card name="Massive Gravity Well" id="c9752404-cab4-4ed8-b536-cb27162d58bf">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Cost" value="0"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="0"/>
+			<property name="Science" value="0"/>
+			<property name="Combat" value="0"/>
+			<property name="Ingenuity" value="0"/>
+			<property name="Text">To play this obstacle, pay X power.
+When you play this obstacle, stop each ship with firepower X or lower.</property>
+			<property name="Number" value="89"/>
+		</card>
+		<card name="Message In A Bottle" id="3ee2904e-04f2-465f-b4ed-1778d732075a">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Cost" value="5"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="3"/>
+			<property name="Ingenuity" value="3"/>
+			<property name="Text">When you play this obstacle, your opponent may stop an assigned character. If they don't, this obstacle gets: "<b>Failure:</b> Incapacitate each assigned team character."</property>
+			<property name="Number" value="90"/>
+		</card>
+		<card name="Nanite Infection" id="8b2a40b2-436f-4e13-84dd-3e7f85fe2ef0">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Replicator Disease"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="3"/>
+			<property name="Text">Each time a support character would become stopped, destroy them instead. 
+<b>Success:</b> Destroy this obstacle.</property>
+			<property name="Number" value="91"/>
+		</card>
+		<card name="Organizational Overhaul" id="92474f7c-81bf-47b3-9dc2-857036723507">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Political"/>
+			<property name="Cost" value="1"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="0"/>
+			<property name="Science" value="0"/>
+			<property name="Combat" value="0"/>
+			<property name="Ingenuity" value="0"/>
+			<property name="Text">To play this obstacle, you must ready an assigned adversary. 
+When you play this obstacle, you may assign a different adversary. If you do, they get difficulty +1 until the end of the current mission.</property>
+			<property name="Number" value="92"/>
+		</card>
+		<card name="The Orici" id="1563d13c-79c8-4847-a089-43f56b196e90">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text"><b>Failure:</b> You may search your deck for an adversary card and play it from there at no cost, then shuffle your deck. If that adversary costs 5 power or more, your opponent gains 1 power.</property>
+			<property name="Number" value="93"/>
+		</card>
+		<card name="The Quest" id="3b89da96-05d2-444f-b2fe-d2ec8dfb6e5c">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text"><b>Failure:</b> Place this obstacle beneath an adversary. They get <s value="cul">Culture</s> +1, <s value="sci">Science</s> +1, <s value="com">Combat</s> +1, and <s value="ing">Ingenuity</s> +1.</property>
+			<property name="Number" value="94"/>
+		</card>
+		<card name="Quid Pro Quo" id="21855c42-de96-4ac6-beb0-9346850222bc">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Political"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">When you play this obstacle, your opponent may stop an assigned character. If they don't, this obstacle gets <b>withdraw 4</b>.</property>
+			<property name="Number" value="95"/>
+		</card>
+		<card name="Ravaging Renewal" id="fc13dc22-4f9c-4cda-8121-0661add02eaa">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Wraith"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="2"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text">This card may be used to boost any Wraith adversary.
+<b>Failure:</b> Place this obstacle beneath an adversary. They get "Each time you assign this adversary, your opponent must <b>drain 4</b>, then you may ready each other stopped adversary."</property>
+			<property name="Number" value="96"/>
+		</card>
+		<card name="Severe Dehydration" id="8ccb40a0-f738-40f1-8156-322b11ac4951">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">When you play this obstacle, choose one: Destroy a stopped support character; or incapacitate a stopped team character.</property>
+			<property name="Number" value="97"/>
+		</card>
+		<card name="Social Experiment" id="bb0acd10-e2ac-4d83-a693-74e98b4388e4">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="3"/>
+			<property name="Text">When you play this obstacle, ready each assigned team character. 
+Your opponent can't assign more than two team characters to this mission.</property>
+			<property name="Number" value="98"/>
+		</card>
+		<card name="Stun Bubble" id="e91e11d6-ad0b-40aa-b164-bdfb00b914c9">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Wraith"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="2"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">When you play this obstacle, for each assigned team character, choose a support character. They are blocked.</property>
+			<property name="Number" value="99"/>
+		</card>
+		<card name="Sudden Resignation" id="0722f2b5-7740-4990-8f00-d54afa89b067">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Combat" value="1"/>
+			<property name="Text">When you play this obstacle, choose one: Destroy a gear card attached to a character; or destroy a <b>promotion token</b> or a <b>lore token</b> on a character.</property>
+			<property name="Number" value="100"/>
+		</card>
+		<card name="Surrender or Die!" id="c1414a2e-abff-4801-adb7-64671a56a2f5">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">When you play this obstacle, your opponent may destroy a support character. If they don't, this obstacle gets difficulty +2.</property>
+			<property name="Number" value="101"/>
+		</card>
+		<card name="Tense Standoff" id="4277cf3b-c7b9-4109-8309-b93b94c410aa">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Replicator"/>
+			<property name="Cost" value="1"/>
+			<property name="Rarity" value="F"/>
+			<property name="Combat" value="1"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text"><b>Dominion</b>.
+<b>Failure:</b> Stop a support character. You may prepare this ambush.
+<b>Ambush (<s value="com">Combat</s>/<s value="ing">Ingenuity</s>):</b> Gain 1 power for each Replicator card in your villain score pile.</property>
+			<property name="Number" value="102"/>
+		</card>
+		<card name="Test of Might" id="7bba618d-c758-4992-ad0b-adf2edc35225">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Jaffa"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="1"/>
+			<property name="Combat" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">This card may be used to boost any Jaffa adversary. 
+<b>Failure:</b> Place this obstacle beneath an adversary. They get "Each time you assign this adversary, you may destroy a support character."</property>
+			<property name="Number" value="103"/>
+		</card>
+		<card name="Unstoppable Advance" id="ea225d1c-cb4e-4da0-8b0e-a718c5bf876f">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
+			<property name="Cost" value="0"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="0"/>
+			<property name="Science" value="0"/>
+			<property name="Combat" value="0"/>
+			<property name="Ingenuity" value="0"/>
+			<property name="Text">Each time you assign a villain ship, you may pay 1 power. If you do, play a complication at no cost. 
+<b>Victory:</b> Ready a villain ship.</property>
+			<property name="Number" value="104"/>
+		</card>
+		<card name="The Will of the Ori" id="7e1ad77b-4d20-4dab-9901-8a2bc61655a1">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Ori"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="2"/>
+			<property name="Combat" value="2"/>
+			<property name="Text">This card may be used to boost any Ori adversary. 
+<b>Failure:</b> Place this obstacle beneath an adversary. They get "When you score this adversary, incapacitate a team character."</property>
+			<property name="Number" value="105"/>
+		</card>
+		<card name="Wraith Reinforcements" id="418fbe21-c8be-46fd-8ded-aaf896422ebd">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Wraith"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="0"/>
+			<property name="Science" value="0"/>
+			<property name="Combat" value="1"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text">When you play this obstacle, choose a Wraith adversary to get <b>Wraith vassal</b> until the end of the current mission. 
+<b>Failure:</b> You may pay power equal to the chosen adversary's cost. If you do, they get <b>dominion</b> until the end of the current mission.</property>
+			<property name="Number" value="106"/>
+		</card>
+		<card name="Za'tarc Self-Destruct" id="54409f55-aeac-4bf9-99b4-bf17357acb80">
+			<property name="Type" value="Obstacle"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
+			<property name="Cost" value="3"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text"><b>Failure:</b> Choose an assigned team character. Destroy each non-glyph attachment they have and each token on them, then incapacitate them.</property>
+			<property name="Number" value="107"/>
+		</card>
+		<card name="Flagisallus" id="d7f79742-0912-4b30-ad08-0f7867ea2966">
+			<property name="Type" value="Support Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Cost" value="2"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Text">When you assign Flagisallus, at the end of the current mission, destroy it.
+<b>This card can't be included in decks.</b></property>
+			<property name="Number" value="108"/>
+		</card>
+	</cards>
+</set>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<set name="Xtras" id="7cd87e54-5910-46d0-b869-c3b20c30fcad" gameId="11ec1f21-7d4c-4bf0-9d72-df01c6c78911" gameVersion="0.9.0.0" version="1.0.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CardSet.xsd">
+	<cards>
+		<card name="Hecate" id="9fe02d30-2ebc-47c1-aff3-61918d5b5751">
+			<property name="Subtitle" value="Sorceress"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Science" value="2"/>
+			<property name="Ingenuity" value="2"/>
+			<property name="Revive" value="6"/>
+			<property name="Text">Hecate gets difficulty +2 while a team character is incapacitated.
+<b>Failure:</b> Incapacitate a team character.</property>
+			<property name="Number" value="1"/>
+		</card>
+		<card name="Huitzilopochtli" id="7f344915-fde1-4eec-954c-4d4a62132c81">
+			<property name="Subtitle" value="Bloodthirsty Sun God"/>
+			<property name="Type" value="Adversary"/>
+			<property name="Allegiance" value="Villain"/>
+			<property name="Affiliation" value="Goa'uld"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Combat" value="2"/>
+			<property name="Revive" value="6"/>
+			<property name="Text">Huitzilopochtli gets difficulty +1 for each stopped support character. 
+<b>Failure:</b> Destroy each stopped support character.</property>
+			<property name="Number" value="2"/>
+		</card>
+		<card name="Jonas Quinn" id="fe9b9d43-e5c8-4f27-9a36-8051ac3f4e50">
+			<property name="Subtitle" value="Resistance Leader"/>
+			<property name="Type" value="Team Character"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Cost" value="4"/>
+			<property name="Rarity" value="F"/>
+			<property name="Culture" value="2"/>
+			<property name="Science" value="2"/>
+			<property name="Combat" value="1"/>
+			<property name="Ingenuity" value="1"/>
+			<property name="Text"><s value="g">Gemini</s>: While Jonas Quinn is assigned, each time your opponent plays an obstacle, you gain 1 power. 
+<s value="l">Libra</s>: While Jonas Quinn is assigned, each time your opponent assigns a villain ship or an adversary, you gain 1 power.</property>
+			<property name="Number" value="3"/>
+		</card>
+		<card name="Holiday Celebrations" id="d50d2502-4f12-412a-b175-6bb5e0f1337c">
+			<property name="Type" value="Event"/>
+			<property name="Allegiance" value="Hero"/>
+			<property name="Cost" value="0"/>
+			<property name="Rarity" value="F"/>
+			<property name="Text">Your opponents may each gain 1 power. For each one who does, gain 1 power.
+Draw a card.</property>
+			<property name="Number" value="4"/>
+		</card>
+	</cards>
+</set>

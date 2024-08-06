@@ -1913,7 +1913,7 @@ Stop and destroy this gear, pay 6 power – Destroy an obstacle at the current m
 			<property name="Text">Each time you assign a character who has a glyph, your opponent loses 1 power.</property>
 			<property name="Number" value="169"/>
 		</card>
-		<card name="Destroy Battleship " id="ec130081-a970-4640-90d6-23f86970f654" size="mission">
+		<card name="Destroy Battleship" id="ec130081-a970-4640-90d6-23f86970f654" size="mission">
 			<property name="Subtitle" value="Apophis' Shipyard"/>
 			<property name="Type" value="Mission"/>
 			<property name="Allegiance" value="Mission"/>

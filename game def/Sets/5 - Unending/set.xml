@@ -333,7 +333,7 @@ Stop Wotan - Gain 1 power.</property>
 			<property name="Combat" value="2"/>
 			<property name="Ingenuity" value="2"/>
 			<property name="Text">Missions with a glyph matching one of Aris Boch's get difficulty -1.
-<s value="p">Pisces</s> or <s value="t">Triangulum</s>: If Aris Boch is assigned, pay 1 power - Ready him and block him from the current mission.</property>
+<s value="p">Pisces</s> or <s value="t">Triangulum</s>, Pay 1 power - If Aris Boch is assigned, ready him and block him from the current mission.</property>
 			<property name="Number" value="25"/>
 		</card>
 		<card name="Chekov" id="820c1537-dfde-4b83-815a-e2ea08e293d8">

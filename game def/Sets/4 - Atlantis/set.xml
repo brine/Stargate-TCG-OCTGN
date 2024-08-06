@@ -544,7 +544,7 @@ When you play this obstacle, you may destroy a <b>wounded</b> support character.
 			<property name="Cost" value="2"/>
 			<property name="Rarity" value="F"/>
 			<property name="Science" value="2"/>
-			<property name="Text">When you play this obstacle, you may choose one: destroy a <b>wounded</b> support character; or stop a <b>wounded</b> team character; or <b>woundwound</b> a character.</property>
+			<property name="Text">When you play this obstacle, you may choose one: destroy a <b>wounded</b> support character; or stop a <b>wounded</b> team character; or <b>wound</b> a character.</property>
 			<property name="Number" value="45"/>
 		</card>
 		<card name="Precarious Truce" id="5ed7809e-ce7f-4d80-8ce5-c65c6cd93d9d">
