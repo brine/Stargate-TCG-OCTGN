@@ -715,7 +715,7 @@ Stop Stasis Pod - Take the character beneath this gear into hand.</property>
 			<property name="Affiliation" value="Replicator"/>
 			<property name="Cost" value="1"/>
 			<property name="Rarity" value="F"/>
-			<property name="Combat" value="0"/>
+			<property name="Combat" value="2"/>
 			<property name="Text">This obstacle costs difficulty +1 for each other Replicator card at the current mission.</property>
 			<property name="Number" value="59"/>
 		</card>

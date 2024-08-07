@@ -1134,7 +1134,7 @@ While Jack O'Neill is assigned, Young Jack gets <s value="ing">Ingenuity</s> +1.
 			<property name="Science" value="3"/>
 			<property name="Combat" value="1"/>
 			<property name="Ingenuity" value="1"/>
-			<property name="Text"><s value="l">Libra</s>: Each time you assign Jennings, adversaries can't b e revived until the end of the current mission.
+			<property name="Text"><s value="l">Libra</s>: Each time you assign Jennings, adversaries can't be revived until the end of the current mission.
 <b>Success</b> or <b>Failure:</b> If Jennings doesn't have a <s value="p">Pisces</s> glyph, destroy all assigned support characters.</property>
 			<property name="Number" value="92"/>
 		</card>

@@ -666,10 +666,10 @@ At the end of each mission, if Atlantis was assigned, incapacitate it.
 			<property name="Type" value="Ship"/>
 			<property name="Allegiance" value="Hero"/>
 			<property name="Affiliation" value="Ancient"/>
-			<property name="Cost" value="4"/>
+			<property name="Cost" value="2"/>
 			<property name="Rarity" value="F"/>
 			<property name="Firepower" value="0"/>
-			<property name="Text">While Time Jumper is assigned, it gets: "Incapacitate Time Jumper, pay 3 power - The current mission ends immediately without resolution." <i>(There is no ship battle, and the mission is neither a <b>success</b> or <b>failure</b>.)</i></property>
+			<property name="Text">Stop and destroy this ship, pay 3 power - The current mission ends immediately without resolution. <i>(There is no ship battle, the mission is neither a <b>success</b> nor a <b>failure</b>, obstacles are destroyed, and all assigned characters and adversaries become stopped.)</i></property>
 			<property name="Number" value="56"/>
 		</card>
 		<card name="Asuran Cruiser" id="33628522-2408-448e-a123-992c882eb198">
